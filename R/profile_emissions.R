@@ -19,11 +19,14 @@ species <- "NOx"
 dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species = species) 
   
 ## create SNAP-wide temporal profiles, a weighted profile from all NFR & Profile combinations
-v_sectors <- list(1)
+v_sectors <- list(1,2,3)
 
-l_DUKEMs_profiles <- lapply(X=setNames(v_sectors, v_sectors), FUN = EmissionsProfileBySector, year = y_emis, species = species, classification = "SNAP", emis = dt_naei_profs, yr_spec_NFR=NULL, hod_by_dow=F, hour_emis=T)
+l_DUKEMs_profiles <- lapply(X=setNames(v_sectors, v_sectors), FUN = EmissionsProfileBySector, year = y_emis, species = species, classification = "SNAP", emis = dt_naei_profs, yr_spec_NFR=NULL, hod_by_dow=F, hour_emis=T, save_tp=T)
 
-# enact year specific profile choice
+
+####################################################################################################
+####################################################################################################
+
 # enact pollutant specific choice (L~140)
 
 

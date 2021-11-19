@@ -73,7 +73,7 @@ JoinNAEItoProfiles <- function(year, species){
 ## function to profile emissions into classification system, using the profile IDs per NFR sector.  ##
 ## ?? Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile ##
 
-EmissionsProfileBySector <- function(year, species, sector, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL, hod_by_dow=F, hour_emis=F){
+EmissionsProfileBySector <- function(year, species, sector, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL, hod_by_dow=F, hour_emis=F, save_tp=F){
   
   ####################################################
   
@@ -92,6 +92,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   if(sum(yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19))) stop(paste0("The following are not NFR codes, check: ",yr_spec_NFR[yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19)]))
   # hod_by_dow     = *logical* should hour of day coeffs be specific to the day of the week. Default = False. 
   # hour_emis      = *logical* should a table of emissions (t) by hour in year be provided. Default = False.
+  # save_tp        = *logical* should the list of profiles (and emissions) be saved as csvs
   
   ####################################################
   
@@ -249,6 +250,20 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   }else{
     NULL
   }
+  
+  
+  ## save option ##
+  if(save_tp == T){
+    
+    fwrite(dt_sector_moy_profile,paste0("./output/",species,"_tp_moy_",year,".csv"))
+    fwrite(dt_sector_dow_profile,paste0("./output/",species,"_tp_dow_",year,".csv"))
+    fwrite(dt_sector_hod_profile,paste0("./output/",species,"_tp_hod_",year,".csv"))
+    fwrite(dt_sector_hour_emis  ,paste0("./output/",species,"_hour_emis_",year,".csv"))
+    
+  }else{
+    NULL
+  }
+  
   
   return(l_mdh)
   
