@@ -255,10 +255,11 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   ## save option ##
   if(save_tp == T){
     
-    fwrite(dt_sector_moy_profile,paste0("./output/",species,"_tp_moy_",year,".csv"))
-    fwrite(dt_sector_dow_profile,paste0("./output/",species,"_tp_dow_",year,".csv"))
-    fwrite(dt_sector_hod_profile,paste0("./output/",species,"_tp_hod_",year,".csv"))
-    fwrite(dt_sector_hour_emis  ,paste0("./output/",species,"_hour_emis_",year,".csv"))
+    # this needs changing
+    fwrite(dt_sector_moy_profile,paste0("./output/",species,"_SN",sector,"_tp_moy_",year,".csv"))
+    fwrite(dt_sector_dow_profile,paste0("./output/",species,"_SN",sector,"_tp_dow_",year,".csv"))
+    fwrite(dt_sector_hod_profile,paste0("./output/",species,"_SN",sector,"_tp_hod_",year,".csv"))
+    fwrite(dt_sector_hour_emis  ,paste0("./output/",species,"_SN",sector,"_hour_emis_",year,".csv"))
     
   }else{
     NULL
