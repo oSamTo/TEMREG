@@ -5,28 +5,39 @@ packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ca
 require(cowplot)
 lapply(packs, require, character.only = TRUE)
 
-setwd("C:/FastProcessingSam/DUKEMS")
-
 "%!in%" <- Negate("%in%")
 
 ## lookup table ##
-dt_sect_to_prof <<- fread("./Database/Sectors.csv")
+dt_sect_to_prof <<- fread("./Data/Sectors.csv")
 
 ## profile tables ##
-dt_prof_moy <<- melt(fread("./Database/moy_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "moy", value.name = "moy_coeff", variable.factor = F, value.factor = F ) %>% .[, moy := as.numeric(moy)]
+dt_prof_moy <<- melt(fread("./Data/moy_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "moy", value.name = "moy_coeff", variable.factor = F, value.factor = F ) %>% .[, moy := as.numeric(moy)]
 
-dt_prof_dow <<- melt(fread("./Database/dow_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "dow", value.name = "dow_coeff", variable.factor = F, value.factor = F ) %>% .[, dow := as.numeric(dow)]
+dt_prof_dow <<- melt(fread("./Data/dow_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "dow", value.name = "dow_coeff", variable.factor = F, value.factor = F ) %>% .[, dow := as.numeric(dow)]
 
-dt_prof_hod <<- melt(fread("./Database/hod_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","dow"), variable.name = "hod", value.name = "hod_coeff", variable.factor = F, value.factor = F ) %>% .[, hod := as.numeric(hod)]
+dt_prof_hod <<- melt(fread("./Data/hod_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","dow"), variable.name = "hod", value.name = "hod_coeff", variable.factor = F, value.factor = F ) %>% .[, hod := as.numeric(hod)]
 
-dt_prof_hdd <<- fread("./Database/hdd_profiles.csv")
-
+dt_prof_hdd <<- fread("./Data/hdd_profiles.csv")
 
 ################################################################################################
 ## function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ##
 ##             2. match the annual NAEI data to the NFR codes and the temporal profile codes. ##
 
 JoinNAEItoProfiles <- function(year, species){
+  
+  ########################################################
+  
+  # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
+  if(!is.numeric(year)) stop ("Year is not numeric")
+  # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
+  if(species %!in% c("NOx","SO2") ) stop ("Species must be in: 
+                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+                                            PM:    PM2.5, PM10
+                                            GHG:   CH4, CO2, N2O
+                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  
+  #########################################################
+  
   
   colskeep <- c("NFR/CRF Group","Source","Activity","Units",year)
   

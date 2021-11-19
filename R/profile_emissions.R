@@ -1,4 +1,4 @@
-source("C:/FastProcessingSam/DUKEMS/totals_profiled/workspace.R")
+source("./R/workspace.R")
 
 #############################################
 #### TEMPORAL PROFILING ANNUAL EMISSIONS ####

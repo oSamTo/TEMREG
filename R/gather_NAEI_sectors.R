@@ -1,7 +1,4 @@
-packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","car","reshape2","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","rasterVis","ncdf4","readxl","lubridate")
-lapply(packs, require, character.only = TRUE)
-
-setwd("C:/FastProcessingSam/DUKEMS")
+source("./R/workspace.R")
 
 ## read in many NAEI emissions files to get the full picture of Source/Activity sectors. Match to SNAP etc. 
 
