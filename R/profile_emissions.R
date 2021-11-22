@@ -10,7 +10,7 @@ source("./R/workspace.R")
 ## Also create a total emissions annual profile, for comparison with Sentinel-5p.   ##
 
 ## set the year to model and the species
-y_emis <- 2018 # the emissions year
+y_emis <- 2019 # the emissions year
 ## !! Need a way of choosing NFR/fuel combos to be modelled on specific year data, as opposed to means !! ##
 y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (otherwise `average` year = 0)
 species <- "NOx"
@@ -23,6 +23,7 @@ v_sectors <- list(1,2,3,4,5,6,7,8,9,10,11)
 
 l_DUKEMs_profiles <- lapply(X=setNames(v_sectors, v_sectors), FUN = EmissionsProfileBySector, year = y_emis, species = species, classification = "SNAP", emis = dt_naei_profs, yr_spec_NFR=NULL, hod_by_dow=F, hour_emis=T)
 
+saveRDS(l_DUKEMs_profiles, paste0("C:/FastProcessingSam/DUKEMS/totals_profiled/",species,"_SNAP_",y_emis,"_tp.rds"))
 
 ####################################################################################################
 ####################################################################################################
