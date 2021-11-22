@@ -73,7 +73,7 @@ JoinNAEItoProfiles <- function(year, species){
 ## function to profile emissions into classification system, using the profile IDs per NFR sector.  ##
 ## ?? Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile ##
 
-EmissionsProfileBySector <- function(year, species, sector, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL, hod_by_dow=F, hour_emis=F, save_tp=F){
+EmissionsProfileBySector <- function(year, species, sector, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL, hod_by_dow=F, hour_emis=F){
   
   ####################################################
   
@@ -247,20 +247,6 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   ## add in the hourly emissions to the list if that is requested
   if(hour_emis==T){
     l_mdh[["hour_emis"]] <- dt_sector_hour_emis
-  }else{
-    NULL
-  }
-  
-  
-  ## save option ##
-  if(save_tp == T){
-    
-    # this needs changing
-    fwrite(dt_sector_moy_profile,paste0("./output/",species,"_SN",sector,"_tp_moy_",year,".csv"))
-    fwrite(dt_sector_dow_profile,paste0("./output/",species,"_SN",sector,"_tp_dow_",year,".csv"))
-    fwrite(dt_sector_hod_profile,paste0("./output/",species,"_SN",sector,"_tp_hod_",year,".csv"))
-    fwrite(dt_sector_hour_emis  ,paste0("./output/",species,"_SN",sector,"_hour_emis_",year,".csv"))
-    
   }else{
     NULL
   }
