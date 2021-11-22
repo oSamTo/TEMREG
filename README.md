@@ -13,7 +13,7 @@
 
 * run from ./R/profile_emissions.R
 
-
+<font size="7"> 
 Future work:\
     * Integrate wood burning hour of day data; Gary Fuller (email 25/10/2021)\
     * Increase detail on sub-sector profiles\
@@ -24,5 +24,5 @@ Future work:\
     * Spatially variable temporal profiles\
     * Point data temporal profiles\
     * (near) Real time data interface\
-    
+</font> 
 
