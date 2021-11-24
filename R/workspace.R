@@ -93,7 +93,9 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
                                             Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   # sector         = *list* sectors to run, e.g. some SNAPS or some GNFR codes
   if(sector %in% 1:11 & classification != "SNAP") stop("Sector choices do not match classification system")
+  if(sector %!in% 1:11 & classification == "SNAP") stop("Sector choices do not match classification system")
   if(sector %in% LETTERS[1:16] & classification != "GNFR") stop("Sector choices do not match classification system")
+  if(sector %!in% LETTERS[1:16] & classification == "GNFR") stop("Sector choices do not match classification system")
   # classification = *character* GNFR or SNAP
   classification <- match.arg(classification)
   # emis           = *data.table* from JoinNAEItoProfiles; total emissions per NFR with matching profile IDs
