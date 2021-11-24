@@ -77,7 +77,7 @@ JoinNAEItoProfiles <- function(year, species){
 
 ######################################################################################################
 ## function to profile emissions into classification system, using the profile IDs per NFR sector.  ##
-## ?? Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile ##
+##  Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile   ##
 
 EmissionsProfileBySector <- function(year, species, sector, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL, hod_by_dow=F, hour_emis=F){
   
@@ -87,13 +87,16 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
   if(species %!in% c("NOx","SO2") ) stop ("Species must be in: 
-                                            AP:    NOx, SO2
-                                            GHG:   NH4, N2O
-                                            Metal: Pb, Ni, Zn")
+                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+                                            PM:    PM2.5, PM10
+                                            GHG:   CH4, CO2, N2O
+                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   # sector         = *list* sectors to run, e.g. some SNAPS or some GNFR codes
+  if(sector %in% 1:11 & classification != "SNAP") stop("Sector choices do not match classification system")
+  if(sector %in% LETTERS[1:16] & classification != "GNFR") stop("Sector choices do not match classification system")
   # classification = *character* GNFR or SNAP
   classification <- match.arg(classification)
-  # emis           = *data.table* from JoinNAEItoProfiles; total emissions (kt) per NFR with matching profile IDs
+  # emis           = *data.table* from JoinNAEItoProfiles; total emissions per NFR with matching profile IDs
   # yr_spec_NFR    = *character* optional vector of NFR codes to be profiled by year specific data, not mean
   if(sum(yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19))) stop(paste0("The following are not NFR codes, check: ",yr_spec_NFR[yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19)]))
   # hod_by_dow     = *logical* should hour of day coeffs be specific to the day of the week. Default = False. 
@@ -116,11 +119,15 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   ## extract the sector relevant NFR codes from NAEI data. Aggregate by the profile. 
   dt_sect_specific <- emis[SNAP == sector]
   dt_sect_specific_agg <- dt_sect_specific[, .(emis_kt = sum(emis_kt, na.rm=T)), by = .(Sector = get(classification), Profile_ID)]
-    
+  
+  # sum of sector emissions (for checking at end)
+  total_emis_checker <- sum(dt_sect_specific$emis_kt)
+  units(total_emis_checker) <- "Gg /yr"
+  
   ## empty list for the hourly emissions for the profile, per SNAP/GNFR (might be > 1 sector in a profile ID)
   l_sector_profiles <- list()
     
-  ## loop through the unique temporal profiles and disaggregate emissions
+  ## loop through the unique temporal profiles and disaggregate emissions to hourly
   for(prof in unique(dt_sect_specific_agg[,Profile_ID])){
     
     # data needs to be processed differently if it requires HDD information
@@ -142,6 +149,12 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
       # total emissions for the sector and profile ID
       Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emis_kt]
       dt_hours_coeffs[, ann_emis_kt := Ekt]
+      
+      if(species == "BaP"){
+        units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
+      }else{
+        units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
+      }
       
       # split emissions out into hours and day of the year
       # Readjust to total (very slightly out due to proportion of hod/dow in year)
@@ -182,6 +195,12 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
       Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emis_kt]
       dt_hours_coeffs[, ann_emis_kt := Ekt]
       
+      if(species == "BaP"){
+        units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
+      }else{
+        units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
+      }
+      
       # split emissions out into hours, days, months.
       # Readjust to total (very slightly out due to proportion of days not in full week in a month)
       dt_hours_coeffs[,     hod_emis := ann_emis_kt * moy_coeff * (7/n_mon_days) * dow_coeff * hod_coeff]
@@ -203,12 +222,14 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   
   ######
   ## summarise the hourly emissions by the sector. This can be returned later and also check against NAEI total.
-  dt_sector_hour_emis <- dt_sector_profiles[, .(sector_emis_t = (sum(hod_emis_adj, na.rm=T)*1000)), 
+  dt_sector_hour_emis <- dt_sector_profiles[, .(sector_emission = sum(hod_emis_adj, na.rm=T)), 
                                               by= .(DateTime, Sector)]
+  # set to tonnes
+  dt_sector_hour_emis$sector_emission <- units::set_units(dt_sector_hour_emis$sector_emission, Mg/yr)
   
   # checker
-  if((sum(dt_sector_hour_emis$sector_emis_t/1000) / sum(dt_sect_specific$emis_kt)) < 0.999 | 
-     (sum(dt_sector_hour_emis$sector_emis_t/1000) / sum(dt_sect_specific$emis_kt)) > 1.001){
+  if((as.numeric(sum(dt_sector_hour_emis$sector_emission) / total_emis_checker)) < 0.999 | 
+     (as.numeric(sum(dt_sector_hour_emis$sector_emission) / total_emis_checker)) > 1.001){
     print(paste0("Sector ",sector," hourly emissions do not add up to NAEI sector total. Check." ))
   }else{
     NULL
@@ -216,7 +237,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   ######
   
   # produce a weighted mean temporal profile for the entire sector. Format up for discussion. 
-  # e.g. can the model take a hod profile that is day specific? or a dow profile that is month specific?
+  # e.g. can the ACTM take a hod profile that is day specific? or a dow profile that is month specific?
   # this summary table will summarise HDD/DOY data into the MDH format. 
   # 17/11/2021 : using same structure as the temporal profile data coming in. 
   # 18/11/2021 : function allows for hod by dow to be written
