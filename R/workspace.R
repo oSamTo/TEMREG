@@ -120,10 +120,10 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   
   ## extract the sector relevant NFR codes from NAEI data. Aggregate by the profile. 
   dt_sect_specific <- emis[SNAP == sector]
-  dt_sect_specific_agg <- dt_sect_specific[, .(emis_kt = sum(emis_kt, na.rm=T)), by = .(Sector = get(classification), Profile_ID)]
+  dt_sect_specific_agg <- dt_sect_specific[, .(emission = sum(emission, na.rm=T)), by = .(Sector = get(classification), Profile_ID)]
   
   # sum of sector emissions (for checking at end)
-  total_emis_checker <- sum(dt_sect_specific$emis_kt)
+  total_emis_checker <- sum(dt_sect_specific$emission)
   units(total_emis_checker) <- "Gg /yr"
   
   ## empty list for the hourly emissions for the profile, per SNAP/GNFR (might be > 1 sector in a profile ID)
@@ -149,7 +149,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
       dt_hours_coeffs <- dt_calendar[dt_prof_hdd_pollyear, on = "hdd"][dt_prof_hod_pollyear, on = c("dow","hod")]
       
       # total emissions for the sector and profile ID
-      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emis_kt]
+      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
       dt_hours_coeffs[, ann_emis_kt := Ekt]
       
       if(species == "BaP"){
@@ -194,7 +194,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
       dt_hours_coeffs <- dt_calendar[dt_prof_moy_pollyear, on = "moy"][dt_prof_dow_pollyear, on = "dow"][dt_prof_hod_pollyear, on = c("dow","hod")]
       
       # total emissions for the sector and profile ID
-      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emis_kt]
+      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
       dt_hours_coeffs[, ann_emis_kt := Ekt]
       
       if(species == "BaP"){
