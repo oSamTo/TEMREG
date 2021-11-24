@@ -1,7 +1,7 @@
 ## initialise the workspace for splitting annual emissions into hourly profiles ##
 
 ## packages and workspace
-packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","car","reshape2","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate")
+packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units")
 require(cowplot)
 lapply(packs, require, character.only = TRUE)
 
@@ -39,26 +39,32 @@ JoinNAEItoProfiles <- function(year, species){
   #########################################################
   
   
-  colskeep <- c("NFR/CRF Group","Source","Activity","Units",year)
+  colskeep <- c("NFR/CRF Group","Source","Activity",year)
   
-  # read NAEI emissions data
-  dt_emis <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/NAEI_data/diffuse/",tolower(species),"/NFC_time_series/naei_",tolower(species),"_1970-2019.csv"), header=T)
+  # read NAEI emissions data - currently on latest year = 2019. way to automate this?
+  dt_naei <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/NAEI_data/diffuse/",tolower(species),"/NFC_time_series/naei_",tolower(species),"_1970-2019.csv"), header=T)
   
   # subset data (remove blank rows and superfluous columns)
-  dt_emis <- dt_emis[Source != ""]
-  dt_emis <- dt_emis[ ,..colskeep]
+  dt_naei <- dt_naei[Source != ""]
+  dt_naei <- dt_naei[ ,..colskeep]
   
   # some formatting
-  setnames(dt_emis, c("NFR/CRF Group",paste0(year)), c("NFR19","emis_kt"))
-  suppressWarnings(dt_emis[,emis_kt := as.numeric(emis_kt)])
-  dt_emis <- dt_emis[!is.na(emis_kt)]
+  setnames(dt_naei, c("NFR/CRF Group",paste0(year)), c("NFR19","emission"))
+  suppressWarnings(dt_naei[,emission := as.numeric(emission)])
+  dt_naei <- dt_naei[!is.na(emission)]
+  
+  # set units
+  if(species == "BaP"){
+    units(dt_naei$emission) <- "Kg /yr"
+  }else{
+    units(dt_naei$emission) <- "Gg /yr"
+  }
   
   # join the NAEI emissions to the temporal profile & classification data
-  dt_joined <- dt_emis[dt_sect_to_prof, on = c("NFR19","Source","Activity")]
+  dt_joined <- dt_naei[dt_sect_to_prof, on = c("NFR19","Source","Activity")]
+  dt_joined <- dt_joined[!is.na(emission)]
   
-  dt_joined <- dt_joined[!is.na(emis_kt)]
-  
-  if(identical(sum(dt_joined$emis_kt, na.rm=T), sum(dt_emis$emis_kt, na.rm=T))==T){
+  if(identical(sum(dt_joined$emission, na.rm=T), sum(dt_naei$emission, na.rm=T))==T){
     NULL
   }else{
     print("Emissions total has changed since joining to profile table - CHECK")
