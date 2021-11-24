@@ -18,7 +18,8 @@ species <- "NOx"
 ## read and match the NAEI data to the temporal profile in the lookup table, along with SNAP sector
 dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species = species) 
   
-## create SNAP-wide temporal profiles, a weighted profile from all NFR & Profile combinations
+## create sector-wide temporal profiles: a weighted profile from all NFR & profile combinations, per sector
+# choose either integers for SNAP, or capital letters for GNFR
 v_sectors <- list(1,2,3,4,5,6,7,8,9,10,11)
 
 l_DUKEMs_profiles <- lapply(X=setNames(v_sectors, v_sectors), FUN = EmissionsProfileBySector, year = y_emis, species = species, classification = "SNAP", emis = dt_naei_profs, yr_spec_NFR=NULL, hod_by_dow=F, hour_emis=T)
