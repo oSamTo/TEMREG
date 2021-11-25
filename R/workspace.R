@@ -1,8 +1,7 @@
 ## initialise the workspace for splitting annual emissions into hourly profiles ##
 
 ## packages and workspace
-packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units")
-require(cowplot)
+packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units", "cowplot")
 lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
@@ -30,7 +29,7 @@ JoinNAEItoProfiles <- function(year, species){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SO2") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM2.5, PM10
                                             GHG:   CH4, CO2, N2O
@@ -42,7 +41,8 @@ JoinNAEItoProfiles <- function(year, species){
   colskeep <- c("NFR/CRF Group","Source","Activity",year)
   
   # read NAEI emissions data - currently on latest year = 2019. way to automate this?
-  dt_naei <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/NAEI_data/diffuse/",tolower(species),"/NFC_time_series/naei_",tolower(species),"_1970-2019.csv"), header=T)
+  naei_files <- list.files("./data/NAEI_info", pattern="-2019.csv", full.names = T)
+  dt_naei <- fread(naei_files[grep(tolower(species), naei_files)], header=T)
   
   # subset data (remove blank rows and superfluous columns)
   dt_naei <- dt_naei[Source != ""]
@@ -86,7 +86,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SO2") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM2.5, PM10
                                             GHG:   CH4, CO2, N2O
