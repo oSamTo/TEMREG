@@ -13,6 +13,7 @@
 
 * run from ./R/profile_emissions.R
 
+## currently: NOx, SOx, CH4, CO2, N2O
 
 **Future work:**\
     * Integrate wood burning hour of day data; Gary Fuller (email 25/10/2021)\
