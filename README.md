@@ -13,6 +13,8 @@
 
 * run from ./R/profile_emissions.R
 
+* coefficients are produced to 1
+
 ## currently: NOx, SOx, CH4, CO2, N2O
 
 **Future work:**\

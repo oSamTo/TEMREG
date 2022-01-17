@@ -10,15 +10,15 @@ lapply(packs, require, character.only = TRUE)
 dt_sect_to_prof <<- fread("./Data/Sectors.csv")
 
 ## profile tables ##
-dt_prof_hour <<- melt(fread("./Data/hour_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "hour", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
+dt_prof_hour <<- melt(fread("./Data/hour_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "hour", value.name = "hour_coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
 
-dt_prof_hourwday <<- melt(fread("./Data/hourwday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","wday"), variable.name = "hour", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
+dt_prof_hourwday <<- melt(fread("./Data/hourwday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","wday"), variable.name = "hour", value.name = "hrwd_coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
 
-dt_prof_wday <<- melt(fread("./Data/wday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "wday", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, wday := as.numeric(wday)]
+dt_prof_wday <<- melt(fread("./Data/wday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "wday", value.name = "wday_coeff", variable.factor = F, value.factor = F ) %>% .[, wday := as.numeric(wday)]
 
-dt_prof_month <<- melt(fread("./Data/month_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "month", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, month := as.numeric(month)]
+dt_prof_month <<- melt(fread("./Data/month_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "month", value.name = "month_coeff", variable.factor = F, value.factor = F ) %>% .[, month := as.numeric(month)]
 
-dt_prof_yday <<- melt(fread("./Data/yday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "yday", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, yday := as.numeric(yday)]
+dt_prof_yday <<- melt(fread("./Data/yday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "yday", value.name = "yday_coeff", variable.factor = F, value.factor = F ) %>% .[, yday := as.numeric(yday)]
 
 ################################################################################################
 ## function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ##
@@ -118,7 +118,7 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   dt_calendar <- data.table(DateTime = seq(from = startDate, to = endDate, by = 3600))
   dt_calendar[,n_mon_days := days_in_month(DateTime)]
   
-  dt_calendar[ , c("hdd","doy", "moy", "dow", "hod") := list(yday(DateTime), yday(DateTime), month(DateTime), lubridate::wday(DateTime, week_start = getOption("lubridate.week.start", 1)), hour(DateTime))]
+  dt_calendar[ , c("yday","month", "wday", "hour") := list(yday(DateTime), month(DateTime), lubridate::wday(DateTime, week_start = getOption("lubridate.week.start", 1)), hour(DateTime))]
   
   ## extract the sector relevant NFR codes from NAEI data. Aggregate by the profile. 
   dt_sect_specific <- emis[SNAP == sector]
@@ -129,164 +129,243 @@ EmissionsProfileBySector <- function(year, species, sector, classification = c("
   units(total_emis_checker) <- "Gg /yr"
   
   ## empty list for the hourly emissions for the profile, per SNAP/GNFR (might be > 1 sector in a profile ID)
-  l_sector_profiles <- list()
+  l_sector_profiles_yday <- list()
+  #l_sector_profiles_month <- list()
     
   ## loop through the unique temporal profiles and disaggregate emissions to hourly
   for(prof in unique(dt_sect_specific_agg[,Profile_ID])){
     
-    # data needs to be processed differently if it requires HDD information
-    if(prof %in% c(unique(emis[HDD==1,Profile_ID]))){
-      
-      # HDD processing is currently limited to domestic and commercial type combustion
-      dt_prof_hdd_pollyear <- copy(dt_prof_hdd)
-      if(prof %in% yr_spec_NFR){dt_prof_hdd_pollyear <- dt_prof_hdd_pollyear[Year == year]}else{dt_prof_hdd_pollyear <- dt_prof_hdd_pollyear[Year == 0]}
-      dt_prof_hdd_pollyear[,c("Pollutant","Year","Profile_ID") := NULL]
-      
-      dt_prof_hod_pollyear <- copy(dt_prof_hod)
-      dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Profile_ID==prof]
-      if(prof %in% yr_spec_NFR){dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Year == year]}else{dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Year == 0]}
-      dt_prof_hod_pollyear[,c("Pollutant","Year","Profile_ID") := NULL]
-      
-      # join the profiles to the hourly calendar
-      dt_hours_coeffs <- dt_calendar[dt_prof_hdd_pollyear, on = "hdd"][dt_prof_hod_pollyear, on = c("dow","hod")]
-      
-      # total emissions for the sector and profile ID
-      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
-      dt_hours_coeffs[, ann_emis_kt := Ekt]
-      
-      if(species == "BaP"){
-        units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
-      }else{
-        units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
-      }
-      
-      # split emissions out into hours and day of the year
-      # Readjust to total (very slightly out due to proportion of hod/dow in year)
-      dt_hours_coeffs[,     hod_emis := ann_emis_kt * hdd_coeff * hod_coeff]
-      dt_hours_coeffs[, hod_emis_adj := ( (hdd_coeff * ann_emis_kt) / sum(hod_emis, na.rm=T)) * hod_emis, by = hdd]
-      
-      # add some information
-      dt_hours_coeffs[,Sector := sector]
-      dt_hours_coeffs[,Profile_ID := prof]
-      setkey(dt_hours_coeffs, DateTime)
-      
-      l_sector_profiles[[paste0("Sector_",sector," Profile_",prof)]] <- dt_hours_coeffs
-      
-            
+    ## all data has access to yday/month/wday/hour/hourwday. 
+    ## using yday, month is not needed. wday is needed to know which hourwday to use. 
+    
+    ### method 'yday': using yday generated GAM and attaching hour, determined by wday ###
+    ### the month is not used here. The yday is used and the month cab be calculated ###
+    # subset the temporal profile tables to the specific profile ID in the loop.
+    if(prof %in% yr_spec_NFR){
+      dt_yday_ID <- dt_prof_yday[Profile_ID == prof & Year == year]
+      dt_hourwday_ID <- dt_prof_hourwday[Profile_ID == prof & Year == year]
     }else{
-      
-      # subset the temporal profile tables to the specific profile ID in the loop.
-      # use this bit to subset to species and year specific profiles. 
-      dt_prof_moy_pollyear <- copy(dt_prof_moy)
-      dt_prof_moy_pollyear <- dt_prof_moy_pollyear[Profile_ID==prof]
-      if(prof %in% yr_spec_NFR){dt_prof_moy_pollyear <- dt_prof_moy_pollyear[Year == year]}else{dt_prof_moy_pollyear <- dt_prof_moy_pollyear[Year == 0]}
-      dt_prof_moy_pollyear[,c("Pollutant","Year","Profile_ID") := NULL]
-      
-      dt_prof_dow_pollyear <- copy(dt_prof_dow)
-      dt_prof_dow_pollyear <- dt_prof_dow_pollyear[Profile_ID==prof]
-      if(prof %in% yr_spec_NFR){dt_prof_dow_pollyear <- dt_prof_dow_pollyear[Year == year]}else{dt_prof_dow_pollyear <- dt_prof_dow_pollyear[Year == 0]}
-      dt_prof_dow_pollyear[,c("Pollutant","Year","Profile_ID") := NULL]
-      
-      dt_prof_hod_pollyear <- copy(dt_prof_hod)
-      dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Profile_ID==prof]
-      if(prof %in% yr_spec_NFR){dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Year == year]}else{dt_prof_hod_pollyear <- dt_prof_hod_pollyear[Year == 0]}
-      dt_prof_hod_pollyear[,c("Pollutant","Year","Profile_ID") := NULL]
-      
-      # join the profiles to the hourly calendar
-      dt_hours_coeffs <- dt_calendar[dt_prof_moy_pollyear, on = "moy"][dt_prof_dow_pollyear, on = "dow"][dt_prof_hod_pollyear, on = c("dow","hod")]
-      
-      # total emissions for the sector and profile ID
-      Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
-      dt_hours_coeffs[, ann_emis_kt := Ekt]
-      
-      if(species == "BaP"){
-        units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
-      }else{
-        units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
-      }
-      
-      # split emissions out into hours, days, months.
-      # Readjust to total (very slightly out due to proportion of days not in full week in a month)
-      dt_hours_coeffs[,     hod_emis := ann_emis_kt * moy_coeff * (7/n_mon_days) * dow_coeff * hod_coeff]
-      dt_hours_coeffs[, hod_emis_adj := ( (moy_coeff * ann_emis_kt) / sum(hod_emis, na.rm=T)) * hod_emis, by = moy]
-      
-      # add some information
-      dt_hours_coeffs[,Sector := sector]
-      dt_hours_coeffs[,Profile_ID := prof]
-      setkey(dt_hours_coeffs, DateTime)
-      
-      l_sector_profiles[[paste0("Sector_",sector," Profile_",prof)]] <- dt_hours_coeffs
-      
-    } # end of ifelse statement for HDD or M/D/H
+      dt_yday_ID <- dt_prof_yday[Profile_ID == prof & Year == 0]
+      dt_hourwday_ID <- dt_prof_hourwday[Profile_ID == prof & Year == 0]
+    }
+    dt_yday_ID[,c("Pollutant","Year","Profile_ID") := NULL]
+    dt_hourwday_ID[,c("Pollutant","Year","Profile_ID") := NULL]
+    
+    # join the profiles to the hourly calendar
+    dt_hours_coeffs <- dt_calendar[dt_yday_ID, on = "yday"][dt_hourwday_ID, on = c("wday","hour")]
+    
+    # total emissions for the sector and profile ID
+    Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
+    dt_hours_coeffs[, ann_emis_kt := Ekt]
+    
+    if(species == "BaP"){
+      units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
+    }else{
+      units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
+    }
+    
+    # split emissions out into hours and day of the year
+    # Readjust to total (sometimes very slightly out due to proportion of hod/dow in year)
+    dt_hours_coeffs[,     hour_emis := ann_emis_kt * (yday_coeff/365) * (hrwd_coeff/24)]
+    dt_hours_coeffs[, hour_emis_adj := ( ((yday_coeff/365) * ann_emis_kt) / sum(hour_emis, na.rm=T)) * hour_emis, by = yday]
+    
+    # add some information
+    dt_hours_coeffs[,Sector := sector]
+    dt_hours_coeffs[,Profile_ID := prof]
+    setkey(dt_hours_coeffs, DateTime)
+    #dt_hours_coeffs[,Method := "yday"]
+    
+    l_sector_profiles_yday[[paste0("Sector_",sector," Profile_",prof)]] <- dt_hours_coeffs
+    
+    ### method 'month': reflecting EMEP, using month/wday/hourwday ###
+    # subset the temporal profile tables to the specific profile ID in the loop.
+    #if(prof %in% yr_spec_NFR){
+    #  dt_month_ID <- dt_prof_month[Profile_ID == prof & Year == year]
+    #  dt_wday_ID <- dt_prof_wday[Profile_ID == prof & Year == year]
+    #  dt_hourwday_ID <- dt_prof_hourwday[Profile_ID == prof & Year == year]
+    #}else{
+    #  dt_month_ID <- dt_prof_month[Profile_ID == prof & Year == 0]
+    #  dt_wday_ID <- dt_prof_wday[Profile_ID == prof & Year == 0]
+    #  dt_hourwday_ID <- dt_prof_hourwday[Profile_ID == prof & Year == 0]
+    #}
+    
+    #dt_month_ID[,c("Pollutant","Year","Profile_ID") := NULL]
+    #dt_wday_ID[,c("Pollutant","Year","Profile_ID") := NULL]
+    #dt_hourwday_ID[,c("Pollutant","Year","Profile_ID") := NULL]
+    
+    # join the profiles to the hourly calendar
+    #dt_hours_coeffs <- dt_calendar[dt_month_ID, on = "month"][dt_wday_ID, on = "wday"][dt_hourwday_ID, on = c("wday","hour")]
+    
+    # total emissions for the sector and profile ID
+    #Ekt <- dt_sect_specific_agg[Sector == sector & Profile_ID == prof, emission]
+    #dt_hours_coeffs[, ann_emis_kt := Ekt]
+    
+    #if(species == "BaP"){
+    #  units(dt_hours_coeffs$ann_emis_kt) <- "Kg /yr"
+    #}else{
+    #  units(dt_hours_coeffs$ann_emis_kt) <- "Gg /yr"
+    #}
+    
+    # split emissions out into hours, wday, month.
+    # Readjust to total (very slightly out due to proportion of days not in full week in a month)
+    #dt_hours_coeffs[,     hour_emis := ann_emis_kt * (month_coeff/12) * (7/n_mon_days) * (wday_coeff/7) * (hrwd_coeff/24)]
+    #dt_hours_coeffs[, hour_emis_adj := ( ((month_coeff/12) * ann_emis_kt) / sum(hour_emis, na.rm=T)) * hour_emis, by = month]
+    
+    # add some information
+    #dt_hours_coeffs[,Sector := sector]
+    #dt_hours_coeffs[,Profile_ID := prof]
+    #setkey(dt_hours_coeffs, DateTime)
+    #dt_hours_coeffs[,Method := "month"]
+    
+    #l_sector_profiles_month[[paste0("Sector_",sector," Profile_",prof)]] <- dt_hours_coeffs
     
   } # end of unique profile ID loop (within broader sector)
   
   ## collapse all profiles in the list into one table (8760 rows per profile ID)
-  dt_sector_profiles <- rbindlist(l_sector_profiles, use.names = T, fill = T)
+  dt_sector_profiles_yday  <- rbindlist(l_sector_profiles_yday,  use.names = T, fill = T)
+  #dt_sector_profiles_month <- rbindlist(l_sector_profiles_month, use.names = T, fill = T)
   
-  ######
+  #################
   ## summarise the hourly emissions by the sector. This can be returned later and also check against NAEI total.
-  dt_sector_hour_emis <- dt_sector_profiles[, .(sector_emission = sum(hod_emis_adj, na.rm=T)), 
+  dt_sector_yday_totals <- dt_sector_profiles_yday[, .(sector_emission = sum(hour_emis_adj, na.rm=T)), 
                                               by= .(DateTime, Sector)]
+  
+  #dt_sector_month_totals <- dt_sector_profiles_month[, .(sector_emission = sum(hour_emis_adj, na.rm=T)), 
+  #                                                 by= .(DateTime, Sector)]
+  
   # set to tonnes
-  dt_sector_hour_emis$sector_emission <- units::set_units(dt_sector_hour_emis$sector_emission, Mg/yr)
+  dt_sector_yday_totals$sector_emission <- units::set_units(dt_sector_yday_totals$sector_emission, Mg/yr)
+  #dt_sector_month_totals$sector_emission <- units::set_units(dt_sector_month_totals$sector_emission, Mg/yr)
   
   # checker
-  if((as.numeric(sum(dt_sector_hour_emis$sector_emission) / total_emis_checker)) < 0.999 | 
-     (as.numeric(sum(dt_sector_hour_emis$sector_emission) / total_emis_checker)) > 1.001){
-    print(paste0("Sector ",sector," hourly emissions do not add up to NAEI sector total. Check." ))
+  if((as.numeric(sum(dt_sector_yday_totals$sector_emission) / total_emis_checker)) < 0.999 | 
+     (as.numeric(sum(dt_sector_yday_totals$sector_emission) / total_emis_checker)) > 1.001){
+    print(paste0("Sector ",sector," hourly emissions do not add up to NAEI sector total. Check yday." ))
   }else{
     NULL
   }
-  ######
+  
+  #if((as.numeric(sum(dt_sector_month_totals$sector_emission) / total_emis_checker)) < 0.999 | 
+  #   (as.numeric(sum(dt_sector_month_totals$sector_emission) / total_emis_checker)) > 1.001){
+  #  print(paste0("Sector ",sector," hourly emissions do not add up to NAEI sector total. Check month." ))
+  #}else{
+  #  NULL
+  #}
+  #################
   
   # produce a weighted mean temporal profile for the entire sector. Format up for discussion. 
   # e.g. can the ACTM take a hod profile that is day specific? or a dow profile that is month specific?
   # this summary table will summarise HDD/DOY data into the MDH format. 
   # 17/11/2021 : using same structure as the temporal profile data coming in. 
   # 18/11/2021 : function allows for hod by dow to be written
-  dt_full_sector_emis <- dt_sector_profiles[, .(hod_emis_adj = (sum(hod_emis_adj, na.rm=T))), 
-                                            by= .(DateTime, moy, dow, hod, Sector)]
+  dt_full_sector_emis_yday <- dt_sector_profiles_yday[, .(hour_emis_adj = (sum(hour_emis_adj, na.rm=T))), 
+                                                      by= .(DateTime, yday, month, wday, hour, Sector)]
   
-  ## return the data as a list of MOY, DOW, HOD. Multiple sectors gives list of lists. 
-  ## choices for format in the function. 
-  l_mdh <- list()
-  
-  dt_sector_moy_profile <- dt_full_sector_emis[, .(moy_sum = sum(hod_emis_adj, na.rm=T)), by=.(moy)]
-  dt_sector_moy_profile[, c("Sector","coeff") := list(sector, moy_sum / sum(moy_sum))]
-  dt_sector_moy_profile <- dt_sector_moy_profile[, c("Sector","moy","coeff")]
-  
-  dt_sector_dow_profile <- dt_full_sector_emis[, .(dow_sum = sum(hod_emis_adj, na.rm=T)), by=.(dow)]
-  dt_sector_dow_profile[, c("Sector","coeff") := list(sector, dow_sum / sum(dow_sum))]
-  dt_sector_dow_profile <- dt_sector_dow_profile[, c("Sector","dow","coeff")]
-  
-  
-  if(hod_by_dow == T){
-    dt_sector_hod_profile <- dt_full_sector_emis[, .(hod_sum = sum(hod_emis_adj, na.rm=T)), by=.(hod, dow)]
-    dt_sector_hod_profile[, c("Sector","coeff") := list(sector, hod_sum / sum(hod_sum))]
-    dt_sector_hod_profile <- dt_sector_hod_profile[, c("Sector","hod","dow","coeff")]
-  }else{
-    dt_sector_hod_profile <- dt_full_sector_emis[, .(hod_sum = sum(hod_emis_adj, na.rm=T)), by=.(hod)]
-    dt_sector_hod_profile[, c("Sector","coeff") := list(sector, hod_sum / sum(hod_sum))]
-    dt_sector_hod_profile <- dt_sector_hod_profile[, c("Sector","hod","coeff")]
-  }
-  
-  l_mdh[["moy"]] <- dt_sector_moy_profile
-  l_mdh[["dow"]] <- dt_sector_dow_profile
-  l_mdh[["hod"]] <- dt_sector_hod_profile
-  
-  ## add in the hourly emissions to the list if that is requested
-  if(hour_emis==T){
-    l_mdh[["hour_emis"]] <- dt_sector_hour_emis
+  if((as.numeric(sum(dt_full_sector_emis_yday$hour_emis_adj) / total_emis_checker)) < 0.999 | 
+     (as.numeric(sum(dt_full_sector_emis_yday$hour_emis_adj) / total_emis_checker)) > 1.001){
+    print(paste0("Sector ",sector," hourly emissions do not add up to NAEI sector total. Check yday." ))
   }else{
     NULL
   }
   
+  #dt_full_sector_emis_month <- dt_sector_profiles_month[, .(hour_emis_adj = (sum(hour_emis_adj, na.rm=T))), 
+  #                                                      by= .(DateTime, month, wday, hour, Sector)]
   
-  return(l_mdh)
+  ### return the data for the sector for both methods. 
+  l_complete <- list()
+  
+  l_complete[["yday_hourwday"]] <- dt_full_sector_emis_yday
+  #l_complete[["month_wday_hour"]] <- dt_full_sector_emis_month
+  
+  return(l_complete)
+  
   
 } # end of function
 
 
-#############################################################################################
+######################################################################################################
+## function to format the profiled sector emissions into new coefficient tables, at sector level
+
+FormatToSectorCoeffs <- function(year, species, classification = c("SNAP","GNFR")){
+  
+  # read in the relevant .rds file
+  l_emis <- readRDS(paste0("./doc/profiled_emissions_sector/",species,"_",classification,"_",year,"_profemis.rds"))
+  
+  dt_emis <- rbindlist(unlist(l_emis, recursive = FALSE), use.names = T)
+  
+  l_ymwh <- list()
+  
+  # go through time steps and create coefficients (hourwday is separate)
+  for(p in c("yday","month","wday","hour")){
+    
+    dt_emis[, .(p_sum = sum(hour_emis_adj, na.rm=T)), by=.(yday, sector)]
+    
+    
+  }
+  
+  dt_sector_moy_profile <- dt_full_sector_emis[, .(moy_sum = sum(hod_emis_adj, na.rm=T)), by=.(moy)]
+  #dt_sector_moy_profile[, c("Sector","coeff") := list(sector, moy_sum / sum(moy_sum))]
+  #dt_sector_moy_profile <- dt_sector_moy_profile[, c("Sector","moy","coeff")]
+  
+  
+  
+}
+
+######################################################################################################
+## function to create new GAMs to the newly aggregated and profiled sector emissions
+
+FitGAMsToSectorTotals <- function(){
+  
+  
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+## return the data as a list of MOY, DOW, HOD. Multiple sectors gives list of lists. 
+## choices for format in the function. 
+#l_mdh <- list()
+
+#dt_sector_moy_profile <- dt_full_sector_emis[, .(moy_sum = sum(hod_emis_adj, na.rm=T)), by=.(moy)]
+#dt_sector_moy_profile[, c("Sector","coeff") := list(sector, moy_sum / sum(moy_sum))]
+#dt_sector_moy_profile <- dt_sector_moy_profile[, c("Sector","moy","coeff")]
+#
+#dt_sector_dow_profile <- dt_full_sector_emis[, .(dow_sum = sum(hod_emis_adj, na.rm=T)), by=.(dow)]
+#dt_sector_dow_profile[, c("Sector","coeff") := list(sector, dow_sum / sum(dow_sum))]
+#dt_sector_dow_profile <- dt_sector_dow_profile[, c("Sector","dow","coeff")]
+
+
+#if(hod_by_dow == T){
+#  dt_sector_hod_profile <- dt_full_sector_emis[, .(hod_sum = sum(hod_emis_adj, na.rm=T)), by=.(hod, dow)]
+#  dt_sector_hod_profile[, c("Sector","coeff") := list(sector, hod_sum / sum(hod_sum))]
+#  dt_sector_hod_profile <- dt_sector_hod_profile[, c("Sector","hod","dow","coeff")]
+#}else{
+#  dt_sector_hod_profile <- dt_full_sector_emis[, .(hod_sum = sum(hod_emis_adj, na.rm=T)), by=.(hod)]
+#  dt_sector_hod_profile[, c("Sector","coeff") := list(sector, hod_sum / sum(hod_sum))]
+#  dt_sector_hod_profile <- dt_sector_hod_profile[, c("Sector","hod","coeff")]
+#}
+
+#l_mdh[["moy"]] <- dt_sector_moy_profile
+#l_mdh[["dow"]] <- dt_sector_dow_profile
+#l_mdh[["hod"]] <- dt_sector_hod_profile
+
+## add in the hourly emissions to the list if that is requested
+#if(hour_emis==T){
+#  l_mdh[["hour_emis"]] <- dt_sector_hour_emis
+#}else{
+#  NULL
+#}
+
+#return(l_mdh)
 
