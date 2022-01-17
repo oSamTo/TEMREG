@@ -294,19 +294,87 @@ FormatToSectorCoeffs <- function(year, species, classification = c("SNAP","GNFR"
   dt_emis <- rbindlist(unlist(l_emis, recursive = FALSE), use.names = T)
   
   l_ymwh <- list()
+  l_plot <- list()
   
   # go through time steps and create coefficients (hourwday is separate)
-  for(p in c("yday","month","wday","hour")){
+  for(p in c("yday","month","wday","hour","hourwday")){
     
-    dt_emis[, .(p_sum = sum(hour_emis_adj, na.rm=T)), by=.(yday, sector)]
-    
+    if(p %in% c("yday","month","hour")){
+      
+      # multiplier to retain the coefficients centred on 1
+      c_mult <- ifelse(p == "yday", 365, ifelse(p == "month", 12, ifelse(p == "wday", 7, 24)))
+      
+      dt_p <- dt_emis[, .(p_sum = sum(hour_emis_adj, na.rm=T)), by=.(get(p), Sector)]
+      setnames(dt_p, "get", p)
+      
+      if(sum(dt_p$p_sum) != sum(dt_emis$hour_emis_adj)){
+        print(paste0("The ",p," emissions are not adding to original total. CHECK"))
+        break
+      }
+      
+      dt_p[, coeff := (p_sum/sum(p_sum)) * c_mult, by = Sector]
+      dt_p[, coeff := set_units(dt_p$coeff, NULL)]
+      
+      l_ymwh[[p]] <- dt_p
+      
+      g1 <- ggplot()+
+        geom_line(data=dt_p, aes(x=get(p), y=coeff), colour="red")+
+        labs(x=p,y="Coefficient")+
+        facet_wrap(~Sector, nrow=2)+
+        theme_bw()+
+        theme(axis.text.x = element_text(size=12),
+              axis.text.y = element_text(size=12),
+              axis.title = element_text(size=16),
+              legend.title=element_blank())
+      
+      l_plot[[p]] <- ggplotGrob(g1)
+      
+    }else if(p=="wday"){
+      
+      # multiplier to retain the coefficients centred on 1
+      c_mult <- ifelse(p == "yday", 365, ifelse(p == "month", 12, ifelse(p == "wday", 7, 24)))
+      
+      dt_p <- dt_emis[, .(p_sum = sum(hour_emis_adj, na.rm=T)), by=.(get(p), Sector)]
+      setnames(dt_p, "get", p)
+      
+      
+    }else{
+      
+      # create coefficients for hourwday
+      dt_p <- dt_emis[, .(p_sum = sum(hour_emis_adj, na.rm=T)), by=.(hour, wday, Sector)]
+      
+      if(sum(dt_p$p_sum) != sum(dt_emis$hour_emis_adj)){
+        print(paste0("The ",p," emissions are not adding to original total. CHECK"))
+        break
+      }
+      
+      dt_p[, coeff := (p_sum/sum(p_sum)) * 24, by = .(Sector, wday)]
+      dt_p[, coeff := set_units(dt_p$coeff, NULL)]
+      
+      l_ymwh[["hourwday"]] <- dt_p
+      
+      g1 <- ggplot()+
+        geom_line(data=dt_p, aes(x=hour, y=coeff), colour="red")+
+        labs(x="hour (by wday)",y="Coefficient")+
+        facet_grid(wday~Sector)+
+        theme_bw()+
+        theme(axis.text.x = element_text(size=12),
+              axis.text.y = element_text(size=12),
+              axis.title = element_text(size=16),
+              legend.title=element_blank())
+      
+      l_plot[[p]] <- ggplotGrob(g1)
+    }
     
   }
   
-  dt_sector_moy_profile <- dt_full_sector_emis[, .(moy_sum = sum(hod_emis_adj, na.rm=T)), by=.(moy)]
-  #dt_sector_moy_profile[, c("Sector","coeff") := list(sector, moy_sum / sum(moy_sum))]
-  #dt_sector_moy_profile <- dt_sector_moy_profile[, c("Sector","moy","coeff")]
+  ## save data
+  saveRDS(l_ymwh, paste0("./doc/coefficients_sector/",species,"_",classification,"_",y_emis,"_coefficients.rds"))
   
+  ## plot data
+  d1 <- plot_grid(l_plot[["hour"]], l_plot[["wday"]], l_plot[["month"]], l_plot[["yday"]], l_plot[["hourwday"]], ncol=1, nrow=5,rel_heights = c(1,1,1,1,3), align="h", axis="l")
+  
+  save_plot(paste0("./doc/coefficients_sector/",species,"_",classification,"_",y_emis,"_plots.png"), d1, base_height = 18, base_width = 14)
   
   
 }

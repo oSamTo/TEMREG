@@ -29,6 +29,7 @@ saveRDS(l_DUKEMs_profiles, paste0("./doc/profiled_emissions_sector/",species,"_"
 
 #### Using temporally distributed emissions (made above); ####
 ## format the data to standard output tables: yday, month, wday, hour and hour by wday 
+## will output the tables as .rds file and also produce accompanying plot
 FormatToSectorCoeffs(year = y_emis, species = species, classification = classification)
 
 ## create another fitted profile per sector (GAM) based on the weighted emissions
@@ -39,3 +40,6 @@ FitGAMsToSectorTotals()
 
 
 
+l_DUKEMs_profiles[[1]][[1]]
+
+l_DUKEMs_profiles[[1]][[1]][wday==3]
