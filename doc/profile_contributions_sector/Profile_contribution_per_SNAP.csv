@@ -1,0 +1,230 @@
+Profile_ID,longname,SNAP,emission,prop,species
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,1,1.08497474060623,0.441399752447134,n2o
+ENER_OTH,Energy generation (other not stated),1,1.07675727444465,0.438056644636681,n2o
+ENER_COA,Energy generation (coal),1,0.122381165177288,0.0497882706313179,n2o
+ENER_GAS,Energy generation (natural gas),1,0.0799989739039172,0.0325459441180018,n2o
+MISC_ANY,Miscellaneous,1,0.0747578098288952,0.0304136838554662,n2o
+ENER_OIL,Energy generation (oil),1,0.0125139798919625,0.00509105642713335,n2o
+ENER_BIO,Energy generation (biomass),1,0.00588771792266148,0.00239529745373541,n2o
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,1,0.000646100928252504,0.000262852930223214,n2o
+INDU_MIN_GEN,Mining and quarrying,1,0.000114292346236005,4.64975003076907e-05,n2o
+STAT_DOM_WOO,Stationary combustion; domestic (wood),2,0.350505058131496,0.533578801085958,n2o
+STAT_DOM_GAS,Stationary combustion; domestic (natural gas),2,0.100782751900781,0.153423006834862,n2o
+STAT_DOM_SOL,Stationary combustion; domestic (other solid fuels),2,0.0592005984997574,0.0901219073398394,n2o
+STAT_DOM_OIL,Stationary combustion; domestic (oil),2,0.0540673777867159,0.0823075329385812,n2o
+STAT_DOM_COA,Stationary combustion; domestic (coal),2,0.0381168620571846,0.0580258375329957,n2o
+STAT_PIC_GAS,"Stationary combustion; public sector, commercial or industrial/institutional (natural gas)",2,0.0340084618422213,0.0517715618521609,n2o
+MISC_ANY,Miscellaneous,2,0.0128624592162642,0.0195807033548044,n2o
+STAT_PIC_OIL,"Stationary combustion; public sector, commercial or industrial/institutional (oil)",2,0.00385846397403075,0.00587379421076517,n2o
+STAT_PIC_COA,"Stationary combustion; public sector, commercial or industrial/institutional (coal)",2,0.0023281419661589,0.00354416340147345,n2o
+STAT_DOM_OTH,Stationary combustion; domestic (other fuels),2,0.00115917933498691,0.00176463507574801,n2o
+RAIL_PAS,Railways (passenger),2,5.29218817312574e-06,8.05637281125438e-06,n2o
+INDU_MAN_GEN,Industrial manufacturing,3,0.457453013194986,0.752799475887245,n2o
+INDU_PRO_GEN,Industrial production,3,0.10443017284123,0.171853670462507,n2o
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,3,0.0112184417623106,0.0184614306504508,n2o
+INDU_MAN_FAB,Manufacture of Food products beverages and tobacco,3,0.00969117562748773,0.0159481120960381,n2o
+MISC_ANY,Miscellaneous,3,0.00967671872630387,0.0159243213518081,n2o
+INDU_MAN_IRO,Manufacture of basic iron and steel,3,0.00706544022156149,0.0116271169765736,n2o
+INDU_MAN_PAP,Manufacture Of Paper And Paper Products,3,0.00609551695886407,0.010030979881072,n2o
+INDU_MAN_MET,Manufacture of basic metals and metal products,3,0.002038664772112,0.00335489269430508,n2o
+INDU_PRO_GEN,Industrial production,4,0.141459241310523,0.915268113421962,n2o
+INDU_MAN_IRO,Manufacture of basic iron and steel,4,0.00828337664199462,0.0535950174880373,n2o
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,4,0.00481235805515917,0.0311368690900004,n2o
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,5,0.126001224861491,0.999584047376208,n2o
+INDU_MAN_IRO,Manufacture of basic iron and steel,5,5.243234945544e-05,0.000415952623791759,n2o
+SOLV_OTH,Solvents (miscellaneous),6,2.20900132899028,0.770331233745999,n2o
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,6,0.658598,0.229668766254001,n2o
+ROAD_CAT_URB,"Road transport, cars and taxis (urban)",7,0.674035073411926,0.177560052030692,n2o
+ROAD_HGV_RUR,"Road transport, HGVs (rural)",7,0.600262111291387,0.158126150874371,n2o
+ROAD_HGV_MOT,"Road transport, HGVs (motorway)",7,0.546402112403153,0.143937891862034,n2o
+ROAD_CAT_ALL,"Road transport, cars and taxis (all roads)",7,0.453957864181249,0.119585441712622,n2o
+ROAD_CAT_RUR,"Road transport, cars and taxis (rural)",7,0.428759144784728,0.112947380721961,n2o
+ROAD_CAT_MOT,"Road transport, cars and taxis (motorway)",7,0.222507717669352,0.05861487552363,n2o
+ROAD_LGV_URB,"Road transport, LGVs (urban)",7,0.20325612684367,0.0535434577242885,n2o
+ROAD_LGV_RUR,"Road transport, LGVs (rural)",7,0.160578904062578,0.0423010607089847,n2o
+ROAD_HGV_URB,"Road transport, HGVs (urban)",7,0.152879145595352,0.0402727248433986,n2o
+ROAD_LGV_ALL,"Road transport, LGVs (all roads)",7,0.138188193747871,0.0364027093541231,n2o
+ROAD_BUS_URB,"Road transport, Buses (urban)",7,0.0831511492530435,0.0219043829767584,n2o
+ROAD_LGV_MOT,"Road transport, LGVs (motorway)",7,0.068312328590775,0.0179954146265961,n2o
+ROAD_BUS_RUR,"Road transport, Buses (rural)",7,0.0436112896713705,0.0114884568602289,n2o
+ROAD_BUS_MOT,"Road transport, Buses (motorway)",7,0.00996285641097329,0.00262450037466468,n2o
+ROAD_CYC_URB,"Road transport, motorcycles (urban)",7,0.00534042787007084,0.00140682093244194,n2o
+ROAD_CYC_RUR,"Road transport, motorcycles (rural)",7,0.00414818442603926,0.00109275002381116,n2o
+ROAD_CYC_MOT,"Road transport, motorcycles (motorway)",7,0.000743764798862938,0.000195928849393854,n2o
+OFFR_OTH,Offroad machinery,8,0.427729646853475,0.466933857902185,n2o
+SHIP_CTP,Shipping (coastal and international),8,0.208055719136704,0.227125382375924,n2o
+RAIL_PAS,Railways (passenger),8,0.0472971339026439,0.051632224615104,n2o
+AVIA_DOM_CRU,"Aviation (domestic, cruise)",8,0.0415565481494269,0.0453654767474113,n2o
+AVIA_DOM_TOL,"Aviation (domestic, take off and landing)",8,0.0397507468080551,0.0433941619387829,n2o
+MISC_ANY,Miscellaneous,8,0.0370439500674909,0.040439269627889,n2o
+SHIP_FIS,Shipping (fishing),8,0.0362253341146587,0.0395456221853792,n2o
+SHIP_MIS,Shipping (miscellaneous),8,0.0337957061716834,0.0368933029995898,n2o
+SHIP_MIL,Shipping (military),8,0.0246970970956895,0.0269607470763549,n2o
+RAIL_FRE,Railways (freight),8,0.0150440279036984,0.0164229111522596,n2o
+SHIP_REC,Shipping (recreational),8,0.00484313818580309,0.00528704337912099,n2o
+MISC_ANY,Miscellaneous,9,5.98097785534612,1,n2o
+AGRI_SPR_FER,Agricultural spreading (fertilisers),10,24.6607478374078,0.486883859246919,n2o
+AGRI_HOU_CAT,Agricultural housing (cattle),10,5.95068785873776,0.117486050663927,n2o
+MISC_ANY,Miscellaneous,10,5.80354532117014,0.114580975480375,n2o
+AGRI_SPR_CAT,Agricultural spreading (cattle),10,3.78438467810632,0.0747161371220199,n2o
+AGRI_GRZ_CAT,Agricultural grazing (cattle),10,1.78804021153701,0.0353017647486448,n2o
+AGRI_SPR_BIO,Agricultural spreading (biosolids),10,1.09481355601504,0.0216152021351059,n2o
+AGRI_SPR_POU,Agricultural spreading (poultry),10,1.04058384073172,0.0205445301004585,n2o
+AGRI_HOU_POU,Agricultural housing (poultry),10,1.03716210511653,0.0204769738425288,n2o
+AGRI_GRZ_SHP,Agricultural grazing (sheep),10,1.03343256010283,0.020403340419833,n2o
+AGRI_HOU_PIG,Agricultural housing (pigs),10,0.994668463766511,0.0196380103110754,n2o
+AGRI_SPR_NMD,Agricultural spreading (non-manure digestate),10,0.970717753301662,0.0191651449130057,n2o
+AGRI_HOU_MLI,Agricultural housing (minor livestock),10,0.55001973460883,0.0108591893811953,n2o
+AGRI_SPR_PIG,Agricultural spreading (pigs),10,0.454519077009928,0.00897369389505113,n2o
+AGRI_GRZ_MLI,Agricultural grazing (minor livestock),10,0.360141164291327,0.00711036506678266,n2o
+AGRI_YRD_CAT,Agricultural yarding (cattle),10,0.211759066523557,0.00418081690868756,n2o
+AGRI_SPR_OTH,Agricultural spreading (miscellaneous),10,0.204981277944314,0.00404700118329354,n2o
+AGRI_STO_CAT,Agricultural storage (cattle),10,0.186713037438803,0.00368632633686889,n2o
+AGRI_GRZ_PIG,Agricultural grazing (pigs),10,0.173600437358229,0.00342744070314504,n2o
+AGRI_GRZ_POU,Agricultural grazing (poultry),10,0.12737354286981,0.00251477053848036,n2o
+AGRI_STO_SHP,Agricultural storage (sheep),10,0.104225144071878,0.00205774539810616,n2o
+AGRI_STO_PIG,Agricultural storage (pigs),10,0.0434983091028027,0.000858798960450105,n2o
+AGRI_STO_POU,Agricultural storage (poultry),10,0.0396858442322462,0.000783528428442793,n2o
+AGRI_STO_MLI,Agricultural storage (minor livestock),10,0.0180058074155373,0.00035549355847333,n2o
+AGRI_HOU_SHP,Agricultural housing (sheep),10,0.0168584342233391,0.000332840657129987,n2o
+MISC_ANY,Miscellaneous,11,4.77862171038845,1,n2o
+ENER_OTH,Energy generation (other not stated),1,8.03058374585,0.514294836326298,ch4
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,1,4.04213627750489,0.258866588163316,ch4
+MISC_ANY,Miscellaneous,1,2.54357266506742,0.162895541453124,ch4
+ENER_GAS,Energy generation (natural gas),1,0.799989739039172,0.0512329620016086,ch4
+ENER_COA,Energy generation (coal),1,0.0695347529416408,0.00445314631101273,ch4
+ENER_OIL,Energy generation (oil),1,0.0625698994598127,0.00400710299774494,ch4
+ENER_BIO,Energy generation (biomass),1,0.0587559741866148,0.00376285150417777,ch4
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,1,0.00646100928252504,0.000413776111005141,ch4
+INDU_MIN_GEN,Mining and quarrying,1,0.00114292346236005,7.31951317127733e-05,ch4
+STAT_DOM_WOO,Stationary combustion; domestic (wood),2,26.2878793598622,0.627020215173637,ch4
+STAT_DOM_GAS,Stationary combustion; domestic (natural gas),2,5.03913759503904,0.120193838988597,ch4
+STAT_DOM_SOL,Stationary combustion; domestic (other solid fuels),2,4.27450640736745,0.101955805967404,ch4
+STAT_DOM_COA,Stationary combustion; domestic (coal),2,2.659315957478,0.0634301778795626,ch4
+STAT_PIC_GAS,"Stationary combustion; public sector, commercial or industrial/institutional (natural gas)",2,1.70042309211106,0.0405586026360739,ch4
+MISC_ANY,Miscellaneous,2,0.930861397030617,0.0222029668301867,ch4
+STAT_DOM_OIL,Stationary combustion; domestic (oil),2,0.901122963111933,0.0214936437623438,ch4
+STAT_PIC_OIL,"Stationary combustion; public sector, commercial or industrial/institutional (oil)",2,0.0643077329005126,0.00153387224464269,ch4
+STAT_DOM_OTH,Stationary combustion; domestic (other fuels),2,0.0579589667493453,0.00138244105981041,ch4
+STAT_PIC_COA,"Stationary combustion; public sector, commercial or industrial/institutional (coal)",2,0.00931256786463559,0.000222123976847614,ch4
+RAIL_PAS,Railways (passenger),2,0.000264609408656287,6.31148089510646e-06,ch4
+INDU_MAN_GEN,Industrial manufacturing,3,3.33830471216288,0.758197511939678,ch4
+INDU_PRO_GEN,Industrial production,3,0.650039314173483,0.147637268962781,ch4
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,3,0.101498164881501,0.0230523162847343,ch4
+MISC_ANY,Miscellaneous,3,0.0967671872630387,0.0219778141740397,ch4
+INDU_MAN_FAB,Manufacture of Food products beverages and tobacco,3,0.0879595267522941,0.0199774137130137,ch4
+INDU_MAN_IRO,Manufacture of basic iron and steel,3,0.0639919791072556,0.0145338917584255,ch4
+INDU_MAN_PAP,Manufacture Of Paper And Paper Products,3,0.0472848770155056,0.0107393659946345,ch4
+INDU_MAN_MET,Manufacture of basic metals and metal products,3,0.0171028893492867,0.00388441717269341,ch4
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,4,2.72329429124495,0.867327528575319,ch4
+INDU_PRO_GEN,Industrial production,4,0.397692332905228,0.12665891796599,ch4
+INDU_MAN_IRO,Manufacture of basic iron and steel,4,0.0188817664199462,0.00601355345869057,ch4
+MISC_ANY,Miscellaneous,5,151.560617905064,0.749382085010659,ch4
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,5,47.0688077343762,0.232728803606799,ch4
+INDU_MIN_GEN,Mining and quarrying,5,2.20958139115214,0.0109251382898131,ch4
+INDU_MAN_PET,Manufacture of petrochemicals - 20.14/16/17/60,5,1.136764,0.00562065916766492,ch4
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,5,0.271157496228075,0.001340721440031,ch4
+INDU_MAN_IRO,Manufacture of basic iron and steel,5,0.0005243234945544,2.59248503338362e-06,ch4
+ROAD_CAT_URB,"Road transport, cars and taxis (urban)",7,2.63796625811488,0.688682345880307,ch4
+ROAD_CAT_RUR,"Road transport, cars and taxis (rural)",7,0.411520010635411,0.107433734388858,ch4
+ROAD_CYC_URB,"Road transport, motorcycles (urban)",7,0.216222232916844,0.0564481953241745,ch4
+ROAD_CAT_MOT,"Road transport, cars and taxis (motorway)",7,0.206283146006962,0.0538534412525673,ch4
+ROAD_CYC_RUR,"Road transport, motorcycles (rural)",7,0.0960956222448408,0.0250872649916672,ch4
+ROAD_HGV_RUR,"Road transport, HGVs (rural)",7,0.0831586189881883,0.0217098579744071,ch4
+ROAD_HGV_MOT,"Road transport, HGVs (motorway)",7,0.0609240563254531,0.0159051776730231,ch4
+ROAD_LGV_URB,"Road transport, LGVs (urban)",7,0.0389020385172701,0.010155985529832,ch4
+ROAD_HGV_URB,"Road transport, HGVs (urban)",7,0.0251103875389142,0.00655545935929481,ch4
+ROAD_BUS_URB,"Road transport, Buses (urban)",7,0.0216971538976807,0.00566438133892541,ch4
+ROAD_CYC_MOT,"Road transport, motorcycles (motorway)",7,0.0173961452124831,0.00454153575973663,ch4
+ROAD_LGV_RUR,"Road transport, LGVs (rural)",7,0.00543209065217586,0.00141813221524991,ch4
+ROAD_BUS_RUR,"Road transport, Buses (rural)",7,0.00520338350374732,0.00135842463748433,ch4
+ROAD_CAT_ALL,"Road transport, cars and taxis (all roads)",7,0.002475413,0.000646245275737856,ch4
+ROAD_BUS_MOT,"Road transport, Buses (motorway)",7,0.00133581579717145,0.00034873560419132,ch4
+ROAD_LGV_MOT,"Road transport, LGVs (motorway)",7,0.000731933913403796,0.000191082794543587,ch4
+OFFR_OTH,Offroad machinery,8,1.26956731595488,0.725733848251271,ch4
+SHIP_MIS,Shipping (miscellaneous),8,0.14507310659222,0.0829294064220223,ch4
+SHIP_REC,Shipping (recreational),8,0.093744288227368,0.0535878658751182,ch4
+RAIL_PAS,Railways (passenger),8,0.0667659996262788,0.0381660312392952,ch4
+AVIA_DOM_TOL,"Aviation (domestic, take off and landing)",8,0.064425928603735,0.0368283560116569,ch4
+SHIP_CTP,Shipping (coastal and international),8,0.0498426188547594,0.0284919713463003,ch4
+MISC_ANY,Miscellaneous,8,0.038221947679637,0.0218491456330051,ch4
+SHIP_FIS,Shipping (fishing),8,0.0123312789685142,0.0070490366498989,ch4
+SHIP_MIL,Shipping (military),8,0.00558775973009197,0.00319417987613604,ch4
+RAIL_FRE,Railways (freight),8,0.00379638149250136,0.00217015869529586,ch4
+AVIA_DOM_CRU,"Aviation (domestic, cruise)",8,0,0,ch4
+MISC_ANY,Miscellaneous,9,690.712214497343,1,ch4
+AGRI_ENT_ALL,Agricultural enteric fermentation (all),10,855.827611343713,0.842069197571571,ch4
+AGRI_SPR_CAT,Agricultural spreading (cattle),10,127.192044076761,0.125147285590662,ch4
+AGRI_SPR_PIG,Agricultural spreading (pigs),10,20.4890634358978,0.0201596781615525,ch4
+AGRI_EXC_ALL,Agricultural excretion (all),10,8.91808068550818,0.00877471227521358,ch4
+AGRI_SPR_POU,Agricultural spreading (poultry),10,2.16647228061341,0.00213164374544176,ch4
+AGRI_SPR_OTH,Agricultural spreading (miscellaneous),10,1.03097622172606,0.00101440209247417,ch4
+MISC_ANY,Miscellaneous,10,0.714568067116318,0.000703080563084624,ch4
+MISC_ANY,Miscellaneous,11,194.983677778048,1,ch4
+ENER_GAS,Energy generation (natural gas),1,12295.9318517915,0.519372673204947,co2
+MISC_ANY,Miscellaneous,1,3930.85034133649,0.16603672453268,co2
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,1,3501.88657725892,0.147917556376705,co2
+ENER_COA,Energy generation (coal),1,1765.11935084737,0.0745575664232239,co2
+ENER_OTH,Energy generation (other not stated),1,1520.52801203002,0.0642261772275498,co2
+ENER_OIL,Energy generation (oil),1,434.591153405094,0.0183568656540934,co2
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,1,205.148600719874,0.00866535195903928,co2
+INDU_MIN_GEN,Mining and quarrying,1,20.5278675004829,0.000867084621762063,co2
+ENER_BIO,Energy generation (biomass),1,0,0,co2
+STAT_DOM_GAS,Stationary combustion; domestic (natural gas),2,15457.652423205,0.654865065133931,co2
+STAT_PIC_GAS,"Stationary combustion; public sector, commercial or industrial/institutional (natural gas)",2,5217.27234808717,0.221030289885582,co2
+STAT_DOM_OIL,Stationary combustion; domestic (oil),2,1770.74004857079,0.0750175877613725,co2
+STAT_DOM_SOL,Stationary combustion; domestic (other solid fuels),2,502.378682739458,0.0212833255520867,co2
+STAT_DOM_COA,Stationary combustion; domestic (coal),2,222.38182210458,0.00942122920285738,co2
+STAT_DOM_OTH,Stationary combustion; domestic (other fuels),2,201.970355305451,0.00855649527244344,co2
+STAT_PIC_OIL,"Stationary combustion; public sector, commercial or industrial/institutional (oil)",2,136.113470907595,0.00576646146200681,co2
+MISC_ANY,Miscellaneous,2,71.1300785144311,0.00301343323190576,co2
+STAT_PIC_COA,"Stationary combustion; public sector, commercial or industrial/institutional (coal)",2,23.8810922254076,0.00101172497527399,co2
+RAIL_PAS,Railways (passenger),2,0.811694499262229,3.43875225406318e-05,co2
+INDU_MAN_GEN,Industrial manufacturing,3,4741.6421817949,0.393210083596514,co2
+INDU_MAN_IRO,Manufacture of basic iron and steel,3,2562.73512597569,0.212519893843861,co2
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,3,1350.07824609569,0.11195791661533,co2
+INDU_MAN_FAB,Manufacture of Food products beverages and tobacco,3,1133.64777307969,0.0940099903221567,co2
+MISC_ANY,Miscellaneous,3,906.791782085711,0.0751975072702729,co2
+INDU_PRO_GEN,Industrial production,3,803.864534796565,0.0666620611190823,co2
+INDU_MAN_PAP,Manufacture Of Paper And Paper Products,3,380.196914147447,0.0315285832762825,co2
+INDU_MAN_MET,Manufacture of basic metals and metal products,3,179.844524705731,0.0149139639565014,co2
+INDU_PRO_GEN,Industrial production,4,2371.8620299337,0.688617007377111,co2
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,4,808.10526320471,0.234615260487674,co2
+INDU_MAN_IRO,Manufacture of basic iron and steel,4,247.873938367878,0.0719646452835361,co2
+INDU_MAN_MET,Manufacture of basic metals and metal products,4,16.54367988,0.0048030868516787,co2
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,5,1143.94604299738,0.967034723708395,co2
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,5,31.2941440401147,0.026454502920635,co2
+INDU_MAN_IRO,Manufacture of basic iron and steel,5,6.13142968862191,0.00518320374563989,co2
+MISC_ANY,Miscellaneous,5,1.57043794030117,0.00132756962533048,co2
+SOLV_OTH,Solvents (miscellaneous),6,131.506452342397,1,co2
+ROAD_CAT_URB,"Road transport, cars and taxis (urban)",7,7800.08921356857,0.260446435970975,co2
+ROAD_CAT_RUR,"Road transport, cars and taxis (rural)",7,7362.09804771682,0.245821829122322,co2
+ROAD_CAT_MOT,"Road transport, cars and taxis (motorway)",7,3244.29396524882,0.10832758156424,co2
+ROAD_HGV_MOT,"Road transport, HGVs (motorway)",7,2334.81337070032,0.077959854612749,co2
+ROAD_LGV_RUR,"Road transport, LGVs (rural)",7,2252.21257905968,0.0752017987492642,co2
+ROAD_HGV_RUR,"Road transport, HGVs (rural)",7,2091.90335921097,0.0698490439512479,co2
+ROAD_LGV_URB,"Road transport, LGVs (urban)",7,1875.28594652797,0.0626161480755954,co2
+ROAD_LGV_MOT,"Road transport, LGVs (motorway)",7,1086.92898281759,0.0362927617848214,co2
+ROAD_HGV_URB,"Road transport, HGVs (urban)",7,813.270368205304,0.0271552495209178,co2
+ROAD_BUS_URB,"Road transport, Buses (urban)",7,575.629653707326,0.019220381670313,co2
+ROAD_BUS_RUR,"Road transport, Buses (rural)",7,195.893984480932,0.00654093673665437,co2
+ROAD_CAT_ALL,"Road transport, cars and taxis (all roads)",7,109.559339226787,0.00365820680349592,co2
+ROAD_CYC_URB,"Road transport, motorcycles (urban)",7,78.3700936629194,0.00261679206767439,co2
+ROAD_BUS_MOT,"Road transport, Buses (motorway)",7,59.0419187764389,0.00197142069753022,co2
+ROAD_CYC_RUR,"Road transport, motorcycles (rural)",7,55.3347112187181,0.00184763634463673,co2
+ROAD_CYC_MOT,"Road transport, motorcycles (motorway)",7,14.1934613983814,0.000473922327563843,co2
+OFFR_OTH,Offroad machinery,8,2963.46746494541,0.472752305917497,co2
+SHIP_CTP,Shipping (coastal and international),8,1245.4520030179,0.198682898766741,co2
+AVIA_DOM_CRU,"Aviation (domestic, cruise)",8,356.968603798639,0.0569460379039675,co2
+RAIL_PAS,Railways (passenger),8,349.60340537645,0.0557710918049071,co2
+MISC_ANY,Miscellaneous,8,318.166048505067,0.0507559927263109,co2
+AVIA_DOM_TOL,"Aviation (domestic, take off and landing)",8,290.415914491036,0.0463291042924626,co2
+SHIP_MIS,Shipping (miscellaneous),8,226.532030068666,0.036137916425921,co2
+SHIP_FIS,Shipping (fishing),8,210.300942271076,0.0335486238912041,co2
+SHIP_MIL,Shipping (military),8,149.720817125059,0.0238844739741481,co2
+RAIL_FRE,Railways (freight),8,108.317000906629,0.0172794581193824,co2
+SHIP_REC,Shipping (recreational),8,49.5973035095263,0.00791209617745893,co2
+MISC_ANY,Miscellaneous,9,66.9649879865956,1,co2
+MISC_ANY,Miscellaneous,10,358.092013655409,0.804760810922321,co2
+AGRI_SPR_FER,Agricultural spreading (fertilisers),10,86.8749986485406,0.195239189077678,co2
+MISC_ANY,Miscellaneous,11,-1769.39576141881,1,co2
