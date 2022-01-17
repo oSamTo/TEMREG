@@ -10,13 +10,15 @@ lapply(packs, require, character.only = TRUE)
 dt_sect_to_prof <<- fread("./Data/Sectors.csv")
 
 ## profile tables ##
-dt_prof_moy <<- melt(fread("./Data/moy_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "moy", value.name = "moy_coeff", variable.factor = F, value.factor = F ) %>% .[, moy := as.numeric(moy)]
+dt_prof_hour <<- melt(fread("./Data/hour_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "hour", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
 
-dt_prof_dow <<- melt(fread("./Data/dow_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "dow", value.name = "dow_coeff", variable.factor = F, value.factor = F ) %>% .[, dow := as.numeric(dow)]
+dt_prof_hourwday <<- melt(fread("./Data/hourwday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","wday"), variable.name = "hour", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
 
-dt_prof_hod <<- melt(fread("./Data/hod_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","dow"), variable.name = "hod", value.name = "hod_coeff", variable.factor = F, value.factor = F ) %>% .[, hod := as.numeric(hod)]
+dt_prof_wday <<- melt(fread("./Data/wday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "wday", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, wday := as.numeric(wday)]
 
-dt_prof_hdd <<- fread("./Data/hdd_profiles.csv")
+dt_prof_month <<- melt(fread("./Data/month_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "month", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, month := as.numeric(month)]
+
+dt_prof_yday <<- melt(fread("./Data/yday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "yday", value.name = "coeff", variable.factor = F, value.factor = F ) %>% .[, yday := as.numeric(yday)]
 
 ################################################################################################
 ## function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ##
