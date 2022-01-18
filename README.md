@@ -21,7 +21,10 @@
 
 * coefficients are produced relative to 1
 
-## For DARE: sector level profiles may need to be produced by weighting Profile_ID GAMs by emission contrib.
+# For DARE: sector level profiles may need to be produced by weighting Profile_ID GAMs by emission contrib.
+# Emissions contribution by Profile_ID per sector here; ./doc/profile_contributions_sector/
+
+
 ## currently: NOx, SOx, CH4, CO2, N2O
 
 **Future work:**\
