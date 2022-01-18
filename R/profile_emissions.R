@@ -16,30 +16,20 @@ y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (othe
 species <- "NOx"
 classification <- "SNAP"
 
+v_num <<- "1A" # alphanumeric version ID, to carry through data/plots/gams outputs (max 6 char)
+
 #### read and match the NAEI data to the temporal profile in the lookup table, along with SNAP sector ####
 dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species = species) 
   
-#### create sector-wide temporally profiled emissions: weighted emissions from all NFR/profile combinations, per sector ####
-## choose either integers for SNAP, or capital letters for GNFR
-v_sectors <- list(1,2,3,4,5,6,7,8,9,10,11)
+#### create new sector-wide temporal profiles: ####
+## weighted emissions from all NFR/profile_ID combinations, per sector. recreate temporal profiles. 
+## also outputs .csvs of coefficients and plot. 
+v_time <- c("yday","month","wday","hour","hourwday")
 
-l_DUKEMs_profiles <- lapply(X=setNames(v_sectors, v_sectors), FUN = EmissionsProfileBySector, year = y_emis, species = species, classification = classification, emis = dt_naei_profs, yr_spec_NFR=NULL, hod_by_dow=F, hour_emis=T)
+l_DUKEMs_profiles <- lapply(X=setNames(v_time, v_time), FUN = TempProfileBySector, year = y_emis, species = species, classification = classification, emis = dt_naei_profs, yr_spec_NFR = y_spec_NFR)
 
-saveRDS(l_DUKEMs_profiles, paste0("./doc/profiled_emissions_sector/",species,"_",classification,"_",y_emis,"_profemis.rds"))
-
-#### Using temporally distributed emissions (made above); ####
-## format the data to standard output tables: yday, month, wday, hour and hour by wday 
-## will output the tables as .rds file and also produce accompanying plot
-FormatToSectorCoeffs(year = y_emis, species = species, classification = classification)
-
-## create another fitted profile per sector (GAM) based on the weighted emissions
-FitGAMsToSectorTotals()
+## using the new sector-level profiles, visualize emissions (also outputs some metadata)
+PlotEmissionsOverTime(year = y_emis, species = species, classification = classification, sec_profs = l_DUKEMs_profiles, emis = dt_naei_profs)
 
 
 ####################################################################################################
-
-
-
-l_DUKEMs_profiles[[1]][[1]]
-
-l_DUKEMs_profiles[[1]][[1]][wday==3]
