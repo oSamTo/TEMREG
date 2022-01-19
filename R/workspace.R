@@ -6,6 +6,14 @@ lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
 
+#spatial
+BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
+LL <<- suppressWarnings(CRS("+init=epsg:4326"))
+r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
+
+NAEI_pt_names <<- as.data.table(readxl::read_excel(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/NAEI_data/point/raw_data/NAEIPointsSources_2019.xlsx"), sheet="Data"))
+NAEI_pt_names[,c("PollutantID","Datatype") := NULL]
+
 ## lookup table ##
 dt_sect_to_prof <<- fread("./Data/Sectors.csv")
 
@@ -20,9 +28,9 @@ dt_prof_month <<- melt(fread("./Data/month_profiles.csv"), id.vars = c("Profile_
 
 dt_prof_yday <<- melt(fread("./Data/yday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "yday", value.name = "yday_coeff", variable.factor = F, value.factor = F ) %>% .[, yday := as.numeric(yday)]
 
-################################################################################################
-## function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ##
-##             2. match the annual NAEI data to the NFR codes and the temporal profile codes. ##
+####################################################################################################
+#### function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ####
+####             2. match the annual NAEI data to the NFR codes and the temporal profile codes. ####
 
 JoinNAEItoProfiles <- function(year, species){
   
@@ -77,9 +85,9 @@ JoinNAEItoProfiles <- function(year, species){
   
 }
 
-######################################################################################################
-## function to profile emissions into classification system, using the profile IDs per NFR sector.  ##
-##  Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile   ##
+##########################################################################################################
+#### function to profile emissions into classification system, using the profile IDs per NFR sector.  ####
+####  Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile   ####
 
 TempProfileBySector <- function(year, species, timestep, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL){
   
@@ -203,8 +211,8 @@ TempProfileBySector <- function(year, species, timestep, classification = c("SNA
 } # end of function
 
 
-######################################################################################################
-## function to visualise the above sectoral level profiles, as emissions graphs. (Sectors & total)
+#########################################################################################################
+#### function to visualise the above sectoral level profiles, as emissions graphs. (Sectors & total) ####
 
 PlotEmissionsOverTime <- function(year, species, classification, sec_profs, emis){
   
@@ -355,8 +363,315 @@ PlotEmissionsOverTime <- function(year, species, classification, sec_profs, emis
   
 }
 
+###############################################################################################
+###############################################################################################
+
+#### Sentinel 5p comparisons ####
+
+######################################################################################################
+#### function to process NAEI UK emissions data to AOI ####
+AOIEmissionsData <- function(aoi_name, species, year){
+  
+  ### extent of London study area + an expanded area for plotting interest (to ID large nearby sources?)
+  aoi <- suppressWarnings(suppressMessages(st_read("./AOI_extents",paste0("aoi_",aoi_name), quiet = T)))
+  aoi_bng <- st_transform(aoi, BNG)
+  
+  aoi_expand <- raster::extent(extent(aoi_bng)[1] - (extent(aoi_bng)[2] - extent(aoi_bng)[1])/2,
+                               extent(aoi_bng)[2] + (extent(aoi_bng)[2] - extent(aoi_bng)[1])/2,
+                               extent(aoi_bng)[3] - (extent(aoi_bng)[4] - extent(aoi_bng)[3])/2,
+                               extent(aoi_bng)[4] + (extent(aoi_bng)[4] - extent(aoi_bng)[3])/2)
+  
+  ### for each SNAP, read in year/spec and crop/stack
+  NAEI_diff_files <- list.files(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/diffuse/",year,"/rasters_SNAP"), pattern = paste0("^",species,"_diff_",year,"_uk_SNAP.*.t_1km_BNG_2019NAEImap.tif$"), full.names = T)
+  
+  NAEI_pt_files <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/point/",year,"/",species,"_pt_",year,"_uk_SNAP_t_BNG.csv"))
+  
+  
+  
+  l_SNAP_tots <- list()
+  
+  st_dif   <- stack()
+  st_difE  <- stack()
+  st_pt    <- stack()
+  st_ptE   <- stack()
+  st_SNAP  <- stack()
+  st_SNAPE <- stack()
+  
+  for(SN in paste0("S",1:11)){
+    
+    print(paste0(SN))
+    
+    r_file <- NAEI_diff_files[grep(paste0("_",SN,"_"), NAEI_diff_files)]
+    r <- suppressWarnings(raster(r_file))
+    
+    pts <- NAEI_pt_files[SNAP==as.numeric(substr(SN,2,nchar(SN)))]
+    units(pts$Emission) <- "Mg/yr"
+    
+    if(nrow(pts)>0){
+      
+      pt_xy <- copy(pts)
+      coordinates(pt_xy) <- ~Easting + Northing
+      crs(pt_xy) <- BNG
+      
+      r_pt <- rasterize(pt_xy, r_uk_BNG, field="Emission", fun=`sum`)
+      
+    }else{
+      r_pt <- r_uk_BNG
+    }
+    
+    # crop to AOI and expanded AOI
+    rc_dif <- crop(r, aoi_bng)
+    rc_difE <- crop(r, aoi_expand)
+    
+    rc_pt <- crop(r_pt, aoi_bng)
+    rc_ptE <- crop(r_pt, aoi_expand)
+    
+    rc_SNtot <- suppressWarnings(calc(stack(rc_dif, rc_pt), sum, na.rm=T))
+    names(rc_SNtot) <- paste0(species,"_",SN)
+    rc_SNtotE <- suppressWarnings(calc(stack(rc_difE, rc_ptE), sum, na.rm=T))
+    names(rc_SNtotE) <- paste0(species,"_",SN)
+    
+    # stacks
+    st_dif  <- stack(st_dif, rc_dif)
+    st_difE  <- stack(st_difE, rc_difE)
+    
+    st_pt   <- stack(st_pt, rc_pt)
+    st_ptE   <- stack(st_ptE, rc_ptE)
+    
+    st_SNAP <- stack(st_SNAP, rc_SNtot)
+    st_SNAPE <- stack(st_SNAPE, rc_SNtotE)
+    
+    # totals
+    tot_SNdif <- cellStats(rc_dif, sum)
+    tot_SNdifE <- cellStats(rc_difE, sum)
+    tot_SNpt  <- cellStats(rc_pt, sum)
+    tot_SNptE  <- cellStats(rc_ptE, sum)
+    tot_SNAP  <- cellStats(rc_SNtot, sum)
+    tot_SNAPE  <- cellStats(rc_SNtotE, sum)
+    
+    # stats table
+    dt_row <- data.table(AOI = aoi_name, Year=year, Pollutant=species, SNAP = substr(SN, 2, nchar(SN)), emission_diff = tot_SNdif, emission_diff_exp = tot_SNdifE, emission_pt = tot_SNpt, emission_pt_exp = tot_SNptE, emission_total = tot_SNAP, emission_total_exp = tot_SNAPE)
+    
+    l_SNAP_tots[[SN]] <- dt_row
+    
+  }
+  
+  
+  # bind the SNAP AOI totals and make a sum raster (tonnes)
+  dt_SNAP_tots <- rbindlist(l_SNAP_tots, use.names = T)
+  dt_SNAP_tots[, SNAP := as.numeric(SNAP)]
+  
+  # biggest point sources
+  top5_pts <- NAEI_pt_files[Easting <= aoi_expand[2] & Easting >= aoi_expand[1] & Northing <= aoi_expand[4] & Northing >= aoi_expand[3]][order(-Emission)][1:5]
+  
+  top5_pts <- NAEI_pt_names[Pollutant=="NOx"][top5_pts, on=c("Easting","Northing")]
+  
+  # total snaps
+  r_diffuse <- calc(st_dif, sum, na.rm=T)
+  r_diffuseE <- calc(st_difE, sum, na.rm=T)
+  r_point <- calc(st_pt, sum, na.rm=T)
+  r_pointE <- calc(st_ptE, sum, na.rm=T)
+  r_total <- calc(st_SNAP, sum, na.rm=T)
+  r_totalE <- calc(st_SNAPE, sum, na.rm=T)
+  
+  st_aoi <- stack(r_diffuse, r_point, r_total)
+  names(st_aoi) <- c("diffuse","point","total")
+  st_exp <- stack(r_diffuseE, r_pointE, r_totalE)
+  names(st_exp) <- c("diffuse","point","total")
+  
+  return(list("dt_aoi_emis" = dt_SNAP_tots, "st_aoi" = st_aoi, "st_expanded" = st_exp, "top5_pts" = top5_pts))
+  
+}
 
 
+###########################################################################################
+#### function to process AOI emissions data into one total temporal profile (SNAP weighted) ####
+
+AOITemporalProfile <- function(aoi_emis, species, year, write){
+  
+  units(aoi_emis$emission_total) <- "Mg/yr"
+  units(aoi_emis$emission_total_exp) <- "Mg/yr"
+  
+  ## bring in profile data
+  dt_spec_SNAP <- readRDS(paste0("./",paste0(toupper(substr(species,1,2)),substr(species,3,3)),"_SNAP_",year,"_tp.rds"))
+  dt_spec_hourly <- rbindlist(lapply(dt_spec_SNAP,`[[`,4), use.names = T)
+  dt_spec_hourly[, doy := yday(DateTime)]
+  
+  dt_spec_daily <- dt_spec_hourly[,.(sector_doy_emission = sum(sector_emission)), by=.(doy, Sector)]
+  dt_spec_daily[,doy_coeff := sector_doy_emission/sum(sector_doy_emission, na.rm=T), by=Sector]
+  units(dt_spec_daily$doy_coeff) <- NULL
+  setnames(dt_spec_daily, "Sector", "SNAP")
+  
+  ## join the SNAP totals from NAEI map to the profiles
+  dt_spec_daily <- aoi_emis[dt_spec_daily, on = "SNAP"]
+  
+  dt_spec_daily[, aoi_doy_emission := emission_total * doy_coeff]
+  dt_spec_daily[, exp_doy_emission := emission_total_exp * doy_coeff]
+  
+  ## sum the aoi emissions back to one total. split this out to a new total temporal profile (aoi & exp).
+  dt_aoi_tp_sum <- dt_spec_daily[,.(doy_emission = sum(aoi_doy_emission)), by=doy]
+  dt_aoi_tp_sum[, doy_coeff := doy_emission/sum(doy_emission)]
+  units(dt_aoi_tp_sum$doy_coeff) <- NULL
+  
+  dt_exp_tp_sum <- dt_spec_daily[,.(doy_emission = sum(exp_doy_emission)), by=doy]
+  dt_exp_tp_sum[, doy_coeff := doy_emission/sum(doy_emission)]
+  units(dt_exp_tp_sum$doy_coeff) <- NULL
+  
+  ## also make temporal profiles for the SNAPs.
+  dt_aoi_tp_SN <- dt_spec_daily[,.(doy_emission = sum(aoi_doy_emission)), by=.(doy, SNAP)]
+  dt_aoi_tp_SN[, doy_coeff := doy_emission/sum(doy_emission), by=SNAP]
+  units(dt_aoi_tp_SN$doy_coeff) <- NULL
+  
+  dt_exp_tp_SN <- dt_spec_daily[,.(doy_emission = sum(exp_doy_emission)), by=.(doy, SNAP)]
+  dt_exp_tp_SN[, doy_coeff := doy_emission/sum(doy_emission), by=SNAP]
+  units(dt_exp_tp_SN$doy_coeff) <- NULL
+  
+  # check #
+  identical(sum(aoi_emis$emission_total), sum(dt_spec_daily$aoi_doy_emission), sum(dt_aoi_tp_sum$doy_emission), sum(dt_aoi_tp_SN$doy_emission))
+  identical(sum(aoi_emis$emission_total_exp), sum(dt_spec_daily$exp_doy_emission), sum(dt_exp_tp_sum$doy_emission), sum(dt_exp_tp_SN$doy_emission))
+  
+  # to return
+  rt <- list(dt_aoi_tp_sum, dt_exp_tp_sum, dt_aoi_tp_SN, dt_exp_tp_SN)
+  names(rt) <- c("DOY_emis_tp_AOI","DOY_emis_tp_EXP", "DOY_SN_emis_tp_AOI", "DOY_SN_emis_tp_EXP")
+  
+  ## write if needed
+  if(write==T){
+    
+    fwrite(rt[["DOY_emis_tp_AOI"]], paste0("./",aoi_name,"/",aoi_name,"_AOI_",species,"_emis_tp_doy_",y_emis,".csv"))
+    fwrite(rt[["DOY_emis_tp_EXP"]], paste0("./",aoi_name,"/",aoi_name,"_EXP_",species,"_emis_tp_doy_",y_emis,".csv"))
+    fwrite(aoi_emis, paste0("./",aoi_name,"/",aoi_name,"_",species,"_emissions_t_",y_emis,".csv"))
+    
+  }else{
+    print("data files not written")
+  }
+  
+  return(rt)
+  
+  
+}
+
+
+###########################################################################################
+#### function to plot the profile and emissions data
+
+PlottingAOIdata <- function(species, year, aoi_name, r_aoi_tot, r_exp_tot, aoi_snap_tot, tps, pt_labels){
+  
+  tps[["DOY_SN_emis_tp_AOI"]][,SNAP := factor(SNAP, levels=1:11)]
+  tps[["DOY_SN_emis_tp_EXP"]][,SNAP := factor(SNAP, levels=1:11)]
+  
+  aoi_snap_tot[, aoi_diff_share := sum(emission_diff) / sum(emission_total)]
+  aoi_snap_tot[, aoi_pt_share := sum(emission_pt) / sum(emission_total)]
+  
+  aoi_snap_tot[, aoi_dif_SNAP_share := (emission_diff/sum(emission_diff)) * aoi_diff_share]
+  aoi_snap_tot[, aoi_pt_SNAP_share := (emission_pt/sum(emission_pt)) * aoi_pt_share]
+  
+  aoi_snap_tot[, aoi_tot_SNAP_share := emission_total/sum(emission_total)]
+  aoi_snap_tot[, aoi_tot_SNAP_share_rank := frank(aoi_tot_SNAP_share)]
+  aoi_snap_tot[, exp_tot_SNAP_share := emission_total_exp/sum(emission_total_exp)]
+  
+  aoi <- suppressWarnings(suppressMessages(st_read("./AOI_extents",paste0("aoi_",aoi_name), quiet = T)))
+  aoi_bng <- st_transform(aoi, BNG)
+  
+  ## plot temporal profile for total emissions in the AOI & in the EXP
+  gg <- ggplot(data=tps[["DOY_emis_tp_AOI"]], aes(x=doy,y=doy_coeff))+
+    geom_line()+
+    geom_smooth()+
+    stat_smooth(data=tps[["DOY_SN_emis_tp_AOI"]][SNAP %in% aoi_snap_tot[aoi_tot_SNAP_share_rank >= 7, SNAP]], aes(group=SNAP, colour=SNAP),geom='line', se=F, alpha=0.6)+
+    geom_hline(yintercept = 1/365, linetype="dashed")+
+    #geom_smooth(data=tps[["DOY_emis_tp_EXP"]], linetype="dashed", se=F)+
+    #geom_text_repel(data=tps[["DOY_SN_emis_tp_AOI"]][doy==365 & SNAP %in% aoi_snap_tot[aoi_SNAP_share_rank >= 7, SNAP]], aes(label=SNAP), hjust=0, nudge_x = 2, size=3.3, colour="black" , segment.color = "grey70" )+
+    scale_x_continuous(name="Day of Year", breaks=c(0,50,100,150,200,250,300,350))+
+    scale_y_continuous(name = "Coefficient", breaks=c(0.001,0.002,0.003,0.004, 0.005), limits=c(0, 0.005))+
+    theme_bw()+
+    theme(axis.text = element_text(size=12),
+          axis.title = element_text(size=16),
+          legend.text = element_text(hjust = 0, size = 14),axis.ticks = element_blank(),
+          legend.title = element_text(size = 16, hjust = 1))
+  
+  
+  #ggsave(paste0("London_",species,"_tp_doy_total_",y_emis,".png"), gg, width=14, height=8)
+  
+  ggSNprop <- ggplot()+
+    #geom_bar(data=aoi_snap_tot, aes(x=SNAP,y=aoi_tot_SNAP_share),stat="identity", fill="#F07F69")+
+    geom_bar(data = melt(aoi_snap_tot[,c("SNAP","aoi_dif_SNAP_share","aoi_pt_SNAP_share")], id.vars = "SNAP"), aes(x=SNAP, y=value, group=variable,fill=variable), position="stack", stat = "identity")+
+    geom_bar(data=aoi_snap_tot, aes(x=SNAP,y=exp_tot_SNAP_share),stat="identity", fill=NA, colour="black", linetype="dashed")+
+    scale_fill_manual(values=c("#F07F69","#6FE5F1"))+
+    scale_x_continuous(breaks=c(1:11))+
+    scale_y_continuous(name = "Proportion")+
+    annotate(geom="text", x=1,y=0.5, label = "Red    = AOI (diffuse)", size=3.5, hjust=0)+
+    annotate(geom="text", x=1,y=0.47, label = "Blue   = AOI (points)", size=3.5, hjust=0)+
+    annotate(geom="text", x=1,y=0.44, label = "Black = Expanded", size=3.5, hjust=0)+
+    ggtitle("Proportion emissions by SNAP")+
+    theme_bw()+
+    theme(legend.position = "none",
+          axis.text = element_text(size=10),
+          axis.title = element_text(size=11))
+  
+  
+  #gginset <- ggdraw(gg)+
+  #  draw_plot(ggSNprop, 0.075,0.11,0.35,0.31, hjust = 0, vjust=0)
+  
+  #ggsave(paste0("London_",species,"_tp_doy_total_withinset_",y_emis,".png"), gginset, width=14, height=8)
+  
+  dt_exp_toplot <- as.data.table(as.data.frame(r_exp_tot, xy=T))
+  dt_exp_dif <- dt_exp_toplot[,c("x","y","diffuse")]
+  dt_exp_dif[diffuse<0.001, diffuse:=NA]
+  dt_exp_pt <- dt_exp_toplot[,c("x","y","point")]
+  dt_exp_pt[point==0, point:=NA]
+  
+  midp_dif <- (min(dt_exp_dif$diffuse,na.rm=T) + max(dt_exp_dif$diffuse,na.rm=T))/2
+  midp_pt <- (min(dt_exp_pt$point,na.rm=T) + max(dt_exp_pt$point,na.rm=T))/2
+  
+  gmap_dif <- ggplot() +
+    geom_raster(data = dt_exp_dif , aes(x = x, y = y, fill = diffuse))+
+    # coord_fixed()+
+    geom_rect(aes(xmin = extent(aoi_bng)[1], xmax = extent(aoi_bng)[2],   ymin = extent(aoi_bng)[3], ymax = extent(aoi_bng)[4]),   fill = NA, colour="black") +
+    #geom_sf(data = aoi_bng, fill = NA, colour = "black", size = 0.3)+
+    #coord_sf(crs=st_crs(27700))+
+    scale_fill_gradient2(name=bquote(tonnes), midpoint = midp_dif, low = "#fde0dd", mid = "#fa9fb5",high = "#c51b8a",na.value = "white")+
+    ggtitle("Diffuse emissions")+
+    guides(fill = guide_colourbar(barwidth = 1.5, barheight = 10))+
+    theme(axis.line = element_blank(),
+          axis.text = element_text(size=10),
+          axis.title = element_blank(),
+          panel.grid.major = element_line(colour = "transparent"),
+          panel.background = element_rect(fill = NA, colour = NA),
+          #strip.text.x = element_blank(),
+          #strip.background = element_blank(),
+          legend.text = element_text(hjust = 0, size = 12),axis.ticks = element_blank(),
+          legend.title = element_text(size = 14, hjust = 0))
+  
+  gmap_pt <-  ggplot() +
+    geom_raster(data = dt_exp_pt , aes(x = x, y = y, fill = point))+
+    #coord_fixed()+
+    geom_rect(aes(xmin = extent(aoi_bng)[1], xmax = extent(aoi_bng)[2],   ymin = extent(aoi_bng)[3], ymax = extent(aoi_bng)[4]),   fill = NA, colour="black") +
+    #geom_sf(data = aoi_bng, fill = NA, colour = "black", size = 0.3)+
+    #coord_sf(crs=st_crs(27700))+
+    scale_fill_gradient2(name=bquote(tonnes), midpoint = midp_pt, low = "#fde0dd", mid = "#fa9fb5",high = "#c51b8a",na.value = "white")+
+    geom_text_repel(data=pt_labels, aes(x=Easting,y= Northing, label=paste0(Site," (",SectorID,", ",SNAP,")")), hjust=0, size=2, colour="black", min.segment.length = 0)+
+    ggtitle("Point emissions")+
+    guides(fill = guide_colourbar(barwidth = 1.5, barheight = 10))+
+    theme(axis.line = element_blank(),
+          axis.text = element_text(size=10),
+          axis.title = element_blank(),
+          panel.grid.major = element_line(colour = "transparent"),
+          panel.background = element_rect(fill = NA, colour = NA),
+          #strip.text.x = element_blank(),
+          #strip.background = element_blank(),
+          legend.text = element_text(hjust = 0, size = 12),axis.ticks = element_blank(),
+          legend.title = element_text(size = 14, hjust = 0))
+  
+  
+  
+  d1 <- plot_grid(ggSNprop, gmap_dif, gmap_pt,labels=c("B","C","D"), ncol=3, nrow=1, rel_widths = 1, rel_heights = 1, align="h", axis="l")
+  d2 <- plot_grid(gg,NULL, d1,labels=c("A","",""), ncol=1,rel_heights = c(1.8,-.02,1), align="h", axis="l")
+  
+  save_plot(paste0("./",aoi_name,"/",aoi_name,"_",species,"_plots_",year,".png"), d2, base_height = 15, base_width = 15)
+  
+  print(paste0("plot for ",aoi_name," complete and saved"))
+  
+  
+}
 
 
 

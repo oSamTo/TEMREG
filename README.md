@@ -28,11 +28,16 @@ Re GAM of GAMs: There is an example script (./R/weighted_gams.R) of taking a GAM
 
 This is to mimic emissions; the raw data groups represent emissions grouped by NFR code choices (Profile_IDs) and the weights on those GAMs for the next level GAM represents the overall emissions contribution to a sector (e.g. SNAP). Therefore you end up taking into account the relative contribution of a sub-sector in each main sector.
 
-**IDEA (19/01/22):** The above could be changed by giving the original raw data a weighting based on a lookup table. For example, at the moment there are ~90 Profile_IDs across all SNAPs. Going through each SNAP, you calculate what each Profile_ID contributes to that SNAP *first*, weight the raw data accordingly (dependent on the Profile_ID it belongs to), and then produce the sector GAM for the SNAP on the fly. This allows for **any** combination of NFR to Profile_ID to be read in but requires every NFR to be linked to a datasource and for a separate NFR to Profile_ID lookup table. 
+**IDEA (19/01/22):** The above could be changed by giving the original raw data a weighting based on a lookup table. For example, at the moment there are ~90 Profile_IDs across all SNAPs. Going through each SNAP, you calculate what each Profile_ID contributes to that SNAP *first*, weight the raw data accordingly (dependent on the Profile_ID it belongs to), and then produce the sector GAM for the SNAP on the fly. This allows for **any** combination of NFR to Profile_ID to be read in but requires every NFR to be linked to a datasource and for a separate NFR to Profile_ID lookup table. There would be a much bigger processing overhead here.
 
-This totally rewrites what I have done below. 
+This totally rewrites what I have done and would require some effort. Discuss. 
 
-## currently: NOx, SOx, CH4, CO2, N2O
+### Currently: NOx, SOx, CH4, CO2, N2O
+
+### To Do:
+* have added Sentinel5p comparison script - need to adjust functions
+* Talk about the method for sector GAM outlined above
+* Test integration of year-specific data into generic profiles (e.g. coal-energy into larger SNAP 1)
 
 **Future DUKEMs work:**\
     * Integrate wood burning hour of day data; Gary Fuller (email 25/10/2021)\
@@ -40,7 +45,6 @@ This totally rewrites what I have done below.
     * Pollutant specific profiles\
     * Agricultural information re activity AND temperature/climate related profiles\
     * More year-specific data\
-    * Test integration of year-specific data into generic profiles (e.g. coal-energy into larger SNAP 1)
     * Spatially variable temporal profiles\
     * Point data temporal profiles\
     * (near) Real time data interface
