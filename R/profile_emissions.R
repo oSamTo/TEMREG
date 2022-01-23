@@ -16,7 +16,7 @@ y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (othe
 species <- "NOx"
 classification <- "SNAP"
 
-v_num <<- "1A" # alphanumeric version ID, to carry through data/plots/gams outputs (max 6 char)
+v_num <<- "1B" # alphanumeric version ID, to carry through data/plots/gams outputs (max 6 char)
 
 #### read and match the NAEI data to the temporal profile in the lookup table, along with SNAP sector ####
 dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species = species) 
@@ -25,6 +25,9 @@ dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species = species)
 ## weighted emissions from all NFR/profile_ID combinations, per sector. recreate temporal profiles. 
 ## also outputs .csvs of coefficients and plot. 
 v_time <- c("yday","month","wday","hour","hourwday")
+
+GAMofGAMs(year = y_emis, species = species, classification = classification, emis = dt_naei_profs)
+
 
 l_DUKEMs_profiles <- lapply(X=setNames(v_time, v_time), FUN = TempProfileBySector, year = y_emis, species = species, classification = classification, emis = dt_naei_profs, yr_spec_NFR = y_spec_NFR)
 

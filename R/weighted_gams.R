@@ -2,6 +2,7 @@
 require(data.table)
 require(mgcv)
 require(ggplot2)
+require(ungeviz)
 
 ## create two groups of data, A & B
 dtA <- data.table(t = rep(1:12,each=100) , N = c(runif(200, 0.0, 1.0),runif(200, 2.0, 3.0),runif(200, 5.0, 7.0),runif(200, 4.0, 5.0),runif(200, 1.0, 2.0),runif(200, 0.0, 1.0)), Group="A")
@@ -56,15 +57,19 @@ predicts3[,Method:="C: 1 GAM: No Groups but weighted data (GpA = 0.2, GpB = 0.8)
 #predicts4 = as.data.table(data.frame(dt_fit4, fits4))
 #predicts4[,Method:="Groups weighted data (GpA = 0.2, GpB = 0.8)"]
 
-## finally make a gam from the gams
-dt_gamW <- copy(predicts1)
-dt_gamW[, w := rep(c(0.2,0.8),each=12) ]
-gam5 <- gam(fit ~ s(t, bs="cc"), data = dt_gamW, weights = w, method="REML")
+## finally make a gam from the original gams (gam1)
+## this is done by sampling the gams lots of times, across the standard error of each point
+dt_gam1_sampled <- as.data.table(sample_outcomes(gam1, dt_fit1, times = 50))
+# make a gam from it, with weights
+
+dt_gam1_sampled[, w := as.numeric(as.character(plyr::mapvalues(Group, c("A","B"), c(0.2,0.8))))]
+
+gam5 <- gam(N ~ s(t, bs="cc"), data = dt_gam1_sampled, weights = w, method="REML")
 dt_fit5 <- data.table(t=1:12)
 fits5 = predict(gam5, newdata=dt_fit5, type='response', se=T)
 predicts5 = as.data.table(data.frame(dt_fit5, fits5))
 predicts5[,Group := NA]
-predicts5[,Method:="D: 1 GAM: No Groups, GAMs in topleft are weighted (20/80), not data"]
+predicts5[,Method:="D: 1 GAM: No Groups, GAMs in topleft are weighted (20/80), (GAM of GAMs)"]
 
 # one final data table
 dt_final <- rbindlist(list(predicts1, predicts2, predicts3, predicts5), use.names = T)

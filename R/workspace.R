@@ -1,7 +1,7 @@
 ## initialise the workspace for splitting annual emissions into hourly profiles ##
 
 ## packages and workspace
-packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units", "cowplot")
+packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units", "cowplot","ungeviz")
 lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
@@ -11,7 +11,7 @@ BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
 LL <<- suppressWarnings(CRS("+init=epsg:4326"))
 r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
 
-NAEI_pt_names <<- as.data.table(readxl::read_excel(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/NAEI_data/point/raw_data/NAEIPointsSources_2019.xlsx"), sheet="Data"))
+NAEI_pt_names <<- as.data.table(readxl::read_excel(paste0("./Data/NAEIPointsSources_2019.xlsx"), sheet="Data"))
 NAEI_pt_names[,c("PollutantID","Datatype") := NULL]
 
 ## lookup table ##
@@ -209,6 +209,55 @@ TempProfileBySector <- function(year, species, timestep, classification = c("SNA
   return(dt_return)
   
 } # end of function
+
+#########################################################################################################
+#### function to make a sector level GAM from the sub-sector GAMs produced. 
+#### initially for DARE but very likely to be incorporated into full rewrite of DUKEMS/DARE
+
+GAMofGAMs <- function(year, species, classification, emis){
+  
+  ### for a sector, for a given timestep; 
+        # read in the GAMs associated with sector that have been pre-generated (actual GAM output files). 
+        # establish emission contribution to Sector total, per GAM (i.e. NFR grouping)
+        # Create new sector GAM by sampling sub-sector GAMs with ungeviz::sample_outcomes()
+        # rbindlist() together all of the new sampled GAMs and weight
+  
+  
+  ## i need to make gams with data stripped out
+  # https://lifebrain.github.io/metagam/reference/strip_rawdata.html
+  
+  ## upload the gams to git
+  
+  ## i need to save the GAMs with names that lookup to sectors (AVIA_DOM_CRU to SNAP 8 etc)
+        # for sector, needed gams must be brought in and looped through and weighted
+  
+  ## restructure git for lookup tables, gam sub-sector outputs, GAM of GAMs outputs and so on. 
+  
+  
+  
+  sector <- 8
+  
+  # aggregate the emissions to sector level, to distribute onto sector profiles. 
+  dt_sect_emis <- emis[!(get(classification) %in% c("","avi.cruise")), .(emission = sum(emission, na.rm=T)), by = .(Sector = get(classification))]
+  if(classification=="SNAP") dt_sect_emis[,Sector := as.numeric(as.character(Sector))]
+  
+  # aggregate the emissions to sector level, to distribute onto sector profiles. 
+  dt_tot_emis <- emis[!(get(classification) %in% c("","avi.cruise")), .(emission = sum(emission, na.rm=T))]
+  
+  
+  dt_sect_to_prof[SNAP==8]
+  
+  
+  emis
+  
+  
+  
+  dt_gam1_sampled <- as.data.table(sample_outcomes(gam1, dt_fit1, times = 50))
+  # make a gam from it, with weights
+  
+  dt_gam1_sampled[, w := as.numeric(as.character(plyr::mapvalues(Group, c("A","B"), c(0.2,0.8))))]
+    
+}
 
 
 #########################################################################################################
