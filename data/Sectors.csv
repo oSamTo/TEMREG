@@ -44,8 +44,8 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 1A1ai,1,A_PublicPower,Power stations,Straw,ENER_OTH
 1A1ai,1,A_PublicPower,Power stations,Waste oils,ENER_OTH
 1A1ai,1,A_PublicPower,Power stations,Wood,ENER_OTH
-1A1aiii,,,Heat supply,Landfill gas,MISC_ANY
-1A1aiii,,,Heat supply,Sewage gas,MISC_ANY
+1A1aiii,1,A_PublicPower,Heat supply,Landfill gas,MISC_ANY
+1A1aiii,1,A_PublicPower,Heat supply,Sewage gas,MISC_ANY
 1A1b,1,B_Industry,Refineries - combustion,Burning oil,MISC_ANY
 1A1b,1,B_Industry,Refineries - combustion,Fuel oil,MISC_ANY
 1A1b,1,B_Industry,Refineries - combustion,Gas oil,MISC_ANY
@@ -186,39 +186,39 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 1A2gviii,3,B_Industry,Other industrial combustion,Town gas,INDU_MAN_GEN
 1A2gviii,3,B_Industry,Other industrial combustion,Waste solvent,INDU_MAN_GEN
 1A2gviii,3,B_Industry,Other industrial combustion,Wood,INDU_MAN_GEN
-1A3a,8,H_Aviation,Aircraft - domestic cruise,Aviation spirit,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft - domestic take off and landing,Aviation spirit,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft - international take off and landing,Aviation spirit,AVIA_INT_TOL
-1A3ai(i),8,H_Aviation,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_INT_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_DOM_TOL
-1A3ai(i),8,H_Aviation,Aircraft engines,Lubricants,AVIA_DOM_TOL
-1A3aii(i),8,H_Aviation,Aircraft - domestic take off and landing,Aviation spirit,AVIA_DOM_TOL
-1A3aii(i),8,H_Aviation,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_DOM_TOL
+1A3a,8,H_Aviation,Aircraft - domestic cruise,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft - domestic take off and landing,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft - international take off and landing,Aviation spirit,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,H_Aviation,Aircraft engines,Lubricants,AVIA_GEN
+1A3aii(i),8,H_Aviation,Aircraft - domestic take off and landing,Aviation spirit,AVIA_GEN
+1A3aii(i),8,H_Aviation,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_GEN
 1A3bi,7,F_RoadTransport,Road transport - cars - cold start,DERV,ROAD_CAT_ALL
 1A3bi,7,F_RoadTransport,Road transport - cars - cold start,Petrol,ROAD_CAT_ALL
 1A3bi,7,F_RoadTransport,Road transport - cars - motorway driving,DERV,ROAD_CAT_MOT
@@ -322,10 +322,10 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 1A3bvii,7,F_RoadTransport,Road transport - motorcycle (>50cc  4st) - motorway driving,Road abrasion,ROAD_CYC_MOT
 1A3bvii,7,F_RoadTransport,Road transport - motorcycle (>50cc  4st) - rural driving,Road abrasion,ROAD_CYC_RUR
 1A3bvii,7,F_RoadTransport,Road transport - motorcycle (>50cc  4st) - urban driving,Road abrasion,ROAD_CYC_URB
-1A3c,8,I_Offroad,Rail - coal,Coal,RAIL_PAS
-1A3c,8,I_Offroad,Railways - freight,Gas oil,RAIL_FRE
-1A3c,8,I_Offroad,Railways - intercity,Gas oil,RAIL_PAS
-1A3c,8,I_Offroad,Railways - regional,Gas oil,RAIL_PAS
+1A3c,8,I_Offroad,Rail - coal,Coal,RAIL_GEN
+1A3c,8,I_Offroad,Railways - freight,Gas oil,RAIL_GEN
+1A3c,8,I_Offroad,Railways - intercity,Gas oil,RAIL_GEN
+1A3c,8,I_Offroad,Railways - regional,Gas oil,RAIL_GEN
 1A3d,8,G_Shipping,Inland goods-carrying vessels,DERV,SHIP_CTP
 1A3d,8,G_Shipping,Inland goods-carrying vessels,Gas oil,SHIP_CTP
 1A3d,8,G_Shipping,Inland goods-carrying vessels,Petrol,SHIP_CTP
@@ -365,41 +365,41 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 1A3dii,8,G_Shipping,Shipping between UK and CDs,Gas oil,SHIP_CTP
 1A3dii,8,G_Shipping,Shipping between UK and Gibraltar,Fuel oil,SHIP_CTP
 1A3dii,8,G_Shipping,Shipping between UK and OTs (excl. Gib and Bermuda),Fuel oil,SHIP_CTP
-1A3eii,8,I_Offroad,Aircraft - support vehicles,Gas oil,AVIA_DOM_TOL
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Coal,STAT_PIC_COA
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Coke,STAT_PIC_COA
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Fuel oil,STAT_PIC_OIL
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Gas oil,STAT_PIC_OIL
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,LPG,STAT_PIC_GAS
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Natural gas,STAT_PIC_GAS
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,SSF,STAT_PIC_COA
-1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Town gas,STAT_PIC_GAS
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Burning oil,STAT_PIC_OIL
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Coal,STAT_PIC_COA
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Coke,STAT_PIC_COA
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Fuel oil,STAT_PIC_OIL
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Gas oil,STAT_PIC_OIL
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Natural gas,STAT_PIC_GAS
-1A4ai,2,C_OtherStationaryComb,Public sector combustion,Town gas,STAT_PIC_GAS
-1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Burning oil,RAIL_PAS
-1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Coal,RAIL_PAS
-1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Coke,RAIL_PAS
-1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Fuel oil,RAIL_PAS
-1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Natural gas,RAIL_PAS
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Anthracite,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Burning oil,STAT_DOM_OIL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Charcoal,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Coal,STAT_DOM_COA
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Coke,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Fuel oil,STAT_DOM_OIL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Gas oil,STAT_DOM_OIL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,LPG,STAT_DOM_OTH
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Natural gas,STAT_DOM_GAS
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Peat,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Petroleum coke,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,SSF,STAT_DOM_SOL
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Town gas,STAT_DOM_GAS
-1A4bi,2,C_OtherStationaryComb,Domestic combustion,Wood,STAT_DOM_WOO
+1A3eii,8,I_Offroad,Aircraft - support vehicles,Gas oil,AVIA_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Coal,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Coke,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Fuel oil,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Gas oil,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,LPG,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Natural gas,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,SSF,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Miscellaneous industrial/commercial combustion,Town gas,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Burning oil,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Coal,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Coke,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Fuel oil,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Gas oil,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Natural gas,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Public sector combustion,Town gas,STAT_PIC_GEN
+1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Burning oil,RAIL_GEN
+1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Coal,RAIL_GEN
+1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Coke,RAIL_GEN
+1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Fuel oil,RAIL_GEN
+1A4ai,2,C_OtherStationaryComb,Railways - stationary combustion,Natural gas,RAIL_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Anthracite,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Burning oil,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Charcoal,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Coal,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Coke,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Fuel oil,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Gas oil,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,LPG,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Natural gas,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Peat,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Petroleum coke,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,SSF,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Town gas,STAT_DOM_GEN
+1A4bi,2,C_OtherStationaryComb,Domestic combustion,Wood,STAT_DOM_GEN
 1A4bi,2,C_OtherStationaryComb,Solid smokeless fuel production,Petroleum coke,INDU_PRO_GEN
 1A4bii,8,I_Offroad,House and garden machinery,DERV,OFFR_OTH
 1A4bii,8,I_Offroad,House and garden machinery,Petrol,OFFR_OTH
@@ -476,7 +476,7 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 1B2b4,5,D_Fugitive,Upstream Gas Production - Gas terminal storage,Non-fuel combustion,INDU_EXT_PAG
 1B2b5,5,D_Fugitive,Gas leakage,Natural Gas (leakage at point of use),MISC_ANY
 1B2b5,5,D_Fugitive,Gas leakage,Natural gas supply,MISC_ANY
-1B2c,9,D_Fugitive,Refineries - flares,Process emission,MISC_ANY
+1B2c,9,D_Fugitive,Refineries - flares,Process emission,WAST_GEN
 1B2c,9,D_Fugitive,Upstream Gas Production - flaring,Non-fuel combustion,INDU_EXT_PAG
 1B2c,9,D_Fugitive,Upstream Gas Production - venting,Non-fuel combustion,INDU_EXT_PAG
 1B2c,9,D_Fugitive,Upstream Oil Production - flaring,Non-fuel combustion,INDU_EXT_PAG
@@ -1416,7 +1416,7 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 3D12c,10,L_AgriOther,Broilers - Digestate Direct,Spreading,AGRI_SPR_POU
 3D12c,10,L_AgriOther,Bulls for breeding - Digestate Direct,Spreading,AGRI_SPR_CAT
 3D12c,10,L_AgriOther,Cereal fed bull - Digestate Direct,Spreading,AGRI_SPR_CAT
-3D12c,,,Compost - Direct,Spreading,AGRI_SPR_NMD
+3D12c,10,L_AgriOther,Compost - Direct,Spreading,AGRI_SPR_NMD
 3D12c,10,L_AgriOther,Cows - Digestate Direct,Spreading,AGRI_SPR_CAT
 3D12c,10,L_AgriOther,Crop Digestates - Direct,Spreading,AGRI_SPR_NMD
 3D12c,10,L_AgriOther,Dairy Calves Female - Digestate Direct,Spreading,AGRI_SPR_CAT
@@ -2029,54 +2029,54 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 4D2,11,N_Natural,Forest Land converted to Other Wetlands - Carbon stock change,Non-fuel combustion,MISC_ANY
 4D2,11,N_Natural,Grassland converted to flooded land - Carbon stock change,Non-fuel combustion,MISC_ANY
 4D2,11,N_Natural,Land converted for Peat Extraction - Carbon stock change,Non-fuel combustion,MISC_ANY
-4E,,,Settlements - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
+4E,11,N_Natural,Settlements - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
 4G,11,N_Natural,HWP Produced and Consumed Domestically - Carbon stock change,Non-fuel combustion,MISC_ANY
 4G,11,N_Natural,HWP Produced and Exported - Carbon stock change,Non-fuel combustion,MISC_ANY
-5A,9,J_Waste,Landfill,Non-fuel combustion,MISC_ANY
-5A,9,J_Waste,Waste disposal - batteries,Non-fuel combustion,MISC_ANY
-5A,9,J_Waste,Waste disposal - electrical equipment,Non-fuel combustion,MISC_ANY
-5A,9,J_Waste,Waste disposal - lighting fluorescent tubes,Non-fuel combustion,MISC_ANY
-5A,9,J_Waste,Waste disposal - measurement and control equipment,Non-fuel combustion,MISC_ANY
-5A1a,9,J_Waste,Landfill,Non-fuel combustion,MISC_ANY
-5B1,9,J_Waste,Composting (at household),Process emission,MISC_ANY
-5B1,9,J_Waste,Composting (at permit sites),Process emission,MISC_ANY
-5B1a,9,J_Waste,Composting (at household),Biological waste,MISC_ANY
-5B1a,9,J_Waste,Composting (at permit sites),Process emission,MISC_ANY
-5B1a,9,J_Waste,Mechanical Biological Treatment - Composting,Biological waste,MISC_ANY
-5B1a,9,J_Waste,Total composting (non-household),Biological waste,MISC_ANY
-5B2,9,J_Waste,Anaerobic Digestion,Process emission,MISC_ANY
-5B2a,9,J_Waste,Anaerobic Digestion (other),Biological waste,MISC_ANY
-5B2a,9,J_Waste,Mechanical Biological Treatment - Anaerobic Digestion,Biological waste,MISC_ANY
-5C1.1b,9,J_Waste,Incineration - sewage sludge,Sewage sludge combustion,MISC_ANY
-5C1.2a,9,J_Waste,Incineration,MSW,MISC_ANY
-5C1.2b,9,J_Waste,Incineration - chemical waste,Chemical waste,MISC_ANY
-5C1.2b,9,J_Waste,Incineration - clinical waste,Clinical waste,MISC_ANY
-5C1a,9,J_Waste,Incineration,MSW,MISC_ANY
-5C1bii,9,J_Waste,Incineration - chemical waste,Chemical waste,MISC_ANY
-5C1biii,9,J_Waste,Incineration - clinical waste,Clinical waste,MISC_ANY
-5C1biv,9,J_Waste,Incineration - sewage sludge,Sewage sludge combustion,MISC_ANY
-5C1bv,9,J_Waste,Crematoria,Cremation,MISC_ANY
-5C1bv,9,J_Waste,Foot and mouth pyres,Cows burnt,MISC_ANY
-5C1bv,9,J_Waste,Foot and mouth pyres,Deer burnt,MISC_ANY
-5C1bv,9,J_Waste,Foot and mouth pyres,Goats burnt,MISC_ANY
-5C1bv,9,J_Waste,Foot and mouth pyres,Pigs burnt,MISC_ANY
-5C1bv,9,J_Waste,Foot and mouth pyres,Sheep burnt,MISC_ANY
-5C1bv,9,J_Waste,Incineration - animal carcases,Non-fuel combustion,MISC_ANY
-5C2,9,J_Waste,Agricultural waste burning,Mass burnt,MISC_ANY
-5C2,9,J_Waste,Other industrial combustion,Treated wood,MISC_ANY
-5C2,9,J_Waste,Small-scale waste burning,Waste,MISC_ANY
-5C2.1b,9,J_Waste,Small-scale waste burning,Wood,MISC_ANY
-5C2.2b,9,J_Waste,Accidental fires - dwellings,Mass burnt,MISC_ANY
-5C2.2b,9,J_Waste,Accidental fires - other buildings,Mass burnt,MISC_ANY
-5C2.2b,9,J_Waste,Accidental fires - vehicles,Mass burnt,MISC_ANY
-5D1,9,J_Waste,Sewage sludge decomposition,Non-fuel domestic,MISC_ANY
-5D1,9,J_Waste,Sewage sludge decomposition,Process emission,MISC_ANY
-5D1,9,J_Waste,Sewage sludge decomposition in private systems,Non-fuel domestic,MISC_ANY
-5D2,9,J_Waste,Industrial Waste Water Treatment,Non-fuel combustion,MISC_ANY
-5E,9,J_Waste,Accidental fires - dwellings,Mass burnt,MISC_ANY
-5E,9,J_Waste,Accidental fires - other buildings,Mass burnt,MISC_ANY
-5E,9,J_Waste,Accidental fires - vehicles,Mass burnt,MISC_ANY
-5E,9,J_Waste,Bonfire night,Mass burnt,MISC_ANY
+5A,9,J_Waste,Landfill,Non-fuel combustion,WAST_GEN
+5A,9,J_Waste,Waste disposal - batteries,Non-fuel combustion,WAST_GEN
+5A,9,J_Waste,Waste disposal - electrical equipment,Non-fuel combustion,WAST_GEN
+5A,9,J_Waste,Waste disposal - lighting fluorescent tubes,Non-fuel combustion,WAST_GEN
+5A,9,J_Waste,Waste disposal - measurement and control equipment,Non-fuel combustion,WAST_GEN
+5A1a,9,J_Waste,Landfill,Non-fuel combustion,WAST_GEN
+5B1,9,J_Waste,Composting (at household),Process emission,WAST_GEN
+5B1,9,J_Waste,Composting (at permit sites),Process emission,WAST_GEN
+5B1a,9,J_Waste,Composting (at household),Biological waste,WAST_GEN
+5B1a,9,J_Waste,Composting (at permit sites),Process emission,WAST_GEN
+5B1a,9,J_Waste,Mechanical Biological Treatment - Composting,Biological waste,WAST_GEN
+5B1a,9,J_Waste,Total composting (non-household),Biological waste,WAST_GEN
+5B2,9,J_Waste,Anaerobic Digestion,Process emission,WAST_GEN
+5B2a,9,J_Waste,Anaerobic Digestion (other),Biological waste,WAST_GEN
+5B2a,9,J_Waste,Mechanical Biological Treatment - Anaerobic Digestion,Biological waste,WAST_GEN
+5C1.1b,9,J_Waste,Incineration - sewage sludge,Sewage sludge combustion,WAST_GEN
+5C1.2a,9,J_Waste,Incineration,MSW,WAST_GEN
+5C1.2b,9,J_Waste,Incineration - chemical waste,Chemical waste,WAST_GEN
+5C1.2b,9,J_Waste,Incineration - clinical waste,Clinical waste,WAST_GEN
+5C1a,9,J_Waste,Incineration,MSW,WAST_GEN
+5C1bii,9,J_Waste,Incineration - chemical waste,Chemical waste,WAST_GEN
+5C1biii,9,J_Waste,Incineration - clinical waste,Clinical waste,WAST_GEN
+5C1biv,9,J_Waste,Incineration - sewage sludge,Sewage sludge combustion,WAST_GEN
+5C1bv,9,J_Waste,Crematoria,Cremation,WAST_GEN
+5C1bv,9,J_Waste,Foot and mouth pyres,Cows burnt,WAST_GEN
+5C1bv,9,J_Waste,Foot and mouth pyres,Deer burnt,WAST_GEN
+5C1bv,9,J_Waste,Foot and mouth pyres,Goats burnt,WAST_GEN
+5C1bv,9,J_Waste,Foot and mouth pyres,Pigs burnt,WAST_GEN
+5C1bv,9,J_Waste,Foot and mouth pyres,Sheep burnt,WAST_GEN
+5C1bv,9,J_Waste,Incineration - animal carcases,Non-fuel combustion,WAST_GEN
+5C2,9,J_Waste,Agricultural waste burning,Mass burnt,WAST_GEN
+5C2,9,J_Waste,Other industrial combustion,Treated wood,WAST_GEN
+5C2,9,J_Waste,Small-scale waste burning,Waste,WAST_GEN
+5C2.1b,9,J_Waste,Small-scale waste burning,Wood,WAST_GEN
+5C2.2b,9,J_Waste,Accidental fires - dwellings,Mass burnt,WAST_GEN
+5C2.2b,9,J_Waste,Accidental fires - other buildings,Mass burnt,WAST_GEN
+5C2.2b,9,J_Waste,Accidental fires - vehicles,Mass burnt,WAST_GEN
+5D1,9,J_Waste,Sewage sludge decomposition,Non-fuel domestic,WAST_GEN
+5D1,9,J_Waste,Sewage sludge decomposition,Process emission,WAST_GEN
+5D1,9,J_Waste,Sewage sludge decomposition in private systems,Non-fuel domestic,WAST_GEN
+5D2,9,J_Waste,Industrial Waste Water Treatment,Non-fuel combustion,WAST_GEN
+5E,9,J_Waste,Accidental fires - dwellings,Mass burnt,WAST_GEN
+5E,9,J_Waste,Accidental fires - other buildings,Mass burnt,WAST_GEN
+5E,9,J_Waste,Accidental fires - vehicles,Mass burnt,WAST_GEN
+5E,9,J_Waste,Bonfire night,Mass burnt,WAST_GEN
 6A,11,M_Other,Domestic Horses,Grazing,AGRI_GRZ_MLI
 6A,11,M_Other,Domestic Horses,Housing,AGRI_HOU_MLI
 6A,11,M_Other,Domestic Horses,Spreading,AGRI_SPR_OTH
@@ -2111,16 +2111,16 @@ NFR19,SNAP,GNFR19,Source,Activity,Profile_ID
 6A,11,M_Other,Wastes,Professional Horses,MISC_ANY
 6A,11,M_Other,Yarding,Domestic Horses,AGRI_YRD_CAT
 6A,11,M_Other,Yarding,Professional Horses,AGRI_YRD_CAT
-Aviation_Bunkers,,,Aircraft - international cruise,Aviation spirit,AVIA_INT_TOL
-Aviation_Bunkers,,,Aircraft - international cruise,Aviation turbine fuel,AVIA_INT_TOL
-Aviation_Bunkers,,,Aircraft - international take off and landing,Aviation spirit,AVIA_INT_TOL
-Aviation_Bunkers,,,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_INT_TOL
-Aviation_Bunkers,,,Aircraft engines,Lubricants,AVIA_INT_TOL
-Marine_Bunkers,,,Shipping - international IPCC definition,Fuel oil,SHIP_CTP
-Marine_Bunkers,,,Shipping - international IPCC definition,Gas oil,SHIP_CTP
-non-IPCC,,,Accidental fires - forests,Area burnt,MISC_ANY
-non-IPCC,,,Accidental fires - straw,Mass burnt,MISC_ANY
-non-IPCC,,,Accidental fires - vegetation,Area burnt,MISC_ANY
+Aviation_Bunkers,avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation spirit,AVIA_GEN
+Aviation_Bunkers,avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation turbine fuel,AVIA_GEN
+Aviation_Bunkers,8,H_Aviation,Aircraft - international take off and landing,Aviation spirit,AVIA_GEN
+Aviation_Bunkers,8,H_Aviation,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_GEN
+Aviation_Bunkers,8,H_Aviation,Aircraft engines,Lubricants,AVIA_GEN
+Marine_Bunkers,8,P_IntShipping,Shipping - international IPCC definition,Fuel oil,SHIP_CTP
+Marine_Bunkers,8,P_IntShipping,Shipping - international IPCC definition,Gas oil,SHIP_CTP
+non-IPCC,11,N_Natural,Accidental fires - forests,Area burnt,MISC_ANY
+non-IPCC,11,N_Natural,Accidental fires - straw,Mass burnt,MISC_ANY
+non-IPCC,11,N_Natural,Accidental fires - vegetation,Area burnt,MISC_ANY
 z_11B,11,N_Natural,Accidental fires - forests,Area burnt,MISC_ANY
 z_11B,11,N_Natural,Heather burning,Biomass,AGRI_BUR_ALL
 z_11C,11,N_Natural,Accidental fires - straw,Mass burnt,MISC_ANY
@@ -2130,37 +2130,37 @@ z_11C,11,N_Natural,Natural sources,Non-fuel combustion,MISC_ANY
 z_11C,11,N_Natural,Road transport - resuspension,Vehicle kilometres,MISC_ANY
 z_11C,11,N_Natural,Wild birds wastes,Manure and excreta,MISC_ANY
 z_11C,11,N_Natural,Wild other animal wastes,Manure and excreta,MISC_ANY
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation spirit,AVIA_INT_TOL
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation turbine fuel,AVIA_INT_TOL
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_DOM_CRU
-z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_DOM_CRU
-z_1A3aii(ii),avi.cruise,O_AviCruise,Aircraft - domestic cruise,Aviation spirit,AVIA_DOM_CRU
-z_1A3aii(ii),avi.cruise,O_AviCruise,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_DOM_CRU
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft - international cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,O_AviCruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3aii(ii),avi.cruise,O_AviCruise,Aircraft - domestic cruise,Aviation spirit,AVIA_GEN
+z_1A3aii(ii),avi.cruise,O_AviCruise,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_GEN
 z_1A3di(i),8,P_IntShipping,Shipping - international IPCC definition,Fuel oil,SHIP_CTP
 z_1A3di(i),8,P_IntShipping,Shipping - international IPCC definition,Gas oil,SHIP_CTP
-0,,,Cropland remaining Cropland - Biomass Burning - Wildfires,Biomass,MISC_ANY
-0,,,Forest Land converted to Cropland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-0,,,Forest Land converted to Grassland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-0,,,Forest Land converted to Other Wetlands - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-0,,,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-0,,,Forest Land remaining Forest Land - Biomass Burning - Wildfires,Biomass,MISC_ANY
-0,,,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass,MISC_ANY
-4,,,LULUCF Indirect N2O - Atmospheric Deposition,Non-fuel combustion,MISC_ANY
-4,,,LULUCF Indirect N2O - Nitrogen Leaching and Run-off,Non-fuel combustion,MISC_ANY
-4.00E+01,,,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+01,,,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-4.00E+02,,,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,,,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion,MISC_ANY
+0,11,N_Natural,Cropland remaining Cropland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+0,11,N_Natural,Forest Land converted to Cropland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,N_Natural,Forest Land converted to Grassland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,N_Natural,Forest Land converted to Other Wetlands - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,N_Natural,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,N_Natural,Forest Land remaining Forest Land - Biomass Burning - Wildfires,Biomass,MISC_ANY
+0,11,N_Natural,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+4,11,N_Natural,LULUCF Indirect N2O - Atmospheric Deposition,Non-fuel combustion,MISC_ANY
+4,11,N_Natural,LULUCF Indirect N2O - Nitrogen Leaching and Run-off,Non-fuel combustion,MISC_ANY
+4.00E+01,11,N_Natural,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+01,11,N_Natural,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+4.00E+02,11,N_Natural,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,N_Natural,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion,MISC_ANY
