@@ -7,7 +7,10 @@
 *Info:*
 ----------------
 
-* Raw data collected for activity data in the UK, and processed to standardized output (not here: C:/.../DUKEMS/Database)
+* Raw data collected for activity data in the UK, processed to standardized output 
+        * Processing of data in C:/...../DUKEMS/Database/R/xxxxxxx.R
+        * Standard input files uploaded to ./data/GAM_input  (not domestic, too large)
+* Each NFR code maps to a small grouping (Profile_ID), which maps to a GAM_input data category. 
 * 
 
 * These are produced for hour, hourwday (hour for specific day of week), wday, month and yday
@@ -17,7 +20,7 @@
     * For a Sector Classification, aggregate emissions by Profile_ID and create new sector temporal profiles
     * Plot emissions and write some metadata
 
-* Currently produces profiles for SNAP or GNFR classes (16/01/2022 : GNFR not ready)
+
 
 * run from ./R/profile_emissions.R
 
