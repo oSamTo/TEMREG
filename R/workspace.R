@@ -26,7 +26,7 @@ JoinNAEItoProfiles <- function(year, species, classification){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM2.5, PM10
                                             GHG:   CH4, CO2, N2O
@@ -37,6 +37,8 @@ JoinNAEItoProfiles <- function(year, species, classification){
   ## lookup tables ##
   # The classification name must have an 'NFR_to_xxxx.csv' file ready for the matching to work. Can be custom. 
   dt_NFR_to_sect <- fread(paste0("./data/lookup/NFR_to_",classification,".csv")) # NFRs, Profile_IDs & sector groupings (e.g. SNAP)
+  dt_NFR_to_sect[NFR19 == "4.00E+01", NFR19 := "4E1"]
+  dt_NFR_to_sect[NFR19 == "4.00E+02", NFR19 := "4E2"]
   dt_prof_to_GAM <- fread("./data/lookup/Profile_to_GAMfile.csv") # relates a Profile_ID to it's raw data GAM in ./data/GAM_output
   
   # read NAEI emissions data - currently on latest year = 2019. way to automate this?
@@ -52,6 +54,7 @@ JoinNAEItoProfiles <- function(year, species, classification){
   setnames(dt_naei, c("NFR/CRF Group",paste0(year)), c("NFR19","emission"))
   suppressWarnings(dt_naei[,emission := as.numeric(emission)])
   dt_naei <- dt_naei[!is.na(emission)]
+  if(species == "CO2") dt_naei[, emission := emission/12*44]
   
   # set units
   if(species == "BaP"){
@@ -64,8 +67,9 @@ JoinNAEItoProfiles <- function(year, species, classification){
   dt_joined <- dt_NFR_to_sect[dt_naei, on = c("NFR19","Source","Activity")][dt_prof_to_GAM , on = "Profile_ID"]
   dt_joined <- dt_joined[!is.na(emission)]
   setnames(dt_joined, classification, "sector")
+  if(classification=="SNAP") dt_joined <- dt_joined[sector != "avi.cruise"]
   
-  if(identical(sum(dt_joined$emission, na.rm=T), sum(dt_naei$emission, na.rm=T))==T){
+  if(set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) < 1.005 & set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) > 0.995) {
     NULL
   }else{
     print("Emissions total has changed since joining to profile table - CHECK")
@@ -88,7 +92,7 @@ GAMProfileBySector <- function(year, species, timestep, classification, emis, yr
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM2.5, PM10
                                             GHG:   CH4, CO2, N2O
@@ -123,6 +127,11 @@ GAMProfileBySector <- function(year, species, timestep, classification, emis, yr
     
     # aggregate the emissions to sector level, to distribute onto sector profiles. 
     dt_sect_emis <- emis[sector == s, .(emission = sum(emission, na.rm=T))][["emission"]]
+    
+    if(set_units(dt_sect_emis,NULL)==0){
+      print(paste0("NO emissions in ",classification," ",s,", skipping"))
+      next 
+    } 
     
     # aggregate the NFR codes within the sector and derive fraction contribution, by Profile_ID. 
     dt_sectprof_emis <- emis[sector == s, .(emission = sum(emission, na.rm=T)), by = .(Profile_ID,GAM_file)]
@@ -208,7 +217,7 @@ sectorCoefficients <- function(year, species, timestep, classification, emis){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   if(!is.numeric(year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM2.5, PM10
                                             GHG:   CH4, CO2, N2O
@@ -241,6 +250,12 @@ sectorCoefficients <- function(year, species, timestep, classification, emis){
     
     # read in the required raw data GAM, extract the Profile_ID names on which it was built.
     g_name <- paste0("./output/GAM_sector/",timestep,"/",species,"_",classification,"_",s,"_GAM_",timestep,".rds")
+    
+    if(!(file.exists(g_name))){
+      print(paste0("NO GAM for ",classification," ",s,", skipping"))
+      next 
+    } 
+    
     g_object <- readRDS(g_name)
     #v_IDs <- levels(g_object$var.summary$Profile_ID)
     
@@ -295,12 +310,12 @@ sectorCoefficients <- function(year, species, timestep, classification, emis){
 #### function to plot GAM/coefficient data per sector, per year(?) per pollutant (?)
 ## which is better comparison? all pollutants for one year on a plot?
 ## or same pollutant across many years on one plot?
-GAMplots <- function(v_years, v_species, classification){
+GAMplots <- function(year, v_species, classification){
  
   ####################################################
   
   # v_years         = *numeric* years to process.
-  if(!is.numeric(v_years)) stop ("Year(s) not numeric")
+  if(!is.numeric(year)) stop ("Year(s) not numeric")
   # v_species       = *character* name of air pollutant or GHG or metal etc. Needs data to exist to work.
   # classification  = *character* a sector classification system (e.g SNAP) for which GAMs have already been produced
   
@@ -314,7 +329,7 @@ GAMplots <- function(v_years, v_species, classification){
     
     l_plot_data <- list()
     
-    for(y in v_years){
+   # for(y in v_years){
       
       for(s in v_species){
         
@@ -322,14 +337,14 @@ GAMplots <- function(v_years, v_species, classification){
         dt <- fread(paste0("./output/sector_coeffs/",ts,"/",s,"_",classification,"_coeffs_",ts,".csv"))
         if(classification == "SNAP") dt <- dt[sector != "avi.cruise"] ; dt[,sector := as.numeric(as.character(sector))]
         dt[,time := ts]
-        dt[,Year := y]
+        dt[,Year := year]
         setnames(dt, ts, "time_value")
         
-        l_plot_data[[paste0(s,"_",y,"_",ts)]] <- dt
+        l_plot_data[[paste0(s,"_",year,"_",ts)]] <- dt
         
       } # pollutant loop
       
-    } # year loop
+  #  } # year loop
     
     dt_plot_data <- rbindlist(l_plot_data, use.names = T)
     
@@ -353,7 +368,7 @@ GAMplots <- function(v_years, v_species, classification){
   
   d1 <- plot_grid(l_plot[["hour"]], l_plot[["wday"]], l_plot[["month"]], l_plot[["yday"]], ncol=1, nrow=4,rel_heights = c(1,1,1,1), rel_widths = c(1,1,1,1), align="h", axis="l")
   
-  save_plot(paste0("./output/plots/all_spec_all_years_coeff_plots_precent.png"), d1, base_height = 14, base_width = 22)
+  save_plot(paste0("./output/plots/all_poll_coeff_plots_precent_emis",year,".png"), d1, base_height = 14, base_width = 22)
   
   print(paste0(Sys.time(),": DONE."))
   

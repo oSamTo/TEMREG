@@ -11,7 +11,7 @@ source("./R/workspace.R")
 y_emis <- 2019 # the emissions year
 ## !! Need a way of choosing NFR/fuel combos to be modelled on specific year data, as opposed to means !! ##
 y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (otherwise `average` year = 0)
-species <- "NOx"
+species <- "SOx"
 classification <- "SNAP" # this can be anything, as long as the file exists
 
 #v_num <<- "1B" # alphanumeric version ID, to carry through data/plots/gams outputs (max 6 char)
@@ -32,6 +32,6 @@ lapply(X=setNames(v_time, v_time), FUN = sectorCoefficients, year = y_emis, spec
 
 #### plot GAMs for any species, year & timesteps on the same plot ####
 ## the same is done for emissions.
-GAMplots(v_years = c(2019), v_species = c("NOx"), classification = "SNAP")
+GAMplots(year = c(2019), v_species = c("NOx","CO2","CH4","N2O","NH3","SOx"), classification = "SNAP")
 
 ####################################################################################################
