@@ -27,7 +27,9 @@
 **Emissions contribution by Profile_ID per sector here; ./doc/profile_contributions_sector/**
 
 **IMPORTANT:** When making GAM of GAMs, the weighted raw data is having an effect when the scales of data are very different, which is annoying. Need to centre it on 1. 
+
 **Thought:** The year actually does determine the shape of the profile, even when not using year specific activity data, as the emissions contributions to a sector change per year (not a lot but they do). Do i need to take an average of NFR contribution? another GAM???
+
 **Thought:** The shape of the sector GAM will differ from pollutant to pollutant as emissions are more pertinent to certain NFRs and therefore certain shapes. NH3 in SNAP 10 is the most obvious example. Yet EMEP (e.g.) just uses one profile per SNAP, all pollutants.
 
 **IDEA to develop (19/01/22):** The method could be changed by giving the original raw data a weighting based on a look-up table. Going through each SNAP, you would calculate what each Profile_ID contributes to that SNAP, via the NFRs the Profile_ID relates to, *first*. Then weight the raw data accordingly (dependent on the Profile_ID it belongs to), and then produce the sector GAM for the SNAP on the fly. I think there would be a much bigger processing overhead here as the sector GAMs are created from raw data every time.
