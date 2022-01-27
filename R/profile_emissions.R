@@ -20,29 +20,18 @@ classification <- "SNAP" # this can be anything, as long as the file exists
 dt_naei_profs <- JoinNAEItoProfiles(year = y_emis, species, classification) 
 
 #### create new sector-wide temporal profiles: ####
-# (needs to build weighted data and perform GAM routine over all sectors/time - ~8 mins for 'SNAP')
+# (needs to build weighted data and perform GAM routine over all sectors/time - ~6 mins for 'SNAP' for one pollutant)
 v_time <- c("yday","month","wday","hour","hourwday") # currently yday, month, wday, hourwday and hour
 
-lapply(X=setNames(v_time, v_time), FUN = GAMProfileBySector, year = y_emis, species, classification, emis = dt_naei_profs, yr_spec_NFR = y_spec_NFR)
+lapply(X=setNames(v_time, v_time), FUN = GAMProfileBySector, year = y_emis, species = species, classification = classification, emis = dt_naei_profs, yr_spec_NFR = y_spec_NFR)
 
 #### create coefficients (centered on 1) as csv files for sectors: ####
 v_time <- c("yday","month","wday","hour","hourwday") # currently yday, month, wday, hourwday and hour
 
-lapply(X=setNames(v_time, v_time), FUN = sectorCoefficients, year = y_emis, species, classification, emis = dt_naei_profs)
+lapply(X=setNames(v_time, v_time), FUN = sectorCoefficients, year = y_emis, species = species, classification = classification, emis = dt_naei_profs)
 
-
-
-
-
-####################################################################################################
-
-GAMofGAMs(year = y_emis, species = species, classification = classification, emis = dt_naei_profs)
-
-
-l_DUKEMs_profiles <- lapply(X=setNames(v_time, v_time), FUN = TempProfileBySector, year = y_emis, species = species, classification = classification, emis = dt_naei_profs, yr_spec_NFR = y_spec_NFR)
-
-## using the new sector-level profiles, visualize emissions (also outputs some metadata)
-PlotEmissionsOverTime(year = y_emis, species = species, classification = classification, sec_profs = l_DUKEMs_profiles, emis = dt_naei_profs)
-
+#### plot GAMs for any species, year & timesteps on the same plot ####
+## the same is done for emissions.
+GAMplots(v_years = c(2019), v_species = c("NOx"), classification = "SNAP")
 
 ####################################################################################################

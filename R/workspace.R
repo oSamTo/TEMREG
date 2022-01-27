@@ -72,6 +72,7 @@ JoinNAEItoProfiles <- function(year, species, classification){
     break
   }
     
+  dt_joined <- cbind(data.table(Pollutant = species, dt_joined))
   return(dt_joined)
   
 }
@@ -158,6 +159,9 @@ GAMProfileBySector <- function(year, species, timestep, classification, emis, yr
       # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
       dt_g_sampled <- suppressWarnings(as.data.table(ungeviz::sample_outcomes(g_object, dt_fit, times = 100)))
       dt_g_sample_sub <- dt_g_sampled[Profile_ID %in% dt_sectprof_emis[GAM_file==g, Profile_ID]]
+      
+      # centre the samples around 1, as the subsequent GAM is massively effected by different scales.
+      dt_g_sample_sub[, N := N/sum(N) * c_mult, by=.(Profile_ID, .draw)]
       dt_g_sample_sub[,c(".draw") := NULL]
       
       # add weights
@@ -236,7 +240,7 @@ sectorCoefficients <- function(year, species, timestep, classification, emis){
     #v_IDs <- dt_prof_to_GAM[GAM_file==g, Profile_ID]
     
     # read in the required raw data GAM, extract the Profile_ID names on which it was built.
-    g_name <- paste0("./output/GAM_sector/",timestep,"/",classification,"_",s,"_GAM_",timestep,".rds")
+    g_name <- paste0("./output/GAM_sector/",timestep,"/",species,"_",classification,"_",s,"_GAM_",timestep,".rds")
     g_object <- readRDS(g_name)
     #v_IDs <- levels(g_object$var.summary$Profile_ID)
     
@@ -288,13 +292,88 @@ sectorCoefficients <- function(year, species, timestep, classification, emis){
 
 
 #########################################################################################################
-#### function to 
+#### function to plot GAM/coefficient data per sector, per year(?) per pollutant (?)
+## which is better comparison? all pollutants for one year on a plot?
+## or same pollutant across many years on one plot?
+GAMplots <- function(v_years, v_species, classification){
+ 
+  ####################################################
+  
+  # v_years         = *numeric* years to process.
+  if(!is.numeric(v_years)) stop ("Year(s) not numeric")
+  # v_species       = *character* name of air pollutant or GHG or metal etc. Needs data to exist to work.
+  # classification  = *character* a sector classification system (e.g SNAP) for which GAMs have already been produced
+  
+  ####################################################
+  
+  print(paste0(Sys.time(),": Plotting..."))
+  
+  l_plot <- list()
+  
+  for(ts in c("hour","wday","month","yday")){
+    
+    l_plot_data <- list()
+    
+    for(y in v_years){
+      
+      for(s in v_species){
+        
+        # read in the data
+        dt <- fread(paste0("./output/sector_coeffs/",ts,"/",s,"_",classification,"_coeffs_",ts,".csv"))
+        if(classification == "SNAP") dt <- dt[sector != "avi.cruise"] ; dt[,sector := as.numeric(as.character(sector))]
+        dt[,time := ts]
+        dt[,Year := y]
+        setnames(dt, ts, "time_value")
+        
+        l_plot_data[[paste0(s,"_",y,"_",ts)]] <- dt
+        
+      } # pollutant loop
+      
+    } # year loop
+    
+    dt_plot_data <- rbindlist(l_plot_data, use.names = T)
+    
+    g1 <- ggplot()+
+      geom_line(data=dt_plot_data, aes(x=time_value, y=coeff, group = Pollutant, colour=Pollutant))+
+      geom_ribbon(data=dt_plot_data, aes(x=time_value, ymin=coeff_l, ymax=coeff_u, group = Pollutant, fill=Pollutant), alpha=0.4)+
+      labs(x=ts,y="Coefficient")+
+      geom_hline(yintercept = 1, linetype="dashed")+
+      facet_wrap(~sector, nrow=1)+
+      theme_bw()+
+      theme(axis.text.x = element_text(size=12),
+            axis.text.y = element_text(size=12),
+            axis.title = element_text(size=16),
+            legend.title=element_blank())
+    
+    l_plot[[ts]] <- ggplotGrob(g1)
+    
+  } # time loop
+  
+  # stitch plots together
+  
+  d1 <- plot_grid(l_plot[["hour"]], l_plot[["wday"]], l_plot[["month"]], l_plot[["yday"]], ncol=1, nrow=4,rel_heights = c(1,1,1,1), rel_widths = c(1,1,1,1), align="h", axis="l")
+  
+  save_plot(paste0("./output/plots/all_spec_all_years_coeff_plots_precent.png"), d1, base_height = 14, base_width = 22)
+  
+  print(paste0(Sys.time(),": DONE."))
+  
+}
 
-
+##########################################################################################
+##########################################################################################
+##########################################################################################
+#### below here not currently in use ####
 
 
 
 GAMcsv <- function(year, species, classification, emis){
+  
+  
+  # run the NAEI to classification function again, to allow for any pollutant
+  emis <- JoinNAEItoProfiles(year = y, species = s, classification = classification) 
+  dt_sect_emis <- emis[, .(emission = sum(emission, na.rm=T)), by = sector]
+  if(classification == "SNAP") dt_sect_emis <- dt_sect_emis[sector != "avi.cruise"] ; dt_sect_emis[,sector := as.numeric(as.character(sector))]
+  
   
    
   #### everything below is optional ####
