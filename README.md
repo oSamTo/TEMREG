@@ -33,6 +33,8 @@ This is to mimic emissions; the raw data groups represent emissions grouped by N
 
 This totally rewrites what I have done and would require some effort. Discuss. 
 
+Point of interest: the year actually does determine the shape of the profile, even when not using year specific activity data, as the emissons contributions change per year. 
+
 ### Currently: NOx, SOx, CH4, CO2, N2O
 
 ### To Do:

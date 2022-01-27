@@ -26,6 +26,7 @@ AGRI_STO_POU,Agriculture
 AGRI_STO_SHP,Agriculture
 AGRI_YRD_CAT,Agriculture
 AVIA_GEN,Aviation
+ENER_ANY,Energy
 ENER_BIO,Energy
 ENER_COA,Energy
 ENER_COG,Energy
