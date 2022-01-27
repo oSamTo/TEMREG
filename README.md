@@ -11,20 +11,15 @@
     * Processing of data in C:/...../DUKEMS/Database/R/xxxxxxx.R
     * Standard input files uploaded to ./data/GAM_input  (not domestic, too large)
 * Each NFR code maps to a small grouping (Profile_ID), which maps to a GAM_input data category. 
-* 
+* GAMs are produced from the raw data (./R/xxxxx.R), grouped by Profile_ID, and placed in ./data/GAM_output
+* They are produced for hour, hourwday (hour for specific day of week), wday, month and yday
+* These GAM outputs are the basis for sector-level groupings;
+    * Need to know the NFR to sector look-up (e.g. to SNAP)
+    * The NFRs are grouped by Profile_ID and the total emissions represented by the Profile_ID, as a proportion of sector total, defines a Profile weight
+    * The weights influence the construction of the final sector level GAM (./output/GAM_sector)
+* As well as GAMs, standard csv outputs of temporal profiles are produced; coefficients are relative to 1
 
-* These are produced for hour, hourwday (hour for specific day of week), wday, month and yday
-
-* Functions here will;
-    * Join NFR NAEI emissions to DUKEMs Profile_IDs
-    * For a Sector Classification, aggregate emissions by Profile_ID and create new sector temporal profiles
-    * Plot emissions and write some metadata
-
-
-
-* run from ./R/profile_emissions.R
-
-* coefficients are produced relative to 1
+* When further raw data is found and ingested, it must either map to current Profile_IDs or new IDs need to be added and mapped to NFR codes. 
 
 ----------------
 

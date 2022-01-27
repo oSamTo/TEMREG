@@ -1,7 +1,7 @@
-## initialise the workspace for splitting annual emissions into hourly profiles ##
+## initialise the workspace for profiling annual emissions into sector profiles ##
 
 ## packages and workspace
-packs <- c("sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","ggrepel","data.table","stats","readr","ggplot2","sf","lubridate","units", "cowplot","ungeviz")
+packs <- c("metagam","ungeviz","mgcv","sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","data.table","stats","sf","lubridate","units", "cowplot")
 lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
@@ -11,28 +11,15 @@ BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
 LL <<- suppressWarnings(CRS("+init=epsg:4326"))
 r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
 
-NAEI_pt_names <<- as.data.table(readxl::read_excel(paste0("./Data/NAEIPointsSources_2019.xlsx"), sheet="Data"))
-NAEI_pt_names[,c("PollutantID","Datatype") := NULL]
+#NAEI_pt_names <<- as.data.table(readxl::read_excel(paste0("./data/NAEI_spatial/point/NAEIPointsSources_2019.xlsx"), sheet="Data"))
+#NAEI_pt_names[,c("PollutantID","Datatype") := NULL]
 
-## lookup table ##
-dt_sect_to_prof <<- fread("./Data/Sectors.csv")
 
-## profile tables ##
-dt_prof_hour <<- melt(fread("./Data/hour_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "hour", value.name = "hour_coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
+##################################################################################################
+#### function to 1. return the NAEI emissions data, formatted, for the given year & Species.  ####
+####             2. match the annual NAEI data to the temporal profile codes and GAm files.   ####
 
-dt_prof_hourwday <<- melt(fread("./Data/hourwday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year","wday"), variable.name = "hour", value.name = "hourwday_coeff", variable.factor = F, value.factor = F ) %>% .[, hour := as.numeric(hour)]
-
-dt_prof_wday <<- melt(fread("./Data/wday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "wday", value.name = "wday_coeff", variable.factor = F, value.factor = F ) %>% .[, wday := as.numeric(wday)]
-
-dt_prof_month <<- melt(fread("./Data/month_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "month", value.name = "month_coeff", variable.factor = F, value.factor = F ) %>% .[, month := as.numeric(month)]
-
-dt_prof_yday <<- melt(fread("./Data/yday_profiles.csv"), id.vars = c("Profile_ID","Pollutant","Year"), variable.name = "yday", value.name = "yday_coeff", variable.factor = F, value.factor = F ) %>% .[, yday := as.numeric(yday)]
-
-####################################################################################################
-#### function to 1. return the NAEI emissions data, formatted, for the given year & Species.    ####
-####             2. match the annual NAEI data to the NFR codes and the temporal profile codes. ####
-
-JoinNAEItoProfiles <- function(year, species){
+JoinNAEItoProfiles <- function(year, species, classification){
   
   ########################################################
   
@@ -47,14 +34,17 @@ JoinNAEItoProfiles <- function(year, species){
   
   #########################################################
   
-  
-  colskeep <- c("NFR/CRF Group","Source","Activity",year)
+  ## lookup tables ##
+  # The classification name must have an 'NFR_to_xxxx.csv' file ready for the matching to work. Can be custom. 
+  dt_NFR_to_sect <- fread(paste0("./data/lookup/NFR_to_",classification,".csv")) # NFRs, Profile_IDs & sector groupings (e.g. SNAP)
+  dt_prof_to_GAM <- fread("./data/lookup/Profile_to_GAMfile.csv") # relates a Profile_ID to it's raw data GAM in ./data/GAM_output
   
   # read NAEI emissions data - currently on latest year = 2019. way to automate this?
-  naei_files <- list.files("./data/NAEI_info", pattern="-2019.csv", full.names = T)
+  naei_files <- list.files("./data/NAEI_total", pattern="-2019.csv", full.names = T)
   dt_naei <- fread(naei_files[grep(tolower(species), naei_files)], header=T)
   
   # subset data (remove blank rows and superfluous columns)
+  colskeep <- c("NFR/CRF Group","Source","Activity",year)
   dt_naei <- dt_naei[Source != ""]
   dt_naei <- dt_naei[ ,..colskeep]
   
@@ -69,9 +59,9 @@ JoinNAEItoProfiles <- function(year, species){
   }else{
     units(dt_naei$emission) <- "Gg /yr"
   }
-  
-  # join the NAEI emissions to the temporal profile & classification data
-  dt_joined <- dt_naei[dt_sect_to_prof, on = c("NFR19","Source","Activity")]
+ 
+  # join the NAEI emissions to the classification lookup and to the GAM name lookup
+  dt_joined <- dt_NFR_to_sect[dt_naei, on = c("NFR19","Source","Activity")][dt_prof_to_GAM , on = "Profile_ID"]
   dt_joined <- dt_joined[!is.na(emission)]
   
   if(identical(sum(dt_joined$emission, na.rm=T), sum(dt_naei$emission, na.rm=T))==T){
@@ -85,11 +75,11 @@ JoinNAEItoProfiles <- function(year, species){
   
 }
 
-##########################################################################################################
-#### function to profile emissions into classification system, using the profile IDs per NFR sector.  ####
-####  Result: a weighted mean temporal profile for the whole Sector, based on emissions per profile   ####
+########################################################################################################
+#### Function to create weighted sector level GAMs via classification system, using NFR emissions.  ####
+#### Result: weighted temporal profiles for nominated Sectors, based on emissions per profile       ####
 
-TempProfileBySector <- function(year, species, timestep, classification = c("SNAP","GNFR"), emis, yr_spec_NFR = NULL){
+TempProfileBySector <- function(year, species, timestep, classification, emis, yr_spec_NFR = NULL){
   
   ####################################################
   
@@ -103,34 +93,112 @@ TempProfileBySector <- function(year, species, timestep, classification = c("SNA
                                             Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   # timestep       = *vector* timesteps to recreate profiles for
   if(timestep %!in% c("yday","month","wday","hour","hourwday")) stop("Not currently a valid timestep to run profiles for")
-  # classification = *character* GNFR or SNAP
-  classification <- match.arg(classification)
   # emis           = *data.table* from JoinNAEItoProfiles; total emissions per NFR with matching profile IDs
   # yr_spec_NFR    = *character* optional vector of NFR codes to be profiled by year specific data
-  if(sum(yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19))) stop(paste0("The following are not NFR codes, check: ",yr_spec_NFR[yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19)]))
+  #if(sum(yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19))) stop(paste0("The following are not NFR codes, check: ",yr_spec_NFR[yr_spec_NFR %!in% unique(dt_sect_to_prof$NFR19)]))
   
   ####################################################
   
-  ## loop through the timesteps and create new coefficients, for aggregated Sector level
-  ## (using a calendar method smooths over the individual temporal profiles, it's not right)
+  dt_prof_to_GAM <- fread("./data/lookup/Profile_to_GAMfile.csv") # relates a Profile_ID to it's raw data GAM in ./data/GAM_output
   
+  ## loop through the sectors in the classification system and create sector level GAMs, for each timestep nominated
   print(paste0(Sys.time(),": Profiling ",classification," by ",timestep))
   
-  # multiplier to adjust the coefficents to a fraction of 1. 
-  c_mult <- ifelse(timestep == "yday", 1/365, ifelse(timestep == "month", 1/12, ifelse(timestep == "wday", 1/7, ifelse(timestep == "hour", 1/24, 1/7/24))))
+  # multiplier to create coefficients centred on 1
+  c_mult <- ifelse(timestep == "yday", 365, ifelse(timestep == "month", 12, ifelse(timestep == "wday", 7, ifelse(timestep == "hour", 24, 24))))
   
-  # set sectors to work through
-  if(classification == "SNAP"){
-    sectors <- 1:11 
-  }else{
-    sectors <- c("ff") # FILL IN GNFR HERE
-  }
+  # get unqiue sector names from the classification system
+  setnames(emis, classification, "sector")
+  sectors <- emis[,unique(sector)]
   
   # blank list for sector level profiles
-  l_sec_by_time <- list()
+  #l_sec_by_time <- list()
   
-  # loop through sectors set above and do temporal processing
+  # loop through sectors set above and create a GAM from weighted sub-sector GAMs
   for(s in sectors){
+    
+    # aggregate the emissions to sector level, to distribute onto sector profiles. 
+    dt_sect_emis <- emis[sector == s, .(emission = sum(emission, na.rm=T))][["emission"]]
+    
+    # aggregate the NFR codes within the sector and derive fraction contribution, by Profile_ID. 
+    dt_sectprof_emis <- emis[sector == s, .(emission = sum(emission, na.rm=T)), by = .(Profile_ID,GAM_file)]
+    dt_sectprof_emis[, prof_weight := set_units(emission / dt_sect_emis,NULL)]
+    
+    # for all the relevant GAM files:
+        # read the GAM and 
+    
+    l_GAM_data <- list()
+    
+    for(g in dt_sectprof_emis[,GAM_file]){
+      
+      # read in the original Profile_ID names that went into making the raw data GAM
+      v_IDs <- dt_prof_to_GAM[GAM_file==g, Profile_ID]
+      
+      # read in the required raw data GAM, extract the Profile_ID names on which it was built.
+      g_name <- paste0("./data/GAM_output/",timestep,"/",g,"_GAM_",timestep,".rds")
+      g_object <- readRDS(g_name)
+      #v_IDs <- levels(g_object$var.summary$Profile_ID)
+      
+      # create a table to fit to the model - will need all the Profile_IDs in the GAM here, even if not present in emissions data
+      dt_fit <- data.table(Profile_ID = rep(v_IDs, each=c_mult), time = rep(1:c_mult, length(v_IDs)) )
+      dt_fit[, Profile_ID := factor(Profile_ID)]
+      if(timestep=="hour") dt_fit[, time := time-1]
+      
+      # fit the GAM to the blank data many times to get a sampling space. 
+      # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
+      dt_g_sampled <- suppressWarnings(as.data.table(ungeviz::sample_outcomes(g_object, dt_fit, times = 100)))
+      dt_g_sample_sub <- dt_g_sampled[Profile_ID %in% dt_sectprof_emis[GAM_file==g, Profile_ID]]
+      dt_g_sample_sub[,c(".draw") := NULL]
+      
+      # add weights
+      dt_g_sample_sub[, w := suppressMessages(plyr::mapvalues(Profile_ID, dt_sectprof_emis$Profile_ID, dt_sectprof_emis$prof_weight))]
+      
+      # add to list for whole sector
+      l_GAM_data[[g]] <- dt_g_sample_sub
+      
+    }
+   
+    dt_GAM_data <- rbindlist(l_GAM_data, use.names = T)
+    dt_GAM_data[, w := as.numeric(as.character(w))]
+    
+    ## Make a GAM for the whole sector, weighted by emissions contribution of NFR codes grouped by Profile_ID
+    
+    gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+    
+    
+    if(p == "hr"){
+      
+    }else if(p=="hrwd"){
+      
+    }else if(p=="wd"){
+      
+    }else if(p=="mo"){
+      
+    }else{
+      
+    }
+    
+    #### strip data and save ####
+    gam_sr <- strip_rawdata(gam_sect)
+    saveRDS(gam_sr, paste0("./output/GAM_sector/",timestep,"/",classification,"_",s,"_GAM_",timestep,".rds"))
+    
+    #### everything below is optional ####
+    
+    ## option to output .csv coefficients based around 1
+    
+    
+    if(p == "hr"){
+      dt_gc <- data.table(Profile_ID = rep(unique(dt_raw[,Profile_ID]),each=24), time=rep(0:23, n_profiles))
+    }else if(p=="hrwd"){
+      dt_gc <- data.table(Profile_ID = rep(unique(dt_raw[,Profile_ID]),each=7*24), wday=rep(rep(1:7,each = 24),n_profiles), hour=rep(rep(0:23,7),n_profiles))
+    }else if(p=="wd"){
+      dt_gc <- data.table(Profile_ID = rep(unique(dt_raw[,Profile_ID]),each=7), time=rep(1:7, n_profiles))
+    }else if(p=="mo"){
+      dt_gc <- data.table(Profile_ID = rep(unique(dt_raw[,Profile_ID]),each=12), time=rep(1:12, n_profiles))
+    }else{
+      dt_gc <- data.table(Profile_ID = rep(unique(dt_raw[,Profile_ID]),each=365), time=rep(1:365, n_profiles))
+    }
+    
     
   # extract the sector relevant NFR codes from NAEI data. Aggregate by the profile. 
   dt_sect_specific <- emis[SNAP == s]
@@ -142,6 +210,8 @@ TempProfileBySector <- function(year, species, timestep, classification = c("SNA
   
   l_prof_profiles <- list()
       
+ 
+  
   ## loop through the unique temporal profiles in sector and disperse emissions over timestep.
   # timesteps are according to the Profile name and year of choice. 
   for(prof in unique(dt_sect_specific_agg[,Profile_ID])){
@@ -235,27 +305,7 @@ GAMofGAMs <- function(year, species, classification, emis){
   
   
   
-  sector <- 8
   
-  # aggregate the emissions to sector level, to distribute onto sector profiles. 
-  dt_sect_emis <- emis[!(get(classification) %in% c("","avi.cruise")), .(emission = sum(emission, na.rm=T)), by = .(Sector = get(classification))]
-  if(classification=="SNAP") dt_sect_emis[,Sector := as.numeric(as.character(Sector))]
-  
-  # aggregate the emissions to sector level, to distribute onto sector profiles. 
-  dt_tot_emis <- emis[!(get(classification) %in% c("","avi.cruise")), .(emission = sum(emission, na.rm=T))]
-  
-  
-  dt_sect_to_prof[SNAP==8]
-  
-  
-  emis
-  
-  
-  
-  dt_gam1_sampled <- as.data.table(sample_outcomes(gam1, dt_fit1, times = 50))
-  # make a gam from it, with weights
-  
-  dt_gam1_sampled[, w := as.numeric(as.character(plyr::mapvalues(Group, c("A","B"), c(0.2,0.8))))]
     
 }
 

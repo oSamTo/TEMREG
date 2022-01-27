@@ -1,0 +1,2166 @@
+NFR19,SNAP,Source,Activity,Profile_ID
+1A1a,1,Heat supply,Landfill gas,MISC_ANY
+1A1a,1,Heat supply,Sewage gas,MISC_ANY
+1A1a,1,Miscellaneous industrial/commercial combustion,MSW,MISC_ANY
+1A1a,1,Power stations,Burning oil,ENER_COG
+1A1a,1,Power stations,Coal,ENER_COA
+1A1a,1,Power stations,Coke,ENER_OTH
+1A1a,1,Power stations,Fuel oil,ENER_COG
+1A1a,1,Power stations,Gas oil,ENER_COG
+1A1a,1,Power stations,Landfill gas,ENER_BIO
+1A1a,1,Power stations,Liquid bio-fuels,ENER_BIO
+1A1a,1,Power stations,LPG,ENER_OTH
+1A1a,1,Power stations,MSW,ENER_OTH
+1A1a,1,Power stations,Natural gas,ENER_GAS
+1A1a,1,Power stations,OPG,ENER_OTH
+1A1a,1,Power stations,Orimulsion,ENER_OTH
+1A1a,1,Power stations,Petroleum coke,ENER_OTH
+1A1a,1,Power stations,Poultry litter,ENER_OTH
+1A1a,1,Power stations,Scrap tyres,ENER_OTH
+1A1a,1,Power stations,Sewage gas,ENER_BIO
+1A1a,1,Power stations,Slurry,ENER_OTH
+1A1a,1,Power stations,Sour gas,ENER_OTH
+1A1a,1,Power stations,Straw,ENER_OTH
+1A1a,1,Power stations,Waste oils,ENER_OTH
+1A1a,1,Power stations,Wood,ENER_OTH
+1A1ai,1,Miscellaneous industrial/commercial combustion,MSW,MISC_ANY
+1A1ai,1,Power stations,Burning oil,ENER_COG
+1A1ai,1,Power stations,Coal,ENER_COA
+1A1ai,1,Power stations,Coke,ENER_OTH
+1A1ai,1,Power stations,Fuel oil,ENER_COG
+1A1ai,1,Power stations,Gas oil,ENER_COG
+1A1ai,1,Power stations,Landfill gas,ENER_BIO
+1A1ai,1,Power stations,Liquid bio-fuels,ENER_BIO
+1A1ai,1,Power stations,LPG,ENER_OTH
+1A1ai,1,Power stations,MSW,ENER_OTH
+1A1ai,1,Power stations,Natural gas,ENER_GAS
+1A1ai,1,Power stations,OPG,ENER_OTH
+1A1ai,1,Power stations,Orimulsion,ENER_OTH
+1A1ai,1,Power stations,Petroleum coke,ENER_OTH
+1A1ai,1,Power stations,Poultry litter,ENER_OTH
+1A1ai,1,Power stations,Scrap tyres,ENER_OTH
+1A1ai,1,Power stations,Sewage gas,ENER_BIO
+1A1ai,1,Power stations,Sour gas,ENER_OTH
+1A1ai,1,Power stations,Straw,ENER_OTH
+1A1ai,1,Power stations,Waste oils,ENER_OTH
+1A1ai,1,Power stations,Wood,ENER_OTH
+1A1aiii,1,Heat supply,Landfill gas,MISC_ANY
+1A1aiii,1,Heat supply,Sewage gas,MISC_ANY
+1A1b,1,Refineries - combustion,Burning oil,MISC_ANY
+1A1b,1,Refineries - combustion,Fuel oil,MISC_ANY
+1A1b,1,Refineries - combustion,Gas oil,MISC_ANY
+1A1b,1,Refineries - combustion,LPG,MISC_ANY
+1A1b,1,Refineries - combustion,Naphtha,MISC_ANY
+1A1b,1,Refineries - combustion,Natural gas,MISC_ANY
+1A1b,1,Refineries - combustion,OPG,MISC_ANY
+1A1b,1,Refineries - combustion,Petrol,MISC_ANY
+1A1b,1,Refineries - combustion,Petroleum coke,MISC_ANY
+1A1b,1,Refineries - combustion,Refinery miscellaneous,MISC_ANY
+1A1c,1,Coke production,Blast furnace gas,INDU_MAN_CAP
+1A1c,1,Coke production,Coke oven gas,INDU_MAN_CAP
+1A1c,1,Coke production,Colliery methane,INDU_MAN_CAP
+1A1c,1,Coke production,Natural gas,INDU_MAN_CAP
+1A1c,1,Collieries - combustion,Coal,INDU_MIN_GEN
+1A1c,1,Collieries - combustion,Coke oven gas,INDU_MIN_GEN
+1A1c,1,Collieries - combustion,Colliery methane,INDU_MIN_GEN
+1A1c,1,Collieries - combustion,Natural gas,INDU_MIN_GEN
+1A1c,1,Gas production,Colliery methane,MISC_ANY
+1A1c,1,Gas production,LPG,MISC_ANY
+1A1c,1,Gas production,Natural gas,MISC_ANY
+1A1c,1,Gas production,OPG,MISC_ANY
+1A1c,1,Gas production,Town gas,MISC_ANY
+1A1c,1,Nuclear fuel production,Natural gas,MISC_ANY
+1A1c,1,Solid smokeless fuel production,Coke,MISC_ANY
+1A1c,1,Solid smokeless fuel production,Natural gas,MISC_ANY
+1A1c,1,Town gas manufacture,Burning oil,MISC_ANY
+1A1c,1,Town gas manufacture,Coal,MISC_ANY
+1A1c,1,Town gas manufacture,Coke,MISC_ANY
+1A1c,1,Town gas manufacture,Coke oven gas,MISC_ANY
+1A1c,1,Town gas manufacture,LPG,MISC_ANY
+1A1c,1,Town gas manufacture,Natural gas,MISC_ANY
+1A1c,1,Upstream Gas Production - fuel combustion,Gas oil,INDU_EXT_PAG
+1A1c,1,Upstream Gas Production - fuel combustion,Natural gas,INDU_EXT_PAG
+1A1c,1,Upstream oil and gas production - combustion at gas separation plant,LPG,INDU_EXT_PAG
+1A1c,1,Upstream oil and gas production - combustion at gas separation plant,OPG,INDU_EXT_PAG
+1A1c,1,Upstream Oil Production - fuel combustion,Gas oil,INDU_EXT_PAG
+1A1c,1,Upstream Oil Production - fuel combustion,Natural gas,INDU_EXT_PAG
+1A1ci,1,Coke production,Blast furnace gas,INDU_MAN_CAP
+1A1ci,1,Coke production,Coke oven gas,INDU_MAN_CAP
+1A1ci,1,Coke production,Colliery methane,INDU_MAN_CAP
+1A1ci,1,Coke production,Natural gas,INDU_MAN_CAP
+1A1ci,1,Solid smokeless fuel production,Coke,MISC_ANY
+1A1ci,1,Solid smokeless fuel production,Natural gas,MISC_ANY
+1A1cii,1,Upstream Gas Production - fuel combustion,Gas oil,INDU_EXT_PAG
+1A1cii,1,Upstream Gas Production - fuel combustion,Natural gas,INDU_EXT_PAG
+1A1cii,1,Upstream oil and gas production - combustion at gas separation plant,LPG,INDU_EXT_PAG
+1A1cii,1,Upstream oil and gas production - combustion at gas separation plant,OPG,INDU_EXT_PAG
+1A1cii,1,Upstream Oil Production - fuel combustion,Gas oil,INDU_EXT_PAG
+1A1cii,1,Upstream Oil Production - fuel combustion,Natural gas,INDU_EXT_PAG
+1A1ciii,1,Collieries - combustion,Coal,INDU_MIN_GEN
+1A1ciii,1,Collieries - combustion,Coke oven gas,INDU_MIN_GEN
+1A1ciii,1,Collieries - combustion,Colliery methane,INDU_MIN_GEN
+1A1ciii,1,Collieries - combustion,Natural gas,INDU_MIN_GEN
+1A1ciii,1,Gas production,Colliery methane,MISC_ANY
+1A1ciii,1,Gas production,LPG,MISC_ANY
+1A1ciii,1,Gas production,Natural gas,MISC_ANY
+1A1ciii,1,Gas production,OPG,MISC_ANY
+1A1ciii,1,Gas production,Town gas,MISC_ANY
+1A1ciii,1,Nuclear fuel production,Natural gas,MISC_ANY
+1A1ciii,1,Town gas manufacture,Burning oil,MISC_ANY
+1A1ciii,1,Town gas manufacture,Coal,MISC_ANY
+1A1ciii,1,Town gas manufacture,Coke,MISC_ANY
+1A1ciii,1,Town gas manufacture,Coke oven gas,MISC_ANY
+1A1ciii,1,Town gas manufacture,LPG,MISC_ANY
+1A1ciii,1,Town gas manufacture,Natural gas,MISC_ANY
+1A2a,3,Blast furnaces,Blast furnace gas,INDU_MAN_IRO
+1A2a,3,Blast furnaces,Coke oven gas,INDU_MAN_IRO
+1A2a,3,Blast furnaces,LPG,INDU_MAN_IRO
+1A2a,3,Blast furnaces,Natural gas,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Blast furnace gas,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Coal,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Coke,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Coke oven gas,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Fuel oil,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Gas oil,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,LPG,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Natural gas,INDU_MAN_IRO
+1A2a,3,Iron and steel - combustion plant,Town gas,INDU_MAN_IRO
+1A2a,3,Sinter production,Coke,INDU_PRO_GEN
+1A2b,3,Autogeneration - exported to grid,Coal,INDU_PRO_GEN
+1A2b,3,Autogenerators,Coal,INDU_PRO_GEN
+1A2b,3,Non-Ferrous Metal (combustion),Coal,INDU_MAN_MET
+1A2b,3,Non-Ferrous Metal (combustion),Fuel oil,INDU_MAN_MET
+1A2b,3,Non-Ferrous Metal (combustion),Gas oil,INDU_MAN_MET
+1A2b,3,Non-Ferrous Metal (combustion),Natural gas,INDU_MAN_MET
+1A2c,3,Ammonia production - combustion,Natural gas,INDU_PRO_GEN
+1A2c,3,Chemicals (combustion),Coal,INDU_MAN_CHE
+1A2c,3,Chemicals (combustion),Fuel oil,INDU_MAN_CHE
+1A2c,3,Chemicals (combustion),Gas oil,INDU_MAN_CHE
+1A2c,3,Chemicals (combustion),Natural gas,INDU_MAN_CHE
+1A2c,3,Chemicals (combustion),OPG,INDU_MAN_CHE
+1A2c,3,Methanol production – combustion,Natural gas,INDU_PRO_GEN
+1A2d,3,"Pulp, Paper and Print (combustion)",Coal,INDU_MAN_PAP
+1A2d,3,"Pulp, Paper and Print (combustion)",Fuel oil,INDU_MAN_PAP
+1A2d,3,"Pulp, Paper and Print (combustion)",Gas oil,INDU_MAN_PAP
+1A2d,3,"Pulp, Paper and Print (combustion)",Natural gas,INDU_MAN_PAP
+1A2e,3,"Food & drink, tobacco (combustion)",Coal,INDU_MAN_FAB
+1A2e,3,"Food & drink, tobacco (combustion)",Fuel oil,INDU_MAN_FAB
+1A2e,3,"Food & drink, tobacco (combustion)",Gas oil,INDU_MAN_FAB
+1A2e,3,"Food & drink, tobacco (combustion)",Natural gas,INDU_MAN_FAB
+1A2f,3,Cement - non-decarbonising,Clinker production,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Coal,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Fuel oil,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Gas oil,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Natural gas,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Petroleum coke,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Scrap tyres,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Waste,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Waste oils,INDU_PRO_GEN
+1A2f,3,Cement production - combustion,Waste solvent,INDU_PRO_GEN
+1A2f,3,Lime production - non decarbonising,Coal,INDU_PRO_GEN
+1A2f,3,Lime production - non decarbonising,Coke,INDU_PRO_GEN
+1A2f,3,Lime production - non decarbonising,Lime production,INDU_PRO_GEN
+1A2f,3,Lime production - non decarbonising,Natural gas,INDU_PRO_GEN
+1A2f,3,Other industrial combustion,Scrap tyres,INDU_MAN_GEN
+1A2gvii,8,Industrial off-road mobile machinery,DERV,OFFR_OTH
+1A2gvii,8,Industrial off-road mobile machinery,Gas oil,OFFR_OTH
+1A2gvii,8,Industrial off-road mobile machinery,Petrol,OFFR_OTH
+1A2gviii,3,Autogeneration - exported to grid,Natural gas,MISC_ANY
+1A2gviii,3,Autogenerators,Biogas,MISC_ANY
+1A2gviii,3,Autogenerators,Natural gas,MISC_ANY
+1A2gviii,3,Industrial engines,Lubricants,INDU_PRO_GEN
+1A2gviii,3,Other industrial combustion,Biomass,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Burning oil,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Coal,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Coke,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Coke oven gas,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Colliery methane,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Fuel oil,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Gas oil,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,LPG,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Lubricants,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Natural gas,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,OPG,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Petroleum coke,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,SSF,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Town gas,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Waste solvent,INDU_MAN_GEN
+1A2gviii,3,Other industrial combustion,Wood,INDU_MAN_GEN
+1A3a,8,Aircraft - domestic cruise,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft - domestic take off and landing,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_GEN
+1A3a,8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_GEN
+1A3a,8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft - international take off and landing,Aviation spirit,AVIA_GEN
+1A3ai(i),8,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and Bermuda - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and Bermuda - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and CDs - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and CDs - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and Gibraltar - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and Gibraltar - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation spirit,AVIA_GEN
+1A3ai(i),8,Aircraft between UK and other OTs (excl Gib. and Bermuda) - TOL,Aviation turbine fuel,AVIA_GEN
+1A3ai(i),8,Aircraft engines,Lubricants,AVIA_GEN
+1A3aii(i),8,Aircraft - domestic take off and landing,Aviation spirit,AVIA_GEN
+1A3aii(i),8,Aircraft - domestic take off and landing,Aviation turbine fuel,AVIA_GEN
+1A3bi,7,Road transport - cars - cold start,DERV,ROAD_CAT_ALL
+1A3bi,7,Road transport - cars - cold start,Petrol,ROAD_CAT_ALL
+1A3bi,7,Road transport - cars - motorway driving,DERV,ROAD_CAT_MOT
+1A3bi,7,Road transport - cars - motorway driving,Petrol,ROAD_CAT_MOT
+1A3bi,7,Road transport - cars - rural driving,DERV,ROAD_CAT_RUR
+1A3bi,7,Road transport - cars - rural driving,Petrol,ROAD_CAT_RUR
+1A3bi,7,Road transport - cars - urban driving,DERV,ROAD_CAT_URB
+1A3bi,7,Road transport - cars - urban driving,Petrol,ROAD_CAT_URB
+1A3bii,7,Road transport - LGVs - cold start,DERV,ROAD_LGV_ALL
+1A3bii,7,Road transport - LGVs - cold start,Petrol,ROAD_LGV_ALL
+1A3bii,7,Road transport - LGVs - motorway driving,DERV,ROAD_LGV_MOT
+1A3bii,7,Road transport - LGVs - motorway driving,Petrol,ROAD_LGV_MOT
+1A3bii,7,Road transport - LGVs - rural driving,DERV,ROAD_LGV_RUR
+1A3bii,7,Road transport - LGVs - rural driving,Petrol,ROAD_LGV_RUR
+1A3bii,7,Road transport - LGVs - urban driving,DERV,ROAD_LGV_URB
+1A3bii,7,Road transport - LGVs - urban driving,Petrol,ROAD_LGV_URB
+1A3biii,7,Road transport - buses and coaches - motorway driving,DERV,ROAD_BUS_MOT
+1A3biii,7,Road transport - buses and coaches - rural driving,DERV,ROAD_BUS_RUR
+1A3biii,7,Road transport - buses and coaches - urban driving,DERV,ROAD_BUS_URB
+1A3biii,7,Road transport - HGV articulated - motorway driving,DERV,ROAD_HGV_MOT
+1A3biii,7,Road transport - HGV articulated - rural driving,DERV,ROAD_HGV_RUR
+1A3biii,7,Road transport - HGV articulated - urban driving,DERV,ROAD_HGV_URB
+1A3biii,7,Road transport - HGV rigid - motorway driving,DERV,ROAD_HGV_MOT
+1A3biii,7,Road transport - HGV rigid - rural driving,DERV,ROAD_HGV_RUR
+1A3biii,7,Road transport - HGV rigid - urban driving,DERV,ROAD_HGV_URB
+1A3biv,7,Road transport - mopeds (<50cc 2st) - urban driving,Lubricants,ROAD_CYC_URB
+1A3biv,7,Road transport - mopeds (<50cc 2st) - urban driving,Petrol,ROAD_CYC_URB
+1A3biv,7,Road transport - motorcycle (>50cc  2st) - rural driving,Petrol,ROAD_CYC_RUR
+1A3biv,7,Road transport - motorcycle (>50cc  2st) - urban driving,Petrol,ROAD_CYC_URB
+1A3biv,7,Road transport - motorcycle (>50cc  4st) - motorway driving,Petrol,ROAD_CYC_MOT
+1A3biv,7,Road transport - motorcycle (>50cc  4st) - rural driving,Petrol,ROAD_CYC_RUR
+1A3biv,7,Road transport - motorcycle (>50cc  4st) - urban driving,Petrol,ROAD_CYC_URB
+1A3bv,7,Road transport - all vehicles biofuels use,Biodiesel,ROAD_CAT_ALL
+1A3bv,7,Road transport - all vehicles biofuels use,Bio-MTBE,ROAD_CAT_ALL
+1A3bv,7,Road transport - all vehicles LPG use,LPG,ROAD_CAT_ALL
+1A3bv,7,Road transport - cars - evaporative,Petrol,ROAD_CAT_ALL
+1A3bv,7,Road transport - LGVs - evaporative,Petrol,ROAD_CAT_ALL
+1A3bv,7,Road transport - mopeds (<50cc 2st) - evaporative,Petrol,ROAD_CYC_ALL
+1A3bv,7,Road transport - motorcycle (>50cc  2st) - evaporative,Petrol,ROAD_CYC_ALL
+1A3bv,7,Road transport - motorcycle (>50cc  4st) - evaporative,Petrol,ROAD_CYC_ALL
+1A3bvi,7,Road transport - buses and coaches - motorway driving,Brake wear,ROAD_BUS_MOT
+1A3bvi,7,Road transport - buses and coaches - motorway driving,Tyre wear,ROAD_BUS_MOT
+1A3bvi,7,Road transport - buses and coaches - rural driving,Brake wear,ROAD_BUS_RUR
+1A3bvi,7,Road transport - buses and coaches - rural driving,Tyre wear,ROAD_BUS_RUR
+1A3bvi,7,Road transport - buses and coaches - urban driving,Brake wear,ROAD_BUS_URB
+1A3bvi,7,Road transport - buses and coaches - urban driving,Tyre wear,ROAD_BUS_URB
+1A3bvi,7,Road transport - cars - motorway driving,Brake wear,ROAD_CAT_MOT
+1A3bvi,7,Road transport - cars - motorway driving,Tyre wear,ROAD_CAT_MOT
+1A3bvi,7,Road transport - cars - rural driving,Brake wear,ROAD_CAT_RUR
+1A3bvi,7,Road transport - cars - rural driving,Tyre wear,ROAD_CAT_RUR
+1A3bvi,7,Road transport - cars - urban driving,Brake wear,ROAD_CAT_URB
+1A3bvi,7,Road transport - cars - urban driving,Tyre wear,ROAD_CAT_URB
+1A3bvi,7,Road transport - HGV articulated - motorway driving,Brake wear,ROAD_HGV_MOT
+1A3bvi,7,Road transport - HGV articulated - motorway driving,Tyre wear,ROAD_HGV_MOT
+1A3bvi,7,Road transport - HGV articulated - rural driving,Brake wear,ROAD_HGV_RUR
+1A3bvi,7,Road transport - HGV articulated - rural driving,Tyre wear,ROAD_HGV_RUR
+1A3bvi,7,Road transport - HGV articulated - urban driving,Brake wear,ROAD_HGV_URB
+1A3bvi,7,Road transport - HGV articulated - urban driving,Tyre wear,ROAD_HGV_URB
+1A3bvi,7,Road transport - HGV rigid - motorway driving,Brake wear,ROAD_HGV_MOT
+1A3bvi,7,Road transport - HGV rigid - motorway driving,Tyre wear,ROAD_HGV_MOT
+1A3bvi,7,Road transport - HGV rigid - rural driving,Brake wear,ROAD_HGV_RUR
+1A3bvi,7,Road transport - HGV rigid - rural driving,Tyre wear,ROAD_HGV_RUR
+1A3bvi,7,Road transport - HGV rigid - urban driving,Brake wear,ROAD_HGV_URB
+1A3bvi,7,Road transport - HGV rigid - urban driving,Tyre wear,ROAD_HGV_URB
+1A3bvi,7,Road transport - LGVs - motorway driving,Brake wear,ROAD_LGV_MOT
+1A3bvi,7,Road transport - LGVs - motorway driving,Tyre wear,ROAD_LGV_MOT
+1A3bvi,7,Road transport - LGVs - rural driving,Brake wear,ROAD_LGV_RUR
+1A3bvi,7,Road transport - LGVs - rural driving,Tyre wear,ROAD_LGV_RUR
+1A3bvi,7,Road transport - LGVs - urban driving,Brake wear,ROAD_LGV_URB
+1A3bvi,7,Road transport - LGVs - urban driving,Tyre wear,ROAD_LGV_URB
+1A3bvi,7,Road transport - mopeds (<50cc 2st) - urban driving,Brake wear,ROAD_CYC_URB
+1A3bvi,7,Road transport - mopeds (<50cc 2st) - urban driving,Tyre wear,ROAD_CYC_URB
+1A3bvi,7,Road transport - motorcycle (>50cc  2st) - rural driving,Brake wear,ROAD_CYC_RUR
+1A3bvi,7,Road transport - motorcycle (>50cc  2st) - rural driving,Tyre wear,ROAD_CYC_RUR
+1A3bvi,7,Road transport - motorcycle (>50cc  2st) - urban driving,Brake wear,ROAD_CYC_URB
+1A3bvi,7,Road transport - motorcycle (>50cc  2st) - urban driving,Tyre wear,ROAD_CYC_URB
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - motorway driving,Brake wear,ROAD_CYC_MOT
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - motorway driving,Tyre wear,ROAD_CYC_MOT
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - rural driving,Brake wear,ROAD_CYC_RUR
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - rural driving,Tyre wear,ROAD_CYC_RUR
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - urban driving,Brake wear,ROAD_CYC_URB
+1A3bvi,7,Road transport - motorcycle (>50cc  4st) - urban driving,Tyre wear,ROAD_CYC_URB
+1A3bvii,7,Road transport - buses and coaches - motorway driving,Road abrasion,ROAD_BUS_MOT
+1A3bvii,7,Road transport - buses and coaches - rural driving,Road abrasion,ROAD_BUS_RUR
+1A3bvii,7,Road transport - buses and coaches - urban driving,Road abrasion,ROAD_BUS_URB
+1A3bvii,7,Road transport - cars - motorway driving,Road abrasion,ROAD_CAT_MOT
+1A3bvii,7,Road transport - cars - rural driving,Road abrasion,ROAD_CAT_RUR
+1A3bvii,7,Road transport - cars - urban driving,Road abrasion,ROAD_CAT_URB
+1A3bvii,7,Road transport - HGV articulated - motorway driving,Road abrasion,ROAD_HGV_MOT
+1A3bvii,7,Road transport - HGV articulated - rural driving,Road abrasion,ROAD_HGV_RUR
+1A3bvii,7,Road transport - HGV articulated - urban driving,Road abrasion,ROAD_HGV_URB
+1A3bvii,7,Road transport - HGV rigid - motorway driving,Road abrasion,ROAD_HGV_MOT
+1A3bvii,7,Road transport - HGV rigid - rural driving,Road abrasion,ROAD_HGV_RUR
+1A3bvii,7,Road transport - HGV rigid - urban driving,Road abrasion,ROAD_HGV_URB
+1A3bvii,7,Road transport - LGVs - motorway driving,Road abrasion,ROAD_LGV_MOT
+1A3bvii,7,Road transport - LGVs - rural driving,Road abrasion,ROAD_LGV_RUR
+1A3bvii,7,Road transport - LGVs - urban driving,Road abrasion,ROAD_LGV_URB
+1A3bvii,7,Road transport - mopeds (<50cc 2st) - urban driving,Road abrasion,ROAD_CYC_URB
+1A3bvii,7,Road transport - motorcycle (>50cc  2st) - rural driving,Road abrasion,ROAD_CYC_RUR
+1A3bvii,7,Road transport - motorcycle (>50cc  2st) - urban driving,Road abrasion,ROAD_CYC_URB
+1A3bvii,7,Road transport - motorcycle (>50cc  4st) - motorway driving,Road abrasion,ROAD_CYC_MOT
+1A3bvii,7,Road transport - motorcycle (>50cc  4st) - rural driving,Road abrasion,ROAD_CYC_RUR
+1A3bvii,7,Road transport - motorcycle (>50cc  4st) - urban driving,Road abrasion,ROAD_CYC_URB
+1A3c,8,Rail - coal,Coal,RAIL_GEN
+1A3c,8,Railways - freight,Gas oil,RAIL_GEN
+1A3c,8,Railways - intercity,Gas oil,RAIL_GEN
+1A3c,8,Railways - regional,Gas oil,RAIL_GEN
+1A3d,8,Inland goods-carrying vessels,DERV,SHIP_CTP
+1A3d,8,Inland goods-carrying vessels,Gas oil,SHIP_CTP
+1A3d,8,Inland goods-carrying vessels,Petrol,SHIP_CTP
+1A3d,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",DERV,SHIP_MIS
+1A3d,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",Gas oil,SHIP_MIS
+1A3d,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",Petrol,SHIP_MIS
+1A3d,8,Personal watercraft e.g. jet ski,DERV,SHIP_REC
+1A3d,8,Personal watercraft e.g. jet ski,Gas oil,SHIP_REC
+1A3d,8,Personal watercraft e.g. jet ski,Petrol,SHIP_REC
+1A3d,8,Sailing boats with auxiliary engines,DERV,SHIP_REC
+1A3d,8,Sailing boats with auxiliary engines,Gas oil,SHIP_REC
+1A3d,8,Sailing boats with auxiliary engines,Petrol,SHIP_REC
+1A3d,8,Shipping - coastal,Fuel oil,SHIP_CTP
+1A3d,8,Shipping - coastal,Gas oil,SHIP_CTP
+1A3d,8,Shipping between UK and Bermuda,Fuel oil,SHIP_CTP
+1A3d,8,Shipping between UK and CDs,Fuel oil,SHIP_CTP
+1A3d,8,Shipping between UK and CDs,Gas oil,SHIP_CTP
+1A3d,8,Shipping between UK and Gibraltar,Fuel oil,SHIP_CTP
+1A3d,8,Shipping between UK and OTs (excl. Gib and Bermuda),Fuel oil,SHIP_CTP
+1A3dii,8,Inland goods-carrying vessels,DERV,SHIP_CTP
+1A3dii,8,Inland goods-carrying vessels,Gas oil,SHIP_CTP
+1A3dii,8,Inland goods-carrying vessels,Petrol,SHIP_CTP
+1A3dii,8,Marine engines,Lubricants,SHIP_CTP
+1A3dii,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",DERV,SHIP_MIS
+1A3dii,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",Gas oil,SHIP_MIS
+1A3dii,8,"Motorboats / workboats (e.g. canal boats, dredgers, service boats, tourist boats, river boats)",Petrol,SHIP_MIS
+1A3dii,8,Personal watercraft e.g. jet ski,DERV,SHIP_REC
+1A3dii,8,Personal watercraft e.g. jet ski,Gas oil,SHIP_REC
+1A3dii,8,Personal watercraft e.g. jet ski,Petrol,SHIP_REC
+1A3dii,8,Sailing boats with auxiliary engines,DERV,SHIP_REC
+1A3dii,8,Sailing boats with auxiliary engines,Gas oil,SHIP_REC
+1A3dii,8,Sailing boats with auxiliary engines,Petrol,SHIP_REC
+1A3dii,8,Shipping - coastal,Fuel oil,SHIP_CTP
+1A3dii,8,Shipping - coastal,Gas oil,SHIP_CTP
+1A3dii,8,Shipping between UK and Bermuda,Fuel oil,SHIP_CTP
+1A3dii,8,Shipping between UK and CDs,Fuel oil,SHIP_CTP
+1A3dii,8,Shipping between UK and CDs,Gas oil,SHIP_CTP
+1A3dii,8,Shipping between UK and Gibraltar,Fuel oil,SHIP_CTP
+1A3dii,8,Shipping between UK and OTs (excl. Gib and Bermuda),Fuel oil,SHIP_CTP
+1A3eii,8,Aircraft - support vehicles,Gas oil,AVIA_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Coal,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Coke,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Fuel oil,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Gas oil,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,LPG,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Natural gas,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,SSF,STAT_PIC_GEN
+1A4ai,2,Miscellaneous industrial/commercial combustion,Town gas,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Burning oil,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Coal,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Coke,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Fuel oil,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Gas oil,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Natural gas,STAT_PIC_GEN
+1A4ai,2,Public sector combustion,Town gas,STAT_PIC_GEN
+1A4ai,2,Railways - stationary combustion,Burning oil,RAIL_GEN
+1A4ai,2,Railways - stationary combustion,Coal,RAIL_GEN
+1A4ai,2,Railways - stationary combustion,Coke,RAIL_GEN
+1A4ai,2,Railways - stationary combustion,Fuel oil,RAIL_GEN
+1A4ai,2,Railways - stationary combustion,Natural gas,RAIL_GEN
+1A4bi,2,Domestic combustion,Anthracite,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Burning oil,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Charcoal,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Coal,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Coke,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Fuel oil,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Gas oil,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,LPG,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Natural gas,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Peat,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Petroleum coke,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,SSF,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Town gas,STAT_DOM_GEN
+1A4bi,2,Domestic combustion,Wood,STAT_DOM_GEN
+1A4bi,2,Solid smokeless fuel production,Petroleum coke,INDU_PRO_GEN
+1A4bii,8,House and garden machinery,DERV,OFFR_OTH
+1A4bii,8,House and garden machinery,Petrol,OFFR_OTH
+1A4ci,2,Agriculture - stationary combustion,Burning oil,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Coal,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Coke,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Fuel oil,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Natural gas,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Straw,MISC_ANY
+1A4ci,2,Agriculture - stationary combustion,Vaporising oil,MISC_ANY
+1A4cii,8,Agricultural engines,Lubricants,OFFR_OTH
+1A4cii,8,Agriculture - mobile machinery,Gas oil,OFFR_OTH
+1A4cii,8,Agriculture - mobile machinery,Petrol,OFFR_OTH
+1A4ciii,8,Fishing vessels,Fuel oil,SHIP_FIS
+1A4ciii,8,Fishing vessels,Gas oil,SHIP_FIS
+1A5b,8,Aircraft -  military,Aviation spirit,MISC_ANY
+1A5b,8,Aircraft -  military,Aviation turbine fuel,MISC_ANY
+1A5b,8,Shipping - naval,Gas oil,SHIP_MIL
+1B1a,5,Deep-mined coal,Coal produced,INDU_MIN_GEN
+1B1a,5,Open-cast coal,Coal produced,INDU_MIN_GEN
+1B1a1i,5,Deep-mined coal,Coal produced,INDU_MIN_GEN
+1B1a1ii,5,Coal storage and transport,Deep mined coal production,MISC_ANY
+1B1a1iii,5,Closed Coal Mines,Non-fuel combustion,MISC_ANY
+1B1a2i,5,Open-cast coal,Coal produced,INDU_MIN_GEN
+1B1b,5,Charcoal production,Charcoal produced,INDU_MAN_CAP
+1B1b,5,Coke production,Coal,INDU_MAN_CAP
+1B1b,5,Coke production,Coke produced,INDU_MAN_CAP
+1B1b,5,Iron and steel - flaring,Coke oven gas,INDU_MAN_IRO
+1B1b,5,Solid smokeless fuel production,Coal,INDU_MAN_CAP
+1B1b,5,Solid smokeless fuel production,Petroleum coke,INDU_MAN_CAP
+1B1b,5,Solid smokeless fuel production,SSF produced,INDU_MAN_CAP
+1B2a1,5,Upstream Oil Production - Offshore Well Testing,Exploration drilling :amount of gas flared,INDU_EXT_PAG
+1B2a2,5,Petroleum processes,Oil production,INDU_MAN_PET
+1B2a2,5,Upstream Oil Production - process emissions,Non-fuel combustion,INDU_EXT_PAG
+1B2a3,5,Upstream Oil Production - Offshore Oil Loading,Crude oil,INDU_EXT_PAG
+1B2a3,5,Upstream Oil Production - Onshore Oil Loading,Crude oil,INDU_EXT_PAG
+1B2a4,5,Upstream Oil Production - Oil terminal storage,Non-fuel combustion,INDU_EXT_PAG
+1B2ai,5,Petroleum processes,Oil production,INDU_MAN_PET
+1B2ai,5,Upstream Oil Production - Offshore Oil Loading,Crude oil,INDU_EXT_PAG
+1B2ai,5,Upstream Oil Production - Offshore Well Testing,Exploration drilling :amount of gas flared,INDU_EXT_PAG
+1B2ai,5,Upstream Oil Production - Oil terminal storage,Non-fuel combustion,INDU_EXT_PAG
+1B2ai,5,Upstream Oil Production - Onshore Oil Loading,Crude oil,INDU_EXT_PAG
+1B2ai,5,Upstream Oil Production - process emissions,Non-fuel combustion,INDU_EXT_PAG
+1B2aiv,4,Refineries - drainage,Process emission,MISC_ANY
+1B2aiv,4,Refineries - general,Process emission,MISC_ANY
+1B2aiv,4,Refineries - process,Process emission,MISC_ANY
+1B2aiv,4,Refineries - tankage,Process emission,MISC_ANY
+1B2av,5,Petrol stations - petrol delivery,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol stations - petrol delivery,Petrol (unleaded),MISC_ANY
+1B2av,5,Petrol stations - spillages,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol stations - spillages,Petrol (unleaded),MISC_ANY
+1B2av,5,Petrol stations - storage tanks,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol stations - storage tanks,Petrol (unleaded),MISC_ANY
+1B2av,5,Petrol stations - vehicle refuelling,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol stations - vehicle refuelling,Petrol (unleaded),MISC_ANY
+1B2av,5,Petrol terminals - storage,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol terminals - storage,Petrol (unleaded),MISC_ANY
+1B2av,5,Petrol terminals - tanker loading,Petrol (leaded),MISC_ANY
+1B2av,5,Petrol terminals - tanker loading,Petrol (unleaded),MISC_ANY
+1B2av,5,Refineries - road/rail loading,Petrol (leaded),MISC_ANY
+1B2av,5,Refineries - road/rail loading,Petrol (unleaded),MISC_ANY
+1B2av,5,Sea going vessel loading,Petrol (leaded),MISC_ANY
+1B2av,5,Sea going vessel loading,Petrol (unleaded),MISC_ANY
+1B2b,5,Gas leakage,Natural Gas (leakage at point of use),MISC_ANY
+1B2b,5,Gas leakage,Natural Gas (transmission leakage),MISC_ANY
+1B2b,5,Gas leakage,Natural gas supply,MISC_ANY
+1B2b,5,Gasification processes,Gas production (onshore),MISC_ANY
+1B2b,5,Upstream Gas Production - Gas terminal storage,Non-fuel combustion,INDU_EXT_PAG
+1B2b,5,Upstream Gas Production - Offshore Well Testing,Exploration drilling :amount of gas flared,INDU_EXT_PAG
+1B2b,5,Upstream Gas Production - process emissions,Non-fuel combustion,INDU_EXT_PAG
+1B2b1,5,Upstream Gas Production - Offshore Well Testing,Exploration drilling :amount of gas flared,INDU_EXT_PAG
+1B2b3,5,Upstream Gas Production - process emissions,Non-fuel combustion,INDU_EXT_PAG
+1B2b4,5,Gas leakage,Natural Gas (transmission leakage),MISC_ANY
+1B2b4,5,Upstream Gas Production - Gas terminal storage,Non-fuel combustion,INDU_EXT_PAG
+1B2b5,5,Gas leakage,Natural Gas (leakage at point of use),MISC_ANY
+1B2b5,5,Gas leakage,Natural gas supply,MISC_ANY
+1B2c,9,Refineries - flares,Process emission,WAST_GEN
+1B2c,9,Upstream Gas Production - flaring,Non-fuel combustion,INDU_EXT_PAG
+1B2c,9,Upstream Gas Production - venting,Non-fuel combustion,INDU_EXT_PAG
+1B2c,9,Upstream Oil Production - flaring,Non-fuel combustion,INDU_EXT_PAG
+1B2c,9,Upstream Oil Production - venting,Non-fuel combustion,INDU_EXT_PAG
+1B2c1i,5,Upstream Oil Production - venting,Non-fuel combustion,INDU_EXT_PAG
+1B2c1ii,5,Upstream Gas Production - venting,Non-fuel combustion,INDU_EXT_PAG
+1B2c2i,5,Upstream Oil Production - flaring,Non-fuel combustion,INDU_EXT_PAG
+1B2c2ii,5,Upstream Gas Production - flaring,Non-fuel combustion,INDU_EXT_PAG
+2A1,4,Cement - decarbonising,Clinker production,INDU_PRO_GEN
+2A1,4,Slag clement production,Slag cement production,INDU_PRO_GEN
+2A2,4,Lime production - decarbonising,Limestone,INDU_PRO_GEN
+2A3,4,Glass - container,Glass (container),INDU_PRO_GEN
+2A3,4,Glass - continuous filament glass fibre,Glass (glass fibre),INDU_PRO_GEN
+2A3,4,Glass - domestic,Glass (domestic),INDU_PRO_GEN
+2A3,4,Glass - flat,Glass (flat),INDU_PRO_GEN
+2A3,4,Glass - frits,Glass (frits),INDU_PRO_GEN
+2A3,4,Glass - general,Dolomite,INDU_PRO_GEN
+2A3,4,Glass - general,Glass-making additives,INDU_PRO_GEN
+2A3,4,Glass - general,Limestone,INDU_PRO_GEN
+2A3,4,Glass - general,Soda ash,INDU_PRO_GEN
+2A3,4,Glass - glass wool,Glass (glass wool),INDU_PRO_GEN
+2A3,4,Glass - lead crystal,Glass (lead crystal),INDU_PRO_GEN
+2A3,4,Glass - special,Glass (special),INDU_PRO_GEN
+2A3,4,Glass – ballotini,Glass (ballotini),INDU_PRO_GEN
+2A4a,3,Brick manufacture - all types,Bricks,INDU_PRO_GEN
+2A4a,3,Brick manufacture - Fletton,Fletton bricks,INDU_PRO_GEN
+2A4b,,Non Energy Use: chemical feedstock,Soda ash,MISC_ANY
+2A4b,,Other emissive applications of Soda Ash,Soda ash,MISC_ANY
+2A4d,3,Bread baking,Sodium Bicarbonate,INDU_PRO_GEN
+2A4d,3,Flue Gas Treatment (neutralisation),Sodium Bicarbonate,MISC_ANY
+2A4d,3,Other emissive applications of  Sodium Bicarbonate,Sodium Bicarbonate,MISC_ANY
+2A4d,3,Power stations - FGD,Gypsum produced,MISC_ANY
+2A4d,3,Unknown applications of Sodium Bicarbonate,Sodium Bicarbonate,MISC_ANY
+2A5a,4,Dewatering of lead concentrates,Lead mined,MISC_ANY
+2A5a,4,Quarrying,Aggregates,INDU_MIN_GEN
+2A5b,4,Construction of apartment buildings,Construction,MISC_ANY
+2A5b,4,Construction of houses,Construction,MISC_ANY
+2A5b,4,Non-residential construction,Construction,MISC_ANY
+2A5b,4,Road construction,Construction,MISC_ANY
+2A6,4,Brick manufacture - Fletton,Fletton bricks,INDU_PRO_GEN
+2A6,4,Brick manufacture - non Fletton,Non-Fletton bricks,INDU_PRO_GEN
+2A6,4,Cement and concrete batching,Process emission,INDU_PRO_GEN
+2A6,4,Glazed ceramics,Ceramics production,INDU_PRO_GEN
+2A6,4,Refractories - chromite based,Refractory production,INDU_PRO_GEN
+2A6,4,Refractories - non chromite based,Refractory production,INDU_PRO_GEN
+2A6,4,Unglazed ceramics,Ceramics production,INDU_PRO_GEN
+2B1,4,Ammonia production - combustion,Natural gas,INDU_PRO_GEN
+2B1,4,Ammonia production - feedstock use of gas,Natural gas,INDU_PRO_GEN
+2B10,4,Chemical industry - general,Process emission,INDU_MAN_CHE
+2B10a,4,Chemical industry - alkyl lead,Process emission,INDU_MAN_CHE
+2B10a,4,Chemical industry - ammonia based fertilizer,Ammonium nitrate,INDU_MAN_CHE
+2B10a,4,Chemical industry - ammonia based fertilizer,Non-fuel fertilizer,INDU_MAN_CHE
+2B10a,4,Chemical industry - ammonia use,Process emission,INDU_MAN_CHE
+2B10a,4,Chemical industry - cadmium pigments and stabilizers,Non-fuel combustion,INDU_MAN_CHE
+2B10a,4,Chemical industry - carbon black,Carbon black capacity,INDU_MAN_CHE
+2B10a,4,Chemical industry - chloralkali process,Chlorine capacity,INDU_MAN_CHE
+2B10a,4,Chemical industry - chromium chemicals,Process emission,INDU_MAN_CHE
+2B10a,4,Chemical industry - general,Chemicals and manmade fibres,INDU_MAN_CHE
+2B10a,4,Chemical industry - magnesia,Magnesia production,INDU_MAN_CHE
+2B10a,4,Chemical industry - nitric acid use,Chemicals and manmade fibres,INDU_MAN_CHE
+2B10a,4,Chemical industry - phosphate based fertilizers,Phosphate rock imports,INDU_MAN_CHE
+2B10a,4,Chemical industry - pigment manufacture,Process emission,INDU_MAN_CHE
+2B10a,4,Chemical industry - reforming,Chemicals and manmade fibres,INDU_MAN_CHE
+2B10a,4,Chemical industry - sulphuric acid use,Chemicals and manmade fibres,INDU_MAN_CHE
+2B10a,4,Coal tar and bitumen processes,Process emission,INDU_PRO_GEN
+2B10a,4,Solvent and oil recovery,Process emission,INDU_PRO_GEN
+2B10a,4,Sulphuric acid production,Acid production,INDU_PRO_GEN
+2B10b,4,Ship purging,Process emission,INDU_PRO_GEN
+2B2,4,Nitric acid production,Acid production,INDU_PRO_GEN
+2B3,4,Adipic acid production,Adipic acid produced,INDU_PRO_GEN
+2B6,4,Chemical industry - titanium dioxide,Coke,INDU_MAN_CHE
+2B6,4,Chemical industry - titanium dioxide,Petroleum coke,INDU_MAN_CHE
+2B6,4,Chemical industry - titanium dioxide,Titanium dioxide,INDU_MAN_CHE
+2B7,4,Chemical industry - soda ash,Soda ash,INDU_MAN_CHE
+2B7,4,Chemical industry - soda ash,Soda ash produced,INDU_MAN_CHE
+2B8a,4,Chemical industry - methanol,Methanol,INDU_MAN_CHE
+2B8a,4,Chemical industry - methanol,Natural gas,INDU_MAN_CHE
+2B8a,4,Methanol production – combustion,Natural gas,INDU_PRO_GEN
+2B8b,4,Chemical industry - ethylene,Ethylene,INDU_MAN_CHE
+2B8c,4,Chemical Industry - ethylene dichloride,Ethylene dichloride,INDU_MAN_CHE
+2B8d,4,Chemical industry - ethylene oxide,Ethylene oxide,INDU_MAN_CHE
+2B8e,4,Chemical industry - acrylonitrile,Acrylonitrile,INDU_MAN_CHE
+2B8f,4,Chemical industry - carbon black,Carbon black capacity,INDU_MAN_CHE
+2B8g,4,Chemicals (combustion),OPG,INDU_MAN_CHE
+2C1,4,Basic oxygen furnaces,Steel production (oxygen converters),INDU_MAN_IRO
+2C1,4,Blast furnaces,Iron production (blast furnace),INDU_MAN_IRO
+2C1,4,Cold rolling of steel,Rolled steel products,INDU_MAN_IRO
+2C1,4,Electric arc furnaces,Steel production (electric arc),INDU_MAN_IRO
+2C1,4,Hot rolling of steel,Rolled steel products,INDU_MAN_IRO
+2C1,4,Integrated steelworks - other processes,Iron production (blast furnace),INDU_MAN_IRO
+2C1,4,Integrated steelworks - stockpiles,Iron production,INDU_MAN_IRO
+2C1,4,Iron and steel - flaring,Blast furnace gas,INDU_MAN_IRO
+2C1,4,Sinter production,Iron production,INDU_MAN_IRO
+2C1a,4,Basic oxygen furnaces,Dolomite,INDU_MAN_IRO
+2C1a,4,Electric arc furnaces,Petroleum coke,INDU_MAN_IRO
+2C1a,4,Electric arc furnaces,Steel production (electric arc),INDU_MAN_IRO
+2C1a,4,Ladle arc furnaces,Steel production (electric arc),INDU_MAN_IRO
+2C1a,4,Ladle arc furnaces,Steel production (oxygen converters),INDU_MAN_IRO
+2C1b,4,Iron and steel - flaring,Blast furnace gas,INDU_MAN_IRO
+2C1d,4,Sinter production,Coke,INDU_PRO_GEN
+2C1d,4,Sinter production,Dolomite,INDU_PRO_GEN
+2C1d,4,Sinter production,Limestone,INDU_PRO_GEN
+2C3,4,Alumina production,Primary aluminium production,INDU_PRO_GEN
+2C3,4,Primary aluminium production - anode baking,Process emission,INDU_MAN_MET
+2C3,4,Primary aluminium production - general,Primary aluminium production,INDU_MAN_MET
+2C3,4,Secondary aluminium production,Secondary aluminium production,INDU_MAN_MET
+2C3a,4,Primary aluminium production - general,Primary aluminium production,INDU_MAN_MET
+2C5,4,Lead battery manufacture,Process emission,INDU_MAN_MET
+2C5,4,Secondary lead production,Refined secondary lead,INDU_MAN_MET
+2C6,4,Non-ferrous metal processes,Coke,INDU_MAN_MET
+2C6,4,Primary lead/zinc production,Slab zinc and lead bullion produced,INDU_MAN_MET
+2C6,4,Zinc alloy and semis production,Zinc consumption,INDU_MAN_MET
+2C6,4,Zinc oxide production,Process emission,INDU_MAN_MET
+2C7a,4,Copper alloy and semis production,Copper consumption,INDU_MAN_MET
+2C7a,4,Secondary copper production,Refined copper,INDU_MAN_MET
+2C7b,4,Nickel production,Nickel production,INDU_MAN_MET
+2C7c,4,Foundries,Castings,INDU_MAN_IRO
+2C7c,4,Other non-ferrous metal processes,Index of output (basic metals),INDU_MAN_MET
+2D1,6,Agricultural engines,Lubricants,SOLV_OTH
+2D1,6,Industrial engines,Lubricants,SOLV_OTH
+2D1,6,Marine engines,Lubricants,SOLV_OTH
+2D1,6,Road vehicle engines,Lubricants,SOLV_OTH
+2D2,6,Non-aerosol products - household products,Petroleum waxes,SOLV_OTH
+2D3,6,Non Energy Use: petroleum coke,Petroleum coke,SOLV_OTH
+2D3,6,Road transport - urea,Urea consumption,SOLV_OTH
+2D3a,6,Aerosols - carcare products,Aerosols,SOLV_OTH
+2D3a,6,Aerosols - cosmetics and toiletries,Aerosols,SOLV_OTH
+2D3a,6,Aerosols - household products,Aerosols,SOLV_OTH
+2D3a,6,Agriculture - agrochemicals use,Agrochemical active ingredient,SOLV_OTH
+2D3a,6,Non-aerosol products - automotive products,Carcare products,SOLV_OTH
+2D3a,6,Non-aerosol products - cosmetics and toiletries,Cosmetics and toiletries,SOLV_OTH
+2D3a,6,Non-aerosol products - domestic adhesives,Adhesives and sealants,SOLV_OTH
+2D3a,6,Non-aerosol products - household products,Household products,SOLV_OTH
+2D3a,6,Non-aerosol products - household products,Non-fuel domestic,SOLV_OTH
+2D3a,6,Non-aerosol products - paint thinner,Population,SOLV_OTH
+2D3b,4,Other industry - asphalt manufacture,Asphalt produced,INDU_PRO_GEN
+2D3b,4,"Road dressings, bitumen",Non fuel bitumen use,MISC_ANY
+2D3b,4,"Road dressings, kerosene",Non fuel bitumen use,MISC_ANY
+2D3d,6,Decorative paint - retail decorative,Retail decorative coatings,SOLV_OTH
+2D3d,6,Decorative paint - trade decorative,Trade decorative coatings,SOLV_OTH
+2D3d,6,Film coating,Pulp paper printing and publishing,SOLV_OTH
+2D3d,6,Industrial coatings - agricultural and construction,Ace coatings,SOLV_IND
+2D3d,6,Industrial coatings - aircraft,Aircraft coatings,SOLV_IND
+2D3d,6,Industrial coatings - automotive,Automotive coatings,SOLV_IND
+2D3d,6,Industrial coatings - coil coating,Coil coatings,SOLV_IND
+2D3d,6,Industrial coatings - commercial vehicles,Commercial vehicle coatings,SOLV_IND
+2D3d,6,Industrial coatings - drum,Drum coatings,SOLV_IND
+2D3d,6,Industrial coatings - high performance,High performance coatings,SOLV_IND
+2D3d,6,Industrial coatings - marine,Marine coatings,SOLV_IND
+2D3d,6,Industrial coatings - metal and plastic,Metal and plastic coatings,SOLV_IND
+2D3d,6,Industrial coatings - metal packaging,Metal packaging coatings,SOLV_IND
+2D3d,6,Industrial coatings - vehicle refinishing,Vehicle refinishing coatings,SOLV_IND
+2D3d,6,Industrial coatings - wood,Wood coatings,SOLV_IND
+2D3d,6,Leather coating,Leather and leather products,SOLV_OTH
+2D3d,6,Paper coating,Solvent use,SOLV_OTH
+2D3d,6,Textile coating,Textiles and textile products,SOLV_OTH
+2D3e,6,Leather degreasing,Leather and leather products,SOLV_OTH
+2D3e,6,Surface cleaning - 111-trichloroethane,Cleaning solvent,SOLV_OTH
+2D3e,6,Surface cleaning - dichloromethane,Cleaning solvent,SOLV_OTH
+2D3e,6,Surface cleaning - hydrocarbons,Cleaning solvent,SOLV_OTH
+2D3e,6,Surface cleaning - oxygenated solvents,Cleaning solvent,SOLV_OTH
+2D3e,6,Surface cleaning - tetrachloroethylene,Cleaning solvent,SOLV_OTH
+2D3e,6,Surface cleaning - trichloroethylene,Cleaning solvent,SOLV_OTH
+2D3f,6,Dry cleaning,Solvent use,SOLV_OTH
+2D3g,6,Coating manufacture - adhesives,Solvent used in coating,SOLV_OTH
+2D3g,6,Coating manufacture - inks,Pigment,SOLV_OTH
+2D3g,6,Coating manufacture - inks,Solvent used in coating,SOLV_OTH
+2D3g,6,Coating manufacture - other coatings,Pigment,SOLV_OTH
+2D3g,6,Coating manufacture - other coatings,Solvent used in coating,SOLV_OTH
+2D3g,6,Foam blowing,Blowing agents,SOLV_OTH
+2D3g,6,Industrial adhesives - pressure sensitive tapes,Solvent use,SOLV_OTH
+2D3g,6,Other rubber products,Rubber and plastic products,SOLV_OTH
+2D3g,6,Tyre manufacture,Rubber and plastic products,SOLV_OTH
+2D3h,6,Printing - flexible packaging,Flexible packaging inks,SOLV_OTH
+2D3h,6,Printing - heatset web offset,Heatset offset ink,SOLV_OTH
+2D3h,6,Printing - metal decorating,Metal decorating inks,SOLV_OTH
+2D3h,6,Printing - newspapers,Newspaper inks,SOLV_OTH
+2D3h,6,Printing - other flexography,Other flexographic inks,SOLV_OTH
+2D3h,6,Printing - other inks,Other inks,SOLV_OTH
+2D3h,6,Printing - other offset,Other offset ink,SOLV_OTH
+2D3h,6,Printing - overprint varnishes,Overprint varnishes,SOLV_OTH
+2D3h,6,Printing - print chemicals,Print chemicals,SOLV_OTH
+2D3h,6,Printing - publication gravure,Publication gravure ink,SOLV_OTH
+2D3h,6,Printing - screen printing,Screen printing inks,SOLV_OTH
+2D3i,6,Industrial adhesives - other,Adhesives and sealants,SOLV_IND
+2D3i,6,Other solvent use,Solvent use,SOLV_OTH
+2D3i,6,Seed oil extraction,Oilseeds and nuts,SOLV_OTH
+2D3i,6,Wood impregnation - creosote,Creosote,SOLV_OTH
+2D3i,6,Wood impregnation - LOSP,Solvent-borne preservative,SOLV_OTH
+2G,6,Cigarette smoking,Cigarettes,SOLV_OTH
+2G,6,Fireworks,Process emission,SOLV_OTH
+2G,6,Road vehicle engines,Lubricants,SOLV_OTH
+2G3a,6,N2O use as an anaesthetic,Population,SOLV_OTH
+2G3b,6,Other food - cream consumption,Process emission,SOLV_OTH
+2G3b,6,Recreational use of N2O,Process emission,SOLV_OTH
+2G4,6,Chemical Industry – other process sources,Process emission,INDU_MAN_CHE
+2H1,4,Paper production,Process emission,INDU_MAN_PAP
+2H2,4,Animal Rendering,Meat fish and poultry,MISC_ANY
+2H2,4,Bread baking,Bread,INDU_MAN_FAB
+2H2,4,Brewing - fermentation,Beer,INDU_MAN_FAB
+2H2,4,Brewing - wort boiling,Beer,INDU_MAN_FAB
+2H2,4,Cider manufacture,Cider,INDU_MAN_FAB
+2H2,4,Malting - all,Malt,INDU_MAN_FAB
+2H2,4,Other food - animal feed manufacture,Animal feeds,MISC_ANY
+2H2,4,Other food - cakes biscuits and cereals,Cakes and biscuits,INDU_MAN_FAB
+2H2,4,Other food - coffee roasting,Coffee,INDU_MAN_FAB
+2H2,4,Other food - margarine and other solid fats,Fats,INDU_MAN_FAB
+2H2,4,Other food - meat fish and poultry,Meat fish and poultry,INDU_MAN_FAB
+2H2,4,Other food - sugar production,Sugar,INDU_MAN_FAB
+2H2,4,Spirit manufacture - casking,Whisky,INDU_MAN_FAB
+2H2,4,Spirit manufacture - distillation,Spirits,INDU_MAN_FAB
+2H2,4,Spirit manufacture - fermentation,Spirits,INDU_MAN_FAB
+2H2,4,Spirit manufacture - other maturation,Whisky in storage,INDU_MAN_FAB
+2H2,4,Spirit manufacture - Scotch whisky maturation,Whisky in storage,INDU_MAN_FAB
+2H2,4,Spirit manufacture - spent grain drying,Grain used in spirits,INDU_MAN_FAB
+2H2,4,Sugar beet processing,Process emission,INDU_MAN_FAB
+2H2,4,Wine manufacture,Wine,INDU_MAN_FAB
+2H3,4,Other industry - part B processes,Process emission,INDU_PRO_GEN
+2I,4,Wood products manufacture,Wood product production,INDU_PRO_GEN
+3A1a,10,Enteric,Dairy - Dairy Cows,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Beef females for slaughter,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Bulls for breeding,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Cereal fed bull,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Cows,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Dairy Calves Female,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Dairy In Calf Heifers,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Dairy Replacements Female,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Heifers for breeding,AGRI_ENT_ALL
+3A1b,10,Enteric,Other cattle - Steers,AGRI_ENT_ALL
+3A2,10,Enteric,Sheep - Ewe,AGRI_ENT_ALL
+3A2,10,Enteric,Sheep - Lamb,AGRI_ENT_ALL
+3A2,10,Enteric,Sheep - Ram,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Boar,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Fattening Pig < 20 kg,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Fattening Pig > 80 kg,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Fattening Pig 20 to 80 kg,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Gilt,AGRI_ENT_ALL
+3A3,10,Enteric,Pig - Sow,AGRI_ENT_ALL
+3A4,10,Enteric,Agricultural Horses,AGRI_ENT_ALL
+3A4,10,Enteric,Deer,AGRI_ENT_ALL
+3A4,10,Enteric,Domestic Horses,AGRI_ENT_ALL
+3A4,10,Enteric,Goats,AGRI_ENT_ALL
+3A4,10,Enteric,Professional Horses,AGRI_ENT_ALL
+3B11a,10,Digestate,Dairy - Dairy Cows,AGRI_SPR_CAT
+3B11a,10,Excreta,Dairy - Dairy Cows,AGRI_EXC_ALL
+3B11a,10,Managed Manure,Dairy - Dairy Cows,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Beef females for slaughter,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Bulls for breeding,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Cereal fed bull,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Cows,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Dairy Calves Female,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Dairy In Calf Heifers,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Dairy Replacements Female,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Heifers for breeding,AGRI_SPR_CAT
+3B11b,10,Digestate,Other cattle - Steers,AGRI_SPR_CAT
+3B11b,10,Excreta,Other cattle - Beef females for slaughter,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Bulls for breeding,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Cereal fed bull,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Cows,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Dairy Calves Female,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Dairy In Calf Heifers,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Dairy Replacements Female,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Heifers for breeding,AGRI_EXC_ALL
+3B11b,10,Excreta,Other cattle - Steers,AGRI_EXC_ALL
+3B11b,10,Managed Manure,Other cattle - Beef females for slaughter,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Bulls for breeding,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Cereal fed bull,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Cows,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Dairy Calves Female,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Dairy In Calf Heifers,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Dairy Replacements Female,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Heifers for breeding,AGRI_SPR_CAT
+3B11b,10,Managed Manure,Other cattle - Steers,AGRI_SPR_CAT
+3B12,10,Excreta,Sheep - Ewe,AGRI_EXC_ALL
+3B12,10,Excreta,Sheep - Lamb,AGRI_EXC_ALL
+3B12,10,Excreta,Sheep - Ram,AGRI_EXC_ALL
+3B12,10,Managed Manure,Sheep - Ewe,AGRI_SPR_OTH
+3B12,10,Managed Manure,Sheep - Lamb,AGRI_SPR_OTH
+3B12,10,Managed Manure,Sheep - Ram,AGRI_SPR_OTH
+3B13,10,Digestate,Pig - Boar,AGRI_SPR_PIG
+3B13,10,Digestate,Pig - Fattening Pig < 20 kg,AGRI_SPR_PIG
+3B13,10,Digestate,Pig - Fattening Pig > 80 kg,AGRI_SPR_PIG
+3B13,10,Digestate,Pig - Fattening Pig 20 to 80 kg,AGRI_SPR_PIG
+3B13,10,Digestate,Pig - Gilt,AGRI_SPR_PIG
+3B13,10,Digestate,Pig - Sow,AGRI_SPR_PIG
+3B13,10,Excreta,Pig - Boar,AGRI_EXC_ALL
+3B13,10,Excreta,Pig - Fattening Pig < 20 kg,AGRI_EXC_ALL
+3B13,10,Excreta,Pig - Fattening Pig > 80 kg,AGRI_EXC_ALL
+3B13,10,Excreta,Pig - Fattening Pig 20 to 80 kg,AGRI_EXC_ALL
+3B13,10,Excreta,Pig - Gilt,AGRI_EXC_ALL
+3B13,10,Excreta,Pig - Sow,AGRI_EXC_ALL
+3B13,10,Managed Manure,Pig - Boar,AGRI_SPR_PIG
+3B13,10,Managed Manure,Pig - Fattening Pig < 20 kg,AGRI_SPR_PIG
+3B13,10,Managed Manure,Pig - Fattening Pig > 80 kg,AGRI_SPR_PIG
+3B13,10,Managed Manure,Pig - Fattening Pig 20 to 80 kg,AGRI_SPR_PIG
+3B13,10,Managed Manure,Pig - Gilt,AGRI_SPR_PIG
+3B13,10,Managed Manure,Pig - Sow,AGRI_SPR_PIG
+3B14,10,Digestate,Poultry - Broilers,AGRI_SPR_POU
+3B14,10,Digestate,Poultry - Laying Hens,AGRI_SPR_POU
+3B14,10,Digestate,Poultry - Other,AGRI_SPR_POU
+3B14,10,Digestate,Poultry - Turkeys,AGRI_SPR_POU
+3B14,10,Excreta,Agricultural Horses,AGRI_EXC_ALL
+3B14,10,Excreta,Deer,AGRI_EXC_ALL
+3B14,10,Excreta,Domestic Horses,AGRI_EXC_ALL
+3B14,10,Excreta,Goats,AGRI_EXC_ALL
+3B14,10,Excreta,Poultry - Broilers,AGRI_EXC_ALL
+3B14,10,Excreta,Poultry - Laying Hens,AGRI_EXC_ALL
+3B14,10,Excreta,Poultry - Other,AGRI_EXC_ALL
+3B14,10,Excreta,Poultry - Turkeys,AGRI_EXC_ALL
+3B14,10,Excreta,Professional Horses,AGRI_EXC_ALL
+3B14,10,Managed Manure,Agricultural Horses,AGRI_SPR_OTH
+3B14,10,Managed Manure,Deer,AGRI_SPR_OTH
+3B14,10,Managed Manure,Domestic Horses,AGRI_SPR_OTH
+3B14,10,Managed Manure,Goats,AGRI_SPR_OTH
+3B14,10,Managed Manure,Poultry - Broilers,AGRI_SPR_POU
+3B14,10,Managed Manure,Poultry - Laying Hens,AGRI_SPR_POU
+3B14,10,Managed Manure,Poultry - Other,AGRI_SPR_POU
+3B14,10,Managed Manure,Poultry - Turkeys,AGRI_SPR_POU
+3B14,10,Managed Manure,Professional Horses,AGRI_SPR_OTH
+3B1a,10,Dairy - Dairy Cows,Housing,AGRI_HOU_CAT
+3B1a,10,Dairy - Dairy Cows,Storage,AGRI_STO_CAT
+3B1a,10,Dairy - Dairy Cows,Yarding,AGRI_YRD_CAT
+3B1a,10,Dairy - Dairy Cows - Digestate Direct,Storage,AGRI_STO_CAT
+3B1a,10,Dairy Cows Wastes - Direct,Excreta N managed as manure,AGRI_SPR_CAT
+3B1a,10,Housing,Dairy - Dairy Cows,AGRI_HOU_CAT
+3B1a,10,Silage - Housing,Dairy - Dairy Cows,AGRI_HOU_CAT
+3B1a,10,Silage - Storage,Dairy - Dairy Cows,AGRI_STO_CAT
+3B1a,10,Storage,Dairy - Dairy Cows,AGRI_HOU_CAT
+3B1a,10,Storage,Dairy - Dairy Cows - Digestate,AGRI_HOU_CAT
+3B1a,10,Wastes - Direct,Dairy - Dairy Cows,AGRI_SPR_CAT
+3B1a,10,Wastes - Direct,Dairy - Other cattle,AGRI_SPR_CAT
+3B1a,10,Yarding,Dairy - Dairy Cows,AGRI_YRD_CAT
+3B1b,10,Housing,Other cattle - Beef females for slaughter,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Bulls for breeding,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Cereal fed bull,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Cows,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Dairy Calves Female,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Dairy In Calf Heifers,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Dairy Replacements Female,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Heifers for breeding,AGRI_HOU_CAT
+3B1b,10,Housing,Other cattle - Steers,AGRI_HOU_CAT
+3B1b,10,Other cattle - Beef females for slaughter,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Beef females for slaughter,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Beef females for slaughter,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Beef females for slaughter - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Bulls for breeding,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Bulls for breeding,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Bulls for breeding,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Bulls for breeding - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Cereal fed bull,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Cereal fed bull,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Cereal fed bull,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Cereal fed bull - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Cows,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Cows,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Cows,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Cows - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy Calves Female,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Dairy Calves Female,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy Calves Female,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Dairy Calves Female - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy In Calf Heifers,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Dairy In Calf Heifers,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy In Calf Heifers,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Dairy In Calf Heifers - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy Replacements Female,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Dairy Replacements Female,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Dairy Replacements Female,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Dairy Replacements Female - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Heifers for breeding,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Heifers for breeding,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Heifers for breeding,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Heifers for breeding - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Steers,Housing,AGRI_HOU_CAT
+3B1b,10,Other cattle - Steers,Storage,AGRI_STO_CAT
+3B1b,10,Other cattle - Steers,Yarding,AGRI_YRD_CAT
+3B1b,10,Other cattle - Steers - Digestate Direct,Storage,AGRI_STO_CAT
+3B1b,10,Other Cattle Wastes - Direct,Excreta N managed as manure,AGRI_SPR_CAT
+3B1b,10,Silage - Housing,Other cattle - Beef females for slaughter,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Bulls for breeding,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Cereal fed bull,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Cows,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Dairy Calves Female,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Dairy In Calf Heifers,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Dairy Replacements Female,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Heifers for breeding,AGRI_HOU_CAT
+3B1b,10,Silage - Housing,Other cattle - Steers,AGRI_HOU_CAT
+3B1b,10,Silage - Storage,Other cattle - Beef females for slaughter,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Bulls for breeding,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Cereal fed bull,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Cows,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Dairy Calves Female,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Dairy In Calf Heifers,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Dairy Replacements Female,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Heifers for breeding,AGRI_STO_CAT
+3B1b,10,Silage - Storage,Other cattle - Steers,AGRI_STO_CAT
+3B1b,10,Storage,Other cattle - Beef females for slaughter,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Beef females for slaughter - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Bulls for breeding,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Bulls for breeding - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Cereal fed bull,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Cereal fed bull - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Cows,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Cows - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy Calves Female,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy Calves Female - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy In Calf Heifers,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy In Calf Heifers - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy Replacements Female,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Dairy Replacements Female - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Heifers for breeding,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Heifers for breeding - Digestate,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Steers,AGRI_HOU_CAT
+3B1b,10,Storage,Other cattle - Steers - Digestate,AGRI_HOU_CAT
+3B1b,10,Wastes - Direct,Other cattle,AGRI_SPR_CAT
+3B1b,10,Yarding,Other cattle - Dairy Calves Female,AGRI_YRD_CAT
+3B1b,10,Yarding,Other cattle - Dairy In Calf Heifers,AGRI_YRD_CAT
+3B1b,10,Yarding,Other cattle - Dairy Replacements Female,AGRI_YRD_CAT
+3B2,10,Housing,Sheep - Ewe,AGRI_HOU_SHP
+3B2,10,Housing,Sheep - Lamb,AGRI_HOU_SHP
+3B2,10,Housing,Sheep - Ram,AGRI_HOU_SHP
+3B2,10,Sheep - Ewe,Housing,AGRI_HOU_SHP
+3B2,10,Sheep - Ewe,Storage,AGRI_STO_SHP
+3B2,10,Sheep - Ewe,Yarding,AGRI_YRD_CAT
+3B2,10,Sheep - Lamb,Housing,AGRI_HOU_SHP
+3B2,10,Sheep - Lamb,Storage,AGRI_STO_SHP
+3B2,10,Sheep - Lamb,Yarding,AGRI_YRD_CAT
+3B2,10,Sheep - Ram,Housing,AGRI_HOU_SHP
+3B2,10,Sheep - Ram,Storage,AGRI_STO_SHP
+3B2,10,Sheep - Ram,Yarding,AGRI_YRD_CAT
+3B2,10,Sheep Wastes - Direct,Excreta N managed as manure,AGRI_SPR_OTH
+3B2,10,Silage - Housing,Sheep - Ewe,AGRI_HOU_SHP
+3B2,10,Silage - Housing,Sheep - Lamb,AGRI_HOU_SHP
+3B2,10,Silage - Housing,Sheep - Ram,AGRI_HOU_SHP
+3B2,10,Silage - Storage,Sheep - Ewe,AGRI_STO_SHP
+3B2,10,Silage - Storage,Sheep - Lamb,AGRI_STO_SHP
+3B2,10,Silage - Storage,Sheep - Ram,AGRI_STO_SHP
+3B2,10,Storage,Sheep - Ewe,AGRI_HOU_SHP
+3B2,10,Storage,Sheep - Lamb,AGRI_HOU_SHP
+3B2,10,Storage,Sheep - Ram,AGRI_HOU_SHP
+3B2,10,Wastes - Direct,Sheep,AGRI_SPR_OTH
+3B2,10,Yarding,Sheep - Ewe,AGRI_YRD_CAT
+3B2,10,Yarding,Sheep - Lamb,AGRI_YRD_CAT
+3B2,10,Yarding,Sheep - Ram,AGRI_YRD_CAT
+3B21a,10,Dairy - Dairy Cows - Direct,Housing,AGRI_HOU_CAT
+3B21a,10,Dairy - Dairy Cows - Direct,Storage,AGRI_STO_CAT
+3B21a,10,Dairy - Dairy Cows - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Beef females for slaughter - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Beef females for slaughter - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Beef females for slaughter - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Bulls for breeding - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Bulls for breeding - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Bulls for breeding - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Cereal fed bull - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Cereal fed bull - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Cereal fed bull - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Cows - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Cows - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Cows - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Dairy Calves Female - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Dairy Calves Female - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Dairy Calves Female - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Dairy In Calf Heifers - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Dairy In Calf Heifers - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Dairy In Calf Heifers - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Dairy Replacements Female - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Dairy Replacements Female - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Dairy Replacements Female - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Heifers for breeding - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Heifers for breeding - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Heifers for breeding - Direct,Yarding,AGRI_YRD_CAT
+3B21b,10,Other cattle - Steers - Direct,Housing,AGRI_HOU_CAT
+3B21b,10,Other cattle - Steers - Direct,Storage,AGRI_STO_CAT
+3B21b,10,Other cattle - Steers - Direct,Yarding,AGRI_YRD_CAT
+3B22,10,Sheep - Ewe - Direct,Housing,AGRI_HOU_SHP
+3B22,10,Sheep - Ewe - Direct,Storage,AGRI_STO_SHP
+3B22,10,Sheep - Ewe - Direct,Yarding,AGRI_YRD_CAT
+3B22,10,Sheep - Lamb - Direct,Housing,AGRI_HOU_SHP
+3B22,10,Sheep - Lamb - Direct,Storage,AGRI_STO_SHP
+3B22,10,Sheep - Lamb - Direct,Yarding,AGRI_YRD_CAT
+3B22,10,Sheep - Ram - Direct,Housing,AGRI_HOU_SHP
+3B22,10,Sheep - Ram - Direct,Storage,AGRI_STO_SHP
+3B22,10,Sheep - Ram - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Boar - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Boar - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Boar - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Boar - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Fattening Pig < 20 kg - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig < 20 kg - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Fattening Pig < 20 kg - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig < 20 kg - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Fattening Pig > 80 kg - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig > 80 kg - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Fattening Pig > 80 kg - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig > 80 kg - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Fattening Pig 20 to 80 kg - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig 20 to 80 kg - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Fattening Pig 20 to 80 kg - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Fattening Pig 20 to 80 kg - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Gilt - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Gilt - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Gilt - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Gilt - Direct,Yarding,AGRI_YRD_CAT
+3B23,10,Pig - Sow - Digestate Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Sow - Direct,Housing,AGRI_HOU_PIG
+3B23,10,Pig - Sow - Direct,Storage,AGRI_STO_PIG
+3B23,10,Pig - Sow - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Agricultural Horses - Direct,Housing,AGRI_HOU_MLI
+3B24,10,Agricultural Horses - Direct,Storage,AGRI_STO_MLI
+3B24,10,Agricultural Horses - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Deer - Direct,Housing,AGRI_HOU_MLI
+3B24,10,Deer - Direct,Storage,AGRI_STO_MLI
+3B24,10,Deer - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Domestic Horses - Direct,Housing,AGRI_HOU_MLI
+3B24,10,Domestic Horses - Direct,Storage,AGRI_STO_MLI
+3B24,10,Domestic Horses - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Enteric,Poultry - Broilers,AGRI_ENT_ALL
+3B24,10,Enteric,Poultry - Laying Hens,AGRI_ENT_ALL
+3B24,10,Enteric,Poultry - Other,AGRI_ENT_ALL
+3B24,10,Enteric,Poultry - Turkeys,AGRI_ENT_ALL
+3B24,10,Goats - Direct,Housing,AGRI_HOU_MLI
+3B24,10,Goats - Direct,Storage,AGRI_STO_MLI
+3B24,10,Goats - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Poultry - Broilers - Digestate Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Broilers - Direct,Housing,AGRI_HOU_POU
+3B24,10,Poultry - Broilers - Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Broilers - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Poultry - Laying Hens - Digestate Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Laying Hens - Direct,Housing,AGRI_HOU_POU
+3B24,10,Poultry - Laying Hens - Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Laying Hens - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Poultry - Other - Direct,Housing,AGRI_HOU_POU
+3B24,10,Poultry - Other - Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Other - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Poultry - Other Poultry - Digestate Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Turkeys - Digestate Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Turkeys - Direct,Housing,AGRI_HOU_POU
+3B24,10,Poultry - Turkeys - Direct,Storage,AGRI_STO_POU
+3B24,10,Poultry - Turkeys - Direct,Yarding,AGRI_YRD_CAT
+3B24,10,Professional Horses - Direct,Housing,AGRI_HOU_MLI
+3B24,10,Professional Horses - Direct,Storage,AGRI_STO_MLI
+3B24,10,Professional Horses - Direct,Yarding,AGRI_YRD_CAT
+3B25,10,Agricultural Horses - Indirect Deposition,Housing,AGRI_HOU_MLI
+3B25,10,Agricultural Horses - Indirect Deposition,Storage,AGRI_STO_MLI
+3B25,10,Agricultural Horses - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Agricultural Horses - Indirect Leach,Housing,AGRI_HOU_MLI
+3B25,10,Agricultural Horses - Indirect Leach,Storage,AGRI_STO_MLI
+3B25,10,Agricultural Horses - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Dairy - Dairy Cows - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Dairy - Dairy Cows - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Dairy - Dairy Cows - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Deer - Indirect Deposition,Housing,AGRI_HOU_MLI
+3B25,10,Deer - Indirect Deposition,Storage,AGRI_STO_MLI
+3B25,10,Deer - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Deer - Indirect Leach,Housing,AGRI_HOU_MLI
+3B25,10,Deer - Indirect Leach,Storage,AGRI_STO_MLI
+3B25,10,Deer - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Domestic Horses - Indirect Deposition,Housing,AGRI_HOU_MLI
+3B25,10,Domestic Horses - Indirect Deposition,Storage,AGRI_STO_MLI
+3B25,10,Domestic Horses - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Domestic Horses - Indirect Leach,Housing,AGRI_HOU_MLI
+3B25,10,Domestic Horses - Indirect Leach,Storage,AGRI_STO_MLI
+3B25,10,Domestic Horses - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Goats - Indirect Deposition,Housing,AGRI_HOU_MLI
+3B25,10,Goats - Indirect Deposition,Storage,AGRI_STO_MLI
+3B25,10,Goats - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Goats - Indirect Leach,Housing,AGRI_HOU_MLI
+3B25,10,Goats - Indirect Leach,Storage,AGRI_STO_MLI
+3B25,10,Goats - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Beef females for slaughter - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Beef females for slaughter - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Beef females for slaughter - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Bulls for breeding - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Bulls for breeding - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Bulls for breeding - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Cereal fed bull - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cereal fed bull - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cereal fed bull - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Cows - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cows - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cows - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Cows - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cows - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Cows - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Cows - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Cows - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy Calves Female - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Calves Female - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Calves Female - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy In Calf Heifers - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Dairy Replacements Female - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Heifers for breeding - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Heifers for breeding - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Heifers for breeding - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Steers - Digestate Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Steers - Digestate Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Steers - Indirect Deposition,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Steers - Indirect Deposition,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Steers - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Other cattle - Steers - Indirect Leach,Housing,AGRI_HOU_CAT
+3B25,10,Other cattle - Steers - Indirect Leach,Storage,AGRI_STO_CAT
+3B25,10,Other cattle - Steers - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Boar - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Boar - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Boar - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Boar - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Boar - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Boar - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Boar - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Boar - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig < 20 kg - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig < 20 kg - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig > 80 kg - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig > 80 kg - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Fattening Pig 20 to 80 kg - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Gilt - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Gilt - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Gilt - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Gilt - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Gilt - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Gilt - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Gilt - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Gilt - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Sow - Digestate Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Sow - Digestate Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Sow - Indirect Deposition,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Sow - Indirect Deposition,Storage,AGRI_STO_PIG
+3B25,10,Pig - Sow - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Pig - Sow - Indirect Leach,Housing,AGRI_HOU_PIG
+3B25,10,Pig - Sow - Indirect Leach,Storage,AGRI_STO_PIG
+3B25,10,Pig - Sow - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Broilers - Digestate Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Broilers - Digestate Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Broilers - Indirect Deposition,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Broilers - Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Broilers - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Broilers - Indirect Leach,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Broilers - Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Broilers - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Laying Hens - Digestate Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Laying Hens - Digestate Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Laying Hens - Indirect Deposition,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Laying Hens - Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Laying Hens - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Laying Hens - Indirect Leach,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Laying Hens - Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Laying Hens - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Other - Indirect Deposition,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Other - Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Other - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Other - Indirect Leach,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Other - Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Other - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Other Poultry - Digestate Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Other Poultry - Digestate Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Turkeys - Digestate Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Turkeys - Digestate Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Turkeys - Indirect Deposition,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Turkeys - Indirect Deposition,Storage,AGRI_STO_POU
+3B25,10,Poultry - Turkeys - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Poultry - Turkeys - Indirect Leach,Housing,AGRI_HOU_POU
+3B25,10,Poultry - Turkeys - Indirect Leach,Storage,AGRI_STO_POU
+3B25,10,Poultry - Turkeys - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Professional Horses - Indirect Deposition,Housing,AGRI_HOU_MLI
+3B25,10,Professional Horses - Indirect Deposition,Storage,AGRI_STO_MLI
+3B25,10,Professional Horses - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Professional Horses - Indirect Leach,Housing,AGRI_HOU_MLI
+3B25,10,Professional Horses - Indirect Leach,Storage,AGRI_STO_MLI
+3B25,10,Professional Horses - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Ewe - Indirect Deposition,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Ewe - Indirect Deposition,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Ewe - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Ewe - Indirect Leach,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Ewe - Indirect Leach,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Ewe - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Lamb - Indirect Deposition,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Lamb - Indirect Deposition,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Lamb - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Lamb - Indirect Leach,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Lamb - Indirect Leach,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Lamb - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Ram - Indirect Deposition,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Ram - Indirect Deposition,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Ram - Indirect Deposition,Yarding,AGRI_YRD_CAT
+3B25,10,Sheep - Ram - Indirect Leach,Housing,AGRI_HOU_SHP
+3B25,10,Sheep - Ram - Indirect Leach,Storage,AGRI_STO_SHP
+3B25,10,Sheep - Ram - Indirect Leach,Yarding,AGRI_YRD_CAT
+3B3,10,Housing,Pig - Boar,AGRI_HOU_PIG
+3B3,10,Housing,Pig - Fattening Pig < 20 kg,AGRI_HOU_PIG
+3B3,10,Housing,Pig - Fattening Pig > 80 kg,AGRI_HOU_PIG
+3B3,10,Housing,Pig - Fattening Pig 20 to 80 kg,AGRI_HOU_PIG
+3B3,10,Housing,Pig - Gilt,AGRI_HOU_PIG
+3B3,10,Housing,Pig - Sow,AGRI_HOU_PIG
+3B3,10,Pig - Boar,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Boar,Storage,AGRI_STO_PIG
+3B3,10,Pig - Boar,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Boar - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig < 20 kg,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Fattening Pig < 20 kg,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig < 20 kg,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Fattening Pig < 20 kg - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig > 80 kg,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Fattening Pig > 80 kg,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig > 80 kg,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Fattening Pig > 80 kg - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig 20 to 80 kg,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Fattening Pig 20 to 80 kg,Storage,AGRI_STO_PIG
+3B3,10,Pig - Fattening Pig 20 to 80 kg,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Fattening Pig 20 to 80 kg - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pig - Gilt,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Gilt,Storage,AGRI_STO_PIG
+3B3,10,Pig - Gilt,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Gilt - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pig - Sow,Housing,AGRI_HOU_PIG
+3B3,10,Pig - Sow,Storage,AGRI_STO_PIG
+3B3,10,Pig - Sow,Yarding,AGRI_YRD_CAT
+3B3,10,Pig - Sow - Digestate,Storage,AGRI_STO_PIG
+3B3,10,Pigs Wastes - Direct,Excreta N managed as manure,AGRI_SPR_PIG
+3B3,10,Silage - Housing,Pig - Boar,AGRI_HOU_PIG
+3B3,10,Silage - Housing,Pig - Fattening Pig < 20 kg,AGRI_HOU_PIG
+3B3,10,Silage - Housing,Pig - Fattening Pig > 80 kg,AGRI_HOU_PIG
+3B3,10,Silage - Housing,Pig - Fattening Pig 20 to 80 kg,AGRI_HOU_PIG
+3B3,10,Silage - Housing,Pig - Gilt,AGRI_HOU_PIG
+3B3,10,Silage - Housing,Pig - Sow,AGRI_HOU_PIG
+3B3,10,Silage - Storage,Pig - Boar,AGRI_STO_PIG
+3B3,10,Silage - Storage,Pig - Fattening Pig < 20 kg,AGRI_STO_PIG
+3B3,10,Silage - Storage,Pig - Fattening Pig > 80 kg,AGRI_STO_PIG
+3B3,10,Silage - Storage,Pig - Fattening Pig 20 to 80 kg,AGRI_STO_PIG
+3B3,10,Silage - Storage,Pig - Gilt,AGRI_STO_PIG
+3B3,10,Silage - Storage,Pig - Sow,AGRI_STO_PIG
+3B3,10,Storage,Pig - Boar,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Boar - Digestate,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig < 20 kg,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig < 20 kg - Digestate,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig > 80 kg,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig > 80 kg - Digestate,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig 20 to 80 kg,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Fattening Pig 20 to 80 kg - Digestate,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Gilt,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Gilt - Digestate,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Sow,AGRI_HOU_PIG
+3B3,10,Storage,Pig - Sow - Digestate,AGRI_HOU_PIG
+3B3,10,Wastes - Direct,Pigs,AGRI_SPR_PIG
+3B3,10,Yarding,Pig - Boar,AGRI_YRD_CAT
+3B3,10,Yarding,Pig - Fattening Pig < 20 kg,AGRI_YRD_CAT
+3B3,10,Yarding,Pig - Fattening Pig > 80 kg,AGRI_YRD_CAT
+3B3,10,Yarding,Pig - Fattening Pig 20 to 80 kg,AGRI_YRD_CAT
+3B3,10,Yarding,Pig - Gilt,AGRI_YRD_CAT
+3B3,10,Yarding,Pig - Sow,AGRI_YRD_CAT
+3B4d,10,Goats,Housing,AGRI_HOU_MLI
+3B4d,10,Goats,Storage,AGRI_STO_MLI
+3B4d,10,Goats,Yarding,AGRI_YRD_CAT
+3B4d,10,Goats Wastes - Direct,Excreta N managed as manure,AGRI_SPR_OTH
+3B4d,10,Housing,Goats,AGRI_HOU_MLI
+3B4d,10,Silage - Housing,Goats,AGRI_HOU_MLI
+3B4d,10,Silage - Storage,Goats,AGRI_STO_MLI
+3B4d,10,Storage,Goats,AGRI_HOU_MLI
+3B4d,10,Wastes - Direct,Goats,AGRI_SPR_OTH
+3B4d,10,Yarding,Goats,AGRI_YRD_CAT
+3B4e,10,Agricultural Horses,Housing,AGRI_HOU_MLI
+3B4e,10,Agricultural Horses,Storage,AGRI_STO_MLI
+3B4e,10,Agricultural Horses,Yarding,AGRI_YRD_CAT
+3B4e,10,Agricultural Horses Wastes - Direct,Excreta N managed as manure,AGRI_SPR_OTH
+3B4e,10,Housing,Agricultural Horses,AGRI_HOU_MLI
+3B4e,10,Silage - Housing,Agricultural Horses,AGRI_HOU_MLI
+3B4e,10,Silage - Storage,Agricultural Horses,AGRI_STO_MLI
+3B4e,10,Storage,Agricultural Horses,AGRI_HOU_MLI
+3B4e,10,Wastes - Direct,Agricultural Horses,AGRI_SPR_OTH
+3B4e,10,Yarding,Agricultural Horses,AGRI_YRD_CAT
+3B4gi,10,Housing,Poultry - Laying Hens,AGRI_HOU_POU
+3B4gi,10,Poultry - Laying Hens,Housing,AGRI_HOU_POU
+3B4gi,10,Poultry - Laying Hens,Storage,AGRI_STO_POU
+3B4gi,10,Poultry - Laying Hens,Yarding,AGRI_YRD_CAT
+3B4gi,10,Poultry - Laying Hens - Digestate,Storage,AGRI_STO_POU
+3B4gi,10,Poultry - Laying Hens Wastes - Direct,Excreta N managed as manure,AGRI_SPR_POU
+3B4gi,10,Silage - Housing,Poultry - Laying Hens,AGRI_HOU_POU
+3B4gi,10,Silage - Storage,Poultry - Laying Hens,AGRI_STO_POU
+3B4gi,10,Storage,Poultry - Laying Hens,AGRI_HOU_POU
+3B4gi,10,Storage,Poultry - Laying Hens - Digestate,AGRI_HOU_POU
+3B4gi,10,Wastes - Direct,Poultry - Laying Hens,AGRI_SPR_POU
+3B4gi,10,Yarding,Poultry - Laying Hens,AGRI_YRD_CAT
+3B4gii,10,Housing,Poultry - Broilers,AGRI_HOU_POU
+3B4gii,10,Poultry - Broilers,Housing,AGRI_HOU_POU
+3B4gii,10,Poultry - Broilers,Storage,AGRI_STO_POU
+3B4gii,10,Poultry - Broilers,Yarding,AGRI_YRD_CAT
+3B4gii,10,Poultry - Broilers - Digestate,Storage,AGRI_STO_POU
+3B4gii,10,Poultry - Broilers Wastes - Direct,Excreta N managed as manure,AGRI_SPR_POU
+3B4gii,10,Silage - Housing,Poultry - Broilers,AGRI_HOU_POU
+3B4gii,10,Silage - Storage,Poultry - Broilers,AGRI_STO_POU
+3B4gii,10,Storage,Poultry - Broilers,AGRI_HOU_POU
+3B4gii,10,Storage,Poultry - Broilers - Digestate,AGRI_HOU_POU
+3B4gii,10,Wastes - Direct,Poultry - Broilers,AGRI_SPR_POU
+3B4gii,10,Yarding,Poultry - Broilers,AGRI_YRD_CAT
+3B4giii,10,Housing,Poultry - Turkeys,AGRI_HOU_POU
+3B4giii,10,Poultry - Turkeys,Housing,AGRI_HOU_POU
+3B4giii,10,Poultry - Turkeys,Storage,AGRI_STO_POU
+3B4giii,10,Poultry - Turkeys,Yarding,AGRI_YRD_CAT
+3B4giii,10,Poultry - Turkeys - Digestate,Storage,AGRI_STO_POU
+3B4giii,10,Poultry - Turkeys Wastes - Direct,Excreta N managed as manure,AGRI_SPR_POU
+3B4giii,10,Silage - Housing,Poultry - Turkeys,AGRI_HOU_POU
+3B4giii,10,Silage - Storage,Poultry - Turkeys,AGRI_STO_POU
+3B4giii,10,Storage,Poultry - Turkeys,AGRI_HOU_POU
+3B4giii,10,Storage,Poultry - Turkeys - Digestate,AGRI_HOU_POU
+3B4giii,10,Wastes - Direct,Poultry - Turkeys,AGRI_SPR_POU
+3B4giii,10,Yarding,Poultry - Turkeys,AGRI_YRD_CAT
+3B4giv,10,Housing,Poultry - Other,AGRI_HOU_POU
+3B4giv,10,Poultry - Other,Housing,AGRI_HOU_POU
+3B4giv,10,Poultry - Other,Storage,AGRI_STO_POU
+3B4giv,10,Poultry - Other,Yarding,AGRI_YRD_CAT
+3B4giv,10,Poultry - Other - Digestate,Storage,AGRI_STO_POU
+3B4giv,10,Poultry - Other Wastes - Direct,Excreta N managed as manure,AGRI_SPR_POU
+3B4giv,10,Silage - Housing,Poultry - Other,AGRI_HOU_POU
+3B4giv,10,Silage - Storage,Poultry - Other,AGRI_STO_POU
+3B4giv,10,Storage,Poultry - Other,AGRI_HOU_POU
+3B4giv,10,Storage,Poultry - Other - Digestate,AGRI_HOU_POU
+3B4giv,10,Wastes - Direct,Poultry - Other,AGRI_SPR_POU
+3B4giv,10,Yarding,Poultry - Other,AGRI_YRD_CAT
+3B4h,10,Deer,Housing,AGRI_HOU_MLI
+3B4h,10,Deer,Yarding,AGRI_YRD_CAT
+3B4h,10,Deer - Direct Nitric Oxide,Storage,AGRI_STO_MLI
+3B4h,10,Deer Wastes - Direct,Excreta N managed as manure,AGRI_SPR_OTH
+3B4h,10,Housing,Deer,AGRI_HOU_MLI
+3B4h,10,Silage - Housing,Deer,AGRI_HOU_MLI
+3B4h,10,Silage - Storage,Deer,AGRI_STO_MLI
+3B4h,10,Storage,Deer,AGRI_HOU_MLI
+3B4h,10,Wastes - Direct,Deer,AGRI_SPR_OTH
+3B4h,10,Yarding,Deer,AGRI_YRD_CAT
+3D11,10,Arable - Direct,Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Arable - Direct,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D11,10,Arable - Direct,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Arable - Direct,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D11,10,Arable - Direct,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D11,10,Arable - Direct,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Arable - Direct,Urea Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D11,10,Grass - Direct,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D11,10,Grass - Direct,Urea Application,AGRI_SPR_FER
+3D12a,10,Agricultural Horses - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Dairy - Dairy Cows - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Deer - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Domestic Horses - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Goats - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Other cattle - Beef females for slaughter - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Bulls for breeding - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Cereal fed bull - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Cows - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Dairy Calves Female - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Dairy In Calf Heifers - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Dairy Replacements Female - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Heifers for breeding - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Other cattle - Steers - Direct,Spreading,AGRI_SPR_CAT
+3D12a,10,Pig - Boar - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Pig - Fattening Pig < 20 kg - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Pig - Fattening Pig > 80 kg - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Pig - Fattening Pig 20 to 80 kg - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Pig - Gilt - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Pig - Sow - Direct,Spreading,AGRI_SPR_PIG
+3D12a,10,Poultry - Broilers - Direct,Spreading,AGRI_SPR_POU
+3D12a,10,Poultry - Laying Hens - Direct,Spreading,AGRI_SPR_POU
+3D12a,10,Poultry - Other - Direct,Spreading,AGRI_SPR_POU
+3D12a,10,Poultry - Turkeys - Direct,Spreading,AGRI_SPR_POU
+3D12a,10,Professional Horses - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Sheep - Ewe - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Sheep - Lamb - Direct,Spreading,AGRI_SPR_OTH
+3D12a,10,Sheep - Ram - Direct,Spreading,AGRI_SPR_OTH
+3D12b,10,Sewage Sludge Cake - Direct,Spreading,AGRI_SPR_BIO
+3D12b,10,Sewage Sludge Liquid - Direct,Spreading,AGRI_SPR_BIO
+3D12c,10,Beef females for slaughter - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Boar - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Broilers - Digestate Direct,Spreading,AGRI_SPR_POU
+3D12c,10,Bulls for breeding - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Cereal fed bull - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Compost - Direct,Spreading,AGRI_SPR_NMD
+3D12c,10,Cows - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Crop Digestates - Direct,Spreading,AGRI_SPR_NMD
+3D12c,10,Dairy Calves Female - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Dairy Cows - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Dairy In Calf Heifers - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Dairy Replacements Female - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Fattening Pig < 20 kg - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Fattening Pig > 80 kg - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Fattening Pig 20 to 80 kg - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Food Digestates - Direct,Spreading,AGRI_SPR_NMD
+3D12c,10,Gilt - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Heifers for breeding - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Laying Hens - Digestate Direct,Spreading,AGRI_SPR_POU
+3D12c,10,Other organic residue Digestates - Direct,Spreading,AGRI_SPR_NMD
+3D12c,10,Other Poultry - Digestate Direct,Spreading,AGRI_SPR_POU
+3D12c,10,Sow - Digestate Direct,Spreading,AGRI_SPR_PIG
+3D12c,10,Steers - Digestate Direct,Spreading,AGRI_SPR_CAT
+3D12c,10,Turkeys - Digestate Direct,Spreading,AGRI_SPR_POU
+3D13,10,Agricultural Horses - Direct,Grazing,AGRI_GRZ_MLI
+3D13,10,Dairy - Dairy Cows - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Deer - Direct,Grazing,AGRI_GRZ_MLI
+3D13,10,Domestic Horses - Direct,Grazing,AGRI_GRZ_MLI
+3D13,10,Goats - Direct,Grazing,AGRI_GRZ_MLI
+3D13,10,Other cattle - Beef females for slaughter - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Bulls for breeding - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Cereal fed bull - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Cows - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Dairy Calves Female - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Dairy In Calf Heifers - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Dairy Replacements Female - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Heifers for breeding - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Other cattle - Steers - Direct,Grazing,AGRI_GRZ_CAT
+3D13,10,Pig - Boar - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Pig - Fattening Pig < 20 kg - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Pig - Fattening Pig > 80 kg - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Pig - Fattening Pig 20 to 80 kg - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Pig - Gilt - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Pig - Sow - Direct,Grazing,AGRI_GRZ_PIG
+3D13,10,Poultry - Broilers - Direct,Grazing,AGRI_GRZ_POU
+3D13,10,Poultry - Laying Hens - Direct,Grazing,AGRI_GRZ_POU
+3D13,10,Poultry - Other - Direct,Grazing,AGRI_GRZ_POU
+3D13,10,Poultry - Turkeys - Direct,Grazing,AGRI_GRZ_POU
+3D13,10,Professional Horses - Direct,Grazing,AGRI_GRZ_MLI
+3D13,10,Sheep - Ewe - Direct,Grazing,AGRI_GRZ_SHP
+3D13,10,Sheep - Lamb - Direct,Grazing,AGRI_GRZ_SHP
+3D13,10,Sheep - Ram - Direct,Grazing,AGRI_GRZ_SHP
+3D14,10,Arable - Direct,Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,Ammonium Sulphate and Diammonium Phosphate Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,Calcium Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,No Nitrogen Fertiliser Applied Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,Other Nitrogen Including Compounds Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,Urea Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Arable - Direct,Urea Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Ammonium Sulphate and Diammonium Phosphate Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Calcium Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,No Nitrogen Fertiliser Applied Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Other Nitrogen Including Compounds Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Urea Ammonium Nitrate Residue,AGRI_SPR_FER
+3D14,10,Grass - Direct,Urea Residue,AGRI_SPR_FER
+3D15,10,Cropland management,Mineralisation,AGRI_SPR_FER
+3D16,10,Managed Histosols,Land area,MISC_ANY
+3D21,10,Agricultural Horses - Indirect Deposition,Grazing,AGRI_GRZ_MLI
+3D21,10,Agricultural Horses - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Arable - Indirect Deposition,Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Arable - Indirect Deposition,Urea Application,AGRI_SPR_FER
+3D21,10,Compost - Indirect Deposition,Spreading,AGRI_SPR_NMD
+3D21,10,Crop Digestates - Indirect Deposition,Spreading,AGRI_SPR_NMD
+3D21,10,Dairy - Dairy Cows - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Dairy - Dairy Cows - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Dairy - Dairy Cows - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Deer - Indirect Deposition,Grazing,AGRI_GRZ_MLI
+3D21,10,Deer - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Domestic Horses - Indirect Deposition,Grazing,AGRI_GRZ_MLI
+3D21,10,Domestic Horses - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Food Digestates - Indirect Deposition,Spreading,AGRI_SPR_NMD
+3D21,10,Goats - Indirect Deposition,Grazing,AGRI_GRZ_MLI
+3D21,10,Goats - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Grass - Indirect Deposition,Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D21,10,Grass - Indirect Deposition,Urea Application,AGRI_SPR_FER
+3D21,10,Other cattle - Beef females for slaughter - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Beef females for slaughter - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Beef females for slaughter - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Bulls for breeding - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Bulls for breeding - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Bulls for breeding - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Cereal fed bull - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Cereal fed bull - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Cereal fed bull - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Cows - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Cows - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Cows - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy Calves Female - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy Calves Female - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Dairy Calves Female - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy In Calf Heifers - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy In Calf Heifers - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Dairy In Calf Heifers - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy Replacements Female - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Dairy Replacements Female - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Dairy Replacements Female - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Heifers for breeding - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Heifers for breeding - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Heifers for breeding - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Steers - Digestate Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other cattle - Steers - Indirect Deposition,Grazing,AGRI_GRZ_CAT
+3D21,10,Other cattle - Steers - Indirect Deposition,Spreading,AGRI_SPR_CAT
+3D21,10,Other organic residue Digestates - Indirect Deposition,Spreading,AGRI_SPR_NMD
+3D21,10,Pig - Boar - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Boar - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Boar - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig < 20 kg - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig < 20 kg - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Fattening Pig < 20 kg - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig > 80 kg - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig > 80 kg - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Fattening Pig > 80 kg - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig 20 to 80 kg - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Fattening Pig 20 to 80 kg - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Fattening Pig 20 to 80 kg - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Gilt - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Gilt - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Gilt - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Sow - Digestate Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Pig - Sow - Indirect Deposition,Grazing,AGRI_GRZ_PIG
+3D21,10,Pig - Sow - Indirect Deposition,Spreading,AGRI_SPR_PIG
+3D21,10,Poultry - Broilers - Digestate Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Broilers - Indirect Deposition,Grazing,AGRI_GRZ_POU
+3D21,10,Poultry - Broilers - Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Laying Hens - Digestate Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Laying Hens - Indirect Deposition,Grazing,AGRI_GRZ_POU
+3D21,10,Poultry - Laying Hens - Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Other - Indirect Deposition,Grazing,AGRI_GRZ_POU
+3D21,10,Poultry - Other - Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Other Poultry - Digestate Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Turkeys - Digestate Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Poultry - Turkeys - Indirect Deposition,Grazing,AGRI_GRZ_POU
+3D21,10,Poultry - Turkeys - Indirect Deposition,Spreading,AGRI_SPR_POU
+3D21,10,Professional Horses - Indirect Deposition,Grazing,AGRI_GRZ_MLI
+3D21,10,Professional Horses - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Sewage Sludge Cake - Indirect Deposition,Spreading,AGRI_SPR_BIO
+3D21,10,Sewage Sludge Liquid - Indirect Deposition,Spreading,AGRI_SPR_BIO
+3D21,10,Sheep - Ewe - Indirect Deposition,Grazing,AGRI_GRZ_SHP
+3D21,10,Sheep - Ewe - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Sheep - Lamb - Indirect Deposition,Grazing,AGRI_GRZ_SHP
+3D21,10,Sheep - Lamb - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D21,10,Sheep - Ram - Indirect Deposition,Grazing,AGRI_GRZ_SHP
+3D21,10,Sheep - Ram - Indirect Deposition,Spreading,AGRI_SPR_OTH
+3D22,10,Agricultural Horses - Indirect Leach,Grazing,AGRI_GRZ_MLI
+3D22,10,Agricultural Horses - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Arable - Indirect Leach,Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Indirect Leach,Urea Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Arable - Residue Indirect Leach,Urea Application,AGRI_SPR_FER
+3D22,10,Compost - Indirect Leach,Spreading,AGRI_SPR_NMD
+3D22,10,Crop Digestates - Indirect Leach,Spreading,AGRI_SPR_NMD
+3D22,10,Cropland management,Mineralisation - indirect leach,AGRI_SPR_FER
+3D22,10,Dairy - Dairy Cows - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Dairy - Dairy Cows - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Dairy - Dairy Cows - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Deer - Indirect Leach,Grazing,AGRI_GRZ_MLI
+3D22,10,Deer - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Domestic Horses - Indirect Leach,Grazing,AGRI_GRZ_MLI
+3D22,10,Domestic Horses - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Food Digestates - Indirect Leach,Spreading,AGRI_SPR_NMD
+3D22,10,Goats - Indirect Leach,Grazing,AGRI_GRZ_MLI
+3D22,10,Goats - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Grass - Indirect Leach,Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Indirect Leach,Urea Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3D22,10,Grass - Residue Indirect Leach,Urea Application,AGRI_SPR_FER
+3D22,10,Other cattle - Beef females for slaughter - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Beef females for slaughter - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Beef females for slaughter - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Bulls for breeding - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Bulls for breeding - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Bulls for breeding - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Cereal fed bull - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Cereal fed bull - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Cereal fed bull - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Cows - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Cows - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Cows - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy Calves Female - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy Calves Female - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Dairy Calves Female - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy In Calf Heifers - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy In Calf Heifers - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Dairy In Calf Heifers - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy Replacements Female - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Dairy Replacements Female - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Dairy Replacements Female - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Heifers for breeding - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Heifers for breeding - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Heifers for breeding - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Steers - Digestate Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other cattle - Steers - Indirect Leach,Grazing,AGRI_GRZ_CAT
+3D22,10,Other cattle - Steers - Indirect Leach,Spreading,AGRI_SPR_CAT
+3D22,10,Other organic residue Digestates - Indirect Leach,Spreading,AGRI_SPR_NMD
+3D22,10,Pig - Boar - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Boar - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Boar - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig < 20 kg - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig < 20 kg - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Fattening Pig < 20 kg - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig > 80 kg - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig > 80 kg - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Fattening Pig > 80 kg - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig 20 to 80 kg - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Fattening Pig 20 to 80 kg - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Fattening Pig 20 to 80 kg - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Gilt - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Gilt - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Gilt - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Sow - Digestate Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Pig - Sow - Indirect Leach,Grazing,AGRI_GRZ_PIG
+3D22,10,Pig - Sow - Indirect Leach,Spreading,AGRI_SPR_PIG
+3D22,10,Poultry - Broilers - Digestate Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Broilers - Indirect Leach,Grazing,AGRI_GRZ_POU
+3D22,10,Poultry - Broilers - Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Laying Hens - Digestate Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Laying Hens - Indirect Leach,Grazing,AGRI_GRZ_POU
+3D22,10,Poultry - Laying Hens - Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Other - Indirect Leach,Grazing,AGRI_GRZ_POU
+3D22,10,Poultry - Other - Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Other Poultry - Digestate Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Turkeys - Digestate Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Poultry - Turkeys - Indirect Leach,Grazing,AGRI_GRZ_POU
+3D22,10,Poultry - Turkeys - Indirect Leach,Spreading,AGRI_SPR_POU
+3D22,10,Professional Horses - Indirect Leach,Grazing,AGRI_GRZ_MLI
+3D22,10,Professional Horses - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Sewage Sludge Cake - Indirect Leach,Spreading,AGRI_SPR_BIO
+3D22,10,Sewage Sludge Liquid - Indirect Leach,Spreading,AGRI_SPR_BIO
+3D22,10,Sheep - Ewe - Indirect Leach,Grazing,AGRI_GRZ_SHP
+3D22,10,Sheep - Ewe - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Sheep - Lamb - Indirect Leach,Grazing,AGRI_GRZ_SHP
+3D22,10,Sheep - Lamb - Indirect Leach,Spreading,AGRI_SPR_OTH
+3D22,10,Sheep - Ram - Indirect Leach,Grazing,AGRI_GRZ_SHP
+3D22,10,Sheep - Ram - Indirect Leach,Spreading,AGRI_SPR_OTH
+3Da1,10,Arable,Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Arable,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3Da1,10,Arable,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Arable,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3Da1,10,Arable,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3Da1,10,Arable,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Arable,Urea Application,AGRI_SPR_FER
+3Da1,10,Fertiliser Application,Inorganic N applied to soil,AGRI_SPR_FER
+3Da1,10,Grass,Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Grass,Ammonium Sulphate and Diammonium Phosphate Application,AGRI_SPR_FER
+3Da1,10,Grass,Calcium Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Grass,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3Da1,10,Grass,Other Nitrogen Including Compounds Application,AGRI_SPR_FER
+3Da1,10,Grass,Urea Ammonium Nitrate Application,AGRI_SPR_FER
+3Da1,10,Grass,Urea Application,AGRI_SPR_FER
+3Da2a,10,Agricultural Horses,Spreading,AGRI_SPR_OTH
+3Da2a,10,Agricultural Horses FAM - direct,Manure N applied to soil,AGRI_SPR_OTH
+3Da2a,10,Dairy - Dairy Cows,Spreading,AGRI_SPR_CAT
+3Da2a,10,Dairy Cows FAM - Direct,Manure N applied to soil,AGRI_SPR_CAT
+3Da2a,10,Deer,Spreading,AGRI_SPR_OTH
+3Da2a,10,Deer FAM - Direct,Manure N applied to soil,AGRI_SPR_OTH
+3Da2a,10,FAM - direct,Agricultural Horses,AGRI_SPR_OTH
+3Da2a,10,FAM - direct,Dairy - Dairy Cows,AGRI_SPR_CAT
+3Da2a,10,FAM - direct,Deer,AGRI_SPR_OTH
+3Da2a,10,FAM - direct,Goats,AGRI_SPR_OTH
+3Da2a,10,FAM - direct,Other cattle,AGRI_SPR_CAT
+3Da2a,10,FAM - direct,Pigs,AGRI_SPR_PIG
+3Da2a,10,FAM - direct,Poultry - Broilers,AGRI_SPR_POU
+3Da2a,10,FAM - direct,Poultry - Laying Hens,AGRI_SPR_POU
+3Da2a,10,FAM - direct,Poultry - Other,AGRI_SPR_POU
+3Da2a,10,FAM - direct,Poultry - Turkeys,AGRI_SPR_POU
+3Da2a,10,FAM - direct,Sheep,AGRI_SPR_OTH
+3Da2a,10,Goats,Spreading,AGRI_SPR_OTH
+3Da2a,10,Goats FAM - Direct,Manure N applied to soil,AGRI_SPR_OTH
+3Da2a,10,Other cattle - Beef females for slaughter,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Bulls for breeding,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Cereal fed bull,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Cows,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Dairy Calves Female,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Dairy In Calf Heifers,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Dairy Replacements Female,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Heifers for breeding,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other cattle - Steers,Spreading,AGRI_SPR_CAT
+3Da2a,10,Other Cattle FAM - Direct,Manure N applied to soil,AGRI_SPR_CAT
+3Da2a,10,Pig - Boar,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pig - Fattening Pig < 20 kg,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pig - Fattening Pig > 80 kg,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pig - Fattening Pig 20 to 80 kg,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pig - Gilt,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pig - Sow,Spreading,AGRI_SPR_PIG
+3Da2a,10,Pigs FAM - Direct,Manure N applied to soil,AGRI_SPR_PIG
+3Da2a,10,Poultry - Broilers,Spreading,AGRI_SPR_POU
+3Da2a,10,Poultry - Broilers FAM - Direct,Manure N applied to soil,AGRI_SPR_POU
+3Da2a,10,Poultry - Laying Hens,Spreading,AGRI_SPR_POU
+3Da2a,10,Poultry - Laying Hens FAM - Direct,Manure N applied to soil,AGRI_SPR_POU
+3Da2a,10,Poultry - Other,Spreading,AGRI_SPR_POU
+3Da2a,10,Poultry - Other FAM - Direct,Manure N applied to soil,AGRI_SPR_POU
+3Da2a,10,Poultry - Turkeys,Spreading,AGRI_SPR_POU
+3Da2a,10,Poultry - Turkeys FAM - Direct,Manure N applied to soil,AGRI_SPR_POU
+3Da2a,10,Sheep - Ewe,Spreading,AGRI_SPR_OTH
+3Da2a,10,Sheep - Lamb,Spreading,AGRI_SPR_OTH
+3Da2a,10,Sheep - Ram,Spreading,AGRI_SPR_OTH
+3Da2a,10,Sheep FAM - Direct,Manure N applied to soil,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Agricultural Horses,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Dairy - Dairy Cows,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Deer,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Goats,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Other cattle - Beef females for slaughter,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Bulls for breeding,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Cereal fed bull,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Cows,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Dairy Calves Female,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Dairy In Calf Heifers,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Dairy Replacements Female,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Heifers for breeding,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Other cattle - Steers,AGRI_SPR_CAT
+3Da2a,10,Spread Manure,Pig - Boar,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Pig - Fattening Pig < 20 kg,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Pig - Fattening Pig > 80 kg,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Pig - Fattening Pig 20 to 80 kg,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Pig - Gilt,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Pig - Sow,AGRI_SPR_PIG
+3Da2a,10,Spread Manure,Poultry - Broilers,AGRI_SPR_POU
+3Da2a,10,Spread Manure,Poultry - Laying Hens,AGRI_SPR_POU
+3Da2a,10,Spread Manure,Poultry - Other,AGRI_SPR_POU
+3Da2a,10,Spread Manure,Poultry - Turkeys,AGRI_SPR_POU
+3Da2a,10,Spread Manure,Sheep - Ewe,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Sheep - Lamb,AGRI_SPR_OTH
+3Da2a,10,Spread Manure,Sheep - Ram,AGRI_SPR_OTH
+3Da2b,10,Sewage Sludge Application - Direct,Sewage sludge N applied to soil,AGRI_SPR_FER
+3Da2b,10,Sewage Sludge Cake - TAN,Spreading,AGRI_SPR_BIO
+3Da2b,10,Sewage Sludge Cake - Total N,Spreading,AGRI_SPR_BIO
+3Da2b,10,Sewage Sludge Liquid - TAN,Spreading,AGRI_SPR_BIO
+3Da2b,10,Sewage Sludge Liquid - Total N,Spreading,AGRI_SPR_BIO
+3Da2c,10,Compost,Spreading,AGRI_SPR_NMD
+3Da2c,10,Crop Digestates - TAN,Spreading,AGRI_SPR_NMD
+3Da2c,10,Crop Digestates - Total N,Spreading,AGRI_SPR_NMD
+3Da2c,10,Dairy - Dairy Cows - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Food Digestates - TAN,Spreading,AGRI_SPR_NMD
+3Da2c,10,Food Digestates - Total N,Spreading,AGRI_SPR_NMD
+3Da2c,10,Other cattle - Beef females for slaughter - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Bulls for breeding - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Cereal fed bull - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Cows - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Dairy Calves Female - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Dairy In Calf Heifers - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Dairy Replacements Female - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Heifers for breeding - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other cattle - Steers - Digestate,Spreading,AGRI_SPR_CAT
+3Da2c,10,Other organic residue Digestates - TAN,Spreading,AGRI_SPR_NMD
+3Da2c,10,Other organic residue Digestates - Total N,Spreading,AGRI_SPR_NMD
+3Da2c,10,Pig - Boar - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Pig - Fattening Pig < 20 kg - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Pig - Fattening Pig > 80 kg - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Pig - Fattening Pig 20 to 80 kg - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Pig - Gilt - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Pig - Sow - Digestate,Spreading,AGRI_SPR_PIG
+3Da2c,10,Poultry - Broilers - Digestate,Spreading,AGRI_SPR_POU
+3Da2c,10,Poultry - Laying Hens - Digestate,Spreading,AGRI_SPR_POU
+3Da2c,10,Poultry - Other Poultry - Digestate,Spreading,AGRI_SPR_POU
+3Da2c,10,Poultry - Turkeys - Digestate,Spreading,AGRI_SPR_POU
+3Da2c,10,Spread Digestate,Dairy - Dairy Cows,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Beef females for slaughter,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Bulls for breeding,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Cereal fed bull,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Cows,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Dairy Calves Female,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Dairy In Calf Heifers,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Dairy Replacements Female,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Heifers for breeding,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Other cattle - Steers,AGRI_SPR_CAT
+3Da2c,10,Spread Digestate,Pig - Boar,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Pig - Fattening Pig < 20 kg,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Pig - Fattening Pig > 80 kg,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Pig - Fattening Pig 20 to 80 kg,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Pig - Gilt,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Pig - Sow,AGRI_SPR_PIG
+3Da2c,10,Spread Digestate,Poultry - Broilers,AGRI_SPR_POU
+3Da2c,10,Spread Digestate,Poultry - Laying Hens,AGRI_SPR_POU
+3Da2c,10,Spread Digestate,Poultry - Other,AGRI_SPR_POU
+3Da2c,10,Spread Digestate,Poultry - Turkeys,AGRI_SPR_POU
+3Da3,10,Agricultural Horses,Grazing,AGRI_GRZ_MLI
+3Da3,10,Agricultural Horses PRP - direct,Excreta N returned at grazing,AGRI_GRZ_MLI
+3Da3,10,Dairy - Dairy Cows,Grazing,AGRI_GRZ_CAT
+3Da3,10,Dairy Cows PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_CAT
+3Da3,10,Deer,Grazing,AGRI_GRZ_MLI
+3Da3,10,Deer PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_MLI
+3Da3,10,Goats,Grazing,AGRI_GRZ_MLI
+3Da3,10,Goats PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_MLI
+3Da3,10,Grazing,Agricultural Horses,AGRI_GRZ_MLI
+3Da3,10,Grazing,Dairy - Dairy Cows,AGRI_GRZ_CAT
+3Da3,10,Grazing,Deer,AGRI_GRZ_MLI
+3Da3,10,Grazing,Goats,AGRI_GRZ_MLI
+3Da3,10,Grazing,Other cattle - Beef females for slaughter,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Bulls for breeding,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Cereal fed bull,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Cows,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Dairy Calves Female,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Dairy In Calf Heifers,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Dairy Replacements Female,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Heifers for breeding,AGRI_GRZ_CAT
+3Da3,10,Grazing,Other cattle - Steers,AGRI_GRZ_CAT
+3Da3,10,Grazing,Pig - Boar,AGRI_GRZ_PIG
+3Da3,10,Grazing,Pig - Fattening Pig < 20 kg,AGRI_GRZ_PIG
+3Da3,10,Grazing,Pig - Fattening Pig > 80 kg,AGRI_GRZ_PIG
+3Da3,10,Grazing,Pig - Fattening Pig 20 to 80 kg,AGRI_GRZ_PIG
+3Da3,10,Grazing,Pig - Gilt,AGRI_GRZ_PIG
+3Da3,10,Grazing,Pig - Sow,AGRI_GRZ_PIG
+3Da3,10,Grazing,Poultry - Broilers,AGRI_GRZ_POU
+3Da3,10,Grazing,Poultry - Laying Hens,AGRI_GRZ_POU
+3Da3,10,Grazing,Poultry - Other,AGRI_GRZ_POU
+3Da3,10,Grazing,Poultry - Turkeys,AGRI_GRZ_POU
+3Da3,10,Grazing,Sheep - Ewe,AGRI_GRZ_SHP
+3Da3,10,Grazing,Sheep - Lamb,AGRI_GRZ_SHP
+3Da3,10,Grazing,Sheep - Ram,AGRI_GRZ_SHP
+3Da3,10,Other cattle - Beef females for slaughter,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Bulls for breeding,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Cereal fed bull,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Cows,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Dairy Calves Female,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Dairy In Calf Heifers,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Dairy Replacements Female,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Heifers for breeding,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other cattle - Steers,Grazing,AGRI_GRZ_CAT
+3Da3,10,Other Cattle PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_CAT
+3Da3,10,Pig - Boar,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pig - Fattening Pig < 20 kg,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pig - Fattening Pig > 80 kg,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pig - Fattening Pig 20 to 80 kg,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pig - Gilt,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pig - Sow,Grazing,AGRI_GRZ_PIG
+3Da3,10,Pigs PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_PIG
+3Da3,10,Poultry - Broilers,Grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Broilers PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Laying Hens,Grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Laying Hens PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Other,Grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Other PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Turkeys,Grazing,AGRI_GRZ_POU
+3Da3,10,Poultry - Turkeys PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_POU
+3Da3,10,PRP - direct,Agricultural Horses,AGRI_GRZ_MLI
+3Da3,10,PRP - direct,Dairy - Dairy Cows,AGRI_GRZ_CAT
+3Da3,10,PRP - direct,Deer,AGRI_GRZ_MLI
+3Da3,10,PRP - direct,Goats,AGRI_GRZ_MLI
+3Da3,10,PRP - direct,Other cattle,AGRI_GRZ_CAT
+3Da3,10,PRP - direct,Pigs,AGRI_GRZ_PIG
+3Da3,10,PRP - direct,Poultry - Broilers,AGRI_GRZ_POU
+3Da3,10,PRP - direct,Poultry - Laying Hens,AGRI_GRZ_POU
+3Da3,10,PRP - direct,Poultry - Other,AGRI_GRZ_POU
+3Da3,10,PRP - direct,Poultry - Turkeys,AGRI_GRZ_POU
+3Da3,10,PRP - direct,Sheep,AGRI_GRZ_SHP
+3Da3,10,Sheep - Ewe,Grazing,AGRI_GRZ_SHP
+3Da3,10,Sheep - Lamb,Grazing,AGRI_GRZ_SHP
+3Da3,10,Sheep - Ram,Grazing,AGRI_GRZ_SHP
+3Da3,10,Sheep PRP - Direct,Excreta N returned at grazing,AGRI_GRZ_SHP
+3Da4,10,Arable - Direct,Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Ammonium Sulphate and Diammonium Phosphate Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Calcium Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Crop Residues,AGRI_SPR_FER
+3Da4,10,Arable - Direct,No Nitrogen Fertiliser Applied Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Other Nitrogen Including Compounds Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Urea Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Arable - Direct,Urea Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Ammonium Sulphate and Diammonium Phosphate Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Calcium Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Crop Residues,AGRI_SPR_FER
+3Da4,10,Grass - Direct,No Nitrogen Fertiliser Applied Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Other Nitrogen Including Compounds Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Urea Ammonium Nitrate Residue,AGRI_SPR_FER
+3Da4,10,Grass - Direct,Urea Residue,AGRI_SPR_FER
+3Dc,10,Agricultural operations,Land area,MISC_ANY
+3Dc,10,Arable - Agricultural operations,Ammonium nitrate,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,Ammonium Sulphate and Diammonium Phosphate,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,Calcium Ammonium Nitrate,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,Other Nitrogen Including Compounds,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,Urea,AGRI_SPR_FER
+3Dc,10,Arable - Agricultural operations,Urea Ammonium Nitrate,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Ammonium nitrate,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Ammonium Sulphate and Diammonium Phosphate,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Calcium Ammonium Nitrate,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Other Nitrogen Including Compounds,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Urea,AGRI_SPR_FER
+3Dc,10,Grass - Agricultural operations,Urea Ammonium Nitrate,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Ammonium nitrate,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Ammonium Sulphate and Diammonium Phosphate,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Calcium Ammonium Nitrate,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Other Nitrogen Including Compounds,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Urea,AGRI_SPR_FER
+3De,10,Arable - Cultivated crops,Urea Ammonium Nitrate,AGRI_SPR_FER
+3De,10,Cultivated crops,Land area,MISC_ANY
+3De,10,Cultivated crops,Rough grazing,MISC_ANY
+3De,10,Grass - Cultivated crops,Ammonium nitrate,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,Ammonium Sulphate and Diammonium Phosphate,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,Calcium Ammonium Nitrate,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,No Nitrogen Fertiliser Applied,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,Other Nitrogen Including Compounds,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,Urea,AGRI_SPR_FER
+3De,10,Grass - Cultivated crops,Urea Ammonium Nitrate,AGRI_SPR_FER
+3F,10,Field burning,Barley residue,MISC_ANY
+3F,10,Field burning,Linseed residue,MISC_ANY
+3F,10,Field burning,Non-fuel combustion,MISC_ANY
+3F,10,Field burning,Oats residue,MISC_ANY
+3F,10,Field burning,Wheat residue,MISC_ANY
+3F11,10,Field burning,Wheat residue,MISC_ANY
+3F12,10,Field burning,Barley residue,MISC_ANY
+3F14,10,Field burning,Oats residue,MISC_ANY
+3F5,10,Field burning,Linseed residue,MISC_ANY
+3G1,10,Liming,Limestone,MISC_ANY
+3G2,10,Liming,Dolomite,MISC_ANY
+3H,10,Agriculture - application of urea,Urea consumption,AGRI_SPR_FER
+3H,10,Fertiliser Application,Urea Application,AGRI_SPR_FER
+3J,10,Agricultural soils - Mineralization/Immobilization Associated with change in Soil Organic Matter,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - all poultry wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - dairy cattle enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - dairy cattle wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - deer enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - deer wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - goats enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - goats wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - horses enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - horses wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - manure leaching (indirect),Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - manure other (indirect),Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - other cattle enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - other cattle wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - other poultry wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - pigs enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - pigs wastes,Non-fuel combustion,MISC_ANY
+3J,10,Agriculture livestock - sheep enteric,Non-fuel combustion,AGRI_ENT_ALL
+3J,10,Agriculture livestock - sheep wastes,Non-fuel combustion,MISC_ANY
+3J,10,Dairy - Dairy Cows - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Beef females for slaughter - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Bulls for breeding - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Cereal fed bull - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Cows - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Dairy Calves Female - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Dairy In Calf Heifers - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Dairy Replacements Female - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Heifers for breeding - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,Other cattle - Steers - Digestate Direct,Storage,AGRI_STO_CAT
+3J,10,OvTerr Agricultural Soils,Non-fuel combustion,MISC_ANY
+4A,11,Forest Land - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
+4A1,11,Forest Land remaining Forest Land - Biomass Burning - Wildfires,Biomass,MISC_ANY
+4A1,11,Forest Land remaining Forest Land - Carbon stock change,Non-fuel combustion,MISC_ANY
+4A2,11,Cropland converted to Forest Land - Carbon stock change,Non-fuel combustion,MISC_ANY
+4A2,11,Cropland converted to Forest Land - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4A2,11,Direct N2O emission from N fertilisation of forest land,Non-fuel combustion,MISC_ANY
+4A2,11,Grassland converted to Forest Land - Carbon stock change,Non-fuel combustion,MISC_ANY
+4A2,11,Grassland converted to Forest Land - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4A2,11,Settlements converted to Forest Land - Carbon stock change,Non-fuel combustion,MISC_ANY
+4A2,11,Settlements converted to Forest Land - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4B1,11,Cropland remaining Cropland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+4B1,11,Cropland remaining Cropland - Living biomass carbon stock change,Non-fuel combustion,MISC_ANY
+4B1,11,Cropland remaining Cropland - Soils carbon stock change,Non-fuel combustion,MISC_ANY
+4B2,11,Forest Land converted to Cropland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+4B2,11,Forest Land converted to Cropland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4B2,11,Forest Land converted to Cropland - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4B2,11,Grassland converted to Cropland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4B2,11,Grassland converted to Cropland - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4B2,11,Settlements converted to Cropland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4C,11,Grassland - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
+4C1,11,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+4C1,11,Grassland remaining Grassland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4C1,11,Grassland remaining Grassland - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4C2,11,Cropland converted to Grassland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4C2,11,Forest Land converted to Grassland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+4C2,11,Forest Land converted to Grassland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4C2,11,Forest Land converted to Grassland - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4C2,11,Settlements converted to Grassland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4C2,11,Wetlands converted to Grassland - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D,11,Wetlands - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
+4D1,11,Other Wetlands Remaining Other Wetlands - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D1,11,Other wetlands remaining other wetlands - carbon stock change (naei18),Non-fuel combustion,MISC_ANY
+4D1,11,Peat Extraction Remaining Peat Extraction - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D2,11,Cropland converted to Other Wetlands - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D2,11,Forest Land converted to Other Wetlands - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+4D2,11,Forest Land converted to Other Wetlands - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D2,11,Grassland converted to flooded land - Carbon stock change,Non-fuel combustion,MISC_ANY
+4D2,11,Land converted for Peat Extraction - Carbon stock change,Non-fuel combustion,MISC_ANY
+4E,11,Settlements - Drainage and rewetting and other management of organic and mineral soils,Non-fuel combustion,MISC_ANY
+4G,11,HWP Produced and Consumed Domestically - Carbon stock change,Non-fuel combustion,MISC_ANY
+4G,11,HWP Produced and Exported - Carbon stock change,Non-fuel combustion,MISC_ANY
+5A,9,Landfill,Non-fuel combustion,WAST_GEN
+5A,9,Waste disposal - batteries,Non-fuel combustion,WAST_GEN
+5A,9,Waste disposal - electrical equipment,Non-fuel combustion,WAST_GEN
+5A,9,Waste disposal - lighting fluorescent tubes,Non-fuel combustion,WAST_GEN
+5A,9,Waste disposal - measurement and control equipment,Non-fuel combustion,WAST_GEN
+5A1a,9,Landfill,Non-fuel combustion,WAST_GEN
+5B1,9,Composting (at household),Process emission,WAST_GEN
+5B1,9,Composting (at permit sites),Process emission,WAST_GEN
+5B1a,9,Composting (at household),Biological waste,WAST_GEN
+5B1a,9,Composting (at permit sites),Process emission,WAST_GEN
+5B1a,9,Mechanical Biological Treatment - Composting,Biological waste,WAST_GEN
+5B1a,9,Total composting (non-household),Biological waste,WAST_GEN
+5B2,9,Anaerobic Digestion,Process emission,WAST_GEN
+5B2a,9,Anaerobic Digestion (other),Biological waste,WAST_GEN
+5B2a,9,Mechanical Biological Treatment - Anaerobic Digestion,Biological waste,WAST_GEN
+5C1.1b,9,Incineration - sewage sludge,Sewage sludge combustion,WAST_GEN
+5C1.2a,9,Incineration,MSW,WAST_GEN
+5C1.2b,9,Incineration - chemical waste,Chemical waste,WAST_GEN
+5C1.2b,9,Incineration - clinical waste,Clinical waste,WAST_GEN
+5C1a,9,Incineration,MSW,WAST_GEN
+5C1bii,9,Incineration - chemical waste,Chemical waste,WAST_GEN
+5C1biii,9,Incineration - clinical waste,Clinical waste,WAST_GEN
+5C1biv,9,Incineration - sewage sludge,Sewage sludge combustion,WAST_GEN
+5C1bv,9,Crematoria,Cremation,WAST_GEN
+5C1bv,9,Foot and mouth pyres,Cows burnt,WAST_GEN
+5C1bv,9,Foot and mouth pyres,Deer burnt,WAST_GEN
+5C1bv,9,Foot and mouth pyres,Goats burnt,WAST_GEN
+5C1bv,9,Foot and mouth pyres,Pigs burnt,WAST_GEN
+5C1bv,9,Foot and mouth pyres,Sheep burnt,WAST_GEN
+5C1bv,9,Incineration - animal carcases,Non-fuel combustion,WAST_GEN
+5C2,9,Agricultural waste burning,Mass burnt,WAST_GEN
+5C2,9,Other industrial combustion,Treated wood,WAST_GEN
+5C2,9,Small-scale waste burning,Waste,WAST_GEN
+5C2.1b,9,Small-scale waste burning,Wood,WAST_GEN
+5C2.2b,9,Accidental fires - dwellings,Mass burnt,WAST_GEN
+5C2.2b,9,Accidental fires - other buildings,Mass burnt,WAST_GEN
+5C2.2b,9,Accidental fires - vehicles,Mass burnt,WAST_GEN
+5D1,9,Sewage sludge decomposition,Non-fuel domestic,WAST_GEN
+5D1,9,Sewage sludge decomposition,Process emission,WAST_GEN
+5D1,9,Sewage sludge decomposition in private systems,Non-fuel domestic,WAST_GEN
+5D2,9,Industrial Waste Water Treatment,Non-fuel combustion,WAST_GEN
+5E,9,Accidental fires - dwellings,Mass burnt,WAST_GEN
+5E,9,Accidental fires - other buildings,Mass burnt,WAST_GEN
+5E,9,Accidental fires - vehicles,Mass burnt,WAST_GEN
+5E,9,Bonfire night,Mass burnt,WAST_GEN
+6A,11,Domestic Horses,Grazing,AGRI_GRZ_MLI
+6A,11,Domestic Horses,Housing,AGRI_HOU_MLI
+6A,11,Domestic Horses,Spreading,AGRI_SPR_OTH
+6A,11,Domestic Horses,Storage,AGRI_STO_MLI
+6A,11,Domestic Horses,Yarding,AGRI_YRD_CAT
+6A,11,Domestic pets,Manure and excreta,MISC_ANY
+6A,11,FAM - direct,Domestic Horses,AGRI_SPR_OTH
+6A,11,FAM - direct,Professional Horses,AGRI_SPR_OTH
+6A,11,Grazing,Domestic Horses,AGRI_GRZ_MLI
+6A,11,Grazing,Professional Horses,AGRI_GRZ_MLI
+6A,11,House and garden machinery,Domestic fertilizer,MISC_ANY
+6A,11,Housing,Domestic Horses,AGRI_HOU_MLI
+6A,11,Housing,Professional Horses,AGRI_HOU_MLI
+6A,11,Infant emissions from nappies,Population 0to4yrs,MISC_ANY
+6A,11,"Parks, Gardens & Golf courses",Non-fuel combustion,MISC_ANY
+6A,11,Professional horses,Grazing,AGRI_GRZ_MLI
+6A,11,Professional horses,Housing,AGRI_HOU_MLI
+6A,11,Professional horses,Spreading,AGRI_SPR_OTH
+6A,11,Professional horses,Storage,AGRI_STO_MLI
+6A,11,Professional horses,Yarding,AGRI_YRD_CAT
+6A,11,PRP - direct,Domestic Horses,AGRI_GRZ_MLI
+6A,11,PRP - direct,Professional Horses,AGRI_GRZ_MLI
+6A,11,Silage - Housing,Domestic Horses,AGRI_HOU_MLI
+6A,11,Silage - Housing,Professional Horses,AGRI_HOU_MLI
+6A,11,Silage - Storage,Domestic Horses,AGRI_STO_MLI
+6A,11,Silage - Storage,Professional Horses,AGRI_STO_MLI
+6A,11,Spread Manure,Domestic Horses,AGRI_SPR_OTH
+6A,11,Spread Manure,Professional Horses,AGRI_SPR_OTH
+6A,11,Storage,Domestic Horses,AGRI_HOU_MLI
+6A,11,Storage,Professional Horses,AGRI_HOU_MLI
+6A,11,Wastes,Domestic Horses,MISC_ANY
+6A,11,Wastes,Professional Horses,MISC_ANY
+6A,11,Yarding,Domestic Horses,AGRI_YRD_CAT
+6A,11,Yarding,Professional Horses,AGRI_YRD_CAT
+Aviation_Bunkers,avi.cruise,Aircraft - international cruise,Aviation spirit,AVIA_GEN
+Aviation_Bunkers,avi.cruise,Aircraft - international cruise,Aviation turbine fuel,AVIA_GEN
+Aviation_Bunkers,8,Aircraft - international take off and landing,Aviation spirit,AVIA_GEN
+Aviation_Bunkers,8,Aircraft - international take off and landing,Aviation turbine fuel,AVIA_GEN
+Aviation_Bunkers,8,Aircraft engines,Lubricants,AVIA_GEN
+Marine_Bunkers,8,Shipping - international IPCC definition,Fuel oil,SHIP_CTP
+Marine_Bunkers,8,Shipping - international IPCC definition,Gas oil,SHIP_CTP
+non-IPCC,11,Accidental fires - forests,Area burnt,MISC_ANY
+non-IPCC,11,Accidental fires - straw,Mass burnt,MISC_ANY
+non-IPCC,11,Accidental fires - vegetation,Area burnt,MISC_ANY
+z_11B,11,Accidental fires - forests,Area burnt,MISC_ANY
+z_11B,11,Heather burning,Biomass,AGRI_BUR_ALL
+z_11C,11,Accidental fires - straw,Mass burnt,MISC_ANY
+z_11C,11,Accidental fires - vegetation,Area burnt,MISC_ANY
+z_11C,11,Adult breath and sweat,Population,MISC_ANY
+z_11C,11,Natural sources,Non-fuel combustion,MISC_ANY
+z_11C,11,Road transport - resuspension,Vehicle kilometres,MISC_ANY
+z_11C,11,Wild birds wastes,Manure and excreta,MISC_ANY
+z_11C,11,Wild other animal wastes,Manure and excreta,MISC_ANY
+z_1A3ai(ii),avi.cruise,Aircraft - international cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft - international cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and Bermuda - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and Bermuda - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and CDs - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and CDs - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and Gibraltar - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and Gibraltar - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation spirit,AVIA_GEN
+z_1A3ai(ii),avi.cruise,Aircraft between UK and other OTs (excl Gib. and Bermuda) - Cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3aii(ii),avi.cruise,Aircraft - domestic cruise,Aviation spirit,AVIA_GEN
+z_1A3aii(ii),avi.cruise,Aircraft - domestic cruise,Aviation turbine fuel,AVIA_GEN
+z_1A3di(i),8,Shipping - international IPCC definition,Fuel oil,SHIP_CTP
+z_1A3di(i),8,Shipping - international IPCC definition,Gas oil,SHIP_CTP
+0,11,Cropland remaining Cropland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+0,11,Forest Land converted to Cropland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,Forest Land converted to Grassland - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,Forest Land converted to Other Wetlands - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+0,11,Forest Land remaining Forest Land - Biomass Burning - Wildfires,Biomass,MISC_ANY
+0,11,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass,MISC_ANY
+4,11,LULUCF Indirect N2O - Atmospheric Deposition,Non-fuel combustion,MISC_ANY
+4,11,LULUCF Indirect N2O - Nitrogen Leaching and Run-off,Non-fuel combustion,MISC_ANY
+4.00E+01,11,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+01,11,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+4.00E+02,11,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+4.00E+02,11,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion,MISC_ANY
