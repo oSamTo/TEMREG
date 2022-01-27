@@ -8,8 +8,8 @@
 ----------------
 
 * Raw data collected for activity data in the UK, processed to standardized output 
-        * Processing of data in C:/...../DUKEMS/Database/R/xxxxxxx.R
-        * Standard input files uploaded to ./data/GAM_input  (not domestic, too large)
+    * Processing of data in C:/...../DUKEMS/Database/R/xxxxxxx.R
+    * Standard input files uploaded to ./data/GAM_input  (not domestic, too large)
 * Each NFR code maps to a small grouping (Profile_ID), which maps to a GAM_input data category. 
 * 
 
