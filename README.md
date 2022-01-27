@@ -7,7 +7,9 @@
 *Info:*
 ----------------
 
-* Temporal profiles created for ~90 sub-sectors (currently; see DUKEMs project work) - "Profile_IDs"
+* Raw data collected for activity data in the UK, and processed to standardized output (not here: C:/.../DUKEMS/Database)
+* 
+
 * These are produced for hour, hourwday (hour for specific day of week), wday, month and yday
 
 * Functions here will;
@@ -21,6 +23,7 @@
 
 * coefficients are produced relative to 1
 
+----------------
 
 **Emissions contribution by Profile_ID per sector here; ./doc/profile_contributions_sector/**
 
