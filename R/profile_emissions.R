@@ -11,7 +11,7 @@ source("./R/workspace.R")
 y_emis <- 2019 # the emissions year
 ## !! Need a way of choosing NFR/fuel combos to be modelled on specific year data, as opposed to means !! ##
 y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (otherwise `average` year = 0)
-species <- "SOx"
+species <- "CO2"
 classification <- "SNAP" # this can be anything, as long as the file exists
 
 #v_num <<- "1B" # alphanumeric version ID, to carry through data/plots/gams outputs (max 6 char)

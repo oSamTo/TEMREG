@@ -503,8 +503,8 @@ NFR19,SNAP,Source,Activity,Profile_ID
 2A3,4,Glass – ballotini,Glass (ballotini),INDU_PRO_GEN
 2A4a,3,Brick manufacture - all types,Bricks,INDU_PRO_GEN
 2A4a,3,Brick manufacture - Fletton,Fletton bricks,INDU_PRO_GEN
-2A4b,,Non Energy Use: chemical feedstock,Soda ash,MISC_ANY
-2A4b,,Other emissive applications of Soda Ash,Soda ash,MISC_ANY
+2A4b,4,Non Energy Use: chemical feedstock,Soda ash,MISC_ANY
+2A4b,4,Other emissive applications of Soda Ash,Soda ash,MISC_ANY
 2A4d,3,Bread baking,Sodium Bicarbonate,INDU_PRO_GEN
 2A4d,3,Flue Gas Treatment (neutralisation),Sodium Bicarbonate,MISC_ANY
 2A4d,3,Other emissive applications of  Sodium Bicarbonate,Sodium Bicarbonate,MISC_ANY
