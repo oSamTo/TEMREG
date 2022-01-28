@@ -4,6 +4,27 @@
 #### **Processing UK annual emissions to sector-level temporal profiles.**
 ######################################################################
 
+# Structural change coming: 
+* Create raw-data GAMs at Profile_ID level, not aggregated level
+    * this will allow for direct NFR to GAM relationship
+    * skips the 'grouping' sector, e.g. Shipping, which needs updating if raw data changes. Mistakes can happen easily here. 
+    * don't group `by=` in raw-date GAM anymore, so faster per GAM but many more GAMs produced from raw data
+    * the sector GAM calls in many more GAMs to weight. Yet to be seen if this causes processing issues. 
+* The NAEI data should be collated for all pollutants/years and output to one table.
+* a generic NFR to sector contribution (i.e. weighting) should be made across all years and pollutant to represent 'generic'.
+    * consider only using more recent (10?) years to year of interest
+* Maybe an option to continue to produce pollutant specific? yes. Put in ./output/GAM_specific (?) and set on .gitignore
+* Read and weight GAMs in a sector but build one huge table and create one GAM per timescale
+    * read sector, read GAMs from NFR_to_GAM, sample them and weight by emissions contribution. 
+    * add to large table. repeat for all sectors. 
+    * take timescale GAM, group `by = sector` 
+* Output = 1 GAM for each timescale: contains n_sector groups, representing generic pollutant in generic year. 
+
+* All of this to go in targets?
+    * if you updated the raw data GAMs, you need to update NFR_to_GAM table. Targets will spot this and re-run
+    * if you update the pollutants to work over, targets should spot and re-run
+
+
 *Info:*
 ----------------
 
