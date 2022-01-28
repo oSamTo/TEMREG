@@ -26,7 +26,7 @@
 
 **Emissions contribution by Profile_ID per sector here; ./doc/profile_contributions_sector/**
 
-**IMPORTANT:** When making GAM of GAMs, the weighted raw data is having an effect when the scales of data are very different, which is annoying. Need to centre it on 1. 
+**IMPORTANT:** When making GAM of GAMs, the weighted raw data is having an effect when the scales of data are very different, which is annoying. Need to re-scale to 1 (div by mean). 
 
 **Thought:** The year actually does determine the shape of the profile, even when not using year specific activity data, as the emissions contributions to a sector change per year (not a lot but they do). Do i need to take an average of NFR contribution? another GAM???
 
@@ -34,6 +34,7 @@
 
 **IDEA to develop (19/01/22):** The method could be changed by giving the original raw data a weighting based on a look-up table. Going through each SNAP, you would calculate what each Profile_ID contributes to that SNAP, via the NFRs the Profile_ID relates to, *first*. Then weight the raw data accordingly (dependent on the Profile_ID it belongs to), and then produce the sector GAM for the SNAP on the fly. I think there would be a much bigger processing overhead here as the sector GAMs are created from raw data every time.
 
+**IDEA to develop (28/01/22):** Create one large table of emissions for all years and pollutants. When creating the sector GAM, use the mean grouped-NFR contribution to that sector across *all years and all pollutants*. That way it becomes generic. This could be a simple mean (total per sector would need to be re-adjusted to 1), a weighted mean to give more recent years more influence (as old stuff is out of date?) or another GAM. It could be fine that one % contribution figure is used to make the GAM or the range across all years/pollutants could feed into a MCMC?
 
 ### To Do:
 * convert emissions to emissions per hour over a year. 

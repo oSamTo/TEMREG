@@ -67,14 +67,27 @@ JoinNAEItoProfiles <- function(year, species, classification){
   dt_joined <- dt_NFR_to_sect[dt_naei, on = c("NFR19","Source","Activity")][dt_prof_to_GAM , on = "Profile_ID"]
   dt_joined <- dt_joined[!is.na(emission)]
   setnames(dt_joined, classification, "sector")
-  if(classification=="SNAP") dt_joined <- dt_joined[sector != "avi.cruise"]
   
-  if(set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) < 1.005 & set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) > 0.995) {
+  # remove avi.cruise in SNAP classes using anti-join
+  if(classification=="SNAP"){
+    avi_NFRs <- dt_joined[sector == "avi.cruise"]
+    dt_naei <- dt_naei[!avi_NFRs, on=.(NFR19, Source, Activity)]
+    dt_joined <- dt_joined[sector != "avi.cruise"]
+  } 
+  
+  if(identical(dt_naei[,sum(emission, na.rm=T)], dt_joined[,sum(emission, na.rm=T)])){
     NULL
   }else{
     print("Emissions total has changed since joining to profile table - CHECK")
     break
   }
+  
+  #if(set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) < 1.005 & set_units((sum(dt_joined$emission, na.rm=T)/dt_naei[grep("Aircraft - international cruise", Source, invert = T), sum(emission, na.rm=T)]),NULL) > 0.995) {
+  #  NULL
+  #}else{
+  #  print("Emissions total has changed since joining to profile table - CHECK")
+  #  break
+  #}
     
   dt_joined <- cbind(data.table(Pollutant = species, dt_joined))
   return(dt_joined)
@@ -116,9 +129,6 @@ GAMProfileBySector <- function(year, species, timestep, classification, emis, yr
   # get unqiue sector names from the classification system
   #setnames(emis, classification, "sector")
   sectors <- emis[,unique(sector)]
-  
-  # blank list for sector level profiles
-  #l_sec_by_time <- list()
   
   # loop through sectors set above and create a GAM from weighted sub-sector GAMs
   for(s in sectors){
