@@ -1,15 +1,16 @@
 ## initialise the workspace for profiling annual emissions into sector profiles ##
 
 ## packages and workspace
-packs <- c("metagam","ungeviz","mgcv","sp","raster","stringr","gdalUtils","rgeos","rgdal","grid","plyr","ggplot2","data.table","stats","sf","lubridate","units", "cowplot")
+packs <- c("metagam","ungeviz","mgcv","stringr","grid","plyr","ggplot2","data.table","stats","lubridate","units", "cowplot")
 lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
 
+source("./R/plotting.R")
 #spatial
-BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
-LL <<- suppressWarnings(CRS("+init=epsg:4326"))
-r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
+#BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
+#LL <<- suppressWarnings(CRS("+init=epsg:4326"))
+#r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
 
 # lookup NFR to Profile ID - only one file for this to link to sector lookups
 NFR_to_Profile <<- fread("./data/lookup/NFR_to_ProfileID.csv")
@@ -93,75 +94,6 @@ GAMbyProfile <- function(timescale, exclude = NULL){
 
 
 ##################################################################################################
-#### function to plot the profile_ID GAMs for comparison and to inspect the shapes of the     ####
-#### GAMs going into the sector level processing (built on activity data)                     ####
-
-GAMprofilePlot <- function(){
-  
-  print(paste0(Sys.time(),": Plotting all Profile_IDs in composite..."))
-  
-  v_IDs <- unique(NFR_to_Profile[,Profile_ID])
-  
-  # big loop to produce lots of plots. Dont need to do this but it's helpful.
-  
-  for(i in v_IDs){
-    
-    print(paste0(Sys.time(),":                   ", i))
-    
-    l_plot <- list()
-    
-    for(timescale in c("hour","hourwday","wday","yday")){
-      
-      #l_plot_data <- list()
-      
-      gam_sr <- readRDS(paste0("./data/GAM_profileID/",timescale,"/",timescale,"_",i,"_GAM.rds"))
-        
-      dt_gc <- blankFitSector(v_sectors = i, timescale = timescale)
-      dt_gc[, sector := factor(sector)]
-      if(timescale=="hourwday") dt_gc[,wday := factor(wday, levels = 1:7)]
-      
-      # fit sector model to empty data
-      dt_coeffs <- SectorCoeffs(gam_sr = gam_sr, dt_gc = dt_gc, timescale = timescale)
-      #if(timescale != "hourwday") setnames(dt_coeffs, "time", timescale)
-      dt_coeffs[,c("fit","se.fit","lower","upper") := NULL]
-      
-      if(timescale=="hourwday"){
-        setkeyv(dt_coeffs, c("sector","hour","wday"))
-      }else{
-        setkeyv(dt_coeffs, c("sector","time"))
-      }
-      
-      
-      g1 <- ggplot()+
-        {if(timescale == "hourwday")geom_line(data=dt_coeffs, aes(x=hour,y=coeff, group=wday, colour=wday))}+
-        {if(timescale != "hourwday")geom_line(data=dt_coeffs, aes(x=time,y=coeff), colour="red")}+
-        {if(timescale == "hourwday")geom_ribbon(data=dt_coeffs, aes(x=hour, ymin=coeff_l, ymax=coeff_u, group=wday, fill=wday), alpha=0.3)}+
-        {if(timescale != "hourwday")geom_ribbon(data=dt_coeffs, aes(x=time, ymin=coeff_l, ymax=coeff_u), alpha=0.3)}+
-        labs(x=timescale,y="Coefficient")+
-        #{if(timescale == "hourwday")facet_wrap(~wday, nrow=2)}+
-        theme_bw()+
-        theme(axis.text.x = element_text(size=12),
-              axis.text.y = element_text(size=12),
-              axis.title = element_text(size=16),
-              legend.title=element_blank())
-      
-      l_plot[[timescale]] <- ggplotGrob(g1)
-      
-    } # time loop
-    
-    # stitch plots together
-    
-    d1 <- plot_grid(l_plot[["hourwday"]], l_plot[["hour"]], l_plot[["wday"]], l_plot[["yday"]], ncol=1, nrow=4,rel_heights = c(1.5,1,1,1), rel_widths = c(1,1,1,1), align="h", axis="l")
-    
-    save_plot(paste0("./data/GAM_profileID/plots/GAM_",i,"_plot.png"), d1, base_height = 14, base_width = 14)
-    
-  } # end of profile ID loop
-  
-  print(paste0(Sys.time(),": DONE."))
-  
-} # end of function
-
-##################################################################################################
 #### function to 1. return the NAEI emissions data, formatted, for the given year & Species.  ####
 ####             2. match the annual NAEI data to the temporal profile codes and GAm files.   ####
 
@@ -170,13 +102,13 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   ########################################################
   
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
-  if(!is.numeric(v_year)) stop ("Year is not numeric")
+  #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
-                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
-                                            PM:    PM2.5, PM10
-                                            GHG:   CH4, CO2, N2O
-                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  #if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
+  #                                          AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+  #                                          PM:    PM2.5, PM10
+  #                                          GHG:   CH4, CO2, N2O
+  #                                          Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   
   #########################################################
   
@@ -203,10 +135,10 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   setnames(dt_naei, c("NFR/CRF Group"), c("NFR19"))
   suppressWarnings(dt_naei[,emission := as.numeric(emission)])
   dt_naei <- dt_naei[!is.na(emission)]
-  if(species == "CO2") dt_naei[, emission := emission/12*44]
+  #if(species == "CO2") dt_naei[, emission := emission/12*44]
   
   # subset according to choice
-  if(!(is.na(year))) dt_naei <- dt_naei[year %in% c(v_year)]
+  if(!(is.na(v_year))) dt_naei <- dt_naei[year %in% c(v_year)]
   if(!(is.na(species))) dt_naei <- dt_naei[Gas %in% dt_pollutants[upper_name %in% species, file_name]]
   
   # join the NAEI emissions to the classification lookup and to the GAM name lookup
@@ -400,6 +332,7 @@ GAMBySector <- function(year, species, timescale, classification, yr_spec_NFR = 
   dt_GAM_data <- rbindlist(l_sector_data, use.names = T)
   dt_GAM_data[, w := as.numeric(as.character(w))]
   dt_GAM_data[, sector := factor(sector)]
+  #if(timescale == "hourwday") dt_GAM_data[,wday := factor(wday, levels=1:7)]
   
   print(paste0(Sys.time(),":                Run GAM model..."))
   
@@ -423,57 +356,6 @@ GAMBySector <- function(year, species, timescale, classification, yr_spec_NFR = 
   
   rm(gam_sect)
   gc()
-  
-  #######################################################################################
-  #######################################################################################
-  
-  ### BACKUP CODE FOR LIST OFF 11 SECTORS
-  # loop through sectors set above and create a GAM from weighted sub-sector GAMs
-  for(s in v_sectors){
-    
-    print(paste0(Sys.time(),":                ",classification," ",s))
-    
-    # for all the relevant GAM files:
-    # read the GAM and 
-    
-    l_GAM_data <- list()
-    
-    ## use the same lapply theory but over profile GAMs to build a table, which you then GAM again
-    
-    l_sector_data <- lapply(emis[sector==s,Profile_ID], sampledProfileGAMs, emis = emis, timescale = timescale )
-    
-    # rbind it
-    dt_GAM_data <- rbindlist(l_sector_data, use.names = T)
-    dt_GAM_data[, w := as.numeric(as.character(w))]
-    
-    ## Make a GAM for the whole sector, weighted by emissions contribution of NFR codes grouped by Profile_ID
-    # separate if clauses for little changes in knot selection, bs term etc
-    if(timestep == "hour"){
-      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
-    }else if(timestep=="hourwday"){
-      gam_sect <- gam(N ~ s(hour, bs="cc") + s(wday, bs="cr", k=6), data=dt_GAM_data, weights = w, method="REML")
-    }else if(timestep=="wday"){
-      gam_sect <- gam(N ~ s(time, bs="cr", k=6), data = dt_GAM_data, weights = w, method="REML")
-    }else if(timestep=="month"){
-      gam_sect <- gam(N ~ s(time, bs="cr"), data = dt_GAM_data, weights = w, method="REML")
-    }else{
-      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
-    }
-    
-    #### strip data and put into list ####
-    gam_sr <- strip_rawdata(gam_sect)
-    l_GAM_sectors[[s]] <- gam_sr
-    
-    ## go on to make coefficients table and add to another list, writing at the end. 
-  
-  } # end of sector loop
-  
-  
-  # svae the list as rda
-  saveRDS(gam_sr, paste0("./output/GAM_sector/",timestep,"/",species,"_",classification,"_",s,"_GAM_",timestep,".rds"))
-  
-  #######################################################################################
-  #######################################################################################
   
   ## make a coefficients table as well:
   ## create a blank table for GAM estimation
@@ -516,85 +398,145 @@ GAMBySector <- function(year, species, timescale, classification, yr_spec_NFR = 
 } # end of function
 
 
-
 #########################################################################################################
-#### function to plot GAM/coefficient data per sector, per year(?) per pollutant (?)
-## which is better comparison? all pollutants for one year on a plot?
-## or same pollutant across many years on one plot?
+#### function to create the sector GAMs as directly above, but in a loop and saving 11 GAM object as list
 
-GAMsectorPlot <- function(year, species, classification){
+GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR = NULL){
   
-  #### Needs data to exist to work. ####
+  print(paste0(Sys.time(),": Generating ",classification," sector GAMs for ",timescale,"..."))
   
-  ####################################################
+  ## multiplier to create coefficients centred on 1
+  c_mult <- ifelse(timescale == "yday", 365, ifelse(timescale == "month", 12, ifelse(timescale == "wday", 7, ifelse(timescale == "hour", 24, 24))))
   
-  # year            = *numeric* years to process. NA is for generic. 
-  # species         = *character* name of air pollutant or GHG or metal etc. NA is for generic. 
-  # classification  = *character* a sector classification system (e.g SNAP) for which GAMs have already been produced
+  ## fetch NAEI data and match to sectors etc. 
+  emis <- JoinNAEItoProfiles(v_year = year, species = species, classification)
   
-  ####################################################
+  # change this to read from the emissions/sector lookup - call the profileNAEI function. 
+  v_sectors <- emis[,unique(sector)]
   
-  print(paste0(Sys.time(),": Plotting..."))
+  l_dt_csvs <- list()
+  l_GAM_sectors <- list()
   
-  l_plot <- list()
-  
-  for(ts in c("hour","wday","yday")){
+  for(s in v_sectors){
     
-    l_plot_data <- list()
+    print(paste0(Sys.time(),":                ",classification," ",s))
     
-    # for(y in v_years){
+    # for all the relevant GAM files:
+    # read the GAM and 
     
-    for(s in species){
+    ## use the same lapply theory but over profile GAMs to build a table, which you then GAM again
+    v_IDs <- emis[sector==s,unique(Profile_ID)]
+    
+    l_ID_data <- list()
+    
+    # loop through sectors set above and create a GAM from weighted sub-sector GAMs
+    for(i in v_IDs){
       
-      if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
-        filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year)
-      }else if(isFALSE(year) & (species %in% dt_pollutants[,upper_name])){
-        filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr")
-      }else if((year %in% 2010:2019) & isFALSE(species)){
-        filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year)
+      # subset the weighting by Profile_ID
+      prof_weight <- emis[sector==s & Profile_ID == i, emis_sec_frac]
+      
+      i_gam <- readRDS(paste0("./data/GAM_profileID/",timescale,"/",timescale,"_",i,"_GAM.rds"))
+      
+      # create a table to fit to the model - will need all the Profile_IDs in the GAM here, even if not present in emissions data
+      # hourwday needs a separate one making
+      if(timescale == "hourwday"){
+        dt_fit <- data.table(Profile_ID = rep(i, each=24*7), wday = rep(1:7,each=24), hour = rep(1:24,7) )
       }else{
-        filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr")
+        dt_fit <- data.table(Profile_ID = i, time = 1:c_mult)
       }
       
-      # read in the data
-      dt <- fread(paste0("./output/coeffs_sector/",classification,"/",filename,".csv"))
-      dt[,time := ts]
-      dt[,Year := year]
-      dt[, Gas:= s]
-      setnames(dt, ts, "time_value")
+      dt_fit[, Profile_ID := factor(Profile_ID)] 
+      if(timescale == "hour") dt_fit[, time := time-1]
+      if(timescale == "hourwday") dt_fit[, hour := hour-1]
+      if(timescale == "hourwday") dt_fit[, wday := factor(wday, levels=1:7)]
       
-      l_plot_data[[paste0(s,"_",year,"_",ts)]] <- dt
+      # fit the GAM to the blank data many times to get a sampling space. 
+      # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
+      dt_g_sampled <- suppressWarnings(as.data.table(ungeviz::sample_outcomes(i_gam, dt_fit, times = 50)))
       
-    } # pollutant loop
+      # centre the samples around 1, as the subsequent GAM is massively effected by different scales.
+      if(timescale != "hourwday"){
+        dt_g_sampled[, N := N/mean(N, na.rm=T), by=.(Profile_ID, .draw)]
+        dt_g_sampled[,c(".draw") := NULL]
+      }else{
+        dt_g_sampled[, N := N/mean(N, na.rm=T), by=.(Profile_ID, wday, .draw)]
+        dt_g_sampled[,c(".draw") := NULL]
+      }
+      
+      # add sector & weights
+      dt_g_sampled[, sector := s]
+      dt_g_sampled[, w := prof_weight]
+      
+      # add to list for whole sector
+      l_ID_data[[paste0(s,"_",i)]] <- dt_g_sampled
+      
+    } # ID loop
     
-    #  } # year loop
+    # rbind it
+    dt_GAM_data <- rbindlist(l_ID_data, use.names = T)
+    dt_GAM_data[, w := as.numeric(as.character(w))]
     
-    dt_plot_data <- rbindlist(l_plot_data, use.names = T)
+    dt_GAM_data[,Profile_ID := as.character(Profile_ID)]
+    if(timescale == "hourwday") dt_GAM_data[,wday := factor(wday, levels=1:7)]
     
-    g1 <- ggplot()+
-      geom_line(data=dt_plot_data, aes(x=time_value, y=coeff, group = Gas, colour=Gas))+
-      geom_ribbon(data=dt_plot_data, aes(x=time_value, ymin=coeff_l, ymax=coeff_u, group = Gas, fill=Gas), alpha=0.4)+
-      labs(x=ts,y="Coefficient")+
-      geom_hline(yintercept = 1, linetype="dashed")+
-      facet_wrap(~sector, nrow=1)+
-      theme_bw()+
-      theme(axis.text.x = element_text(size=12),
-            axis.text.y = element_text(size=12),
-            axis.title = element_text(size=16),
-            legend.title=element_blank())
+    ## Make a GAM for the whole sector, weighted by emissions contribution of NFR codes grouped by Profile_ID
+    # separate if clauses for little changes in knot selection, bs term etc
+    if(timescale == "hour"){
+      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+    }else if(timescale=="hourwday"){
+      gam_sect <- gam(N ~ s(hour, bs="cc", by=wday) + wday, data=dt_GAM_data, weights = w, method="REML")
+    }else if(timescale=="wday"){
+      gam_sect <- gam(N ~ s(time, bs="cr", k=6), data = dt_GAM_data, weights = w, method="REML")
+    }else if(timescale=="month"){
+      gam_sect <- gam(N ~ s(time, bs="cr"), data = dt_GAM_data, weights = w, method="REML")
+    }else{
+      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+    }
     
-    l_plot[[ts]] <- ggplotGrob(g1)
+    #### strip data and put into list ####
+    gam_sr <- strip_rawdata(gam_sect)
+    l_GAM_sectors[[s]] <- gam_sr
     
-  } # time loop
+    ## go on to make coefficients table and add to another list, writing at the end. 
+    
+    dt_gc <- blankFitSector(v_sectors = s, timescale = timescale)
+    dt_gc[, sector := factor(sector)]
+    if(timescale=="hourwday") dt_gc[,wday := factor(wday, levels = 1:7)]
+    
+    # fit sector model to empty data
+    dt_coeffs <- SectorCoeffs(gam_sr = gam_sr, dt_gc = dt_gc, timescale = timescale)
+    if(timescale != "hourwday") setnames(dt_coeffs, "time", timescale)
+    dt_coeffs[,c("fit","se.fit","lower","upper") := NULL]
+    
+    if(timescale=="hourwday"){
+      setkeyv(dt_coeffs, c("sector","hour","wday"))
+    }else{
+      setkeyv(dt_coeffs, c("sector",paste(timescale)))
+    }
+    
+    l_dt_csvs[[paste0(s,"_csv")]] <- dt_coeffs
+    
+  } # end of sector loop
   
-  # stitch plots together
+  dt_csvs <- rbindlist(l_dt_csvs, use.names = T)
   
-  d1 <- plot_grid(l_plot[["hour"]], l_plot[["wday"]], l_plot[["yday"]], ncol=1, nrow=3,rel_heights = c(1,1,1), rel_widths = c(1,1,1), align="h", axis="l")
+  ## set filenames and write data
   
-  dir.create(file.path(paste0("./output/plots/",classification)), showWarnings = FALSE)
+  if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
+    filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year,"_LIST")
+  }else if(isFALSE(year) & (species %in% dt_pollutants[,upper_name])){
+    filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr_LIST")
+  }else if((year %in% 2010:2019) & isFALSE(species)){
+    filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year,"_LIST")
+  }else{
+    filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr_LIST")
+  }
   
-  save_plot(paste0("./output/plots/",classification,"/NOx_coeff_plots_emis",year,".png"), d1, base_height = 14, base_width = 22)
+  saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/",filename,".rds"))
+  fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/",filename,".csv"))
   
-  print(paste0(Sys.time(),": DONE."))
+  #print(paste0(Sys.time(),": DONE."))
   
-}
+  
+} # end of function
+
