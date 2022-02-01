@@ -1,4 +1,4 @@
-source("./R/re-structure.R")
+source("./R/dukem.R")
 
 #############################################
 #### TEMPORAL PROFILING ANNUAL EMISSIONS ####
@@ -7,7 +7,7 @@ source("./R/re-structure.R")
 ## See ReadMe for more detail ##
 ## Also create a total emissions annual profile, for comparison with Sentinel-5p.   ##
 
-#### Create Profile_ID level GAMs from the formatted raw data: ####
+#### Create Profile_ID level GAMs from the formatted raw data, with accompanying csv: ####
 GAMbyProfile(timescale = "hourwday", exclude = c("STAT_DOM_GEN","STAT_PIC_GEN"))
 
 # plot the Profile_ID GAMs (does all of them):

@@ -33,10 +33,6 @@ GAMbyProfile <- function(timescale, exclude = NULL){
   # loop through profile IDs and create a GAM for each one. 
   for(i in v_IDs){
     
-    if(i %in% exclude){
-      print(paste0(Sys.time(), ":         EXCLUDE: ",i))
-      next
-    }
     print(paste0(Sys.time(), ":         ",i))
     
     # subset the formatted data
@@ -59,7 +55,7 @@ GAMbyProfile <- function(timescale, exclude = NULL){
     }
     
     # make GAM - some specifics per timescale type.
-
+    
     if(timescale == "hour"){
       gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, method="REML")
     }else if(timescale=="hourwday"){
@@ -84,11 +80,16 @@ GAMbyProfile <- function(timescale, exclude = NULL){
     
     #### strip data and save ####
     gam_sr <- strip_rawdata(gam_sect)
-    saveRDS(gam_sr, paste0("./data/GAM_profileID/",timescale,"/",timescale,"_",i,"_GAM.rds"))
+    saveRDS(gam_sr, paste0("N:/dump/ukem/",timescale,"/",timescale,"_",i,"_GAM.rds"))
+    
+    #l_gams[[paste0(timescale,"_",i)]] <- gam_sr
+    
     
   } # end of profile ID loop
   
-} # end of function
+  #saveRDS(l_gams, paste0("N:/dump/ukem/",timescale,"_GAMs_ProfileID.rds"))
+  
+} # END of function
 
 
 ##################################################################################################
@@ -416,6 +417,7 @@ GAMBySector <- function(year, species, timescale, classification, yr_spec_NFR = 
     gam_sect <- gam(N ~ s(time, bs="cc", by = sector) + sector, data = dt_GAM_data, weights = w, method="REML")
   }
   print(Sys.time())
+  
   #### strip data and save ####
   gam_sr <- strip_rawdata(gam_sect)
   
