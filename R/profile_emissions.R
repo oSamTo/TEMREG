@@ -36,6 +36,8 @@ v_time <- c("yday","month","wday","hour","hourwday") # currently yday, month, wd
 
 # GAMs by sector in loop and saved to list object - this is the only thing that will work on a laptop. 
 lapply(v_time, GAMBYSectorLOOP,year = y_emis, species = species, classification = classification, yr_spec_NFR = NULL)
+#GAMBYSectorLOOP(year = y_emis, species = species, timescale = "hour", classification = classification, yr_spec_NFR = NULL)
+
 
 # plot the new sector-level GAMs:
 GAMsectorPlot(year = y_emis, species = species, classification = classification)

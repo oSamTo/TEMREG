@@ -212,7 +212,8 @@ sampledProfileGAMs <- function(v_sectors, emis, timescale){
       dt_fit[, Profile_ID := factor(Profile_ID)] 
       if(timescale == "hour") dt_fit[, time := time-1]
       if(timescale == "hourwday") dt_fit[, hour := hour-1]
-      
+      if(timescale == "hourwday") dt_fit[, wday := factor(wday, levels=1:7)]
+	  
       # fit the GAM to the blank data many times to get a sampling space. 
       # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
       dt_g_sampled <- suppressWarnings(as.data.table(ungeviz::sample_outcomes(i_gam, dt_fit, times = 50)))
@@ -379,19 +380,27 @@ GAMBySector <- function(year, species, timescale, classification, yr_spec_NFR = 
   
   if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year)
-  }else if(isFALSE(year) & (species %in% dt_pollutants[,upper_name])){
+  }else if(is.na(year) & (species %in% dt_pollutants[,upper_name])){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr")
-  }else if((year %in% 2010:2019) & isFALSE(species)){
+  }else if((year %in% 2010:2019) & is.na(species)){
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year)
   }else{
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr")
   }
   
-  dir.create(file.path(paste0("./output/GAM_sector/",classification)), showWarnings = FALSE)
-  dir.create(file.path(paste0("./output/coeffs_sector/",classification)), showWarnings = FALSE)
-  
-  saveRDS(gam_sr, paste0("./output/GAM_sector/",classification,"/",filename,".rds"))
-  fwrite(dt_coeffs, paste0("./output/coeffs_sector/",classification,"/",filename,".csv"))
+  if(is.na(species)){
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/allGas")), showWarnings = F)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/allGas")), showWarnings = F)
+    
+    saveRDS(gam_sr, paste0("./output/GAM_sector/",classification,"/allGas","/",filename,".rds"))
+    fwrite(dt_coeffs, paste0("./output/coeffs_sector/",classification,"/allGas","/",filename,".csv"))
+  }else{
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/",species)), showWarnings = F)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/",species)), showWarnings = F)
+    
+    saveRDS(gam_sr, paste0("./output/GAM_sector/",classification,"/",species,"/",filename,".rds"))
+    fwrite(dt_coeffs, paste0("./output/coeffs_sector/",classification,"/",species,"/",filename,".csv"))
+  }
   
   print(paste0(Sys.time(),": DONE."))
   
@@ -524,16 +533,27 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
   
   if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year,"_LIST")
-  }else if(isFALSE(year) & (species %in% dt_pollutants[,upper_name])){
+  }else if(is.na(year) & (species %in% dt_pollutants[,upper_name])){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr_LIST")
-  }else if((year %in% 2010:2019) & isFALSE(species)){
+  }else if((year %in% 2010:2019) & is.na(species)){
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year,"_LIST")
   }else{
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr_LIST")
   }
   
-  saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/",filename,".rds"))
-  fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/",filename,".csv"))
+  if(is.na(species)){
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/allGas")), showWarnings = F)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/allGas")), showWarnings = F)
+    
+    saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/allGas","/",filename,".rds"))
+    fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/allGas","/",filename,".csv"))
+  }else{
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/",species)), showWarnings = F)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/",species)), showWarnings = F)
+    
+    saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/",species,"/",filename,".rds"))
+    fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/",species,"/",filename,".csv"))
+  }
   
   #print(paste0(Sys.time(),": DONE."))
   

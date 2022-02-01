@@ -97,17 +97,21 @@ GAMsectorPlot <- function(year, species, classification){
     #l_plot_data <- list()
     
     if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
+      filepath <- paste0("./output/coeffs_sector/",classification,"/",species,"/")
       filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year,"_LIST")
-    }else if(isFALSE(year) & (species %in% dt_pollutants[,upper_name])){
+    }else if(is.na(year) & (species %in% dt_pollutants[,upper_name])){
+      filepath <- paste0("./output/coeffs_sector/",classification,"/",species,"/")
       filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr_LIST")
-    }else if((year %in% 2010:2019) & isFALSE(species)){
+    }else if((year %in% 2010:2019) & is.na(species)){
+      filepath <- paste0("./output/coeffs_sector/",classification,"/allGas/")
       filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year,"_LIST")
     }else{
+      filepath <- paste0("./output/coeffs_sector/",classification,"/allGas/")
       filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr_LIST")
     }
     
     # read in the data
-    dt <- fread(paste0("./output/coeffs_sector/",classification,"/",filename,".csv"))
+    dt <- fread(paste0(filepath,filename,".csv"))
     #  dt[, time := timescale]
     # dt[, Year := year]
     # dt[, Gas:= s]
