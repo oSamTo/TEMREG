@@ -139,7 +139,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   
   # subset according to choice
   if(!(is.na(v_year))) dt_naei <- dt_naei[year %in% c(v_year)]
-  if(!(is.na(species))) dt_naei <- dt_naei[Gas %in% dt_pollutants[species %in% upper_name, file_name]]
+  if(!(is.na(species))) dt_naei <- dt_naei[Gas %in% dt_pollutants[upper_name == species, file_name]]
   
   # join the NAEI emissions to the classification lookup and to the GAM name lookup
   dt_joined <- dt_NFR_to_sect[dt_naei, on = c("NFR19","Source","Activity")][NFR_to_Profile , on = c("NFR19","Source","Activity")]
