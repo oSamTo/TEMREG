@@ -1,18 +1,34 @@
 
 
 ##################################################################################################
+#### function to plot the profiles (via GAMprofileplot()) in parallel to speed up if lots     ####
+
+GAMparallelPlot <- function(v_profiles){
+  
+  numCores <- 3
+  registerDoParallel(numCores)
+  
+  parts <- split(1:length(v_profiles), cut(seq_along(1:length(v_profiles)),numCores))
+  
+  foreach (i = parts, .export = c('GAMprofilePlot','blankResponse','SectorCoeffs'),  .packages=packs) %dopar% {GAMprofilePlot(v_profiles[i])}
+  
+  stopImplicitCluster()
+  
+  
+}
+
+
+##################################################################################################
 #### function to plot the profile_ID GAMs for comparison and to inspect the shapes of the     ####
 #### GAMs going into the sector level processing (built on activity data)                     ####
 
-GAMprofilePlot <- function(){
+GAMprofilePlot <- function(v_profiles){
   
   print(paste0(Sys.time(),": Plotting all Profile_IDs in composite..."))
   
-  v_IDs <- unique(NFR_to_Profile[,Profile_ID])
+  # big loop to produce lots of plots. Don't need to do this but it's helpful.
   
-  # big loop to produce lots of plots. Dont need to do this but it's helpful.
-  
-  for(i in v_IDs){
+  for(i in v_profiles){
     
     print(paste0(Sys.time(),":                   ", i))
     
@@ -24,27 +40,17 @@ GAMprofilePlot <- function(){
       
       gam_sr <- readRDS(paste0("./data/GAM_profileID/",timescale,"/",timescale,"_",i,"_GAM.rds"))
       
-      dt_gc <- blankFitSector(v_sectors = i, timescale = timescale)
-      dt_gc[, sector := factor(sector)]
-      if(timescale=="hourwday") dt_gc[,wday := factor(wday, levels = 1:7)]
+      dt_fit <- blankResponse(v_sectors = i, sectorColName = "sector", timescale = timescale)
       
       # fit sector model to empty data
-      dt_coeffs <- SectorCoeffs(gam_sr = gam_sr, dt_gc = dt_gc, timescale = timescale)
-      #if(timescale != "hourwday") setnames(dt_coeffs, "time", timescale)
-      dt_coeffs[,c("fit","se.fit","lower","upper") := NULL]
+      dt_coeffs <- SectorCoeffs(gam = gam_sr, dt = dt_fit, timescale = timescale)
       
-      if(timescale=="hourwday"){
-        setkeyv(dt_coeffs, c("sector","hour","wday"))
-      }else{
-        setkeyv(dt_coeffs, c("sector","time"))
-      }
-      
-      
+      # plot
       g1 <- ggplot()+
         {if(timescale == "hourwday")geom_line(data=dt_coeffs, aes(x=hour,y=coeff, group=wday, colour=wday))}+
-        {if(timescale != "hourwday")geom_line(data=dt_coeffs, aes(x=time,y=coeff), colour="red")}+
+        {if(timescale != "hourwday")geom_line(data=dt_coeffs, aes(x=get(timescale),y=coeff), colour="red")}+
         {if(timescale == "hourwday")geom_ribbon(data=dt_coeffs, aes(x=hour, ymin=coeff_l, ymax=coeff_u, group=wday, fill=wday), alpha=0.3)}+
-        {if(timescale != "hourwday")geom_ribbon(data=dt_coeffs, aes(x=time, ymin=coeff_l, ymax=coeff_u), alpha=0.3)}+
+        {if(timescale != "hourwday")geom_ribbon(data=dt_coeffs, aes(x=get(timescale), ymin=coeff_l, ymax=coeff_u), alpha=0.3)}+
         labs(x=timescale,y="Coefficient")+
         #{if(timescale == "hourwday")facet_wrap(~wday, nrow=2)}+
         theme_bw()+
