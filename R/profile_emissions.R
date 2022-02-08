@@ -31,3 +31,13 @@ lapply(v_time, GAMBYSectorLOOP, year = y_emis, species = species, classification
 
 # plot the new sector-level GAMs:
 GAMsectorPlot(year = y_emis, species = species, classification = classification)
+
+##########################################################################################
+
+##########################################################################################
+
+
+
+
+
+

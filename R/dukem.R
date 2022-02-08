@@ -1,7 +1,7 @@
 ## initialise the workspace for profiling annual emissions into sector profiles ##
 
 ## packages and workspace
-packs <- c("metagam","ungeviz","mgcv","stringr","grid","plyr","ggplot2","data.table","stats","lubridate","units", "cowplot","foreach","doParallel")
+packs <- c("metagam","ungeviz","mgcv","stringr","grid","plyr","ggplot2","data.table","stats","lubridate","units","sf", "cowplot","foreach","doParallel","terra")
 lapply(packs, require, character.only = TRUE)
 
 "%!in%" <- Negate("%in%")
@@ -10,7 +10,7 @@ source("./R/plotting.R")
 #spatial
 #BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
 #LL <<- suppressWarnings(CRS("+init=epsg:4326"))
-#r_uk_BNG <<- raster(xmn=-230000, xmx = 750000, ymn = -50000, ymx = 1300000, res=1000, crs=BNG, vals=NA)
+r_uk_BNG <<- rast(xmin=-230000, xmax = 750000, ymin = -50000, ymax = 1300000, res=1000, crs="EPSG:27700", vals=NA)
 
 # lookup NFR to Profile ID - only one file for this to link to sector lookups
 NFR_to_Profile <<- fread("./data/lookup/NFR_to_ProfileID.csv")
