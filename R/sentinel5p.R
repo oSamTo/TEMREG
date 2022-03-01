@@ -1,7 +1,7 @@
 
 ###############################################################################################
 
-#### Sentinel 5p comparisons ####
+#### Sentinel 5p comparisons #### WORKING TO SNAP SECTORS ONLY 08/02/22
 
 ######################################################################################################
 #### function to process NAEI UK emissions data to AOI ####
@@ -17,13 +17,13 @@ AOIEmissionsData <- function(aoi_name, species, year){
                                ext(aoi_bng)[4] + (ext(aoi_bng)[4] - ext(aoi_bng)[3])/2)
   
   ### for each SNAP, read in year/spec and crop/stack
-  NAEI_diff_files <- list.files(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/diffuse/",year,"/rasters_SNAP"), pattern = paste0("^",species,"_diff_",year,"_uk_SNAP.*.t_1km_BNG_2019NAEImap.tif$"), full.names = T)
+  NAEI_diff_files <- list.files(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/diffuse/",year,"/rasters_SNAP"), pattern = paste0("^",dt_pollutants[upper_name==species,file_name],"_diff_",year,"_uk_SNAP.*.t_1km_BNG_2019NAEImap.tif$"), full.names = T)
   
-  NAEI_pt_files <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/point/",year,"/",species,"_pt_",year,"_uk_SNAP_t_BNG.csv"))
+  NAEI_pt_files <- fread(paste0("//nercbuctdb.ad.nerc.ac.uk/projects1/NEC03642_Mapping_Ag_Emissions_AC0112/NAEI_data_and_SNAPS/Emissions_grids_plain/BNG/nox/point/",year,"/",dt_pollutants[upper_name==species,file_name],"_pt_",year,"_uk_SNAP_t_BNG.csv"))
   
   # run function for all SNAPS to return cropped rasters and stats etc
   
-  l_AOI_emis <- lapply(paste0("S",1:11) , NAEItoAOI, NAEI_diff_files, NAEI_pt_files, aoi_bng, aoi_expand)
+  l_AOI_emis <- lapply(paste0("S",1:11) , NAEItoAOI, NAEI_diff_files, NAEI_pt_files, aoi_bng, aoi_expand, species)
   
   # bind the SNAP AOI totals and make a sum raster (tonnes)
   dt_SNAP_tots <- rbindlist(lapply(l_AOI_emis, '[[',"stats"), use.names = T)
@@ -54,7 +54,7 @@ AOIEmissionsData <- function(aoi_name, species, year){
 ###########################################################################################
 #### function to take NAEI diffuse and point data and crop it to the AOI (+ expanded)  ####
 
-NAEItoAOI <- function(SN, NAEI_diff_files, NAEI_pt_files, aoi_bng, aoi_expand){
+NAEItoAOI <- function(SN, NAEI_diff_files, NAEI_pt_files, aoi_bng, aoi_expand, species){
 
   print(paste0(SN))
   
@@ -109,73 +109,233 @@ NAEItoAOI <- function(SN, NAEI_diff_files, NAEI_pt_files, aoi_bng, aoi_expand){
 
 ###########################################################################################
 #### function to process AOI emissions data into one temporal profile (SNAP weighted)  ####
+#### This is only done on the yday/wday GAMs, as sentinel5p does not cover hourly res  ####
+#### all of this is just working to SNAP sector at the moment. to be developed         ####
 
 AOITemporalProfile <- function(aoi_emis, species, year, write){
   
   ## bring in profile data - GAMs generated at the sector level
   ## either use specific-species GAMs or the 'general-pollutant' GAMs
   
+  # make a blank calendar
+  #dt_calendar <- data.table(datetime = seq(from=as.POSIXct(paste0(year,"-1-1 0:00"), tz="UTC"),to=as.POSIXct(paste0(year,"-12-31 23:00"), tz="UTC"), by="hour" )  )
+  dt_calendar <- data.table(date = seq(from=as.POSIXct(paste0(year,"-1-1")),to=as.POSIXct(paste0(year,"-12-31")), by="day" ))
+  dt_calendar[, c("yday","wday") := list(yday(date),wday(date, week_start = getOption("lubridate.week.start", 1)))]
+  
+  # call coefficient tables and add to calendar, work out emission split. Across all SNAPS into list. 
+  l_SNAP_calendar <- lapply(1:11, SNAP_TP, aoi_emis, species, year, dt = dt_calendar)
+  
+  ## for plotting, the hour/wday fluctuation is hideous to look at
+  
+  dt_SNAP_calendar <- rbindlist(l_SNAP_calendar, use.names = T)
+  dt_SNAP_calendar[, sector := factor(sector, levels = 1:11)] 
+  dt_total_calendar <- dt_SNAP_calendar[, .(emis_t = sum(E_adjusted, na.rm=T)), by=.(date, yday, wday)]
+  dt_total_calendar[, emis_alpha := emis_t/mean(emis_t, na.rm=T)]
+  
+  
+                    
+  ggplot()+
+    geom_smooth(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+    #geom_line(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+    #geom_line(data=dt_SNAP_calendar, aes(x=yday, y=E_alpha, group=sector, colour=sector), alpha=0.6)+
+    stat_smooth(data=dt_SNAP_calendar, aes(x=yday, y=E_alpha, group=sector, colour=sector),geom='line', se=F, alpha=0.6)+
+    geom_hline(yintercept = 1, linetype="dashed")+
+    theme_bw()
   
   
   
-  dt_spec_SNAP <- readRDS(paste0("./",paste0(toupper(substr(species,1,2)),substr(species,3,3)),"_SNAP_",year,"_tp.rds"))
-  dt_spec_hourly <- rbindlist(lapply(dt_spec_SNAP,`[[`,4), use.names = T)
-  dt_spec_hourly[, doy := yday(DateTime)]
-  
-  dt_spec_daily <- dt_spec_hourly[,.(sector_doy_emission = sum(sector_emission)), by=.(doy, Sector)]
-  dt_spec_daily[,doy_coeff := sector_doy_emission/sum(sector_doy_emission, na.rm=T), by=Sector]
-  units(dt_spec_daily$doy_coeff) <- NULL
-  setnames(dt_spec_daily, "Sector", "SNAP")
-  
-  ## join the SNAP totals from NAEI map to the profiles
-  dt_spec_daily <- aoi_emis[dt_spec_daily, on = "SNAP"]
-  
-  dt_spec_daily[, aoi_doy_emission := emission_total * doy_coeff]
-  dt_spec_daily[, exp_doy_emission := emission_total_exp * doy_coeff]
-  
-  ## sum the aoi emissions back to one total. split this out to a new total temporal profile (aoi & exp).
-  dt_aoi_tp_sum <- dt_spec_daily[,.(doy_emission = sum(aoi_doy_emission)), by=doy]
-  dt_aoi_tp_sum[, doy_coeff := doy_emission/sum(doy_emission)]
-  units(dt_aoi_tp_sum$doy_coeff) <- NULL
-  
-  dt_exp_tp_sum <- dt_spec_daily[,.(doy_emission = sum(exp_doy_emission)), by=doy]
-  dt_exp_tp_sum[, doy_coeff := doy_emission/sum(doy_emission)]
-  units(dt_exp_tp_sum$doy_coeff) <- NULL
-  
-  ## also make temporal profiles for the SNAPs.
-  dt_aoi_tp_SN <- dt_spec_daily[,.(doy_emission = sum(aoi_doy_emission)), by=.(doy, SNAP)]
-  dt_aoi_tp_SN[, doy_coeff := doy_emission/sum(doy_emission), by=SNAP]
-  units(dt_aoi_tp_SN$doy_coeff) <- NULL
-  
-  dt_exp_tp_SN <- dt_spec_daily[,.(doy_emission = sum(exp_doy_emission)), by=.(doy, SNAP)]
-  dt_exp_tp_SN[, doy_coeff := doy_emission/sum(doy_emission), by=SNAP]
-  units(dt_exp_tp_SN$doy_coeff) <- NULL
-  
-  # check #
-  identical(sum(aoi_emis$emission_total), sum(dt_spec_daily$aoi_doy_emission), sum(dt_aoi_tp_sum$doy_emission), sum(dt_aoi_tp_SN$doy_emission))
-  identical(sum(aoi_emis$emission_total_exp), sum(dt_spec_daily$exp_doy_emission), sum(dt_exp_tp_sum$doy_emission), sum(dt_exp_tp_SN$doy_emission))
-  
-  # to return
-  rt <- list(dt_aoi_tp_sum, dt_exp_tp_sum, dt_aoi_tp_SN, dt_exp_tp_SN)
-  names(rt) <- c("DOY_emis_tp_AOI","DOY_emis_tp_EXP", "DOY_SN_emis_tp_AOI", "DOY_SN_emis_tp_EXP")
-  
-  ## write if needed
-  if(write==T){
-    
-    fwrite(rt[["DOY_emis_tp_AOI"]], paste0("./",aoi_name,"/",aoi_name,"_AOI_",species,"_emis_tp_doy_",y_emis,".csv"))
-    fwrite(rt[["DOY_emis_tp_EXP"]], paste0("./",aoi_name,"/",aoi_name,"_EXP_",species,"_emis_tp_doy_",y_emis,".csv"))
-    fwrite(aoi_emis, paste0("./",aoi_name,"/",aoi_name,"_",species,"_emissions_t_",y_emis,".csv"))
-    
-  }else{
-    print("data files not written")
-  }
-  
-  return(rt)
   
   
 }
 
 
+
+############################################################################################
+#### function to split out SNAP level emissions onto a calendar, using GAM coefficients ####
+
+SNAP_TP <- function(SNAPsec, aoi_emis, species, year, dt = dt_calendar){
+  
+  # call coefficient tables and add to calendar
+  for(ts in c("wday","yday")){
+    
+    dt_temporal <- fread(paste0("./output/coeffs_sector/SNAP/",species,"/GAM_",ts,"_SNAP_",species,"_allYr_LIST.csv"))
+    dt_temporal <- dt_temporal[sector == SNAPsec]
+    dt_temporal[,c("coeff_l","coeff_u") := NULL]
+    setnames(dt_temporal, "coeff", paste0(ts,"_coeff"))
+    
+    #if(ts == "hourwday"){
+    #  dt <- dt_temporal[dt, on = c("hour","wday")] 
+    #}else{
+      dt <- dt_temporal[dt, on = paste0(ts)] 
+    #}
+    
+  }
+  
+  dt <- dt[,c("date","sector","yday","wday","yday_coeff","wday_coeff")]
+  # get the sector emissions and divide into one standard day. 
+  E_t_hr <- aoi_emis[SNAP==SNAPsec & Year == year, emission_total.sum]/365
+  dt[,E_t_hr :=  E_t_hr]
+  
+  # now apply the scaling alphas to get exact hour emission. 
+  dt[, E_adjusted := E_t_hr * yday_coeff * wday_coeff]
+  
+  dt[, E_alpha := E_adjusted/mean(E_adjusted, na.rm=T)]
+  
+  return(dt)
+  
+} # end of function
+
+
+############################################################################################
+#### function to assess the raw Sentinel5p data and fit a GAM to ALL data points/days   ####
+
+funcName <- function(){
+  
+}
+
+## all point data
+dt <- fread("C:/Users/samtom/OneDrive - UKCEH/DUKEMS/Sentinel5P/london/london_all_pts_values_nitrogendioxide_tropospheric_column.csv")
+dt <- dt[year(date) == 2019]
+dt <- dt[pt_val>=0]
+
+#ggplot(data = dt[,.N,by=yday], aes(x=yday,y=N))+
+#  geom_point()
+
+dt_GAM <- dt[,c("yday","pt_val","qa_val")]
+setnames(dt_GAM,"yday","time")
+dt_GAM <- dt_GAM[qa_val >= 0.75]
+dt_GAM[, coeff := pt_val/mean(pt_val, na.rm=T)]
+dt_GAM[,name := "All measurements"]
+
+gam_S5P <- gam(pt_val ~ s(time, bs="cc", k=15), data = dt_GAM, method="REML")
+#gam_S5P <- gam(pt_val ~ s(time, bs="cc"), data = dt_GAM, method="REML")
+dt_fit <- blankResponse(v_sectors="Sentinel5p", sectorColName="sector", timescale="yday")
+dt_coeffs <- SectorCoeffs(gam = gam_S5P, dt = dt_fit, timescale = "yday")
+
+## Claire's mean of means data
+dtMean <- fread("C:/Users/samtom/OneDrive - UKCEH/DUKEMS/Sentinel5P/london/london_day_agg_nitrogendioxide_tropospheric_column_2019.csv")
+setnames(dtMean,"yday","time")
+
+l_ydaymean_gams <- list()
+
+for(i in c("yday_mean_of_pts_summed_NO2_value","yday_mean_of_pts_mean_NO2_value")){
+  
+  cols <- c("time",i)
+  dt_GAMmn <- dtMean[, ..cols]
+  setnames(dt_GAMmn, paste0(i), "N")
+  dt_GAMmn <- dt_GAMmn[N >= 0]
+  dt_GAMmn[, coeff := N/mean(N, na.rm=T)]
+  
+  gam_Mns <- gam(N ~ s(time, bs="cc"), data = dt_GAMmn, method="REML")
+  dt_fit <- blankResponse(v_sectors=i, sectorColName="sector", timescale="yday")
+  dt_coeffsMns <- SectorCoeffs(gam = gam_Mns, dt = dt_fit, timescale = "yday")
+  
+  l_ydaymean_gams[[i]] <- dt_coeffsMns
+  
+}
+
+dt_ydaymean_gams <- rbindlist(l_ydaymean_gams, use.names = T)
+
+dt_ydaymean_pts <- melt(dtMean[,c("time","yday_mean_of_pts_summed_NO2_value","yday_mean_of_pts_mean_NO2_value")], id.vars = "time", variable.name = "sector", value.name = "N")
+dt_ydaymean_pts <- dt_ydaymean_pts[N >= 0]
+dt_ydaymean_pts[, coeff := N/mean(N, na.rm=T), by=sector]
+
+
+## data per image
+dt_image <- fread("C:/Users/samtom/OneDrive - UKCEH/DUKEMS/Sentinel5P/london/london_all_image_nitrogendioxide_tropospheric_column.csv")
+setnames(dt_image,"yday","time")
+dt_image <- dt_image[year(date) == 2019]
+
+l_imgmean_gams <- list()
+
+for(i in c("pts_sum_NO2_value","pts_mean_NO2_value")){
+  
+  cols <- c("time",i)
+  dt_GAMimg <- dt_image[, ..cols]
+  setnames(dt_GAMimg, paste0(i), "N")
+  dt_GAMimg <- dt_GAMimg[N >= 0]
+  dt_GAMimg[, coeff := N/mean(N, na.rm=T)]
+  
+  gam_img <- gam(N ~ s(time, bs="cc"), data = dt_GAMimg, method="REML")
+  dt_fit <- blankResponse(v_sectors=i, sectorColName="sector", timescale="yday")
+  dt_coeffsimg <- SectorCoeffs(gam = gam_img, dt = dt_fit, timescale = "yday")
+  
+  l_imgmean_gams[[i]] <- dt_coeffsimg
+  
+}
+
+dt_imgmean_gams <- rbindlist(l_imgmean_gams, use.names = T)
+
+dt_imgmean_pts <- melt(dt_image[,c("time","pts_sum_NO2_value","pts_mean_NO2_value")], id.vars = "time", variable.name = "sector", value.name = "N")
+dt_imgmean_pts <- dt_imgmean_pts[N >= 0]
+dt_imgmean_pts[, coeff := N/mean(N, na.rm=T), by=sector]
+
+###########
+
+
+## plot of modelled TP, mean data GAMs and all point data GAM
+g1 <- ggplot()+
+  geom_point(data = dt_ydaymean_pts, aes(x=time,y=coeff,group=sector,colour=sector))+
+  geom_line(data=dt_ydaymean_gams, aes(x=yday,y=coeff,group=sector,colour=sector))+
+  geom_smooth(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+  geom_line(data=dt_coeffs, aes(x=yday,y=coeff), colour="black")+
+  geom_hline(yintercept = 1, linetype="dashed")+
+  geom_vline(xintercept = 90, linetype="dashed")+
+  geom_vline(xintercept = 181, linetype="dashed")+
+  geom_vline(xintercept = 273, linetype="dashed")+
+  labs(x="yday",y="Coefficient")+
+  ylim(0,5)+
+  theme_bw()+
+  theme(legend.position = "bottom")
+
+g2 <- ggplot()+
+  geom_point(data = dt_imgmean_pts, aes(x=time,y=coeff,group=sector,colour=sector))+
+  geom_line(data=dt_imgmean_gams, aes(x=yday,y=coeff,group=sector,colour=sector))+
+  geom_smooth(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+  geom_line(data=dt_coeffs, aes(x=yday,y=coeff), colour="black")+
+  geom_hline(yintercept = 1, linetype="dashed")+
+  geom_vline(xintercept = 90, linetype="dashed")+
+  geom_vline(xintercept = 181, linetype="dashed")+
+  geom_vline(xintercept = 273, linetype="dashed")+
+  labs(x="yday",y="")+
+  ylim(0,5)+
+  theme_bw()+
+  theme(legend.position = "bottom")
+
+
+g3 <- ggplot()+
+  geom_point(data=dt_GAM, aes(x=time,y=coeff,group=name, colour=name), alpha=0.3)+
+  geom_line(data=dt_coeffs, aes(x=yday,y=coeff))+
+  geom_line(data=dt_total_calendar, aes(x=yday, y=emis_alpha),  alpha=0.5)+
+  geom_smooth(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+  geom_hline(yintercept = 1, linetype="dashed")+
+  geom_vline(xintercept = 90, linetype="dashed")+
+  geom_vline(xintercept = 181, linetype="dashed")+
+  geom_vline(xintercept = 273, linetype="dashed")+
+  labs(x="yday",y="")+
+  ylim(0,5)+
+  theme_bw()+
+  theme(legend.position = "bottom")
+  
+
+d1 <- plot_grid(g1,g2,g3, ncol=3, nrow=1,rel_heights = 1, rel_widths = 1, align="h", axis="l")
+
+save_plot(paste0("C:/FastProcessingSam/DUKEMS/Data/RoadTransport/differing_S5P_GAMs.png"), d1, base_height = 12, base_width = 16)
+
+ggplot()+
+  geom_smooth(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+  #geom_line(data=dt_total_calendar, aes(x=yday, y=emis_alpha), size=0.8)+
+  #geom_line(data=dt_SNAP_calendar, aes(x=yday, y=E_alpha, group=sector, colour=sector), alpha=0.6)+
+  stat_smooth(data=dt_SNAP_calendar, aes(x=yday, y=E_alpha, group=sector, colour=sector),geom='line', se=F, alpha=0.6)+
+  geom_line(data=dt_coeffs, aes(x=yday,y=coeff), colour="red")+
+  geom_line(data=dt_coeffsMns, aes(x=yday,y=coeff), colour="red", linetype="dashed")+
+  geom_point(data = dtMean, aes(x=yday,y=(yday_mean_of_rast_mean_NO2_value/mean(yday_mean_of_rast_mean_NO2_value,na.rm=T))), alpha=0.5)+
+  geom_hline(yintercept = 1, linetype="dashed")+
+  theme_bw()
+
+
+
+  
 ###########################################################################################
 #### function to plot the profile and emissions data
 

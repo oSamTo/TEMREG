@@ -16,8 +16,9 @@ source("C:/Users/samtom/OneDrive - UKCEH/DUKEMS/Sentinel5P/R/workspace.R")
 ### This means SNAP level profile might not necessarily represent the AOI, e.g. SNAP8 ships/inland etc
 ###      to do this, you would need sub-SNAP maps and apply the required profile ID. 
 
-species <- "nox"
+species <- "NOx"
 y_emis <- 2019
+year <- 2019
 aoi_name <- "london" # "london", "leeds_brad", "notts_coal"
 
 ## return the NAEI emissions data in the AOI as SNAP totals and a raster

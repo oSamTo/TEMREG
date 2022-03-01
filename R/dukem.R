@@ -211,11 +211,11 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
       # create a table to fit to the model - will need all the Profile_IDs in the GAM here, even if not present in emissions data
       # hourwday needs a separate one making
       
-      dt_fit <- blankResponse(v_sectors = i, sectorColName = "Profile_ID", timescale)
+      dt_fit <- blankResponse(v_sectors = i, sectorColName = "Profile_ID", timeColName = "time", timescale)
       
       # fit the GAM to the blank data many times to get a sampling space. 
       # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
-      gam_sample <- sampleGAM(s = s, gam = i_gam, dt = dt_fit, n = 50)
+      gam_sample <- sampleGAM(s = s, gam = i_gam, dt = dt_fit, n = 50, timescale)
       
       # subset the weighting by Profile_ID and add (for sector GAM)
       prof_weight <- emis[sector==s & Profile_ID == i, emis_sec_frac]
@@ -228,21 +228,23 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
     
     # rbind it into one table. 
     dt_GAM_data <- rbindlist(l_ID_data, use.names = T)
+    # setnames back to standard posit names. 
+    if(timescale != "hourwday") setnames(dt_GAM_data, "time", paste0(timescale))
     
     #if(timescale == "hourwday") dt_GAM_data[,wday := factor(wday, levels=1:7)] # think this should be set in blankResponse
     
     ## Make a GAM for the whole sector, weighted by emissions contribution of NFR codes grouped by Profile_ID
     # separate if clauses for little changes in knot selection, bs term etc
     if(timescale == "hour"){
-      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(hour, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
     }else if(timescale=="hourwday"){
       gam_sect <- gam(N ~ s(hour, bs="cc", by=wday) + wday, data=dt_GAM_data, weights = w, method="REML")
     }else if(timescale=="wday"){
-      gam_sect <- gam(N ~ s(time, bs="cr", k=6), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(wday, bs="cr", k=6), data = dt_GAM_data, weights = w, method="REML")
     }else if(timescale=="month"){
-      gam_sect <- gam(N ~ s(time, bs="cr"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(month, bs="cr"), data = dt_GAM_data, weights = w, method="REML")
     }else{
-      gam_sect <- gam(N ~ s(time, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(yday, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
     }
     
     #### strip data and put into list ####
@@ -250,7 +252,7 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
     l_GAM_sectors[[s]] <- gam_sr
     
     ## go on to make coefficients table and add to another list, writing at the end. 
-    dt_fit <- blankResponse(v_sectors = s, sectorColName = "sector", timescale = timescale)
+    dt_fit <- blankResponse(v_sectors = s, sectorColName = "sector", timeColName = timescale, timescale = timescale)
     
     # fit sector model to empty data
     dt_coeffs <- SectorCoeffs(gam = gam_sr, dt = dt_fit, timescale = timescale)
@@ -296,7 +298,7 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
 #########################################################################################################
 #### function to make a blank fit table, to apply sectors to
 
-blankResponse <- function(v_sectors, sectorColName, timescale){
+blankResponse <- function(v_sectors, sectorColName, timeColName, timescale){
   
   c_mult <- ifelse(timescale == "yday", 365, ifelse(timescale == "month", 12, ifelse(timescale == "wday", 7, ifelse(timescale == "hour", 24, 24))))
   
@@ -310,6 +312,7 @@ blankResponse <- function(v_sectors, sectorColName, timescale){
   
   dt[, name := factor( name ) ]
   
+  if(timescale!="hourwday") setnames(dt, "time", paste0(timeColName))
   if(timescale=="hourwday") dt[,wday := factor(wday, levels = 1:7)]
   
   setnames(dt, "name", sectorColName )
@@ -321,7 +324,7 @@ blankResponse <- function(v_sectors, sectorColName, timescale){
 #########################################################################################################
 #### function to sample a GAMs model n. amount of times to sample the uncertainty - for sector GAM   ####
 
-sampleGAM <- function(s, gam, dt, n){
+sampleGAM <- function(s, gam, dt, n, timescale){
   
   # s is the sector, for completion
   # gam is the gam to be sampled repeatedly
@@ -368,7 +371,7 @@ SectorCoeffs <- function(gam, dt, timescale){
     predicts[, c("coeff_l","coeff_u") := list((lower/fit) * coeff , (upper/fit) * coeff), by=.(sector)]
   }
   
-  if(timescale != "hourwday") setnames(predicts, "time", timescale)
+  #if(timescale != "hourwday") setnames(predicts, "time", timescale)
   predicts[,c("fit","se.fit","lower","upper") := NULL]
   
   if(timescale=="hourwday"){
