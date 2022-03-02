@@ -19,7 +19,7 @@ GAMparallelPlot(v_profiles = unique(NFR_to_Profile[,Profile_ID]))
 ##########################################################################################
 #### set the emissions year to model and the species ####
 y_emis <- NA # the emissions year: SET TO NA for generic year representation
-species <- "NOx" # species to profiles: SET TO NA for generic pollutant representation
+species <- NA # species to profiles: SET TO NA for generic pollutant representation
 classification <- "SNAP" # this can be anything, as long as the lookup file "NFR_to_xxxxx.csv" exists
 y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (otherwise `average` year = 0)
 
@@ -30,7 +30,7 @@ v_time <- c("yday","month","wday","hour","hourwday") # currently yday, month, wd
 lapply(v_time, GAMBYSectorLOOP, year = y_emis, species = species, classification = classification, yr_spec_NFR = NULL)
 
 # plot the new sector-level GAMs:
-GAMsectorPlot(year = y_emis, species = species, classification = classification)
+GAMsectorPlot(year = y_emis, species = "NOx", classification = classification)
 
 ##########################################################################################
 
