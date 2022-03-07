@@ -1,23 +1,22 @@
-source("./R/workspace.R")
+source("./R/dukem.R")
 
 ## create time data from 2000 and attach bank holiday information
 
-bankhols <- fread("./Data/ukbankholidays.csv", header=T)
-bankhols[,V2:=NULL]
-bankhols[, Date := as_date(`UK BANK HOLIDAYS`, format="%d-%b-%Y")]
+bankhols <- fread("./Data/ukbankholidays.csv")
+bankhols[, Date := lubridate::dmy(BANK_HOLIDAYS)]
 bankhols[,pub_hol := T]
 bankhols <- bankhols[Date >= "2000-01-01"]
-bankhols[,`UK BANK HOLIDAYS` := NULL]
+bankhols[,BANK_HOLIDAYS :=  NULL]
 
-dt_time <- data.table(Date=seq(as.Date("2000-01-01"),as.Date("2021-12-31"),by="days"))
+dt_time <- data.table(Date=seq(as.Date("2000-01-01"),as.Date("2023-12-31"),by="days"))
 
-dt_time[, year_int := year(Date)]
-dt_time[, mon_int := month(Date)]
-dt_time[, mon_char := month.abb[mon_int]]
-dt_time[, woy_int := week(Date)]
-dt_time[, dow_int := wday(Date)]
-dt_time[, dow_char := c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")[dow_int]]
-dt_time[, jul_day := yday(Date)]
+dt_time[, year := year(Date)]
+dt_time[, month := month(Date)]
+#dt_time[, month_char := month.abb[month_int]]
+dt_time[, week := week(Date)]
+dt_time[, wday := wday(Date, week_start = getOption("lubridate.week.start", 1))]
+#dt_time[, wday_char := c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")[wday_int]]
+dt_time[, yday := yday(Date)]
 dt_time[, timezone := "UTC"]
 
 dt_with_hols <- bankhols[dt_time, on="Date"]
