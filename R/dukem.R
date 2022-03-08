@@ -104,11 +104,11 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  #if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3") ) stop ("Species must be in: 
-  #                                          AP:    BaP, CO, NH3, NMVOC, NOx, SO2
-  #                                          PM:    PM2.5, PM10
-  #                                          GHG:   CH4, CO2, N2O
-  #                                          Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10") ) stop ("Species must be in: 
+                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+                                            PM:    PM25, PM10
+                                            GHG:   CH4, CO2, N2O
+                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   
   #########################################################
   
@@ -384,7 +384,34 @@ SectorCoeffs <- function(gam, dt, timescale){
   
 } # end of function
 
+#########################################################################################################
+#### function to create EMEP4UK inputs - either original simple .dat files or fully 3D netcdfs
 
+EMEP4UKprofiles <- function(year, species, classification, filetype){
+  
+  if(filetype %!in% c("flat file","data cube") ) stop ("Species must be in: 
+  #                                          'flat file' (for original .dat temporal profiles)
+  #                                          'data cube' (for new gridded/layered temporal profiles)")
+  
+  ### large if clause for the filetype;
+  
+  if(filetype == "flat file"){
+    
+    # do i need a MonthlyFac, and DailyFac for every pollutant? and every country? (obvs only changing UK)
+    # does HourlyFacs apply to every pollutant? (they are hour specific to each wday)
+    
+    
+    
+  }else{
+    
+    # nothing here yet  
+    
+  } # if else for file type
+  
+  
+  
+  
+} # end of function
 
 
 #######################################################################################################
