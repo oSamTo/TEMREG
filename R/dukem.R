@@ -104,7 +104,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM25, PM10
                                             GHG:   CH4, CO2, N2O
@@ -135,6 +135,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   setnames(dt_naei, c("NFR/CRF Group"), c("NFR19"))
   suppressWarnings(dt_naei[,emission := as.numeric(emission)])
   dt_naei <- dt_naei[!is.na(emission)]
+  dt_naei[Gas == "pmco" & emission <0, emission := 0]
   #if(species == "CO2") dt_naei[, emission := emission/12*44]
   
   # subset according to choice
@@ -387,31 +388,215 @@ SectorCoeffs <- function(gam, dt, timescale){
 #########################################################################################################
 #### function to create EMEP4UK inputs - either original simple .dat files or fully 3D netcdfs
 
-EMEP4UKprofiles <- function(year, species, classification, filetype){
+EMEP4UKprofiles <- function(year, species = c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PMCO", "PM10"), classification, filetype = c("data file","data cube"), hourly, comp_plot){
   
-  if(filetype %!in% c("flat file","data cube") ) stop ("Species must be in: 
-  #                                          'flat file' (for original .dat temporal profiles)
-  #                                          'data cube' (for new gridded/layered temporal profiles)")
+  filetype <- match.arg(filetype)
+  species <- match.arg(species, several.ok = T)
+  
+  if(is.na(year)) year <- "AllYr" ; print("Using generic year representation")
+  if(is.numeric(year) & year < 2010) stop ("If year is defined, it needs to be 2010 or later")
+  
+  #########################################################
   
   ### large if clause for the filetype;
   
-  if(filetype == "flat file"){
+  if(filetype == "data file"){
     
-    # do i need a MonthlyFac, and DailyFac for every pollutant? and every country? (obvs only changing UK)
-    # does HourlyFacs apply to every pollutant? (they are hour specific to each wday)
+    ## current understanding: 
+    # Month and wday files: for each pollutant & SNAP code & country
+    # hourly files: by day for each country & SNAP, pollutant generic
+    
+    ### Hourly ###
+    if(hourly == T){
+      # read in the hourwday data  - this is pollutant generic
+      dt_hourwday <- fread(paste0("./output/coeffs_sector/",classification,"/allGas/GAM_hourwday_",classification,"_allGas_",year,"_LIST.csv"))[,c("coeff_l","coeff_u") := NULL][,coeff := round(coeff, 3)]
+      
+      # reshape and write out - it'll get overwritten for every species processed but will be identical
+      dt_hw <- dcast(dt_hourwday, wday+sector ~ hour, value.var = "coeff")
+      
+      header <- readLines("./output/model_inputs/EMEP4UK/pre_DUKEMS/HourlyFacs.INERIS",n=3)
+      
+      f_hourly <- "./output/model_inputs/EMEP4UK/DUKEMS/HourlyFacs_DUKEMS.INERIS"
+      file.create(f_hourly)
+      cat(header, file = f_hourly, sep="\n")
+      fwrite(dt_hw, f_hourly, append = T)
+      
+    }else{
+      
+    }
+    
+    ### Daily and monthly ###
+    # read in the wday and month profiles into a list of lists (for each species)
+    l_profiles <- lapply(species, collectWdayMonthProfiles, year = year, classification = classification)
+    names(l_profiles) <- species
+    
+    # write the profiles - this includes reading the old ones and inserting UK data
+    lapply(l_profiles, writeWdayMonthProfiles, year = year, classification = classification)
+    
+    if(comp_plot == T){
+      
+      lapply(species, plotWdayMonthProfiles, year = year, classification = classification)
+      
+    }else{
+      
+    }
+    
+    
+    
     
     
     
   }else{
     
-    # nothing here yet  
+    # nothing here yet 
+    print(".nc data cube format not available yet.")
     
   } # if else for file type
   
   
-  
-  
 } # end of function
+
+
+#########################################################################################################
+#### functions to 1. return list of csv or .rds versions of the sector-level temporal profiles (only wday/month)
+####              2. read in original EMEP structure and write with updated UK values
+
+collectWdayMonthProfiles <- function(year, species, classification){
+  
+  ## read in wday and month data  - this is pollutant specific
+  dt_wday <- fread(paste0("./output/coeffs_sector/",classification,"/",species,"/GAM_wday_",classification,"_",species,"_",year,"_LIST.csv"))[,c("coeff_l","coeff_u") := NULL]#[,species := species]
+  dt_month <- fread(paste0("./output/coeffs_sector/",classification,"/",species,"/GAM_month_",classification,"_",species,"_",year,"_LIST.csv"))[,c("coeff_l","coeff_u") := NULL]#[,species := species]
+  
+  l <- list(dt_wday, dt_month)
+  l <- lapply(l, function(x) x[,coeff := round(coeff, 3)])
+  
+  names(l) <- paste0(species,"_",c("wday","month"))
+  
+  return(l)
+}
+
+
+writeWdayMonthProfiles <- function(year, classification, profiles){
+  
+  #timestep <- match.arg(timestep)
+  #file_time <- ifelse(timestep == "wday", "DailyFac", "MonthlyFac")
+  
+  spec_func <- str_split(names(profiles),"_")[[1]][1]
+  spec_emep <- tolower(spec_func)
+  if(spec_func == "NMVOC") spec_emep <- "voc"
+  
+  ## bring in existing EMEP4UK temporal data
+  dt_wday_exist  <- fread(paste0("./output/model_inputs/EMEP4UK/pre_DUKEMS/DailyFac.",spec_emep))
+  dt_month_exist <- fread(paste0("./output/model_inputs/EMEP4UK/pre_DUKEMS/MonthlyFac.",spec_emep))
+  
+  ## WDAY
+  ## subset the data according to the species and the time
+  dt <- profiles[[paste0(spec_func,"_wday")]]
+  dtw <- dcast(dt, sector ~ wday, value.var = "coeff")
+  dtw <- data.table(country = 27, dtw)
+  names(dtw) <- names(dt_wday_exist)
+  
+  ## MONTH
+  ## subset the data according to the species and the time
+  dt <- profiles[[paste0(spec_func,"_month")]]
+  dtm <- dcast(dt, sector ~ month, value.var = "coeff")
+  dtm <- data.table(country = 27, dtm)
+  names(dtm) <- names(dt_month_exist)
+  
+  
+  ## replace UK numbers - remove from original file, append new and order
+  ## WDAY
+  dt_wday_exist <- dt_wday_exist[V1 != 27]
+  dt_wday_write <- rbindlist(list(dt_wday_exist, dtw), use.names = T)
+  dt_wday_write <- dt_wday_write[order(V2, V1)]
+  
+  ## MONTH
+  dt_month_exist <- dt_month_exist[V1 != 27]
+  dt_month_write <- rbindlist(list(dt_month_exist, dtm), use.names = T)
+  dt_month_write <- dt_month_write[order(V2, V1)]
+  
+  
+  # write out data
+  fwrite(dt_wday_write, paste0("./output/model_inputs/EMEP4UK/DUKEMS/DailyFac_DUKEMS.",spec_emep),sep = " ", col.names = F) 
+  fwrite(dt_month_write, paste0("./output/model_inputs/EMEP4UK/DUKEMS/MonthlyFac_DUKEMS.",spec_emep),sep = " ", col.names = F) 
+  
+}
+
+
+plotWdayMonthProfiles <- function(species, year, classification){
+  
+  if(species == "NMVOC") spec_emep <- "voc"
+  
+  ##########
+  ## HOUR ##
+  dt_hour_exist  <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/pre_DUKEMS/HourlyFacs.INERIS")))
+  names(dt_hour_exist) <- c("wday","SNAP",1:24)
+  dt_hour_exist_m <- melt(dt_hour_exist, id.vars = c("wday","SNAP"), variable.name = "hour", value.name = "coeff")
+  dt_hour_exist_m[, source := "EMPE4UK"]
+  
+  
+  dt_hour_duke <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/DUKEMS/HourlyFacs_DUKEMS.INERIS")))
+  names(dt_hour_duke) <- c("wday","SNAP",1:24)
+  dt_hour_duke_m <- melt(dt_hour_duke, id.vars = c("wday","SNAP"), variable.name = "hour", value.name = "coeff")
+  dt_hour_duke_m[, source := "DUKEMS"]
+  
+  dt_hour <- rbindlist(list(dt_hour_exist_m, dt_hour_duke_m), use.names = T)
+  
+  g1 <- ggplot(data = dt_hour[SNAP < 11], aes(x = hour, y = coeff, group = source, colour = source))+
+    geom_line()+
+    facet_grid(wday~SNAP)+
+    theme_bw()
+  
+  ##########
+  ## WDAY ##
+  dt_wday_exist  <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/pre_DUKEMS/DailyFac.",spec_emep)))[V1==27]
+  names(dt_wday_exist) <- c("country","SNAP",1:7)
+  dt_wday_exist_m <- melt(dt_wday_exist, id.vars = c("country","SNAP"), variable.name = "wday", value.name = "coeff")
+  dt_wday_exist_m[, source := "EMPE4UK"]
+  
+  
+  dt_wday_duke <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/DUKEMS/DailyFac_DUKEMS.",spec_emep)))[V1==27]
+  names(dt_wday_duke) <- c("country","SNAP",1:7)
+  dt_wday_duke_m <- melt(dt_wday_duke, id.vars = c("country","SNAP"), variable.name = "wday", value.name = "coeff")
+  dt_wday_duke_m[, source := "DUKEMS"]
+  
+  dt_wday <- rbindlist(list(dt_wday_exist_m, dt_wday_duke_m), use.names = T)
+  
+  g2 <- ggplot(data = dt_wday[SNAP < 11], aes(x = wday, y = coeff, group = source, colour = source))+
+    geom_line()+
+    facet_wrap(~SNAP, nrow=2)+
+    theme_bw()
+  
+  ###########
+  ## MONTH ##
+  dt_month_exist  <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/pre_DUKEMS/MonthlyFac.",spec_emep)))[V1==27]
+  names(dt_month_exist) <- c("country","SNAP",1:12)
+  dt_month_exist_m <- melt(dt_month_exist, id.vars = c("country","SNAP"), variable.name = "month", value.name = "coeff")
+  dt_month_exist_m[, source := "EMPE4UK"]
+  
+  
+  dt_month_duke <- suppressWarnings(fread(paste0("./output/model_inputs/EMEP4UK/DUKEMS/MonthlyFac_DUKEMS.",spec_emep)))[V1==27]
+  names(dt_month_duke) <- c("country","SNAP",1:12)
+  dt_month_duke_m <- melt(dt_month_duke, id.vars = c("country","SNAP"), variable.name = "month", value.name = "coeff")
+  dt_month_duke_m[, source := "DUKEMS"]
+  
+  dt_month <- rbindlist(list(dt_month_exist_m, dt_month_duke_m), use.names = T)
+  
+  g3 <- ggplot(data = dt_month[SNAP < 11], aes(x = month, y = coeff, group = source, colour = source))+
+    geom_line()+
+    facet_wrap(~SNAP, nrow=2)+
+    theme_bw()
+  
+  
+  l_p <- list(ggplotGrob(g1), ggplotGrob(g2), ggplotGrob(g3))
+  
+  # write out data
+  c1 <- plot_grid(l_p[[1]], l_p[[2]], l_p[[3]], ncol=1, nrow=3,rel_widths = 1, rel_heights = c(1.2,0.8,0.8), align="h", axis="l")
+  
+  save_plot(paste0("./output/model_inputs/EMEP4UK/comparison_plots/",species,"_EMPE4UK_DUKEMS_profiles.png"), c1, base_height = 15, base_width = 9)
+  
+  
+}
 
 
 #######################################################################################################
