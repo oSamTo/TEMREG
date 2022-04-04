@@ -104,7 +104,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL") ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM25, PM10
                                             GHG:   CH4, CO2, N2O
@@ -388,7 +388,7 @@ SectorCoeffs <- function(gam, dt, timescale){
 #########################################################################################################
 #### function to create EMEP4UK inputs - either original simple .dat files or fully 3D netcdfs
 
-EMEP4UKprofiles <- function(year, species = c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PMCO", "PM10"), classification, filetype = c("data file","data cube"), hourly, comp_plot){
+EMEP4UKprofiles <- function(year, species = c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PMCO", "PM10","HCL"), classification, filetype = c("data file","data cube"), hourly, comp_plot){
   
   filetype <- match.arg(filetype)
   species <- match.arg(species, several.ok = T)
@@ -525,7 +525,9 @@ writeWdayMonthProfiles <- function(year, classification, profiles){
 
 plotWdayMonthProfiles <- function(species, year, classification){
   
+  spec_emep <- tolower(species)
   if(species == "NMVOC") spec_emep <- "voc"
+ 
   
   ##########
   ## HOUR ##
