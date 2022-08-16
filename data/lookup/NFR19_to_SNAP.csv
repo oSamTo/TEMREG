@@ -503,8 +503,8 @@ NFR19,SNAP,Source,Activity
 2A3,4,Glass – ballotini,Glass (ballotini)
 2A4a,3,Brick manufacture - all types,Bricks
 2A4a,3,Brick manufacture - Fletton,Fletton bricks
-2A4b,4,Non Energy Use: chemical feedstock,Soda ash
-2A4b,4,Other emissive applications of Soda Ash,Soda ash
+2A4b,,Non Energy Use: chemical feedstock,Soda ash
+2A4b,,Other emissive applications of Soda Ash,Soda ash
 2A4d,3,Bread baking,Sodium Bicarbonate
 2A4d,3,Flue Gas Treatment (neutralisation),Sodium Bicarbonate
 2A4d,3,Other emissive applications of  Sodium Bicarbonate,Sodium Bicarbonate
@@ -2127,7 +2127,7 @@ z_11C,11,Accidental fires - straw,Mass burnt
 z_11C,11,Accidental fires - vegetation,Area burnt
 z_11C,11,Adult breath and sweat,Population
 z_11C,11,Natural sources,Non-fuel combustion
-z_11C,11,Road transport - resuspension,Vehicle kilometres
+z_11C,7,Road transport - resuspension,Vehicle kilometres
 z_11C,11,Wild birds wastes,Manure and excreta
 z_11C,11,Wild other animal wastes,Manure and excreta
 z_1A3ai(ii),avi.cruise,Aircraft - international cruise,Aviation spirit
@@ -2153,14 +2153,14 @@ z_1A3di(i),8,Shipping - international IPCC definition,Gas oil
 0,11,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass
 4,11,LULUCF Indirect N2O - Atmospheric Deposition,Non-fuel combustion
 4,11,LULUCF Indirect N2O - Nitrogen Leaching and Run-off,Non-fuel combustion
-4.00E+01,11,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion
-4.00E+01,11,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
-4.00E+02,11,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion
-4.00E+02,11,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
-4.00E+02,11,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass
-4.00E+02,11,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion
-4.00E+02,11,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
-4.00E+02,11,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion
-4.00E+02,11,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
-4.00E+02,11,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion
-4.00E+02,11,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion
+40,11,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion
+40,11,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
+400,11,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion
+400,11,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
+400,11,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass
+400,11,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion
+400,11,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
+400,11,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion
+400,11,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion
+400,11,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion
+400,11,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion

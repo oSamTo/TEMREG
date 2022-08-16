@@ -2153,14 +2153,14 @@ z_1A3di(i),Shipping - international IPCC definition,Gas oil,SHIP_CTP
 0,Grassland remaining Grassland - Biomass Burning - Wildfires,Biomass,MISC_ANY
 4,LULUCF Indirect N2O - Atmospheric Deposition,Non-fuel combustion,MISC_ANY
 4,LULUCF Indirect N2O - Nitrogen Leaching and Run-off,Non-fuel combustion,MISC_ANY
-4.00E+01,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+01,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
-4.00E+02,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
-4.00E+02,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
-4.00E+02,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion,MISC_ANY
+40,Settlements remaining Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+40,Settlements remaining Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+400,Cropland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+400,Cropland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+400,Forest Land converted to Settlements - Biomass Burning - Controlled Burning,Biomass,MISC_ANY
+400,Forest Land converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+400,Forest Land converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+400,Grassland converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+400,Grassland converted to Settlements - Direct N2O emissions from N Mineralization/Immobilization,Non-fuel combustion,MISC_ANY
+400,Wetlands converted to Settlements - Carbon stock change,Non-fuel combustion,MISC_ANY
+400,Wetlands converted to Settlements - Direct N2O emissions from N mineralization/immobilization,Non-fuel combustion,MISC_ANY

@@ -13,7 +13,7 @@ source("./R/plotting.R")
 r_uk_BNG <<- rast(xmin=-230000, xmax = 750000, ymin = -50000, ymax = 1300000, res=1000, crs="EPSG:27700", vals=NA)
 
 # lookup NFR to Profile ID - only one file for this to link to sector lookups
-NFR_to_Profile <<- fread("./data/lookup/NFR_to_ProfileID.csv")
+NFR_to_Profile <<- fread("./data/lookup/NFR19_to_GAMsectors.csv")
 dt_pollutants <<- fread("./data/lookup/pollutants.csv")
 
 
@@ -114,7 +114,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   
   ## lookup tables ##
   # The classification name must have an 'NFR_to_xxxx.csv' file ready for the matching to work. Can be custom. 
-  dt_NFR_to_sect <- fread(paste0("./data/lookup/NFR_to_",classification,".csv")) # NFRs, Profile_IDs & sector groupings (e.g. SNAP)
+  dt_NFR_to_sect <- fread(paste0("./data/lookup/NFR19_to_",classification,".csv")) # NFRs, Profile_IDs & sector groupings (e.g. SNAP)
   dt_NFR_to_sect[NFR19 == "4.00E+01", NFR19 := "4E1"] # how to fix this?? options(scipen=999) not working
   dt_NFR_to_sect[NFR19 == "4.00E+02", NFR19 := "4E2"] # how to fix this?? options(scipen=999) not working
   
