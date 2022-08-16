@@ -1,0 +1,22 @@
+pollutant,pollutant_id,pollutant_longName,query
+ch4,3,Methane,167099
+co2,2,Carbon Dioxide as Carbon,167099
+n2o,5,Nitrous Oxide,167099
+nh3,21,Ammonia,167111
+bap,41,Benzo[a]pyrene,167111
+bz,22,Benzene,167111
+co,4,Carbon Monoxide,167111
+hcl,14,Hydrogen Chloride,167112
+nox,6,Nitrogen oxides (NOx expressed as NO2),167112
+so2,8,Sulphur Dioxide,167112
+voc,9,Non Methane VOC,167112
+cd,12,Cadmium,167101
+cu,13,Copper,167101
+pb,17,Lead,167101
+hg,15,Mercury,167101
+ni,16,Nickel,167101
+zn,20,Zinc,167101
+pm0_1,124,PM0.1 (Particulate Matter < 0.1&micro;m),167102
+pm1,123,PM1 (Particulate Matter < 1&micro;m),167102
+pm2_5,122,PM2.5 (Particulate Matter < 2.5&micro;m),167102
+pm10,24,PM10 (Particulate Matter < 10&micro;m),167102

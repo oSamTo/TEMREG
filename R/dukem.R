@@ -14,7 +14,10 @@ r_uk_BNG <<- rast(xmin=-230000, xmax = 750000, ymin = -50000, ymax = 1300000, re
 
 # lookup NFR to Profile ID - only one file for this to link to sector lookups
 NFR_to_Profile <<- fread("./data/lookup/NFR19_to_GAMsectors.csv")
-dt_pollutants <<- fread("./data/lookup/pollutants.csv")
+NFR_to_Profile[NFR19 == "40", NFR19 := "4E1"] # how to fix this?? options(scipen=999) not working
+NFR_to_Profile[NFR19 == "400", NFR19 := "4E2"] # how to fix this?? options(scipen=999) not working
+
+dt_pollutants <<- fread("./data/lookup/NAEI_pollutants.csv")
 
 
 ##################################################################################################
@@ -22,7 +25,9 @@ dt_pollutants <<- fread("./data/lookup/pollutants.csv")
 #### Option to run across timescales and to EXCLUDE Profile_IDs in a vector                   ####
 #### Can only run domestic profile GAMs on a modelling PC                                     ####
 
-GAMbyProfile <- function(timescale, exclude = NULL){
+GAMbyProfile <- function(timescale = c("hour","hourwday","wday","month","yday"), exclude = NULL){
+  
+  timescale <- match.arg(timescale)
   
   print(paste0(Sys.time(), ": Processing ",timescale,"..."))
   
@@ -97,18 +102,20 @@ GAMbyProfile <- function(timescale, exclude = NULL){
 #### function to 1. return the NAEI emissions data, formatted, for the given year & Species.  ####
 ####             2. match the annual NAEI data to the temporal profile codes and GAm files.   ####
 
-JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
+JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification = c("SNAP","GNFR")){
   
   ########################################################
   
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL") ) stop ("Species must be in: 
-                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
-                                            PM:    PM25, PM10
-                                            GHG:   CH4, CO2, N2O
-                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  if(species %!in% c("ch4","co2","n2o","bap","bz","hcl","nox","so2","nh3", "co", "voc","cd","cu","pb","hg","ni","zn", "pm0_1","pm1","pm2_5","pm10") ) stop ("Species must be in: 
+                                            AP:    bap, bz, co, hcl, nh3, nox, so2, voc
+                                            PM:    pm0_1, pm1, pm2_5, pm10
+                                            GHG:   ch4, co2, n2o
+                                            Metal: cd, cu, hg, ni, pb, zn")
+  
+  classification <- match.arg(classification)
   
   #########################################################
   
@@ -117,18 +124,29 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   dt_NFR_to_sect <- fread(paste0("./data/lookup/NFR19_to_",classification,".csv")) # NFRs, Profile_IDs & sector groupings (e.g. SNAP)
   dt_NFR_to_sect[NFR19 == "4.00E+01", NFR19 := "4E1"] # how to fix this?? options(scipen=999) not working
   dt_NFR_to_sect[NFR19 == "4.00E+02", NFR19 := "4E2"] # how to fix this?? options(scipen=999) not working
+  dt_NFR_to_sect[NFR19 == "40", NFR19 := "4E1"] # how to fix this?? options(scipen=999) not working
+  dt_NFR_to_sect[NFR19 == "400", NFR19 := "4E2"] # how to fix this?? options(scipen=999) not working
+  
+  # read from the query URL into a list of data tables
+  v_url <- paste0("https://naei.beis.gov.uk/data/download?q=", dt_pollutants[pollutant == species, query], "&section=ukdata&pollutantId=", dt_pollutants[pollutant == species, pollutant_id])
+  dt_naei <- fread(v_url, na.strings = "-", header=T)
+  
+  colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(year-5):year)
+  dt_naei <- dt_naei[ ,..colskeep]
+  dt_naei <- dt_naei[Source != ""]
+  dt_naei[, Gas := species]
   
   # latest available NAEI data files
-  naei_files <- list.files("./data/NAEI_total", pattern="-2019.csv", full.names = T)
-  naei_files <- naei_files[grep(paste(dt_pollutants[, file_name], collapse = "|"), naei_files)]
-  l_naei <- lapply(naei_files, fread, header=T)
+  #naei_files <- list.files("./data/NAEI_total", pattern="-2019.csv", full.names = T)
+  #naei_files <- naei_files[grep(paste(dt_pollutants[, file_name], collapse = "|"), naei_files)]
+  #l_naei <- lapply(naei_files, fread, header=T)
   
   # some formatting (remove blank rows and superfluous columns)
-  colskeep <- c("Gas","NFR/CRF Group","Source","Activity",2010:2019)
-  l_naei <- lapply(l_naei, function(x) x[Source != ""])
-  l_naei <- lapply(l_naei, function(x) x[ ,..colskeep])
-  dt_naei <- rbindlist(l_naei, use.names=T)
-  suppressMessages(dt_naei[, Gas := plyr::mapvalues(Gas, c(dt_pollutants[,naei_longname]), c(dt_pollutants[,file_name]))])
+  #colskeep <- c("Gas","NFR/CRF Group","Source","Activity",2010:2019)
+  #l_naei <- lapply(l_naei, function(x) x[Source != ""])
+  #l_naei <- lapply(l_naei, function(x) x[ ,..colskeep])
+  #dt_naei <- rbindlist(l_naei, use.names=T)
+  #suppressMessages(dt_naei[, Gas := plyr::mapvalues(Gas, c(dt_pollutants[,naei_longname]), c(dt_pollutants[,file_name]))])
   
   # restructure data
   dt_naei <- melt(dt_naei, id.vars = c("Gas","NFR/CRF Group","Source","Activity"), variable.name = "year", value.name = "emission")
@@ -140,7 +158,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
   
   # subset according to choice
   if(!(is.na(v_year))) dt_naei <- dt_naei[year %in% c(v_year)]
-  if(!(is.na(species))) dt_naei <- dt_naei[Gas %in% dt_pollutants[upper_name == species, file_name]]
+  #if(!(is.na(species))) dt_naei <- dt_naei[Gas %in% dt_pollutants[upper_name == species, file_name]]
   
   # join the NAEI emissions to the classification lookup and to the GAM name lookup
   dt_joined <- dt_NFR_to_sect[dt_naei, on = c("NFR19","Source","Activity")][NFR_to_Profile , on = c("NFR19","Source","Activity")]
@@ -178,7 +196,20 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification){
 #########################################################################################################
 #### function to create the sector GAMs as directly above, but in a loop and saving 11 GAM object as list
 
-GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR = NULL){
+GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday","month","yday"), classification = c("SNAP","GNFR"), yr_spec_NFR = NULL){
+  
+  #########################################################
+  
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL") ) stop ("Species must be in: 
+                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+                                            PM:    PM25, PM10
+                                            GHG:   CH4, CO2, N2O
+                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  
+  classification <- match.arg(classification)
+  timescale <- match.arg(timescale)
+  
+  #########################################################
   
   print(paste0(Sys.time(),": Generating ",classification," sector GAMs for ",timescale,"..."))
   
@@ -211,41 +242,74 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
       
       # create a table to fit to the model - will need all the Profile_IDs in the GAM here, even if not present in emissions data
       # hourwday needs a separate one making
-      
       dt_fit <- blankResponse(v_sectors = i, sectorColName = "Profile_ID", timeColName = "time", timescale)
+      
+      # sample normally across prediction interval
+      if(timescale != "hourwday"){
+        
+        dt_i_gam_sample <- data.table(Profile_ID = i,
+                                      time = rep(dt_fit$time, each = 100),
+                                      N = mgcv::predict.gam(i_gam, newdata = list(time = rep(dt_fit$time, each = 100))) + rnorm(100 * length(dt_fit$time), 0, sqrt(mgcv::predict.gam(i_gam, newdata = list(time = rep(dt_fit$time, each = 100)), se.fit=T)$se.fit^2 + i_gam$sig2))) 
+        
+      }else{
+        
+        dt_i_gam_sample <- data.table(Profile_ID = i,
+                                      wday = rep(dt_fit$wday, each = 100 * 24),
+                                      hour = rep(dt_fit$hour, 100 * 24),
+                                      N = mgcv::predict.gam(i_gam, newdata = list(wday = rep(dt_fit$wday, each = 100 * 24), hour = rep(dt_fit$hour, 100 * 24))) + rnorm(100 * 24 * length(dt_fit$Profile_ID), 0, sqrt(mgcv::predict.gam(i_gam, newdata = list(wday = rep(dt_fit$wday, each = 100 * 24), hour = rep(dt_fit$hour, 100 * 24)), se.fit=T)$se.fit^2 + i_gam$sig2))) 
+        
+      }
       
       # fit the GAM to the blank data many times to get a sampling space. 
       # subset the Profile_IDs actually present in the emissions data (possibly different due to pollutant)
-      gam_sample <- sampleGAM(s = s, gam = i_gam, dt = dt_fit, n = 50, timescale)
+      #gam_sample <- sampleGAM(s = s, gam = i_gam, dt = dt_fit, n = 50, timescale)
       
       # subset the weighting by Profile_ID and add (for sector GAM)
       prof_weight <- emis[sector==s & Profile_ID == i, emis_sec_frac]
-      gam_sample[, w := prof_weight]
+      dt_i_gam_sample[, w := prof_weight]
+      
+      if(timescale != "hourwday"){
+        dt_i_gam_sample[, draw := 1:.N, by = time] 
+      }else{
+        dt_i_gam_sample[, draw := 1:.N, by = .(wday, hour)]
+      }
+      
       
       # add to list for whole sector
-      l_ID_data[[paste0(s,"_",i)]] <- gam_sample
+      l_ID_data[[paste0(s,"_",i)]] <- dt_i_gam_sample
       
     } # ID loop
     
     # rbind it into one table. 
     dt_GAM_data <- rbindlist(l_ID_data, use.names = T)
     # setnames back to standard posit names. 
+    #if(timescale != "hourwday") setnames(dt_GAM_data, "time", paste0(timescale))
+    
+    # take the weighted mean for values of every sample draw, at each t
+    if(timescale != "hourwday"){
+      dt_GAM_data <- dt_GAM_data[,.(N=weighted.mean(N, w)) , by=.( time, draw)]
+    }else{
+      dt_GAM_data <- dt_GAM_data[,.(N=weighted.mean(N, w)) , by=.( wday, hour, draw)]
+    }
+    
+    
     if(timescale != "hourwday") setnames(dt_GAM_data, "time", paste0(timescale))
+    
     
     #if(timescale == "hourwday") dt_GAM_data[,wday := factor(wday, levels=1:7)] # think this should be set in blankResponse
     
     ## Make a GAM for the whole sector, weighted by emissions contribution of NFR codes grouped by Profile_ID
     # separate if clauses for little changes in knot selection, bs term etc
     if(timescale == "hour"){
-      gam_sect <- gam(N ~ s(hour, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(hour, bs="cc"), data = dt_GAM_data, method="REML")
     }else if(timescale=="hourwday"){
-      gam_sect <- gam(N ~ s(hour, bs="cc", by=wday) + wday, data=dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(hour, bs="cc", by=wday) + wday, data=dt_GAM_data, method="REML")
     }else if(timescale=="wday"){
-      gam_sect <- gam(N ~ s(wday, bs="cr", k=6), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(wday, bs="cr", k=6), data = dt_GAM_data, method="REML")
     }else if(timescale=="month"){
-      gam_sect <- gam(N ~ s(month, bs="cr"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(month, bs="cr"), data = dt_GAM_data, method="REML")
     }else{
-      gam_sect <- gam(N ~ s(yday, bs="cc"), data = dt_GAM_data, weights = w, method="REML")
+      gam_sect <- gam(N ~ s(yday, bs="cc"), data = dt_GAM_data, method="REML")
     }
     
     #### strip data and put into list ####
@@ -266,11 +330,11 @@ GAMBYSectorLOOP <- function(year,species, timescale, classification, yr_spec_NFR
   
   ## set filenames and write data
   
-  if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
+  if(((year %in% 2010:2020) & (species %in% dt_pollutants[,pollutant]))){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year,"_LIST")
-  }else if(is.na(year) & (species %in% dt_pollutants[,upper_name])){
+  }else if(is.na(year) & (species %in% dt_pollutants[,pollutant])){
     filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr_LIST")
-  }else if((year %in% 2010:2019) & is.na(species)){
+  }else if((year %in% 2010:2020) & is.na(species)){
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_",year,"_LIST")
   }else{
     filename <- paste0("GAM_",timescale,"_",classification,"_allGas_allYr_LIST")
