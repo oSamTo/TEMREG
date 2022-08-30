@@ -109,7 +109,7 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification = c("SN
   # year           = *numeric* year to process. Will determine calendar structure plus year specific profiles.
   #if(!is.numeric(v_year)) stop ("Year is not numeric")
   # species        = *character* name of air pollutant or GHG or metal etc. Needs to conform to a list of options.
-  if(species %!in% c("ch4","co2","n2o","bap","bz","hcl","nox","so2","nh3", "co", "voc","cd","cu","pb","hg","ni","zn", "pm0_1","pm1","pm2_5","pm10") ) stop ("Species must be in: 
+  if(species %!in% c("ch4","co2","n2o","bap","bz","hcl","nox","so2","nh3", "co", "voc","cd","cu","pb","hg","ni","zn", "pm0_1","pm1","pm2_5","pm10", NA) ) stop ("Species must be in: 
                                             AP:    bap, bz, co, hcl, nh3, nox, so2, voc
                                             PM:    pm0_1, pm1, pm2_5, pm10
                                             GHG:   ch4, co2, n2o
@@ -128,25 +128,34 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification = c("SN
   dt_NFR_to_sect[NFR19 == "400", NFR19 := "4E2"] # how to fix this?? options(scipen=999) not working
   
   # read from the query URL into a list of data tables
-  v_url <- paste0("https://naei.beis.gov.uk/data/download?q=", dt_pollutants[pollutant == species, query], "&section=ukdata&pollutantId=", dt_pollutants[pollutant == species, pollutant_id])
-  dt_naei <- fread(v_url, na.strings = "-", header=T)
-  
-  colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(year-5):year)
-  dt_naei <- dt_naei[ ,..colskeep]
-  dt_naei <- dt_naei[Source != ""]
-  dt_naei[, Gas := species]
-  
-  # latest available NAEI data files
-  #naei_files <- list.files("./data/NAEI_total", pattern="-2019.csv", full.names = T)
-  #naei_files <- naei_files[grep(paste(dt_pollutants[, file_name], collapse = "|"), naei_files)]
-  #l_naei <- lapply(naei_files, fread, header=T)
-  
-  # some formatting (remove blank rows and superfluous columns)
-  #colskeep <- c("Gas","NFR/CRF Group","Source","Activity",2010:2019)
-  #l_naei <- lapply(l_naei, function(x) x[Source != ""])
-  #l_naei <- lapply(l_naei, function(x) x[ ,..colskeep])
-  #dt_naei <- rbindlist(l_naei, use.names=T)
-  #suppressMessages(dt_naei[, Gas := plyr::mapvalues(Gas, c(dt_pollutants[,naei_longname]), c(dt_pollutants[,file_name]))])
+  if(is.na(species)){
+    
+    v_url <- paste0("https://naei.beis.gov.uk/data/download?q=", dt_pollutants[pollutant %in% c("ch4","co2","n2o","nh3","co","nox","so2","voc","pm2_5","pm10"), query], "&section=ukdata&pollutantId=", dt_pollutants[pollutant %in% c("ch4","co2","n2o","nh3","co","nox","so2","voc","pm2_5","pm10"), pollutant_id])
+    
+    l_naei <- lapply(v_url, fread, na.strings = "-", header=T)
+    
+    if(is.na(v_year)){
+      colskeep <- c("Gas","NFR/CRF Group","Source","Activity",2015:2020) 
+    }else{
+      colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(v_year-5):v_year)
+    }
+    
+    l_naei <- lapply(l_naei, function(x) x[Source != ""])
+    l_naei <- lapply(l_naei, function(x) x[ ,..colskeep])
+    dt_naei <- rbindlist(l_naei, use.names=T)
+    suppressMessages(dt_naei[, Gas := plyr::mapvalues(Gas, c(dt_pollutants[,pollutant_longName]), c(dt_pollutants[,pollutant]))])
+    
+  }else{
+    
+    v_url <- paste0("https://naei.beis.gov.uk/data/download?q=", dt_pollutants[pollutant == species, query], "&section=ukdata&pollutantId=", dt_pollutants[pollutant == species, pollutant_id])
+    dt_naei <- fread(v_url, na.strings = "-", header=T)
+    
+    colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(year-5):year)
+    dt_naei <- dt_naei[ ,..colskeep]
+    dt_naei <- dt_naei[Source != ""]
+    dt_naei[, Gas := species]
+    
+  }
   
   # restructure data
   dt_naei <- melt(dt_naei, id.vars = c("Gas","NFR/CRF Group","Source","Activity"), variable.name = "year", value.name = "emission")
@@ -200,7 +209,7 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
   
   #########################################################
   
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL") ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL",NA) ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM25, PM10
                                             GHG:   CH4, CO2, N2O
@@ -218,6 +227,7 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
   
   ## fetch NAEI data and match to sectors etc. 
   emis <- JoinNAEItoProfiles(v_year = year, species = species, classification)
+  emis <- emis[!is.na(sector)]
   
   # change this to read from the emissions/sector lookup - call the profileNAEI function. 
   v_sectors <- emis[,unique(sector)]
@@ -282,7 +292,7 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
     
     # rbind it into one table. 
     dt_GAM_data <- rbindlist(l_ID_data, use.names = T)
-    # setnames back to standard posit names. 
+    
     #if(timescale != "hourwday") setnames(dt_GAM_data, "time", paste0(timescale))
     
     # take the weighted mean for values of every sample draw, at each t
@@ -292,7 +302,7 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
       dt_GAM_data <- dt_GAM_data[,.(N=weighted.mean(N, w)) , by=.( wday, hour, draw)]
     }
     
-    
+    # setnames back to standard posit names. 
     if(timescale != "hourwday") setnames(dt_GAM_data, "time", paste0(timescale))
     
     
@@ -341,14 +351,14 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
   }
   
   if(is.na(species)){
-    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/allGas")), showWarnings = F)
-    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/allGas")), showWarnings = F)
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/allGas")), showWarnings = F, recursive = T)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/allGas")), showWarnings = F, recursive = T)
     
     saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/allGas","/",filename,".rds"))
     fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/allGas","/",filename,".csv"))
   }else{
-    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/",species)), showWarnings = F)
-    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/",species)), showWarnings = F)
+    dir.create(file.path(paste0("./output/GAM_sector/",classification,"/",species)), showWarnings = F, recursive = T)
+    dir.create(file.path(paste0("./output/coeffs_sector/",classification,"/",species)), showWarnings = F, recursive = T)
     
     saveRDS(l_GAM_sectors, paste0("./output/GAM_sector/",classification,"/",species,"/",filename,".rds"))
     fwrite(dt_csvs, paste0("./output/coeffs_sector/",classification,"/",species,"/",filename,".csv"))

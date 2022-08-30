@@ -102,10 +102,10 @@ GAMsectorPlot <- function(year, species, classification){
     
     #l_plot_data <- list()
     
-    if(((year %in% 2010:2019) & (species %in% dt_pollutants[,upper_name]))){
+    if(((year %in% 2010:2019) & (species %in% dt_pollutants[,pollutant]))){
       filepath <- paste0("./output/coeffs_sector/",classification,"/",species,"/")
       filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_",year,"_LIST")
-    }else if(is.na(year) & (species %in% dt_pollutants[,upper_name])){
+    }else if(is.na(year) & (species %in% dt_pollutants[,pollutant])){
       filepath <- paste0("./output/coeffs_sector/",classification,"/",species,"/")
       filename <- paste0("GAM_",timescale,"_",classification,"_",species,"_allYr_LIST")
     }else if((year %in% 2010:2019) & is.na(species)){
