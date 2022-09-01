@@ -150,7 +150,12 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification = c("SN
     v_url <- paste0("https://naei.beis.gov.uk/data/download?q=", dt_pollutants[pollutant == species, query], "&section=ukdata&pollutantId=", dt_pollutants[pollutant == species, pollutant_id])
     dt_naei <- fread(v_url, na.strings = "-", header=T)
     
-    colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(year-5):year)
+    if(is.na(v_year)){
+      colskeep <- c("Gas","NFR/CRF Group","Source","Activity",2015:2020) 
+    }else{
+      colskeep <- c("Gas","NFR/CRF Group","Source","Activity",(v_year-5):v_year)
+    }
+    
     dt_naei <- dt_naei[ ,..colskeep]
     dt_naei <- dt_naei[Source != ""]
     dt_naei[, Gas := species]
@@ -209,7 +214,7 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
   
   #########################################################
   
-  if(species %!in% c("NOx","SOx","CH4","CO2","N2O","NH3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL",NA) ) stop ("Species must be in: 
+  if(species %!in% c("NOx","SOx","ch4","co2","n2o","nh3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL",NA) ) stop ("Species must be in: 
                                             AP:    BaP, CO, NH3, NMVOC, NOx, SO2
                                             PM:    PM25, PM10
                                             GHG:   CH4, CO2, N2O
