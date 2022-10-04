@@ -7,9 +7,7 @@ lapply(packs, require, character.only = TRUE)
 "%!in%" <- Negate("%in%")
 
 source("./R/plotting.R")
-#spatial
-#BNG <<- suppressWarnings(CRS("+init=epsg:27700"))
-#LL <<- suppressWarnings(CRS("+init=epsg:4326"))
+
 r_uk_BNG <<- rast(xmin=-230000, xmax = 750000, ymin = -50000, ymax = 1300000, res=1000, crs="EPSG:27700", vals=NA)
 
 # lookup NFR to Profile ID - only one file for this to link to sector lookups
@@ -23,7 +21,7 @@ dt_pollutants <<- fread("./data/lookup/NAEI_pollutants.csv")
 ##################################################################################################
 #### function to create single Profile ID GAMs that build up into the sectoral GAMs           ####
 #### Option to run across timescales and to EXCLUDE Profile_IDs in a vector                   ####
-#### Can only run domestic profile GAMs on a modelling PC                                     ####
+#### Warning: domestic profile GAMs need high-memory, consider sampling                       ####
 
 GAMbyProfile <- function(timescale = c("hour","hourwday","wday","month","yday"), exclude = NULL){
   
@@ -88,8 +86,6 @@ GAMbyProfile <- function(timescale = c("hour","hourwday","wday","month","yday"),
     gam_sr <- strip_rawdata(gam_sect)
     saveRDS(gam_sr, paste0("N:/dump/ukem/",timescale,"/",timescale,"_",i,"_GAM.rds"))
     
-    #l_gams[[paste0(timescale,"_",i)]] <- gam_sr
-    
     
   } # end of profile ID loop
   
@@ -113,7 +109,8 @@ JoinNAEItoProfiles <- function(v_year = NA, species = NA, classification = c("SN
                                             AP:    bap, bz, co, hcl, nh3, nox, so2, voc
                                             PM:    pm0_1, pm1, pm2_5, pm10
                                             GHG:   ch4, co2, n2o
-                                            Metal: cd, cu, hg, ni, pb, zn")
+                                            Metal: cd, cu, hg, ni, pb, zn
+                                            (Or NA)")
   
   classification <- match.arg(classification)
   
@@ -214,11 +211,11 @@ GAMBYSectorLOOP <- function(year, species, timescale = c("hour","hourwday","wday
   
   #########################################################
   
-  if(species %!in% c("NOx","SOx","ch4","co2","n2o","nh3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL",NA) ) stop ("Species must be in: 
-                                            AP:    BaP, CO, NH3, NMVOC, NOx, SO2
-                                            PM:    PM25, PM10
-                                            GHG:   CH4, CO2, N2O
-                                            Metal: Cd, Cu, Hg, Ni, Pb, Zn")
+  #if(species %!in% c("NOx","SOx","ch4","co2","n2o","nh3", "CO", "NMVOC", "PM25", "PM10", "PMCO","HCL",NA) ) stop ("Species must be in: 
+  #                                          AP:    BaP, CO, NH3, NMVOC, NOx, SO2
+  #                                          PM:    PM25, PM10
+  #                                          GHG:   CH4, CO2, N2O
+  #                                          Metal: Cd, Cu, Hg, Ni, Pb, Zn")
   
   classification <- match.arg(classification)
   timescale <- match.arg(timescale)
