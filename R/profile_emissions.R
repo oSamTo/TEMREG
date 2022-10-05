@@ -19,7 +19,7 @@ GAMparallelPlot(v_profiles = unique(NFR_to_Profile[,Profile_ID]))
 ##########################################################################################
 #### set the emissions year to model and the species ####
 y_emis <- NA # the emissions year: SET TO NA for generic year representation
-species <- "n2o" # species to profiles: SET TO NA for generic pollutant representation
+species <- "pm2_5" # species to profiles: SET TO NA for generic pollutant representation
 classification <- "SNAP" # this can be anything, as long as the lookup file "NFR_to_xxxxx.csv" exists
 y_spec_NFR <- NULL # the NFR codes that are to have year-specific profiles (otherwise `average` year = 0)
 
