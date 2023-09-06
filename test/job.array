@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH -p short-serial
+#SBATCH --job-name=run_test
+#SBATCH -o test/arrayJob_%a.out
+#SBATCH -e test/arrayJob_%a.err
+#SBATCH -t 22:59:00
+#SBATCH --array=1
+R CMD BATCH --no-restore --no-save "--args ${SLURM_ARRAY_TASK_ID}" test/run.R "test/console${SLURM_ARRAY_TASK_ID}_Job.Rout"

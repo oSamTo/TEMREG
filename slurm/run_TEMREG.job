@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH -p short-serial
+#SBATCH --job-name=run_TEMREG
+#SBATCH -o slurm/ukem_ann_%j.out
+#SBATCH -e slurm/ukem_ann_%j.err
+#SBATCH --mem=60G
+#SBATCH -t 22:59:00
+R CMD BATCH --no-restore --no-save slurm/run_TEMREG.R slurm/console_TEMREG.Rout

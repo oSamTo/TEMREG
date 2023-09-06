@@ -1,0 +1,9 @@
+#!/bin/bash
+#SBATCH -p short-serial
+#SBATCH --job-name=run_TEMREG
+#SBATCH -o slurm/TEMREG_%a.out
+#SBATCH -e slurm/TEMREG_%a.err
+#SBATCH --mem=60G
+#SBATCH -t 22:59:00
+#SBATCH --array=1
+R CMD BATCH --no-restore --no-save "--args ${SLURM_ARRAY_TASK_ID}" slurm/run_TEMREG.R "slurm/console${SLURM_ARRAY_TASK_ID}_TEMREG.Rout"

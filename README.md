@@ -1,4 +1,4 @@
-# DUKEMs_TP
+# TEMREG: Temporally Resolved Emissions Generator
 
 ######################################################################
 #### **Processing UK annual emissions to sector-level temporal profiles.**

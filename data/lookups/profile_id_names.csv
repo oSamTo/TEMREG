@@ -1,0 +1,78 @@
+Profile_ID,longname,data_source
+AGRI_BUR_ALL,Agricultural burning (not stubble burn),Agriculture
+AGRI_ENT_ALL,Agricultural enteric fermentation (all),Agriculture
+AGRI_EXC_ALL,Agricultural excretion (all),Agriculture
+AGRI_GRZ_CAT,Agricultural grazing (cattle),Agriculture
+AGRI_GRZ_MLI,Agricultural grazing (minor livestock),Agriculture
+AGRI_GRZ_PIG,Agricultural grazing (pigs),Agriculture
+AGRI_GRZ_POU,Agricultural grazing (poultry),Agriculture
+AGRI_GRZ_SHP,Agricultural grazing (sheep),Agriculture
+AGRI_HOU_CAT,Agricultural housing (cattle),Agriculture
+AGRI_HOU_MLI,Agricultural housing (minor livestock),Agriculture
+AGRI_HOU_PIG,Agricultural housing (pigs),Agriculture
+AGRI_HOU_POU,Agricultural housing (poultry),Agriculture
+AGRI_HOU_SHP,Agricultural housing (sheep),Agriculture
+AGRI_SPR_BIO,Agricultural spreading (biosolids),Agriculture
+AGRI_SPR_CAT,Agricultural spreading (cattle),Agriculture
+AGRI_SPR_FER,Agricultural spreading (fertilisers),Agriculture
+AGRI_SPR_NMD,Agricultural spreading (non-manure digestate),Agriculture
+AGRI_SPR_OTH,Agricultural spreading (miscellaneous),Agriculture
+AGRI_SPR_PIG,Agricultural spreading (pigs),Agriculture
+AGRI_SPR_POU,Agricultural spreading (poultry),Agriculture
+AGRI_STO_CAT,Agricultural storage (cattle),Agriculture
+AGRI_STO_MLI,Agricultural storage (minor livestock),Agriculture
+AGRI_STO_PIG,Agricultural storage (pigs),Agriculture
+AGRI_STO_POU,Agricultural storage (poultry),Agriculture
+AGRI_STO_SHP,Agricultural storage (sheep),Agriculture
+AGRI_YRD_CAT,Agricultural yarding (cattle),Agriculture
+AVIA_DOM_ALL,"Aviation (domestic, cruise, take off and landing, and support)",Aviation
+AVIA_INT_ALL,"Aviation (international, cruise, take off and landing)",Aviation
+ENER_ANY,Energy generation (all fuel),Energy
+ENER_BIO,Energy generation (biomass),Energy
+ENER_COA,Energy generation (coal),Energy
+ENER_COG,Energy generation (generic coal oil gas),Energy
+ENER_GAS,Energy generation (natural gas),Energy
+ENER_OTH,Energy generation (other not stated),Energy
+INDU_EXT_PAG,Extraction Of Crude Petroleum And Natural Gas,Industry
+INDU_MAN_CAP,Manufacture of coke and refined petroleum product,Industry
+INDU_MAN_CHE,Manufacture of chemicals and chemical products,Industry
+INDU_MAN_FAB,Manufacture of Food products beverages and tobacco,Industry
+INDU_MAN_GEN,Industrial manufacturing,Industry
+INDU_MAN_IRO,Manufacture of basic iron and steel,Industry
+INDU_MAN_MET,Manufacture of basic metals and metal products,Industry
+INDU_MAN_PAP,Manufacture Of Paper And Paper Products,Industry
+INDU_MAN_PET,Manufacture of petrochemicals - 20.14/16/17/60,Industry
+INDU_MIN_GEN,Mining and quarrying,Industry
+INDU_PRO_GEN,Industrial production,Industry
+MISC_ANY,Miscellaneous,Miscellaneous
+OFFR_OTH,Offroad machinery,Offroad
+OFFS_GEN,Offshore (other),Offshore
+RAIL_GEN,Railways (any),Railways
+ROAD_BUS_MOT,"Road transport, Buses (motorway)",RoadTransport
+ROAD_BUS_RUR,"Road transport, Buses (rural)",RoadTransport
+ROAD_BUS_URB,"Road transport, Buses (urban)",RoadTransport
+ROAD_CAT_ALL,"Road transport, cars and taxis (all roads)",RoadTransport
+ROAD_CAT_MOT,"Road transport, cars and taxis (motorway)",RoadTransport
+ROAD_CAT_RUR,"Road transport, cars and taxis (rural)",RoadTransport
+ROAD_CAT_URB,"Road transport, cars and taxis (urban)",RoadTransport
+ROAD_CYC_ALL,"Road transport, motorcycles (all roads)",RoadTransport
+ROAD_CYC_MOT,"Road transport, motorcycles (motorway)",RoadTransport
+ROAD_CYC_RUR,"Road transport, motorcycles (rural)",RoadTransport
+ROAD_CYC_URB,"Road transport, motorcycles (urban)",RoadTransport
+ROAD_HGV_MOT,"Road transport, HGVs (motorway)",RoadTransport
+ROAD_HGV_RUR,"Road transport, HGVs (rural)",RoadTransport
+ROAD_HGV_URB,"Road transport, HGVs (urban)",RoadTransport
+ROAD_LGV_ALL,"Road transport, LGVs (all roads)",RoadTransport
+ROAD_LGV_MOT,"Road transport, LGVs (motorway)",RoadTransport
+ROAD_LGV_RUR,"Road transport, LGVs (rural)",RoadTransport
+ROAD_LGV_URB,"Road transport, LGVs (urban)",RoadTransport
+SHIP_CTP,Shipping (coastal and international),Shipping
+SHIP_FIS,Shipping (fishing),Shipping
+SHIP_MIL,Shipping (military),Shipping
+SHIP_MIS,Shipping (miscellaneous),Shipping
+SHIP_REC,Shipping (recreational),Shipping
+SOLV_IND,Solvents in industrial use (general),Solvents
+SOLV_OTH,Solvents (miscellaneous),Solvents
+STAT_DOM_GEN,"Stationary combustion; domestic (general, any fuel)",Domestic
+STAT_PIC_GEN,"Stationary combustion; public sector, commercial or industrial/institutional (general, any fuel)",Domestic
+WAST_GEN,Waste (miscellaneous),Waste

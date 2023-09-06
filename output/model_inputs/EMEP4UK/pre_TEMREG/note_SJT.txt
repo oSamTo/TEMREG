@@ -1,0 +1,8 @@
+
+## TEMPORAL profiles for EMEP4UK ##
+
+The files in here are taken from (POLAR) : 
+
+/gpfs01/home/emep4uk/EMEP4/input/Common_4.45
+
+and are the current default in EMEP4UK as of 28/06/2023

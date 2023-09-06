@@ -1,5 +1,18 @@
-.Rproj.user
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
-.Ruserdata
-data/input_formatted
+
+# RStudio files
+.Rproj.user/
+
+# produced target objects
+_target/meta/*
+_targets/objects/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+vignettes/*_cache/

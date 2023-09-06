@@ -1,0 +1,9 @@
+project_sam:
+  script: test/targets_stuff.R
+  store: test/target_stores/store_sam
+project_tom:
+  script: test/targets_stuff.R
+  store: test/target_stores/store_tom
+jim:
+  script: test/targets_stuff.R
+  store: test/target_stores/store_jim
